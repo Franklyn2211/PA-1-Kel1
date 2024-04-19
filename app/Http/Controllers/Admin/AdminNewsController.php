@@ -1,104 +1,105 @@
 <?php
+namespace App\Http\Controllers\Admin;
 
-namespace App\Http\Controllers\Admin; // Tambahkan namespace yang sesuai
-
-use Illuminate\Http\Request;
-use App\Models\News; // Sesuaikan namespace model
-use App\Models\NewsCategory; // Sesuaikan namespace model
-use Illuminate\Support\Str;
 use App\Http\Controllers\Controller;
+use Illuminate\Http\Request;
+use App\Models\News;
+use App\Models\Newscategory; // Menggunakan model Newscategory
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Str; // Import Str untuk membuat slug
+use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Facades\Storage;
 
 class AdminNewsController extends Controller
 {
+    public function index()
+    {
+        $news = News::all(); // Assuming you're fetching news from a model named News
+        return view('Admin.News.index', ['news' => $news]);
+    }
+
     public function create()
     {
-        // Mengambil semua kategori berita
-        $categories = NewsCategory::all();
-
-        // Mengirim data kategori ke view create
+        // Menampilkan form untuk membuat news baru
+        $categories = Newscategory::all(); // Mengambil semua kategori
         return view('admin.news.create', compact('categories'));
     }
 
     public function store(Request $request)
     {
-        // Validasi input
-        $validatedData = $request->validate([
+        $request->validate([
             'title' => 'required|string|max:255',
-            'location' => 'required|string|max:255',
-            'tanggal' => 'required|date',
-            'photo' => 'required|image|max:2048', // assuming photo is uploaded as an image
-            'news_category_id' => 'required|exists:news_categories,id',
-            'is_share' => 'required|boolean',
             'description' => 'required|string',
-            'created_by' => 'required|string|max:20',
+            'news_category_id' => 'required|integer|exists:news_categories,id', // Perbaiki pengecekan nama tabel
+            'photo' => 'required|image|mimes:jpeg,png,jpg|max:5000', // Hapus 'file' karena tidak diperlukan
+            'location' => 'required|string',
+            'tanggal' => 'required|date',
         ]);
 
-        // Simpan data baru ke dalam database
-        $news = new News();
-        $news->title = $validatedData['title'];
-        $news->slug = Str::slug($validatedData['title']); // generate slug from title
-        $news->location = $validatedData['location'];
-        $news->tanggal = $validatedData['tanggal'];
-        $news->news_category_id = $validatedData['news_category_id'];
-        $news->is_share = $validatedData['is_share'];
-        $news->description = $validatedData['description'];
-        $news->created_by = $validatedData['created_by'];
+        $file = $request -> file('photo');
+        $namaFile = $file->getClientOriginalName();
+        $tujuanFile = 'asset/photo';
 
-        // Upload foto dan simpan path-nya
-        if ($request->hasFile('photo')) {
-            $photoPath = $request->file('photo')->store('photos', 'public');
-            $news->photo = $photoPath;
-        }
+        $file->move($tujuanFile,$namaFile);
+        $slug = Str::slug($request->name, '-');
+            $news = new News();
 
-        $news->save();
+            $news->title = $request->title;
+            $news->description = $request->description;
+            $news->news_category_id = $request->news_category_id;
+            $news->location = $request->location;
+            $news->tanggal = $request->tanggal;
 
-        // Redirect dengan flash message
-        return redirect()->route('admin.news.index')
-            ->with('success', 'Berita berhasil disimpan.');
+
+            $news->save();
+
+            return redirect()->route('admin.news.index')->with('success', 'Berita berhasil disimpan!');
     }
 
-    public function edit(News $news) // Ubah parameter menjadi News
+    public function update(Request $request, $id)
     {
-        // Mengambil data kategori berita
-        $categories = NewsCategory::all();
+        $request->validate([
+            'title' => 'required|string|max:255',
+            'description' => 'required|string',
+            'news_category_id' => 'required|integer|exists:news_categories,id', // Memastikan category_id yang diinput ada dalam tabel newscategories
+            'location' => 'required|string',
+            'tanggal' => 'required|date',
+        ]);
 
-        // Mengirim data berita yang akan diedit ke view edit
+        $news = News::findOrFail($id);
+        $news->title = $request->title;
+        $news->description = $request->description;
+        $news->news_category_id = $request->news_category_id;
+        $news->location = $request->location;
+        $news->tanggal = $request->tanggal;
+
+        // Buat slug dari judul (misalnya)
+        $news->slug = Str::slug($request->title); 
+        $news->save();
+
+        return redirect()->route('admin.news.index')->with('success', 'Berita berhasil diperbarui!');
+    }
+
+    public function edit($id)
+    {
+        // Menampilkan form untuk mengedit news
+        $news = News::findOrFail($id);
+        $categories = Newscategory::all(); // Mengambil semua kategori
         return view('admin.news.edit', compact('news', 'categories'));
     }
 
-    public function update(Request $request, News $news) // Ubah parameter menjadi News
+    public function destroy($id)
     {
-        // Validasi input
-        $validatedData = $request->validate([
-            'title' => 'required|string|max:255',
-            'location' => 'required|string|max:255',
-            'tanggal' => 'required|date',
-            'photo' => 'nullable|image|max:2048', // photo is optional for update
-            'news_category_id' => 'required|exists:news_categories,id',
-            'is_share' => 'required|boolean',
-            'description' => 'required|string',
-            'updated_by' => 'required|string|max:20',
-        ]);
+        // Menghapus news dari database
+        $news = News::findOrFail($id);
 
-        // Update data berita
-        $news->title = $validatedData['title'];
-        $news->slug = Str::slug($validatedData['title']); // generate slug from title
-        $news->tanggal = $validatedData['tanggal'];
-        $news->news_category_id = $validatedData['news_category_id'];
-        $news->is_share = $validatedData['is_share'];
-        $news->description = $validatedData['description'];
-        $news->updated_by = $validatedData['updated_by'];
-
-        // Jika ada foto baru diupload, update foto
-        if ($request->hasFile('photo')) {
-            $photoPath = $request->file('photo')->store('photos', 'public');
-            $news->photo = $photoPath;
+        // Hapus foto dari storage jika ada
+        if (Storage::disk('public')->exists('uploads/' . $news->photo)) {
+            Storage::disk('public')->delete('uploads/' . $news->photo);
         }
 
-        $news->save();
+        $news->delete();
 
-        // Redirect dengan flash message
-        return redirect()->route('admin.news.index')
-            ->with('success', 'Berita berhasil diperbarui.');
+        return redirect()->route('admin.news.index')->with('success', 'Berita berhasil dihapus');
     }
 }

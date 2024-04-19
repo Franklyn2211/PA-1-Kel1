@@ -4,6 +4,11 @@
 <div class="daftar-relawan">
     <h2>Mulailah Perubahan Anda: Daftar Sebagai Relawan Sekarang!</h2>
     <p>Terima kasih atas minat Anda untuk bergabung sebagai relawan kami! Kami sangat menghargai partisipasi Anda dalam mendukung misi dan visi kami.</p>
+    @if(session('success'))
+        <div class="alert alert-success">
+            {{ session('success') }}
+        </div>
+    @endif
     <form method="POST" action="{{ url('/Relawan') }}" enctype="multipart/form-data">
         @csrf
         <label for="nama_relawan">Nama*</label><br>

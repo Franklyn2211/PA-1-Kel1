@@ -1,7 +1,3 @@
-<!--    Nama    : Franklyn Aldo Ignatia Lumbantoruan
-        NIM     : 11323010
-        Kelas   : D3TI1
--->
 <!DOCTYPE html>
 <html lang="id">
 
@@ -23,7 +19,6 @@
 
 <body class="hold-transition login-page">
 
-
     <div class="login-box">
 
         <div class="card card-outline card-primary">
@@ -31,7 +26,6 @@
                 <h1><b>Admin</b></h1>
             </div>
             <div class="card-body">
-                <!-- <p class="login-box-msg">Sign in to start your session</p> -->
                 <form class="needs-validation" novalidate action="/login" method="POST">
                     @csrf
                     <div class="input-group mb-3">
