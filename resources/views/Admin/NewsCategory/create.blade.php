@@ -28,7 +28,7 @@
                     <div class="col-12">
                         <div class="card">
                             <div class="card-body">
-                                <form action="{{ route('admin.newsCategory.store') }}" method="post" enctype="multipart/form-data">
+                                <form action="{{ route('Admin.NewsCategory.store') }}" method="POST" enctype="multipart/form-data">
                                     @csrf
                                     <div class="row">
                                         <div class="col-12">
@@ -36,15 +36,15 @@
                                                 <div class="card-body">
                                                     <div class="form-group mb-3">
                                                         <label for="name">Nama Kategori</label>
-                                                        <input type="text" class="form-control" id="name" name="name" placeholder="Nama Kategori">
-                                                        @error('name')
+                                                        <input type="text" class="form-control" id="Name" name="Name" placeholder="Nama Kategori">
+                                                        @error('Name')
                                                             <span class="text-danger mt-2">{{ $message }}</span>
                                                         @enderror
                                                     </div>
                                                     <div class="form-group mb-3">
                                                         <label for="description">Deskripsi</label>
-                                                        <textarea class="form-control" id="description" name="description" rows="5" placeholder="Deskripsi Kategori"></textarea>
-                                                        @error('description')
+                                                        <textarea class="form-control" id="Description" name="Description" rows="5" placeholder="Deskripsi Kategori"></textarea>
+                                                        @error('Description')
                                                             <span class="text-danger mt-2">{{ $message }}</span>
                                                         @enderror
                                                     </div>

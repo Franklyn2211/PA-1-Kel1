@@ -65,7 +65,7 @@
                             <div class="icon">
                                 <i class="ion ion-person-add"></i>
                             </div>
-                            <a href="/Admin/newsCategory" class="small-box-footer">More info <i
+                            <a href="{{ route('Admin.NewsCategory.index') }}" class="small-box-footer">More info <i
                                     class="fas fa-arrow-circle-right"></i></a>
                         </div>
                     </div>

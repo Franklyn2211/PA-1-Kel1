@@ -55,13 +55,10 @@ class DonaturController extends Controller
 
     public function destroy($id)
     {
-        // Temukan data relawan yang akan dihapus
         $donate = Donate::findOrFail($id);
 
-        // Hapus data relawan
         $donate->delete();
 
-        // Redirect kembali ke halaman index dengan pesan sukses
         return back()->with('success', 'Donatur berhasil dihapus.');
 
     }

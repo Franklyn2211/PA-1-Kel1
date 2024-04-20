@@ -113,7 +113,7 @@
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="/Admin/newsCategory" class="nav-link">
+                            <a href="{{ route('Admin.NewsCategory.index') }}" class="nav-link">
                                 <i class="nav-icon fas fa-user-friends"></i>
                                 <p>
                                     News Category
