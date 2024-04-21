@@ -47,11 +47,12 @@ Route::prefix('Admin')->middleware('auth')->group(function () {
     Route::delete('donatur/{donate}', [DonaturController::class, 'destroy'])->name('donate.destroy');
 
     // Routes for news management
-    Route::get('news', [AdminNewsController::class, 'index'])->name('admin.news.index');
-    Route::get('news/create', [AdminNewsController::class, 'create'])->name('admin.news.create');
-    Route::post('news/store', [AdminNewsController::class, 'store'])->name('admin.news.store');
-    Route::get('news/{news}/edit', [AdminNewsController::class, 'edit'])->name('admin.news.edit');
-    Route::put('news/{news}/update', [AdminNewsController::class, 'update'])->name('admin.news.update');
+    Route::get('Admin/News', [AdminNewsController::class, 'index'])->name('Admin.News.index');
+    Route::get('Admin/News/create', [AdminNewsController::class, 'create'])->name('Admin.News.create');
+    Route::post('Admin/News', [AdminNewsController::class, 'store'])->name('Admin.News.store');
+    Route::get('news/{news}/edit', [AdminNewsController::class, 'edit'])->name('Admin.News.edit');
+    Route::post('news/{news}', [AdminNewsController::class, 'update'])->name('Admin.News.update');
+    Route::delete('news/{news}/delete', [AdminNewsController::class, 'destroy'])->name('Admin.News.destroy');
 
     // Routes for news category management
     Route::get('Admin/NewsCategory', [NewsCategoryController::class, 'index'])->name('Admin.NewsCategory.index');

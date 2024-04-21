@@ -112,21 +112,18 @@
                                 </p>
                             </a>
                         </li>
-                        <li class="nav-item">
-                            <a href="{{ route('Admin.NewsCategory.index') }}" class="nav-link">
-                                <i class="nav-icon fas fa-user-friends"></i>
-                                <p>
-                                    News Category
-                                </p>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="/Admin/news" class="nav-link">
-                                <i class="nav-icon fas fa-user-friends"></i>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <i class="nav-icon fas fa-newspaper"></i>
                                 <p>
                                     News
                                 </p>
                             </a>
+                            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                <a class="dropdown-item" href="{{route('Admin.News.index')}}">All News</a>
+                                <div class="dropdown-divider"></div>
+                                <a class="dropdown-item" href="{{ route('Admin.NewsCategory.index') }}">News Categories</a>
+                            </div>
                         </li>
                         <li class="nav-item">
                             <a href="/Admin/announcementCategories" class="nav-link">

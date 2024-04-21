@@ -28,7 +28,7 @@
                 <div class="col-12">
                     <div class="card">
                         <div class="card-body">
-                            <form action="{{ route('admin.news.store') }}" method="post" enctype="multipart/form-data">
+                            <form action="{{ route('Admin.News.store') }}" method="POST" enctype="multipart/form-data">
                                 @csrf
                                 <div class="row">
                                     <div class="col-12">
@@ -52,9 +52,9 @@
                                                 </div>
                                                 <div class="form-group mb-3">
                                                     <label for="category_id">Kategori</label>
-                                                    <select class="form-control" id="category_id" name="news_category_id">
+                                                    <select class="form-control" id="news_category_id" name="news_category_id">
                                                         @foreach($categories as $category)
-                                                            <option value="{{ $category->id }}">{{ $category->Name }}</option>
+                                                            <option value="{{ $category->id_news_categories }}">{{ $category->Name }}</option>
                                                         @endforeach
                                                     </select>
                                                 </div>

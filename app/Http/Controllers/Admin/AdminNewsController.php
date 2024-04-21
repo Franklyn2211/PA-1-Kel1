@@ -4,11 +4,9 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\News;
-use App\Models\Newscategory; // Menggunakan model Newscategory
-use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Str; // Import Str untuk membuat slug
-use Illuminate\Support\Facades\Log;
+use App\Models\Newscategory;
 use Illuminate\Support\Facades\Storage;
+use ILLuminate\Support\Str;
 
 class AdminNewsController extends Controller
 {
@@ -22,7 +20,7 @@ class AdminNewsController extends Controller
     {
         // Menampilkan form untuk membuat news baru
         $categories = Newscategory::all(); // Mengambil semua kategori
-        return view('admin.news.create', compact('categories'));
+        return view('Admin.News.create', compact('categories'));
     }
 
     public function store(Request $request)
@@ -30,62 +28,74 @@ class AdminNewsController extends Controller
         $request->validate([
             'title' => 'required|string|max:255',
             'description' => 'required|string',
-            'news_category_id' => 'required|integer|exists:news_categories,id', // Perbaiki pengecekan nama tabel
-            'photo' => 'required|image|mimes:jpeg,png,jpg|max:5000', // Hapus 'file' karena tidak diperlukan
+            'photo' => 'nullable|image|mimes:jpeg,png,jpg|max:5000', // Sesuaikan validasi untuk photo
             'location' => 'required|string',
             'tanggal' => 'required|date',
         ]);
 
-        $file = $request -> file('photo');
-        $namaFile = $file->getClientOriginalName();
-        $tujuanFile = 'asset/photo';
+        $news = new News([
+            'id_news' => News::generateNextId(),
+            'title' => $request->get('title'),
+            'description' => $request->get('description'),
+            'location' => $request->get('location'),
+            'tanggal' => $request->get('tanggal'),
+        ]);
 
-        $file->move($tujuanFile,$namaFile);
-        $slug = Str::slug($request->name, '-');
-            $news = new News();
+        $newsCategory = NewsCategory::findOrFail($request->get('news_category_id'));
+        $news->category()->associate($newsCategory);
 
-            $news->title = $request->title;
-            $news->description = $request->description;
-            $news->news_category_id = $request->news_category_id;
-            $news->location = $request->location;
-            $news->tanggal = $request->tanggal;
+        if ($request->hasFile('photo')) {
+            $file = $request->file('photo');
+            $filename = $file->getClientOriginalName();
+            $destinationPath = 'storage/app/public/photo';
+            $file->move($destinationPath, $filename);
+            $news->photo = $filename;
+        }
 
-
-            $news->save();
-
-            return redirect()->route('admin.news.index')->with('success', 'Berita berhasil disimpan!');
+        $news->save();
+        return redirect()->route('Admin.News.index')->with('success', 'Berita berhasil disimpan!');
     }
 
-    public function update(Request $request, $id)
+    public function update(Request $request, News $news)
     {
         $request->validate([
             'title' => 'required|string|max:255',
             'description' => 'required|string',
-            'news_category_id' => 'required|integer|exists:news_categories,id', // Memastikan category_id yang diinput ada dalam tabel newscategories
+            'photo' => 'nullable|image|mimes:jpeg,png,jpg|max:5000',
             'location' => 'required|string',
             'tanggal' => 'required|date',
         ]);
 
-        $news = News::findOrFail($id);
-        $news->title = $request->title;
-        $news->description = $request->description;
-        $news->news_category_id = $request->news_category_id;
-        $news->location = $request->location;
-        $news->tanggal = $request->tanggal;
-
-        // Buat slug dari judul (misalnya)
-        $news->slug = Str::slug($request->title); 
-        $news->save();
-
-        return redirect()->route('admin.news.index')->with('success', 'Berita berhasil diperbarui!');
+        $data = [
+            'title' => $request->title,
+            'description' => $request->description,
+            'location' => $request->location,
+            'tanggal' => $request->tanggal,
+        ];
+    
+        // Menghandle foto
+        if ($request->hasFile('photo')) {
+            // Menghapus foto lama jika ada
+            if ($news->photo) {
+                Storage::disk('public')->delete('photo/' . $news->photo);
+            }
+            
+            // Menyimpan foto baru
+            $file = $request->file('photo');
+            $filename = $file->getClientOriginalName();
+            $destinationPath = 'storage/app/public/photo';
+            $file->move($destinationPath, $filename);
+            $data['photo'] = $filename;
+        }
+    
+        $news->update($data);
+        return redirect()->route('Admin.News.index')->with('success', 'Berita berhasil diperbarui!');
     }
 
-    public function edit($id)
+    public function edit(News $news)
     {
-        // Menampilkan form untuk mengedit news
-        $news = News::findOrFail($id);
-        $categories = Newscategory::all(); // Mengambil semua kategori
-        return view('admin.news.edit', compact('news', 'categories'));
+        $categories = Newscategory::all();
+        return view('Admin.News.edit', compact('news', 'categories'));
     }
 
     public function destroy($id)
@@ -94,12 +104,12 @@ class AdminNewsController extends Controller
         $news = News::findOrFail($id);
 
         // Hapus foto dari storage jika ada
-        if (Storage::disk('public')->exists('uploads/' . $news->photo)) {
-            Storage::disk('public')->delete('uploads/' . $news->photo);
+        if (Storage::disk('public')->exists('photo/' . $news->photo)) {
+            Storage::disk('public')->delete('photo/' . $news->photo);
         }
 
         $news->delete();
 
-        return redirect()->route('admin.news.index')->with('success', 'Berita berhasil dihapus');
+        return redirect()->route('Admin.News.index')->with('success', 'Berita berhasil dihapus');
     }
 }

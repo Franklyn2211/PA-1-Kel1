@@ -15,10 +15,9 @@ return new class extends Migration
             $table->string('title');
         $table->string('location');
         $table->date('tanggal');
-        $table->string('photo');
-        $table->string('news_categories_id'); // Kolom news_category_id yang benar
-        $table->foreign('news_categories_id')->references('id_news_categories')->on('news_categories')->cascadeOnUpdate()->cascadeOnDelete();
-        $table->integer('is_share');
+        $table->string('photo')->nullable();
+        $table->string('news_category_id'); // Kolom news_category_id yang benar
+        $table->foreign('news_category_id')->references('id_news_categories')->on('news_categories')->cascadeOnUpdate()->cascadeOnDelete();
         $table->text('description');
         $table->string('created_by', 20)->default('adminYPA');
         $table->string('updated_by', 20)->nullable();
