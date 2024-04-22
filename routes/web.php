@@ -54,6 +54,8 @@ Route::prefix('Admin')->middleware('auth')->group(function () {
     Route::post('news/{news}', [AdminNewsController::class, 'update'])->name('Admin.News.update');
     Route::delete('news/{news}/delete', [AdminNewsController::class, 'destroy'])->name('Admin.News.destroy');
 
+
+
     // Routes for news category management
     Route::get('Admin/NewsCategory', [NewsCategoryController::class, 'index'])->name('Admin.NewsCategory.index');
     Route::get('Admin/NewsCategory/create', [NewsCategoryController::class, 'create'])->name('Admin.NewsCategory.create');
@@ -83,6 +85,7 @@ Route::resource('Home', HomeController::class)->only('index');
 Route::resource('Announcement', AnnouncementController::class);
 Route::resource('News', NewsController::class)->only('index', 'show');
 Route::resource('About', AboutController::class)->only('index');
+Route::get('/News/{id_news}', 'NewsController@show')->name('news.show');
 Route::resource('Donate', DonateController::class)->only('index', 'store');
 Route::resource('Partnership', PartnershipController::class)->only('index');
 Route::resource('Sponsor', SponsorController::class)->only('index');

@@ -30,19 +30,22 @@ class News extends Model
     ];
 
     public static function generateNextId()
-    {
-        $latestId = self::orderBy('id_news', 'desc')->first();
+{
+    // Mendapatkan ID terakhir dari database
+    $latestId = self::orderBy('id_news', 'desc')->first();
 
-        if ($latestId) {
-            $number = intval(substr($latestId->id_news, 2)) + 1;
-        } else {
-            $number = 1;
-        }
+    // Mengambil nomor dari ID terakhir
+    $lastNumber = $latestId ? intval(substr($latestId->id_news, 1)) : 0;
 
-        $nextId = 'N' . str_pad($number, 2, '0', STR_PAD_LEFT);
+    // Menambahkan 1 untuk mendapatkan nomor berikutnya
+    $nextNumber = $lastNumber + 1;
 
-        return $nextId;
-    }
+    // Mengonversi nomor berikutnya ke format yang diinginkan (NXX)
+    $nextId = 'N' . str_pad($nextNumber, 2, '0', STR_PAD_LEFT);
+
+    return $nextId;
+}
+
 
     public function category()
     {
