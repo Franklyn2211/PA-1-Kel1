@@ -51,7 +51,11 @@
                     <p>No galleries available.</p>
                 @endif
             </div>
+<<<<<<< HEAD
 
+=======
+            
+>>>>>>> 02def926f64002357abf63b2bb73f499ed9f7339
         </div>
     </div>
 </header>
@@ -81,7 +85,11 @@
                     </div>
                 </div>
             </section>
+<<<<<<< HEAD
 
+=======
+            
+>>>>>>> 02def926f64002357abf63b2bb73f499ed9f7339
             <!-- Blog preview section-->
             <section class="py-5">
                 <div class="container px-5 my-5">

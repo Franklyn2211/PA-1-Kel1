@@ -59,7 +59,7 @@
     <!-- Navigation-->
     <nav class="navbar navbar-expand-lg fixed-top navbar-blue bg-blue">
         <div class="container px-5">
-        <a class="navbar-brand" href="/Home" style="color: white; display: flex; align-items: center;">
+        <a class="navbar-brand" href="/" style="color: white; display: flex; align-items: center;">
     <img src="{{ asset ('assets/img/logo.png') }}" alt="YPA Rumah Damai" width="50" height="50" class="d-inline-block align-text-top">
     <span style="margin-left: 10px;">YPA Rumah Damai</span>
 </a>
@@ -69,7 +69,6 @@
             </button>
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
-                    <li class="nav-item"><a class="nav-link" href="/Home">Home</a></li>
                     <li class="nav-item"><a class="nav-link" href="/About">Tentang</a></li>
                     <li class="nav-item"><a class="nav-link" href="/Donate">Donasi</a></li>
                     <li class="nav-item"><a class="nav-link" href="/Relawan">Relawan</a></li>
