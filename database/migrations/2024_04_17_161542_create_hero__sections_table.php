@@ -11,13 +11,14 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('Address', function (Blueprint $table) {
-            $table->id();
-            $table->string('Name', 50);
-            $table->string('Address', 150);
+        Schema::create('hero__sections', function (Blueprint $table) {
+            $table->increments('id_hero__sections');
+            $table->string('header', 50)->nullable(true);
+            $table->string('paragraph', 300)->nullable(true);
+            $table->string('bg_image')->nullable();
             $table->string('created_by', 20)->default('adminYPA');
             $table->string('updated_by', 20)->nullable(true);
-            $table->boolean('Active')->default(true);
+            $table->boolean('active')->default(true);
             $table->timestamps();
         });
     }
@@ -27,6 +28,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('Address');
+        Schema::dropIfExists('hero__sections');
     }
 };

@@ -16,7 +16,12 @@ use App\Http\Controllers\Admin\AdminNewsController;
 use App\Http\Controllers\Admin\NewsCategoryController;
 use App\Http\Controllers\AnnouncementController;
 use App\Http\Controllers\Admin\DonaturController;
-
+use App\Http\Controllers\Admin\AdminAnnouncementController;
+use App\Http\Controllers\Admin\AnnouncementCategoryController;
+use App\Http\Controllers\Admin\HeroSectionController;
+use App\Http\Controllers\Admin\DataYayasanController;
+use App\Http\Controllers\Admin\GalleryController;
+use App\Http\Controllers\Admin\AddressController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -42,25 +47,27 @@ Route::prefix('Admin')->middleware('auth')->group(function () {
     Route::get('relawan', [\App\Http\Controllers\Admin\RelawanController::class, 'index'])->name('admin.relawan');
     Route::delete('Admin/relawan/{relawan}', [\App\Http\Controllers\Admin\RelawanController::class, 'destroy'])->name('relawan.destroy');
     Route::post('Admin/relawan', [\App\Http\Controllers\Admin\RelawanController::class, 'store'])->name('relawan.store');
+   
+   
     // Route::resource('news', AdminNewsController::class)->except('show');
     Route::get('donatur', [DonaturController::class, 'index'])->name('Admin.donate.donate');
     Route::delete('donatur/{donate}', [DonaturController::class, 'destroy'])->name('donate.destroy');
 
     // Routes for news management
-    Route::get('Admin/News', [AdminNewsController::class, 'index'])->name('Admin.News.index');
-    Route::get('Admin/News/create', [AdminNewsController::class, 'create'])->name('Admin.News.create');
-    Route::post('Admin/News', [AdminNewsController::class, 'store'])->name('Admin.News.store');
-    Route::get('news/{news}/edit', [AdminNewsController::class, 'edit'])->name('Admin.News.edit');
-    Route::post('news/{news}', [AdminNewsController::class, 'update'])->name('Admin.News.update');
-    Route::delete('news/{news}/delete', [AdminNewsController::class, 'destroy'])->name('Admin.News.destroy');
+    Route::get('News', [AdminNewsController::class, 'index'])->name('Admin.News.index');
+    Route::get('News/create', [AdminNewsController::class, 'create'])->name('Admin.News.create');
+    Route::post('News', [AdminNewsController::class, 'store'])->name('Admin.News.store');
+    Route::get('News/{news}/edit', [AdminNewsController::class, 'edit'])->name('Admin.News.edit');
+    Route::post('News/{news}', [AdminNewsController::class, 'update'])->name('Admin.News.update');
+    Route::delete('News/{news}/delete', [AdminNewsController::class, 'destroy'])->name('Admin.News.destroy');
 
     // Routes for news category management
-    Route::get('Admin/NewsCategory', [NewsCategoryController::class, 'index'])->name('Admin.NewsCategory.index');
-    Route::get('Admin/NewsCategory/create', [NewsCategoryController::class, 'create'])->name('Admin.NewsCategory.create');
-    Route::post('Admin/NewsCategory', [NewsCategoryController::class, 'store'])->name('Admin.NewsCategory.store');
-    Route::get('/NewsCategory/{newsCategory}/edit', [NewsCategoryController::class, 'edit'])->name('Admin.NewsCategory.edit');
-    Route::post('/NewsCategory/{newsCategory}', [NewsCategoryController::class, 'update'])->name('Admin.NewsCategory.update');
-    Route::delete('Admin/NewsCategory/{newsCategory}', [NewsCategoryController::class, 'destroy'])->name('Admin.NewsCategory.destroy');
+    Route::get('NewsCategory', [NewsCategoryController::class, 'index'])->name('Admin.NewsCategory.index');
+    Route::get('NewsCategory/create', [NewsCategoryController::class, 'create'])->name('Admin.NewsCategory.create');
+    Route::post('NewsCategory', [NewsCategoryController::class, 'store'])->name('Admin.NewsCategory.store');
+    Route::get('NewsCategory/{newsCategory}/edit', [NewsCategoryController::class, 'edit'])->name('Admin.NewsCategory.edit');
+    Route::post('NewsCategory/{newsCategory}', [NewsCategoryController::class, 'update'])->name('Admin.NewsCategory.update');
+    Route::delete('NewsCategory/{newsCategory}', [NewsCategoryController::class, 'destroy'])->name('Admin.NewsCategory.destroy');
 
     // Routes for announcement management
     Route::get('announcements', [AdminAnnouncementController::class, 'index'])->name('admin.announcements.index');
@@ -76,10 +83,35 @@ Route::prefix('Admin')->middleware('auth')->group(function () {
     Route::put('announcementCategories/{category}', [AnnouncementCategoryController::class, 'update'])->name('admin.announcementCategory.update');
     Route::delete('announcementCategories/{category}', [AnnouncementCategoryController::class, 'destroy'])->name('admin.announcementCategory.destroy');
 
+
+    Route::get('hero-section', [HeroSectionController::class, 'index'])->name('admin.hero.index');
+    Route::post('hero-section/update', [HeroSectionController::class, 'update'])->name('updateHeroSection');
+
+    Route::get('/data-yayasan', [DataYayasanController::class, 'index'])->name('admin.data_yayasan.index');
+    Route::post('/update-data-yayasan', [DataYayasanController::class, 'update'])->name('updateDataYayasan');
+
+    Route::get('gallery', [GalleryController::class, 'index'])->name('admin.gallery.index');
+    Route::get('gallery/create', [GalleryController::class, 'create'])->name('admin.gallery.create');
+    Route::post('gallery/store', [GalleryController::class, 'store'])->name('admin.gallery.store');
+    Route::get('Admin/gallery/{id}/edit', [GalleryController::class, 'edit'])->name('admin.gallery.edit');
+    Route::put('admin/gallery/update/{id}', [GalleryController::class, 'update'])->name('admin.gallery.update');
+    Route::delete('gallery/{id_galleries}', [GalleryController::class, 'destroy'])->name('admin.gallery.destroy');
+
+    
+
+    Route::get('address', [AddressController::class, 'index'])->name('admin.address.index');
+    Route::get('address/create', [AddressController::class, 'create'])->name('admin.address.create');
+    Route::post('address/store', [AddressController::class, 'store'])->name('admin.address.store');
+    Route::get('address/{id}/edit', [AddressController::class, 'edit'])->name('admin.address.edit');
+    Route::put('address/update/{id}', [AddressController::class, 'update'])->name('admin.address.update');
+    Route::delete('address/{id}', [AddressController::class, 'destroy'])->name('admin.address.destroy');
+    
+
 });
 
 // Route Bagian Tampilan Website
-Route::resource('Home', HomeController::class)->only('index');
+// Route::resource('Home', HomeController::class)->only('index');
+Route::get('/', [HomeController::class, 'index'])->name('home');
 Route::resource('Announcement', AnnouncementController::class);
 Route::resource('News', NewsController::class)->only('index', 'show');
 Route::resource('About', AboutController::class)->only('index');

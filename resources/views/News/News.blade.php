@@ -2,356 +2,209 @@
 @section("title", "Berita")
 
 @section('content')
-    <section class="section">
-        <div class="container">
+<div class="section">
+    <div class="container">
 
-            <div class="row blog-entries element-animate">
+        <div class="row">
 
-                <div class="col-md-12 col-lg-8 main-content">
+            @if ($selectedCategory != null && $selectedKabupaten == null)
+                @php
+                    $category = \App\Models\BlogCategory::find($selectedCategory);
+                @endphp
+                <h2 class="category-title mb-1">Kategori: {{ $category->name }}</h2>
+            @elseif ($selectedKabupaten != null && $selectedCategory == null)
+                @php
+                    $kabupaten = \App\Models\Kabupaten::find($selectedKabupaten);
+                @endphp
+                <h2 class="category-title mb-1">Kabupaten: {{ $kabupaten->name }}</h2>
+            @elseif ($selectedCategory != null && $selectedKabupaten != null)
+                @php
+                    $category = \App\Models\BlogCategory::find($selectedCategory);
+                    $kabupaten = \App\Models\Kabupaten::find($selectedKabupaten);
+                @endphp
+                <h2 class="category-title mb-1">Kabupaten {{ $kabupaten->name }} dan Berkategori
+                    {{ $category->name }}
+                </h2>
+            @endif
+            <div class="col-md-9 aos-init aos-animate" data-aos="fade-up">
 
-                    <div class="post-content-body">
-                        <div class="d-flex flex-column text-left mb-3">
-                            <div class="post-meta text-center"><span
-                                    class="date">{{ $destination->destinationCategory->name }}</span>
-                                <span class="mx-1">&bullet;</span>
-                                <span>{{ $destination->created_at->format('F j, Y') }}</span>
-                                <span class="mx-1">&bullet;</span>
-                                <i class="fas fa-eye">{{ $destination->views }}</i>
-                            </div>
+                <div class="search col-sm-11 mb-5 d-flex justify-content-center glass" style="align-items: center; ">
+                    <div class="input-group">
+                        <span class="input-group-text" style="background-color: transparent">
+                            <i class="fa fa-search fa-2x"></i>
+                        </span>
+                        <input type="search" name="search" id="search" class="form-control" style="border: none;"
+                            placeholder="Cari info wisata..">
+                    </div>
 
-
-                            <div class="text-center">
-                                <h1 class="mb-3 bold">{{ $destination->name }}</h1>
-                                <p class="section-title pr-5">
-                                    <span class="pr-2"><i class="fas fa-pin"></i>{{ $destination->location }}</span>
-                                </p>
-                            </div>
-                            <hr class="firstcharacter" color="black">
-                        </div>
-                        @php
-                            $description = $destination->description;
-                            $paragraphs = explode('</p>', $description);
-                            $totalParagraphs = count($paragraphs);
-                            $halfLength = ceil($totalParagraphs);
-                            $firstHalf = implode('</p>', array_slice($paragraphs, 0, 1)) . '</p>';
-                            $secondHalf = implode('</p>', array_slice($paragraphs, 1, $halfLength));
-                        @endphp
-                        <p>
-                            <?php
-                            $firstHalf = strip_tags($firstHalf);
-                            $firstCharacter = substr($firstHalf, 0, 1);
-                            $remainingText = substr($firstHalf, 1);
-                            ?>
-                            <span class="firstcharacter">{{ $firstCharacter }}</span>{!! $remainingText !!}
-                        </p>
-                        <div class="row my-4">
-                            <div id="carouselExampleIndicators" class="carousel slide col-md-12 mb-4"
-                                data-bs-ride="carousel">
-                                <ol class="carousel-indicators">
-                                    @foreach ($destination->galleries as $key => $gallery)
-                                        <li data-bs-target="#carouselExampleIndicators"
-                                            data-bs-slide-to="{{ $key }}"
-                                            class="{{ $key == 0 ? 'active' : '' }}">
-                                        </li>
-                                    @endforeach
-                                </ol>
-                                <div class="carousel-inner">
-                                    @foreach ($destination->galleries as $key => $gallery)
-                                        <div class="carousel-item {{ $key == 0 ? 'active' : '' }}">
-                                            <img src="{{ Storage::url($gallery->images) }}" class="d-block w-100"
-                                                alt="...">
-                                            <p class="text-center carousel-caption">{{ $gallery->name }}</p>
-                                        </div>
-                                    @endforeach
-                                </div>
-                                <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button"
-                                    data-bs-slide="prev">
-                                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                                    <span class="visually-hidden">Previous</span>
-                                </a>
-                                <a class="carousel-control-next" href="#carouselExampleIndicators" role="button"
-                                    data-bs-slide="next">
-                                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                                    <span class="visually-hidden">Next</span>
-                                </a>
-                            </div>
-                            @if ($destination->source != null)
-                                <p class="font-weight-bold">(Sumber: <span
-                                        class="font-italic">{{ $destination->source }}</span>)</p>
-                            @endif
-                        </div>
-
-                        <p>{!! $secondHalf !!}</p>
-                        <div>
-                            <a class="card1" href="#">
-                                <p>Harga Tiket</p>
-                                @if ($destination->ticket != null)
-                                    <p class="small">Rp {{ number_format(intval($destination->ticket), 0, ',', '.') }}</p>
-                                    </p>
+                    <div class="input-group">
+                        <form id="searchForm" action="{{ route('blogs.index') }}" method="GET" class="d-flex">
+                            <select name="kabupaten" id="kabupaten" class="custom-select" style="border: none;">
+                                @if ($selectedKabupaten)
+                                    @php
+                                        $kabupaten = \App\Models\Kabupaten::find($selectedKabupaten);
+                                    @endphp
+                                    <option value="{{ $kabupaten->id }}" selected>{{ $kabupaten->name }}</option>
+                                    <option value="">Semua Kabupaten?</option>
                                 @else
-                                    <p class="small">Rp -</p>
+                                    <option value="" selected>Mau Kemana?</option>
                                 @endif
-                                <div class="go-corner" href="#">
-                                    <div class="go-arrow">
-                                        →
-                                    </div>
-                                </div>
-                            </a>
-                        </div>
-                        @if ($destination->source != null)
-                            <p class="font-weight-bold">(Sumber: <span
-                                    class="font-italic">{{ $destination->source }}</span>)</p>
-                        @endif
+                                @foreach ($kabupatens as $kabupaten)
+                                    <option value="{{ $kabupaten->id }}">{{ $kabupaten->name }}</option>
+                                @endforeach
+                            </select>
+                            <select name="category" id="category" class="custom-select" style="border: none;">
+                                @if ($selectedCategory)
+                                    @php
+                                        $category = \App\Models\BlogCategory::find($selectedCategory);
+                                    @endphp
+                                    <option value="{{ $category->id }}" selected>{{ $category->name }}</option>
+                                    <option value="">Semua Kategori ?</option>
+                                @else
+                                    <option value="" selected>Kategori ?</option>
+                                @endif
+                                @foreach ($blogCategories as $category)
+                                    <option value="{{ $category->id }}">{{ $category->name }}</option>
+                                @endforeach
+                            </select>
+                            <button type="submit" style="width: 0.1px" hidden></button>
+                        </form>
                     </div>
 
+                    <script>
+                        const selectKabupaten = document.getElementById('kabupaten');
+                        const selectCategory = document.getElementById('category');
+                        const searchForm = document.getElementById('searchForm');
 
-
-                    <div class="pt-5 comment-wrap">
-                        <h3 class="comment-title py-4">{{ $testimonies->count() }} Testimoni</h3>
-                        <ul class="comment-list">
-                            @foreach ($testimonies as $testimony)
-                                <li class="comment">
-                                    <div class="vcard">
-                                        <img src="@if ($testimony->contributor && $testimony->contributor->image) {{ Storage::url($testimony->contributor->image) }}
-                                @else 
-                                {{ asset('Template/dist/img/profile.jpeg') }} @endif"
-                                            alt="Image placeholder">
-                                    </div>
-                                    <div class="comment-body">
-                                        <h3>{{ $testimony->contributor->name }}</h3>
-                                        <div class="meta">{{ $testimony->created_at->diffForHumans() }}</div>
-                                        <p>{{ $testimony->description }}</p>
-                                    </div>
-                                </li>
-                            @endforeach
-                        </ul>
-                        <!-- END comment-list -->
-
-                        <div class="comment-form-wrap pt-5">
-                            <h3 class="mb-3">Berikan Testimoni</h3>
-                            @if (Auth::guard('contributor')->check())
-                                <form action="{{ Route('destinations.testimonies') }}" method="post" class="p-5 bg-light">
-                                    @csrf
-                                    <div class="form-group">
-                                        <label for="message">Message</label>
-                                        <textarea name="description" id="message" cols="30" rows="10" class="form-control" placeholder="...."></textarea>
-                                        <input type="hidden" name="destination_id" value="{{ $destination->id }}">
-                                        <input type="hidden" name="kabupaten_id"
-                                            value="{{ $destination->kabupaten->id }}">
-                                        <input type="hidden" name="contributor_id"
-                                            value="{{ Auth::guard('contributor')->user()->id }}">
-                                        <div class="col-12">
-                                            <button type="submit" class="btn btn-primary mt-3 tombol">Kirim
-                                                Testimoni</button>
-                                        </div>
-                                    </div>
-                                </form>
-                            @else
-                                <textarea name="description" id="message" cols="30" rows="10" class="form-control" placeholder="...."></textarea>
-                                <a href="{{ route('contributor.login') }}" class="btn btn-primary mt-3 tombol">login
-                                    untuk menambahkan testimoni</a>
-                            @endif
-                            @if (session('success'))
-                                <div class="alert alert-success">
-                                    {{ session('success') }}
-                                </div>
-                            @endif
-                        </div>
-                    </div>
-
+                        selectKabupaten.addEventListener('change', function() {
+                            searchForm.submit();
+                        });
+                        selectCategory.addEventListener('change', function() {
+                            searchForm.submit();
+                        });
+                    </script>
                 </div>
 
-                <!-- END main-content -->
-
-                <div class="col-md-12 col-lg-4 sidebar">
-
-                    <!-- END sidebar-box -->
-                    <div class="sidebar-box">
-                        <div class="bio text-center">
-                            <img src="@if ($destination->contributor) {{ Storage::url($destination->contributor->image) }}
-                        @else
-                        {{ asset('Template/dist/img/profile.jpeg') }} @endif
-                        "
-                                alt="Image Placeholder" class="img-fluid mb-3">
-                            <div class="bio-body">
-                                <h2>
-                                    @if ($destination->contributor)
-                                        {{ $destination->contributor->name }}
-                                    @elseif($destination->contributor_id == null)
-                                        Admin
-                                    @endif
-                                </h2>
-                                <p class="mb-4">Kami membuka kesempatan bagi Anda untuk berperan sebagai contributor.
-                                    Mari bergabung dan berbagi pengetahuan serta keterampilan Anda dengan kami</p>
+                <div class="alldata">
+                    @foreach ($blogs as $blog)
+                        <div class="d-md-flex post-entry-2 half ">
+                            <a href="{{ Route('blogs.show', $blog->slug) }}" class="me-4 thumbnail zoom-image">
+                                <img src="{{ Storage::url(optional($blog->galleries->random())->images) }}"
+                                    alt="" class="img-fluid">
+                            </a>
+                            <div>
+                                <div class="post-meta"><span class="date">
+                                        @if ($blog->blogCategory)
+                                            {{ $blog->blogCategory->name }}
+                                        @endif
+                                    </span> <span class="mx-1">•</span>
+                                    <span>{{ $blog->updated_at->format('F j, Y') }}</span>
+                                </div>
+                                <h3><a href="{{ Route('blogs.show', $blog->slug) }}">{{ $blog->title }}</a></h3>
+                                <p>{{ $blog->excerpt }}</p>
+                                <div class="d-flex align-items-center author">
+                                    <div class="photo"><img
+                                            src=" 
+                                    @if ($blog->contributor) {{ Storage::url($blog->contributor->image) }}
+                                    @else
+                                    {{ asset('Template/dist/img/profile.jpeg') }} @endif
+                                    "
+                                            alt="" class="img-fluid">
+                                    </div>
+                                    <div class="name">
+                                        <h3 class="m-0 p-0">
+                                            @if ($blog->contributor)
+                                                {{ $blog->contributor->name }}
+                                            @elseif($blog->contributor_id == null)
+                                                Admin
+                                            @endif
+                                        </h3>
+                                    </div>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                    <!-- END sidebar-box -->
-
-                    <div class="sidebar-box">
-                        <h2>Wisata terdekat</h2>
-                        <div class="post-entry-sidebar">
-                            <ul>
-                                @php $count = 0 @endphp
-                                @foreach ($closeDestinations as $closeDestination)
-                                    <li>
-                                        <a href="{{ Route('destinations.show', $closeDestination->slug) }}"
-                                            class="zoom-image">
-                                            <img src="{{ Storage::url($closeDestination->galleries->first()->images) }}"
-                                                alt="Image placeholder" class="me-4 rounded">
-                                            <div class="text">
-                                                <h3 class="text-secondary">{{ $closeDestination->name }}</h3
-                                                    class="text-secondary">
-                                                <div class="post-meta">
-                                                    <span
-                                                        class="mr-2">{{ $closeDestination->created_at->format('F j, Y') }}</span>
-                                                </div>
-                                            </div>
-                                        </a>
-                                    </li>
-                                    @php $count++ @endphp
-                                    @if ($count == 3)
-                                    @break
-                                @endif
-                            @endforeach
-
-                        </ul>
-                    </div>
-                </div>
-                <div class="sidebar-box">
-                    @if ($accommodations->count() > 0)
-                        <h2 class="mb-2">Akomodasi terdekat</h2>
-                        <div class="post-entry-sidebar">
-                            <ul>
-                                @php $count = 0 @endphp
-                                @foreach ($accommodations as $acc)
-                                    <li>
-                                        <a href="{{ Route('accommodations.show', $acc->slug) }}" class="zoom-image">
-                                            <img src="{{ Storage::url($acc->galleries->first()->images) }}"
-                                                alt="Image placeholder" class="me-4 rounded">
-                                            <div class="text">
-                                                <h3 class="text-secondary">{{ $acc->name }}</h3>
-                                                <div class="post-meta">
-                                                    <span
-                                                        class="mr-2">{{ $acc->created_at->format('F j, Y') }}</span>
-                                                </div>
-                                            </div>
-                                        </a>
-                                    </li>
-                                    @php $count++ @endphp
-                                    @if ($count == 3)
-                                    @break
-                                @endif
-                            @endforeach
-                        </ul>
-                    </div>
-                @elseif ($restaurants->count() > 0)
-                    <h2>Tempat Makan</h2>
-                    <div class="post-entry-sidebar">
-                        <ul>
-                            @php $count = 0 @endphp
-                            @foreach ($restaurants as $acc)
-                                <li>
-                                    <a href="{{ Route('restaurants.show', $acc->slug) }}" class="zoom-image">
-                                        <img src="{{ Storage::url($acc->galleries->first()->images) }}"
-                                            alt="Image placeholder" class="me-4 rounded">
-                                        <div class="text">
-                                            <h3 class="text-secondary">{{ $acc->name }}</h3>
-                                            <div class="post-meta">
-                                                <span
-                                                    class="mr-2">{{ $acc->created_at->format('F j, Y') }}</span>
-                                            </div>
-                                        </div>
-                                    </a>
-                                </li>
-                                @php $count++ @endphp
-                                @if ($count == 3)
-                                @break
-                            @endif
-                        @endforeach
-                    </ul>
-                </div>
-            @else
-                <h2>Destinasi terpopuler</h2>
-                <div class="post-entry-sidebar">
-                    <ul>
-                        @php $count = 0 @endphp
-                        @foreach ($popularDestinations as $acc)
-                            <li>
-                                <a href="{{ Route('destinations.show', $acc->slug) }}" class="zoom-image">
-                                    <img src="{{ Storage::url($acc->galleries->first()->images) }}"
-                                        alt="Image placeholder" class="me-4 rounded">
-                                    <div class="text">
-                                        <h3 class="text-secondary">{{ $acc->name }}</h3>
-                                        <div class="post-meta">
-                                            <span
-                                                class="mr-2">{{ $acc->created_at->format('F j, Y') }}</span>
-                                        </div>
-                                    </div>
-                                </a>
-                            </li>
-                            @php $count++ @endphp
-                            @if ($count == 3)
-                            @break
-                        @endif
                     @endforeach
-                </ul>
+
+
+                    <nav class="mt-5" aria-label="Page navigation example" data-aos="fade-up" data-aos-delay="100">
+                        <ul class="custom-pagination pagination">
+                            @if ($blogs->onFirstPage())
+                                <li class="page-item disabled prev"><a class="page-link" href="#">Previous</a>
+                                </li>
+                                &nbsp;&nbsp;
+                            @else
+                                <li class="page-item prev"><a class="page-link"
+                                        href="{{ $blogs->previousPageUrl() }}">Previous</a></li>&nbsp;&nbsp;
+                            @endif
+
+                            @for ($i = 1; $i <= $blogs->lastPage(); $i++)
+                                <li class="{{ $i == $blogs->currentPage() ? 'active' : '' }} page-item"><a
+                                        class="page-link" href="{{ $blogs->url($i) }}">{{ $i }}</a></li>
+                                &nbsp;&nbsp;
+                            @endfor
+
+                            @if ($blogs->hasMorePages())
+                                <li class="page-item next"><a class="page-link"
+                                        href="{{ $blogs->nextPageUrl() }}">Next</a>
+                                </li>&nbsp;&nbsp;
+                            @else
+                                <li class="page-item disabled next"><a class="page-link" href="#">Next</a></li>
+                                &nbsp;&nbsp;
+                            @endif
+                        </ul>
+                    </nav>
+                </div>
+
+                <div id="Content" class="searchdata">
+
+                </div>
+
+                <script>
+                    $('#search').on('keyup', function() {
+                        var searchValue = $(this).val();
+                        var urlParams = new URLSearchParams(window.location.search);
+                        var kabupatenId = urlParams.get('kabupaten');
+                        var categoryId = urlParams.get('category');
+
+                        // console.log(searchValue);
+
+                        if (searchValue) {
+                            $('.alldata').hide();
+                            $('.searchdata').show();
+                        } else {
+                            $('.alldata').show();
+                            $('.searchdata').hide();
+                        }
+
+                        $.ajax({
+                            type: 'POST',
+                            url: '{{ route('searchBlog') }}',
+                            data: {
+                                '_method': 'GET',
+                                'search': searchValue,
+                                'kabupaten': kabupatenId,
+                                'category': categoryId,
+
+                            },
+                            success: function(data) {
+                                console.log(data);
+                                $('#Content').html(data);
+                            }
+                        });
+                    });
+                </script>
+
             </div>
-        @endif
-    </div>
 
 
-
-
-    <!-- END sidebar-box -->
-
-    <div class="sidebar-box">
-        <h2>Destinasi Kategori</h2>
-        <ul class="categories">
-            @foreach ($destinationCategories as $destinationCategory)
-                <li><a href="{{ route('destinations.index', ['category' => $destinationCategory->id]) }}">{{ $destinationCategory->name }}
-                    </a></li>
-            @endforeach
-        </ul>
-    </div>
-
-</div>
-<!-- END sidebar -->
-
-</div>
-</div>
-</section>
-
-
-<!-- Start posts-entry -->
-<section class="section posts-entry posts-entry-sm bg-light">
-<div class="container">
-<div class="row mb-4">
-<a href="{{ route('blogs.index') }}">
-    <div class="col-12 text-uppercase text-black text-decoration-underline">Lihat info lainnya..</div>
-</a>
-</div>
-<div class="row">
-@foreach ($latestBlogs as $latestBlog)
-    <div class="col-md-6 col-lg-3">
-        <div class="blog-entry">
-            <a href="{{ Route('blogs.show', $latestBlog->slug) }}" class="img-link zoom-image">
-                <img src="{{ Storage::url(optional($latestBlog->galleries->random())->images) }}"
-                    alt="Image" class="img-fluid gambar2">
-            </a>
-            <br>
-            <span class="date">{{ $latestBlog->created_at->format('F j, Y') }}</span>
-            <h2><a href="{{ Route('blogs.show', $latestBlog->slug) }}">{{ $latestBlog->name }}</a></h2>
-            <p>{{ Str::limit($latestBlog->excerpt, 100) }}</p>
-            <p><a href="{{ Route('blogs.show', $latestBlog->slug) }}" class="read-more">Continue
-                    Reading</a></p>
+            @include('front.blog.sidebar')
         </div>
+
     </div>
-@endforeach
+</div>
 
 </div>
 </div>
-</section>
-<!-- End posts-entry -->
+</div>
 @endsection
 <!-- ======================================================Gambar Slider==============================================================-->

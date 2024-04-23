@@ -9,11 +9,8 @@ use App\Models\Announcement_Category; // Menggunakan model AnnouncementCategory
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Str; // Import Str untuk membuat slug
 use Illuminate\Support\Facades\Log;
-Use App\Http\Controllers\Admin\Storage;
-use App\Models\News;
 
-
-class AdminNewsController extends Controller
+class AdminAnnouncementController extends Controller
 {
     public function index()
     {
@@ -33,32 +30,35 @@ class AdminNewsController extends Controller
         $request->validate([
             'title' => 'required|string|max:255',
             'description' => 'required|string',
-            'news_categories_id' => 'required|integer',
+            'announcement_categories_id' => 'required|integer',
             'photo' => 'image|mimes:jpeg,png,jpg,gif|max:2048', // Sesuaikan aturan validasi dengan kebutuhan Anda
         ]);
-    
+
         try {
-            $news = new News();
-    
-            $news->title = $request->title;
-            $news->description = $request->description;
-            $news->news_categories_id = $request->news_categories_id;
-    
+            $announcement = new Announcement();
+
+            $announcement->Title = $request->title;
+            $announcement->Description = $request->description;
+            $announcement->Announcement_categories_id = $request->announcement_categories_id;
+
             // Buat slug dari judul (misalnya)
-            $news->slug = Str::slug($request->title); 
-    
+            $announcement->Slug = Str::slug($request->title); 
+
             if ($request->hasFile('photo')) {
                 $photo = $request->file('photo');
                 $fileName = time() . '_' . $photo->getClientOriginalName();
                 $photo->move(public_path('uploads'), $fileName);
-                $news->photo = $fileName;
+                $announcement->photo = $fileName;
             }
-    
-            $news->save();
-    
-            return redirect()->route('admin.news.index')->with('success', 'Berita berhasil disimpan!');
+
+            $announcement->save();
+
+            Log::info('Pengumuman berhasil disimpan: ' . $announcement->id);
+
+            return redirect()->route('admin.announcements.index')->with('success', 'Pengumuman berhasil disimpan!');
         } catch (\Exception $e) {
-            return back()->withInput()->with('error', 'Gagal menyimpan berita. Silakan coba lagi.');
+            Log::error('Gagal menyimpan pengumuman: ' . $e->getMessage());
+            return back()->withInput()->with('error', 'Gagal menyimpan pengumuman. Silakan coba lagi.');
         }
     }
 
@@ -90,17 +90,11 @@ class AdminNewsController extends Controller
     }
 
     public function destroy($id)
-{
-    // Menghapus news dari database
-    $news = News::findOrFail($id);
+    {
+        // Menghapus pengumuman dari database
+        $announcement = Announcement::findOrFail($id);
+        $announcement->delete();
 
-    // Hapus foto dari storage jika ada
-    if (Storage::disk('public')->exists('uploads/' . $news->photo)) {
-        Storage::disk('public')->delete('uploads/' . $news->photo);
+        return redirect()->route('admin.announcements.index')->with('success', 'Pengumuman berhasil dihapus');
     }
-
-    $news->delete();
-
-    return redirect()->route('admin.news.index')->with('success', 'Berita berhasil dihapus');
-}
 }

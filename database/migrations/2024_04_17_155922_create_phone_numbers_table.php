@@ -11,13 +11,13 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('E_Money', function (Blueprint $table) {
+        Schema::create('phone_numbers', function (Blueprint $table) {
             $table->id();
-            $table->string('Type', 20);
-            $table->string('Description', 50);
+            $table->string('information', 20);
+            $table->string('phone_number', 15);
             $table->string('created_by', 20)->default('adminYPA');
             $table->string('updated_by', 20)->nullable(true);
-            $table->boolean('Active')->default(true);
+            $table->boolean('active')->default(true);
             $table->timestamps();
         });
     }
@@ -27,6 +27,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('E_money');
+        Schema::dropIfExists('phone_numbers');
     }
 };

@@ -11,13 +11,15 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('email', function (Blueprint $table) {
-            $table->id();
-            $table->string('Name', 20);
-            $table->string('Email', 50);
+        Schema::create('contacts', function (Blueprint $table) {
+            $table->increments('id');
+            $table->string('full_name');
+            $table->string('email')->unique();
+            $table->string('no_hp');
+            $table->text('message');
             $table->string('created_by', 20)->default('adminYPA');
-            $table->string('updated_by', 20)->nullable(true);
-            $table->boolean('Active')->default(true);
+            $table->string('updated_by')->nullable();
+            $table->boolean('active')->default(true);
             $table->timestamps();
         });
     }
@@ -27,6 +29,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('email');
+        Schema::dropIfExists('contacts');
     }
 };
