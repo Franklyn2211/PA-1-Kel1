@@ -16,6 +16,13 @@ use App\Http\Controllers\Admin\AdminNewsController;
 use App\Http\Controllers\Admin\NewsCategoryController;
 use App\Http\Controllers\AnnouncementController;
 use App\Http\Controllers\Admin\DonaturController;
+use App\Http\Controllers\Admin\AdminContactController;
+use App\Http\Controllers\Admin\AdminAnnouncementController;
+use App\Http\Controllers\Admin\AnnouncementCategoryController;
+use App\Http\Controllers\Admin\HeroSectionController;
+use App\Http\Controllers\Admin\DataYayasanController;
+use App\Http\Controllers\Admin\GalleryController;
+use App\Http\Controllers\Admin\AddressController;
 
 /*
 |--------------------------------------------------------------------------
@@ -64,24 +71,48 @@ Route::prefix('Admin')->middleware('auth')->group(function () {
     Route::post('/NewsCategory/{newsCategory}', [NewsCategoryController::class, 'update'])->name('Admin.NewsCategory.update');
     Route::delete('Admin/NewsCategory/{newsCategory}', [NewsCategoryController::class, 'destroy'])->name('Admin.NewsCategory.destroy');
 
-    // Routes for announcement management
-    Route::get('announcements', [AdminAnnouncementController::class, 'index'])->name('admin.announcements.index');
-    Route::get('announcements/create', [AdminAnnouncementController::class, 'create'])->name('admin.announcements.create');
-    Route::post('announcements/store', [AdminAnnouncementController::class, 'store'])->name('admin.announcements.store');
-    Route::get('announcements/{announcement}/edit', [AdminAnnouncementController::class, 'edit'])->name('admin.announcements.edit');
-    Route::put('announcements/{announcement}/update', [AdminAnnouncementController::class, 'update'])->name('admin.announcements.update');
-    // Routes for announcement category management
-    Route::get('announcementCategories', [AnnouncementCategoryController::class, 'index'])->name('admin.announcementCategory.index');
-    Route::get('announcementCategories/create', [AnnouncementCategoryController::class, 'create'])->name('admin.announcementCategory.create');
-    Route::post('announcementCategories/store', [AnnouncementCategoryController::class, 'store'])->name('admin.announcementCategory.store');
-    Route::get('announcementCategories/{category}/edit', [AnnouncementCategoryController::class, 'edit'])->name('admin.announcementCategory.edit');
-    Route::put('announcementCategories/{category}', [AnnouncementCategoryController::class, 'update'])->name('admin.announcementCategory.update');
-    Route::delete('announcementCategories/{category}', [AnnouncementCategoryController::class, 'destroy'])->name('admin.announcementCategory.destroy');
+        // Routes for announcement management
+        Route::get('announcements', [AdminAnnouncementController::class, 'index'])->name('admin.announcements.index');
+        Route::get('announcements/create', [AdminAnnouncementController::class, 'create'])->name('admin.announcements.create');
+        Route::post('announcements/store', [AdminAnnouncementController::class, 'store'])->name('admin.announcements.store');
+        Route::get('announcements/{announcement}/edit', [AdminAnnouncementController::class, 'edit'])->name('admin.announcements.edit');
+        Route::put('announcements/{announcement}/update', [AdminAnnouncementController::class, 'update'])->name('admin.announcements.update');
+        // Routes for announcement category management
+        Route::get('announcementCategories', [AnnouncementCategoryController::class, 'index'])->name('admin.announcementCategory.index');
+        Route::get('announcementCategories/create', [AnnouncementCategoryController::class, 'create'])->name('admin.announcementCategory.create');
+        Route::post('announcementCategories/store', [AnnouncementCategoryController::class, 'store'])->name('admin.announcementCategory.store');
+        Route::get('announcementCategories/{category}/edit', [AnnouncementCategoryController::class, 'edit'])->name('admin.announcementCategory.edit');
+        Route::put('announcementCategories/{category}', [AnnouncementCategoryController::class, 'update'])->name('admin.announcementCategory.update');
+        Route::delete('announcementCategories/{category}', [AnnouncementCategoryController::class, 'destroy'])->name('admin.announcementCategory.destroy');
+
+
+        Route::get('hero-section', [HeroSectionController::class, 'index'])->name('admin.hero.index');
+        Route::post('hero-section/update', [HeroSectionController::class, 'update'])->name('updateHeroSection');
+
+        Route::get('/data-yayasan', [DataYayasanController::class, 'index'])->name('admin.data_yayasan.index');
+        Route::post('/update-data-yayasan', [DataYayasanController::class, 'update'])->name('updateDataYayasan');
+
+        Route::get('gallery', [GalleryController::class, 'index'])->name('admin.gallery.index');
+        Route::get('gallery/create', [GalleryController::class, 'create'])->name('admin.gallery.create');
+        Route::post('gallery/store', [GalleryController::class, 'store'])->name('admin.gallery.store');
+        Route::get('Admin/gallery/{id}/edit', [GalleryController::class, 'edit'])->name('admin.gallery.edit');
+        Route::put('admin/gallery/update/{id}', [GalleryController::class, 'update'])->name('admin.gallery.update');
+        Route::delete('gallery/{id_galleries}', [GalleryController::class, 'destroy'])->name('admin.gallery.destroy');
+
+
+
+        Route::get('address', [AddressController::class, 'index'])->name('admin.address.index');
+        Route::get('address/create', [AddressController::class, 'create'])->name('admin.address.create');
+        Route::post('address/store', [AddressController::class, 'store'])->name('admin.address.store');
+        Route::get('address/{id}/edit', [AddressController::class, 'edit'])->name('admin.address.edit');
+        Route::put('address/update/{id}', [AddressController::class, 'update'])->name('admin.address.update');
+        Route::delete('address/{id}', [AddressController::class, 'destroy'])->name('admin.address.destroy');
+
 
 });
 
 // Route Bagian Tampilan Website
-Route::resource('Home', HomeController::class)->only('index');
+Route::get('/', [HomeController::class, 'index'])->name('home');
 Route::resource('Announcement', AnnouncementController::class);
 Route::resource('News', NewsController::class)->only('index', 'show');
 Route::resource('About', AboutController::class)->only('index');

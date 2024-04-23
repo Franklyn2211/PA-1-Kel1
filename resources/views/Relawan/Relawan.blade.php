@@ -11,7 +11,7 @@
     @endif
     <form method="POST" action="{{ url('/Relawan') }}" enctype="multipart/form-data">
         @csrf
-        <label for="nama_relawan">Nama*</label><br>
+        <label for="nama_relawan">Nama</label><br>
         <input type="text" id="nama_relawan" name="nama_relawan" required><br>
         <label for="email">Email</label><br>
         <input type="email" id="email" name="email"><br>
@@ -24,11 +24,11 @@
             <option value="Wilayah I, Desa Lumban Silintong, Kecamatan Balige, Kabupaten Toba">Wilayah I, Desa Lumban Silintong, Kecamatan Balige, Kabupaten Toba</option>
             <option value="Wilayah II, Desa Sawah Lamo, Kecamatan Andam Dewi, Kabupaten Tapanuli Tengah">Wilayah II, Desa Sawah Lamo, Kecamatan Andam Dewi, Kabupaten Tapanuli Tengah</option>
         </select><br>
-    
-        <label for="cv">Unggah CV*</label><br>
+
+        <label for="cv">Unggah CV</label><br>
         <input type="file" id="cv" name="cv" required><br>
         <input type="submit" value="Submit">
-    </form>    
+    </form>
 </div>
 
 @endsection

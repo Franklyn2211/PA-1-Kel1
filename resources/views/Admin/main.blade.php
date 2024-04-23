@@ -5,8 +5,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>@yield('title') | Admin</title>
-    <link rel="icon" type="image/x-icon" href="{{ asset('assets/img/logo.png') }}" />
-
+    <link rel="icon" type="image/x-icon" href="{{ asset ('assets/img/logo.png') }}" />
     <!-- Google Font: Source Sans Pro -->
     <link rel="stylesheet"
         href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
@@ -47,6 +46,7 @@
                         <i class="fas fa-expand-arrows-alt"></i>
                     </a>
                 </li>
+
             </ul>
         </nav>
         <!-- /.navbar -->
@@ -65,7 +65,7 @@
                 <!-- Sidebar user panel (optional) -->
                 <div class="user-panel mt-3 pb-3 mb-3 d-flex">
                     <div class="info">
-                        <a href="/Admin" class="d-block">{{ auth()->user()->name }}</a>
+                        <a href="#" class="d-block">{{ auth()->user()->name }}</a>
                     </div>
                 </div>
 
@@ -88,14 +88,66 @@
                         data-accordion="false">
                         <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
-                        <li class="nav-item">
-                            <a href="/Admin" class="nav-link">
-                                <i class="nav-icon fa-solid fa-gauge-high"></i>
+                        <li class="nav-item menu">
+                            <a href="#" class="nav-link">
+                                <i class="nav-icon fas fa-tachometer-alt"></i>
                                 <p>
-                                    Dashboard
+                                  Dashboard
+                                  <i class="right fas fa-angle-left"></i>
                                 </p>
-                            </a>
+                              </a>
+                            <ul class="nav nav-treeview">
+                                <li class="nav-item">
+                                    <a href="/Admin/data-yayasan" class="nav-link">
+                                      <i class="far fa-circle nav-icon"></i>
+                                      <p>Data Yayasan</p>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="/Admin/hero-section" class="nav-link">
+                                      <i class="far fa-circle nav-icon"></i>
+                                      <p>Hero Section</p>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="/Admin/gallery" class="nav-link">
+                                      <i class="far fa-circle nav-icon"></i>
+                                      <p>Gallery</p>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="/Admin/sosial-media" class="nav-link">
+                                      <i class="far fa-circle nav-icon"></i>
+                                      <p>Social Media</p>
+                                    </a>
+                                </li>
+                              <li class="nav-item">
+                                <a href="/Admin/address" class="nav-link">
+                                  <i class="far fa-circle nav-icon"></i>
+                                  <p>Address</p>
+                                </a>
+                              </li>
+                              <li class="nav-item">
+                                <a href="/Admin/phone-number" class="nav-link">
+                                  <i class="far fa-circle nav-icon"></i>
+                                  <p>Phone Number</p>
+                                </a>
+                              </li>
+                              <li class="nav-item">
+                                <a href="/Admin/email" class="nav-link">
+                                  <i class="far fa-circle nav-icon"></i>
+                                  <p>Email</p>
+                                </a>
+                              </li>
+                              <li class="nav-item">
+                                <a href="/Admin/e-monry" class="nav-link">
+                                  <i class="far fa-circle nav-icon"></i>
+                                  <p>E Money</p>
+                                </a>
+                              </li>
+                            </ul>
                         </li>
+
                         <li class="nav-item">
                             <a href="/Admin/relawan" class="nav-link">
                                 <i class="nav-icon fas fa-user-friends"></i>
@@ -112,36 +164,59 @@
                                 </p>
                             </a>
                         </li>
-                        <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
-                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <i class="nav-icon fas fa-newspaper"></i>
-                                <p>
-                                    News
-                                </p>
-                            </a>
-                            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                <a class="dropdown-item" href="{{ route('Admin.News.index') }}">All News</a>
-                                <div class="dropdown-divider"></div>
-                                <a class="dropdown-item" href="{{ route('Admin.NewsCategory.index') }}">News
-                                    Categories</a>
-                            </div>
-                        </li>
                         <li class="nav-item">
                             <a href="/Admin/announcementCategories" class="nav-link">
                                 <i class="nav-icon fas fa-user-friends"></i>
                                 <p>
-                                    Announcement Category
+                                    Donate
                                 </p>
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="/Admin/announcement" class="nav-link">
-                                <i class="nav-icon fas fa-user-friends"></i>
-                                <p>
-                                    Announcement
-                                </p>
+                            <a href="#" class="nav-link">
+                              <i class="nav-icon fas fa-newspaper"></i>
+                              <p>
+                                News
+                                <i class="fas fa-angle-left right"></i>
+                              </p>
                             </a>
+                            <ul class="nav nav-treeview">
+                              <li class="nav-item">
+                                <a href="{{ route('Admin.News.index') }}" class="nav-link">
+                                  <i class="far fa-circle nav-icon"></i>
+                                  <p>News</p>
+                                </a>
+                              </li>
+                              <li class="nav-item">
+                                <a href="{{ route('Admin.NewsCategory.index') }}" class="nav-link">
+                                  <i class="far fa-circle nav-icon"></i>
+                                  <p>News Category</p>
+                                </a>
+                              </li>
+                            </ul>
+                        </li>
+                        <li class="nav-item">
+                            <a href="#" class="nav-link">
+                              <i class="nav-icon fas fa-search"></i>
+                              <p>
+                                Announcement
+                                <i class="fas fa-angle-left right"></i>
+                              </p>
+                            </a>
+                            <ul class="nav nav-treeview">
+                              <li class="nav-item">
+                                <a href="/Admin/announcementCategory" class="nav-link">
+                                  <i class="far fa-circle nav-icon"></i>
+                                  <p>Announcement Category</p>
+                                </a>
+                              </li>
+                              <li class="nav-item">
+                                <a href="/Admin/announcement" class="nav-link">
+                                  <i class="far fa-circle nav-icon"></i>
+                                  <p>Announcement</p>
+                                </a>
+                              </li>
+                            </ul>
                         </li>
                         <li class="nav-item">
                             <a href="/Admin/sponsor" class="nav-link">
@@ -160,54 +235,34 @@
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="/Admin/statistics" class="nav-link">
-                                <i class="nav-icon fas fa-user-friends"></i>
-                                <p>
-                                    Statistics
-                                </p>
+                            <a href="#" class="nav-link">
+                              <i class="nav-icon fas fa-search"></i>
+                              <p>
+                                Statistict
+                                <i class="fas fa-angle-left right"></i>
+                              </p>
                             </a>
+                            <ul class="nav nav-treeview">
+                              <li class="nav-item">
+                                <a href="/Admin/announcementCategory" class="nav-link">
+                                  <i class="far fa-circle nav-icon"></i>
+                                  <p>Anak Disabilitas</p>
+                                </a>
+                              </li>
+                              <li class="nav-item">
+                                <a href="/Admin/announcement" class="nav-link">
+                                  <i class="far fa-circle nav-icon"></i>
+                                  <p>Anak Normal</p>
+                                </a>
+                              </li>
+                              <li class="nav-item">
+                                <a href="/Admin/announcement" class="nav-link">
+                                  <i class="far fa-circle nav-icon"></i>
+                                  <p>Staf</p>
+                                </a>
+                              </li>
+                            </ul>
                         </li>
-                        <li class="nav-item">
-                            <a href="/Admin/address" class="nav-link">
-                                <i class="nav-icon fas fa-user-friends"></i>
-                                <p>
-                                    Address
-                                </p>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="/Admin/e-money" class="nav-link">
-                                <i class="nav-icon fas fa-user-friends"></i>
-                                <p>
-                                    E-Money
-                                </p>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="/Admin/sosial-media" class="nav-link">
-                                <i class="nav-icon fas fa-user-friends"></i>
-                                <p>
-                                    Social Media
-                                </p>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="/Admin/phone-number" class="nav-link">
-                                <i class="nav-icon fas fa-user-friends"></i>
-                                <p>
-                                    Phone Number
-                                </p>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="/Admin/email" class="nav-link">
-                                <i class="nav-icon fas fa-user-friends"></i>
-                                <p>
-                                    Email
-                                </p>
-                            </a>
-                        </li>
-
                         <li class="nav-item">
                             <a class="log-out ml-3" href="#" class="nav-link">
                                 <i class="nav-icon fa-solid fa-power-off" style="color: red;"></i>
@@ -226,19 +281,7 @@
 
         @yield('content')
 
-        <!-- Content Wrapper. Contains page content -->
-        {{-- content here --}}
-        <!-- /.content-wrapper -->
 
-        <!-- Control Sidebar -->
-        <aside class="control-sidebar control-sidebar-dark">
-            <!-- Control sidebar content goes here -->
-            <div class="p-3">
-                <h5>Title</h5>
-                <p>Sidebar content</p>
-            </div>
-        </aside>
-        <!-- /.control-sidebar -->
 
         <!-- Main Footer -->
         <footer class="main-footer">

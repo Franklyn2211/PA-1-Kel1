@@ -11,13 +11,14 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('social_media', function (Blueprint $table) {
-            $table->id();
-            $table->string('type', 50);
-            $table->string('link', 150);
-            $table->string('icon', 100);
+        Schema::create('contacts', function (Blueprint $table) {
+            $table->increments('id');
+            $table->string('full_name');
+            $table->string('email')->unique();
+            $table->string('no_hp');
+            $table->text('message');
             $table->string('created_by', 20)->default('adminYPA');
-            $table->string('updated_by', 20)->nullable(true);
+            $table->string('updated_by')->nullable();
             $table->boolean('active')->default(true);
             $table->timestamps();
         });
@@ -28,6 +29,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('social_media');
+        Schema::dropIfExists('contacts');
     }
 };

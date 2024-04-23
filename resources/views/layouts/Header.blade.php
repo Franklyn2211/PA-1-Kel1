@@ -27,14 +27,8 @@
     <link href="{{ asset('assets/vendor/aos/aos.css') }}" rel="stylesheet" />
     <link href="{{ asset('assets/vendor/glightbox/css/glightbox.min.css') }}" rel="stylesheet" />
     <link href="{{ asset('assets/vendor/swiper/swiper-bundle.min.css') }}" rel="stylesheet" />
-     <!-- Required meta tags -->
-     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>24 News — Free Website Template, Free HTML5 Template by FreeHTML5.co</title>
     <link href="{{ asset('assets/css/media_query.css') }}" rel="stylesheet" type="text/css"/>
     <link href="{{ asset('assets/css/bootstrap.css') }}" rel="stylesheet" type="text/css"/>
-    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet"
-          integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
     <link href="{{ asset('assets/css/animate.css') }}" rel="stylesheet" type="text/css"/>
     <link href="https://fonts.googleapis.com/css?family=Poppins" rel="stylesheet">
     <link href="{{ asset('assets/css/owl.carousel.css') }}" rel="stylesheet" type="text/css"/>
@@ -46,7 +40,7 @@
 
 <!-- Google Web Fonts -->
 <link rel="preconnect" href="https://fonts.gstatic.com">
-<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">  
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
 
 <!-- Font Awesome -->
 <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.0/css/all.min.css" rel="stylesheet">
@@ -58,14 +52,7 @@
     <!-- Main CSS File -->
     <link href="{{ asset('assets/css/main.css') }}" rel="stylesheet" />
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KyZXEAg3QhqLMpG8r+Knujsl7/1L_dstPt3HV5HzF6Gvk/e3s4Wz6iJgD/+ub2oU" crossorigin="anonymous">
-  <style>
-    
-    <!-- Custom CSS for Navbar Text Color -->
-    /* <style>
-        .navbar-nav .nav-link {
-            color: white !important;
-        } */
-    </style>
+
 </head>
 <body class="d-flex flex-column h-100">
 <main class="flex-shrink-0">
@@ -92,7 +79,7 @@
                     <li class="nav-item"><a class="nav-link" href="/Sponsor">Sponsor</a></li>
                     <li class="nav-item"><a class="nav-link" href="/Statistics">Statistik</a></li>
                     <li class="nav-item"><a class="nav-link" href="/Contact">Kontak</a></li>
-                 
+
                 </ul>
             </div>
         </div>
