@@ -60,7 +60,7 @@
                                                 </div>
                                                 <div class="form-group mb-3">
                                                     <label for="description">Deskripsi</label>
-                                                    <textarea class="form-control" id="description" name="description" rows="5" placeholder="Deskripsi Berita"></textarea>
+                                                    <textarea name="description" id="default"  ></textarea>
                                                 </div>
                                                 <div class="form-group text-center">
                                                     <button type="submit" class="btn btn-primary">Simpan</button>

@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\Donate;
 use App\Models\Relawan;
+use App\Models\News;
 use Illuminate\Http\Request;
 
 class DashboardController extends Controller
@@ -13,6 +14,7 @@ class DashboardController extends Controller
     {
         $totalRelawan = Relawan::count(); // Mengambil jumlah total relawan dari database
         $totalDonatur = Donate::count();
-        return view('Admin.dashboard', compact('totalRelawan', 'totalDonatur'));
+        $totalNews = News::count();
+        return view('Admin.dashboard', compact('totalRelawan', 'totalDonatur', 'totalNews'));
     }
 }

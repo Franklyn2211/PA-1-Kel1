@@ -13,7 +13,7 @@
                     <div class="col-sm-6">
                         <ol class="breadcrumb float-sm-right">
                             <li class="breadcrumb-item"><a href="/Admin">@yield('title')</a></li>
-                            
+
                         </ol>
                     </div><!-- /.col -->
                 </div><!-- /.row -->
@@ -58,14 +58,13 @@
                         <!-- small box -->
                         <div class="small-box bg-warning">
                             <div class="inner">
-                                <h3></h3>
-
-                                <p>News Category</p>
+                                <h3>{{ $totalNews }}</h3>
+                                <p>News</p>
                             </div>
                             <div class="icon">
                                 <i class="ion ion-person-add"></i>
                             </div>
-                            <a href="{{ route('Admin.NewsCategory.index') }}" class="small-box-footer">More info <i
+                            <a href="{{ route('Admin.News.index') }}" class="small-box-footer">More info <i
                                     class="fas fa-arrow-circle-right"></i></a>
                         </div>
                     </div>

@@ -55,7 +55,7 @@
                                                     <p>Tidak ada foto tersedia.</p>
                                                     @endif
                                                 </div>
-                                                
+
                                                 <div class="form-group mb-3">
                                                     <label for="news_category_id">Kategori</label>
                                                     <select class="form-control" id="news_category_id" name="news_category_id">
@@ -63,10 +63,10 @@
                                                         <option value="{{ $category->id_news_categories }}" {{ $news->news_category_id == $category->id_news_categories ? 'selected' : '' }}>{{ $category->Name }}</option>
                                                         @endforeach
                                                     </select>
-                                                </div>                                                
+                                                </div>
                                                 <div class="form-group mb-3">
                                                     <label for="description">Deskripsi</label>
-                                                    <textarea class="form-control" id="description" name="description" rows="5">{{ $news->description }}</textarea>
+                                                    <textarea name="description" id="default"  >{{ $news->description }}</textarea>
                                                 </div>
                                                 <div class="form-group text-center">
                                                     <button type="submit" class="btn btn-primary">Simpan</button>

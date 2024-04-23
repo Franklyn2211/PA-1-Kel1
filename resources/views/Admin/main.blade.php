@@ -5,7 +5,12 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>@yield('title') | Admin</title>
+<<<<<<< HEAD
     <link rel="icon" type="image/x-icon" href="{{ asset ('assets/img/logo.png') }}" />
+=======
+    <link rel="icon" type="image/x-icon" href="{{ asset('assets/img/logo.png') }}" />
+
+>>>>>>> 8e8fbd57f950eb580051edf248400de82422b866
     <!-- Google Font: Source Sans Pro -->
     <link rel="stylesheet"
         href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
@@ -104,7 +109,7 @@
         <aside class="main-sidebar sidebar-dark-primary elevation-4">
             <!-- Brand Logo -->
             <a href="/Admin" class="brand-link">
-                <img src="{{ asset ('assets/img/logo.png') }}" alt="Admin Logo"
+                <img src="{{ asset('assets/img/logo.png') }}" alt="Admin Logo"
                     class="brand-image img-circle elevation-3" style="opacity: .8">
                 <span class="brand-text font-weight-light">Admin</span>
             </a>
@@ -207,6 +212,32 @@
                         </li>
                         <li class="nav-item">
                             <a href="/Admin/donatur" class="nav-link">
+<<<<<<< HEAD
+=======
+                                <i class="nav-icon fas fa-donate"></i>
+                                <p>
+                                    Donatur
+                                </p>
+                            </a>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <i class="nav-icon fas fa-newspaper"></i>
+                                <p>
+                                    News
+                                </p>
+                            </a>
+                            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                <a class="dropdown-item" href="{{ route('Admin.News.index') }}">All News</a>
+                                <div class="dropdown-divider"></div>
+                                <a class="dropdown-item" href="{{ route('Admin.NewsCategory.index') }}">News
+                                    Categories</a>
+                            </div>
+                        </li>
+                        <li class="nav-item">
+                            <a href="/Admin/announcementCategories" class="nav-link">
+>>>>>>> 8e8fbd57f950eb580051edf248400de82422b866
                                 <i class="nav-icon fas fa-user-friends"></i>
                                 <p>
                                     Donate
@@ -353,6 +384,8 @@
     <!-- AdminLTE App -->
     <script src="/assets/dist/js/adminlte.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="{{ asset('tinymce/tinymce.min.js') }}"></script>
+    <script src="{{ asset('script.js') }}"></script>
 
     <script>
         $(function() {

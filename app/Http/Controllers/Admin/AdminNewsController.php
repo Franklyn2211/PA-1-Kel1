@@ -72,14 +72,14 @@ class AdminNewsController extends Controller
             'location' => $request->location,
             'tanggal' => $request->tanggal,
         ];
-    
+
         // Menghandle foto
         if ($request->hasFile('photo')) {
             // Menghapus foto lama jika ada
             if ($news->photo) {
                 Storage::disk('public')->delete('photo/' . $news->photo);
             }
-            
+
             // Menyimpan foto baru
             $file = $request->file('photo');
             $filename = $file->getClientOriginalName();
@@ -87,7 +87,7 @@ class AdminNewsController extends Controller
             $file->move($destinationPath, $filename);
             $data['photo'] = $filename;
         }
-    
+
         $news->update($data);
         return redirect()->route('Admin.News.index')->with('success', 'Berita berhasil diperbarui!');
     }
