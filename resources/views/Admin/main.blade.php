@@ -245,40 +245,45 @@
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="/Admin/partnership" class="nav-link">
+                            <a href="/Admin/kemitraan" class="nav-link">
                                 <i class="nav-icon fas fa-user-friends"></i>
                                 <p>
-                                    Partnership
+                                    Kemitraan
                                 </p>
                             </a>
                         </li>
                         <li class="nav-item">
                             <a href="#" class="nav-link">
-                              <i class="nav-icon fas fa-search"></i>
-                              <p>
-                                Statistict
-                                <i class="fas fa-angle-left right"></i>
-                              </p>
+                                <i class="nav-icon fas fa-user-friends"></i>
+                                <p>
+                                    Statistik <i class="right fas fa-angle-left"></i>
+                                </p>
                             </a>
                             <ul class="nav nav-treeview">
-                              <li class="nav-item">
-                                <a href="/Admin/announcementCategory" class="nav-link">
-                                  <i class="far fa-circle nav-icon"></i>
-                                  <p>Anak Disabilitas</p>
-                                </a>
-                              </li>
-                              <li class="nav-item">
-                                <a href="/Admin/announcement" class="nav-link">
-                                  <i class="far fa-circle nav-icon"></i>
-                                  <p>Anak Normal</p>
-                                </a>
-                              </li>
-                              <li class="nav-item">
-                                <a href="/Admin/announcement" class="nav-link">
-                                  <i class="far fa-circle nav-icon"></i>
-                                  <p>Staf</p>
-                                </a>
-                              </li>
+                                <li class="nav-item">
+                                    <a href="/Admin/anakdisabilitas" class="nav-link">
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p>Anak Disabilitas</p>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="/Admin/anaksekolahinformal" class="nav-link">
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p>Anak Sekolah Informal</p>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="/Admin/stafpegawai" class="nav-link">
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p>Staf/Pegawai</p>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="/Admin/volunteer" class="nav-link">
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p>Volunteer</p>
+                                    </a>
+                                </li>
                             </ul>
                         </li>
                         <li class="nav-item">
