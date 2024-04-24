@@ -1,0 +1,80 @@
+<?php
+
+namespace App\Http\Controllers\Admin;
+
+use App\Http\Controllers\Controller;
+use App\Models\Kemitraan;
+use Illuminate\Http\Request;
+
+class KemitraanController extends Controller
+{
+    public function index()
+    {
+        $kemitraan = Kemitraan::all();
+
+        return view('admin.kemitraan.index', compact('kemitraan'));
+    }
+
+    public function create()
+    {
+        return view('admin.kemitraan.create');
+    }
+
+    public function store(Request $request)
+    {
+        $kemitraan = Kemitraan::create($request->all());
+        if($request->hasFile('logo')){
+            $request->file('logo')->move('logokemitraan/', $request->file('logo')->getClientOriginalName());
+            $kemitraan->logo = $request->file('logo')->getClientOriginalName();
+            $kemitraan->save();
+        }
+        return redirect()->route('admin.kemitraan.index')
+            ->with('success', 'Kemitraan berhasil ditambahkan.');
+    }
+
+    public function edit($id)
+    {
+        $kemitraan = Kemitraan::findOrFail($id);
+        return view('admin.kemitraan.edit', compact('kemitraan'));
+    }
+
+    public function update(Request $request, $id)
+    {
+        $request->validate([
+            'nama' => 'required',
+            'program' => 'required',
+        ]);
+
+        $kemitraan = Kemitraan::findOrFail($id);
+
+        if ($request->hasFile('logo')) {
+            $request->validate([
+                'logo' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048', // Validasi untuk file gambar
+            ]);
+            // Mengunggah file logo baru ke direktori penyimpanan
+            $logoPath = $request->file('logo')->store('logos');
+            // Hapus logo lama
+            if ($kemitraan->logo_path) {
+                Storage::delete($kemitraan->logo_path);
+            }
+            // Update path logo
+            $kemitraan->logo_path = $logoPath;
+        }
+
+        // Update nama dan program
+        $kemitraan->nama = $request->get('nama');
+        $kemitraan->program = $request->get('program');
+
+        $kemitraan->save();
+
+        return redirect()->route('admin.kemitraan.index')->with('success', 'Kemitraan berhasil diperbarui.');
+    }
+
+    public function destroy(Kemitraan $kemitraan)
+    {
+        $kemitraan->delete();
+
+        return redirect()->route('admin.kemitraan.index')
+            ->with('success', 'Kemitraan berhasil dihapus.');
+    }
+}
