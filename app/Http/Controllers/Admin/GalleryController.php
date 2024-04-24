@@ -6,14 +6,12 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Gallery;
 use Illuminate\Support\Facades\Storage;
-use Illuminate\Support\Str;
 
 class GalleryController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
-     * @return \Illuminate\Http\Response
      */
     public function index()
     {
@@ -24,7 +22,6 @@ class GalleryController extends Controller
     /**
      * Show the form for creating a new resource.
      *
-     * @return \Illuminate\Http\Response
      */
     public function create()
     {
@@ -34,40 +31,40 @@ class GalleryController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
      */
-    // Store a newly created resource in storage.
-public function store(Request $request)
-{
-    $request->validate([
-        'title' => 'required',
-        'description' => 'required',
-        'photo' => 'image|mimes:jpeg,png,jpg,gif|max:2048', // max 2MB
-    ]);
+    public function store(Request $request)
+    {
+        $request->validate([
+            'title' => 'required',
+            'description' => 'required',
+            'photo' => 'image|mimes:jpeg,png,jpg,gif|max:5000', // max 5MB
+        ]);
 
-    $gallery = new Gallery();
-    $gallery->title = $request->title;
-    $gallery->description = $request->description;
+        // Simpan gambar di dalam direktori public
+        $destinationPath = 'public/photo';
 
-    // Upload photo if provided
-    if ($request->hasFile('photo')) {
-        $imageName = $request->photo->getClientOriginalName(); // Menggunakan nama asli untuk nama file foto
-        $destinationPath = 'public/galleries'; // Path yang diinginkan
-        $request->photo->storeAs($destinationPath, $imageName);
-        $gallery->photo = $imageName;
+        // Mendapatkan nama file asli
+        $fileName = $request->file('photo')->getClientOriginalName();
+
+        // Menggunakan storeAs() method untuk menyimpan gambar
+        $request->file('photo')->storeAs($destinationPath, $fileName);
+
+        // Membuat objek Gallery baru
+        $gallery = new Gallery([
+            'title' => $request->get('title'),
+            'description' => $request->get('description'),
+            'photo' => $fileName, // Menyimpan nama file gambar
+        ]);
+
+        // Simpan objek Gallery
+        $gallery->save();
+
+        return redirect()->route('admin.gallery.index')->with('success', 'Gallery created successfully.');
     }
-
-    $gallery->save();
-
-    return redirect()->route('admin.gallery.index')->with('success', 'Gallery created successfully.');
-}
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
      */
     public function edit($id)
     {
@@ -78,35 +75,36 @@ public function store(Request $request)
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id)
     {
         $request->validate([
             'title' => 'required',
             'description' => 'required',
-            'photo' => 'image|mimes:jpeg,png,jpg,gif|max:2048', // max 2MB
+            'photo' => 'image|mimes:jpeg,png,jpg,gif|max:5000', // max 2MB
         ]);
 
+        // Mendapatkan objek Gallery berdasarkan ID
         $gallery = Gallery::findOrFail($id);
+
+        // Mengupdate atribut Gallery
         $gallery->title = $request->title;
         $gallery->description = $request->description;
 
-        // Upload new photo if provided
+        // Upload foto baru jika disediakan
         if ($request->hasFile('photo')) {
-            // Delete old photo if exists
+            // Menghapus foto lama jika ada
             if ($gallery->photo) {
-                Storage::delete('public/storage/app/public/galleries/' . $gallery->photo);
+                Storage::delete('public/photo/' . $gallery->photo);
             }
 
-            $imageName = $request->photo->getClientOriginalName(); // Menggunakan nama asli untuk nama file foto
-            $destinationPath = 'public/storage/app/public/galleries/'; // Path yang diinginkan
-            $request->photo->storeAs($destinationPath, $imageName);
-            $gallery->photo = $imageName;
+            // Simpan foto baru
+            $fileName = $request->file('photo')->getClientOriginalName();
+            $request->file('photo')->storeAs('public/photo', $fileName);
+            $gallery->photo = $fileName;
         }
 
+        // Simpan perubahan ke database
         $gallery->save();
 
         return redirect()->route('admin.gallery.index')->with('success', 'Gallery updated successfully.');
@@ -115,16 +113,17 @@ public function store(Request $request)
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
      */
     public function destroy($id)
     {
         $gallery = Gallery::findOrFail($id);
-        // Delete photo from storage if exists
+
+        // Hapus foto dari penyimpanan jika ada
         if ($gallery->photo) {
-            Storage::delete('public/storage/app/public/galleries/' . $gallery->photo);
+            Storage::delete('public/photo/' . $gallery->photo);
         }
+
+        // Hapus gallery dari database
         $gallery->delete();
 
         return redirect()->route('admin.gallery.index')->with('success', 'Gallery deleted successfully.');

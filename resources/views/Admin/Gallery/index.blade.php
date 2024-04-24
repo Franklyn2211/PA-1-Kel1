@@ -52,7 +52,7 @@
                                         <td>{{ $loop->iteration }}</td>
                                         <td>{{ $gallery->title }}</td>
                                         <td>{{ $gallery->description }}</td>
-                                        <td><img src="{{ asset('public/storage/app/public/galleries/' . $gallery->photo) }}" alt="{{ $gallery->title }}" style="max-width: 100px;"></td>
+                                        <td><img src="{{ asset('public/photo' . $gallery->photo) }}" alt="{{ $gallery->title }}" style="max-width: 100px;"></td>
                                         <td>
                                             <a href="{{ route('admin.gallery.edit', ['id' => $gallery->id]) }}" class="btn btn-success btn-sm mr-1"><i class="fa-solid fa-pen"></i> Edit</a>
 

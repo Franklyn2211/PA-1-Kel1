@@ -70,7 +70,6 @@
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
                     <li class="nav-item"><a class="nav-link" href="/About">Tentang</a></li>
-                    <li class="nav-item"><a class="nav-link" href="/Donate">Donasi</a></li>
                     <li class="nav-item"><a class="nav-link" href="/Relawan">Relawan</a></li>
                     <li class="nav-item"><a class="nav-link" href="/News">Berita</a></li>
                     <li class="nav-item"><a class="nav-link" href="/Announcement">Pengumuman</a></li>

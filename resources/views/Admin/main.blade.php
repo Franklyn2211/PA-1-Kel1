@@ -5,16 +5,8 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>@yield('title') | Admin</title>
-<<<<<<< HEAD
-    <link rel="icon" type="image/x-icon" href="{{ asset ('assets/img/logo.png') }}" />
-=======
-<<<<<<< HEAD
-    <link rel="icon" type="image/x-icon" href="{{ asset ('assets/img/logo.png') }}" />
-=======
     <link rel="icon" type="image/x-icon" href="{{ asset('assets/img/logo.png') }}" />
 
->>>>>>> 8e8fbd57f950eb580051edf248400de82422b866
->>>>>>> 02def926f64002357abf63b2bb73f499ed9f7339
     <!-- Google Font: Source Sans Pro -->
     <link rel="stylesheet"
         href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
@@ -72,43 +64,6 @@
                         </form>
                     </div>
                 </li>
-                <!-- Notifications Dropdown Menu -->
-                <li class="nav-item dropdown">
-                    <a class="nav-link" data-toggle="dropdown" href="#">
-                        <i class="far fa-bell"></i>
-                        <span class="badge badge-warning navbar-badge">15</span>
-                    </a>
-                    <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
-                        <span class="dropdown-header">15 Notifications</span>
-                        <div class="dropdown-divider"></div>
-                        <a href="#" class="dropdown-item">
-                            <i class="fas fa-envelope mr-2"></i> 4 new messages
-                            <span class="float-right text-muted text-sm">3 mins</span>
-                        </a>
-                        <div class="dropdown-divider"></div>
-                        <a href="#" class="dropdown-item">
-                            <i class="fas fa-users mr-2"></i> 8 friend requests
-                            <span class="float-right text-muted text-sm">12 hours</span>
-                        </a>
-                        <div class="dropdown-divider"></div>
-                        <a href="#" class="dropdown-item">
-                            <i class="fas fa-file mr-2"></i> 3 new reports
-                            <span class="float-right text-muted text-sm">2 days</span>
-                        </a>
-                        <div class="dropdown-divider"></div>
-                        <a href="#" class="dropdown-item dropdown-footer">See All Notifications</a>
-                    </div>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" data-widget="fullscreen" href="#" role="button">
-                        <i class="fas fa-expand-arrows-alt"></i>
-                    </a>
-                </li>
-<<<<<<< HEAD
-
-=======
-               
->>>>>>> 02def926f64002357abf63b2bb73f499ed9f7339
             </ul>
         </nav>
         <!-- /.navbar -->
@@ -118,7 +73,7 @@
             <!-- Brand Logo -->
             <a href="/Admin" class="brand-link">
                 <img src="{{ asset('assets/img/logo.png') }}" alt="Admin Logo"
-                    class="brand-image img-circle elevation-3" style="opacity: .8">
+                class="brand-image img-circle elevation-3" style="opacity: .8">
                 <span class="brand-text font-weight-light">Admin</span>
             </a>
 
@@ -209,11 +164,6 @@
                               </li>
                             </ul>
                         </li>
-<<<<<<< HEAD
-
-=======
-                        
->>>>>>> 02def926f64002357abf63b2bb73f499ed9f7339
                         <li class="nav-item">
                             <a href="/Admin/relawan" class="nav-link">
                                 <i class="nav-icon fas fa-user-friends"></i>
@@ -224,8 +174,6 @@
                         </li>
                         <li class="nav-item">
                             <a href="/Admin/donatur" class="nav-link">
-<<<<<<< HEAD
-=======
                                 <i class="nav-icon fas fa-donate"></i>
                                 <p>
                                     Donatur
@@ -234,7 +182,6 @@
                         </li>
                         <li class="nav-item">
                             <a href="/Admin/announcementCategories" class="nav-link">
->>>>>>> 8e8fbd57f950eb580051edf248400de82422b866
                                 <i class="nav-icon fas fa-user-friends"></i>
                                 <p>
                                     Donate
@@ -243,11 +190,7 @@
                         </li>
                         <li class="nav-item">
                             <a href="#" class="nav-link">
-<<<<<<< HEAD
                               <i class="nav-icon fas fa-newspaper"></i>
-=======
-                              <i class="nav-icon fas fa-search"></i>
->>>>>>> 02def926f64002357abf63b2bb73f499ed9f7339
                               <p>
                                 News
                                 <i class="fas fa-angle-left right"></i>
@@ -255,21 +198,15 @@
                             </a>
                             <ul class="nav nav-treeview">
                               <li class="nav-item">
-<<<<<<< HEAD
                                 <a href="{{ route('Admin.News.index') }}" class="nav-link">
-=======
                                 <a href="/Admin/News" class="nav-link">
->>>>>>> 02def926f64002357abf63b2bb73f499ed9f7339
                                   <i class="far fa-circle nav-icon"></i>
                                   <p>News</p>
                                 </a>
                               </li>
                               <li class="nav-item">
-<<<<<<< HEAD
                                 <a href="{{ route('Admin.NewsCategory.index') }}" class="nav-link">
-=======
                                 <a href="/Admin/NewsCategory" class="nav-link">
->>>>>>> 02def926f64002357abf63b2bb73f499ed9f7339
                                   <i class="far fa-circle nav-icon"></i>
                                   <p>News Category</p>
                                 </a>
@@ -362,11 +299,6 @@
 
         @yield('content')
 
-<<<<<<< HEAD
-
-=======
-        
->>>>>>> 02def926f64002357abf63b2bb73f499ed9f7339
 
         <!-- Main Footer -->
         <footer class="main-footer">

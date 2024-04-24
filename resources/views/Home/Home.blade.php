@@ -24,19 +24,19 @@
                 </div>
             </div>
             <div class="col-xl-5 col-xxl-6 d-none d-xl-block text-center">
-                @if($galleries->count() > 0)
+                {{-- @if($galleries->count() > 0) --}}
                     <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel" data-bs-interval="5000">
                         <!-- Tambahkan data-bs-interval="5000" untuk membuat carousel bergerak setiap 5 detik -->
                         <div class="carousel-inner">
-                            @foreach($galleries as $key => $gallery)
-                                <div class="carousel-item{{ $key === 0 ? ' active' : '' }}">
-                                    <img src="{{ $gallery->photo }}" class="d-block w-100" alt="...">
+                            {{-- @foreach($galleries as $key => $gallery) --}}
+                                <div class="carousel-item{{ $galleries === 0 ? ' active' : '' }}">
+                                    <img src="{{ asset('storage/app/public/photo/' . $news->photo) }}" alt="{{ $news->title }}" class="img-fluid">
                                     <div class="carousel-caption d-none d-md-block">
-                                        <h5>{{ $gallery->title }}</h5>
-                                        <p>{{ $gallery->description }}</p>
+                                        <h5>{{ $galleries->title }}</h5>
+                                        <p>{{ $galleries->description }}</p>
                                     </div>
                                 </div>
-                            @endforeach
+                            {{-- @endforeach --}}
                         </div>
                         <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
                             <span class="carousel-control-prev-icon" aria-hidden="true"></span>
@@ -47,15 +47,10 @@
                             <span class="visually-hidden">Next</span>
                         </button>
                     </div>
-                @else
+                {{-- @else --}}
                     <p>No galleries available.</p>
-                @endif
+                {{-- @endif --}}
             </div>
-<<<<<<< HEAD
-
-=======
-            
->>>>>>> 02def926f64002357abf63b2bb73f499ed9f7339
         </div>
     </div>
 </header>
@@ -85,11 +80,6 @@
                     </div>
                 </div>
             </section>
-<<<<<<< HEAD
-
-=======
-            
->>>>>>> 02def926f64002357abf63b2bb73f499ed9f7339
             <!-- Blog preview section-->
             <section class="py-5">
                 <div class="container px-5 my-5">

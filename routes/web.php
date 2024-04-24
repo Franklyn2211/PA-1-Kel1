@@ -16,20 +16,14 @@ use App\Http\Controllers\Admin\AdminNewsController;
 use App\Http\Controllers\Admin\NewsCategoryController;
 use App\Http\Controllers\AnnouncementController;
 use App\Http\Controllers\Admin\DonaturController;
-<<<<<<< HEAD
 use App\Http\Controllers\Admin\AdminContactController;
-=======
->>>>>>> 02def926f64002357abf63b2bb73f499ed9f7339
+
 use App\Http\Controllers\Admin\AdminAnnouncementController;
 use App\Http\Controllers\Admin\AnnouncementCategoryController;
 use App\Http\Controllers\Admin\HeroSectionController;
 use App\Http\Controllers\Admin\DataYayasanController;
 use App\Http\Controllers\Admin\GalleryController;
 use App\Http\Controllers\Admin\AddressController;
-<<<<<<< HEAD
-
-=======
->>>>>>> 02def926f64002357abf63b2bb73f499ed9f7339
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -55,8 +49,8 @@ Route::prefix('Admin')->middleware('auth')->group(function () {
     Route::get('relawan', [\App\Http\Controllers\Admin\RelawanController::class, 'index'])->name('admin.relawan');
     Route::delete('Admin/relawan/{relawan}', [\App\Http\Controllers\Admin\RelawanController::class, 'destroy'])->name('relawan.destroy');
     Route::post('Admin/relawan', [\App\Http\Controllers\Admin\RelawanController::class, 'store'])->name('relawan.store');
-   
-   
+
+
     // Route::resource('news', AdminNewsController::class)->except('show');
     Route::get('donatur', [DonaturController::class, 'index'])->name('Admin.donate.donate');
     Route::delete('donatur/{donate}', [DonaturController::class, 'destroy'])->name('donate.destroy');
@@ -102,7 +96,7 @@ Route::prefix('Admin')->middleware('auth')->group(function () {
 
         Route::get('gallery', [GalleryController::class, 'index'])->name('admin.gallery.index');
         Route::get('gallery/create', [GalleryController::class, 'create'])->name('admin.gallery.create');
-        Route::post('gallery/store', [GalleryController::class, 'store'])->name('admin.gallery.store');
+        Route::post('gallery', [NewsController::class, 'store'])->name('admin.gallery.store');
         Route::get('Admin/gallery/{id}/edit', [GalleryController::class, 'edit'])->name('admin.gallery.edit');
         Route::put('admin/gallery/update/{id}', [GalleryController::class, 'update'])->name('admin.gallery.update');
         Route::delete('gallery/{id_galleries}', [GalleryController::class, 'destroy'])->name('admin.gallery.destroy');
@@ -124,14 +118,14 @@ Route::prefix('Admin')->middleware('auth')->group(function () {
     Route::get('/data-yayasan', [DataYayasanController::class, 'index'])->name('admin.data_yayasan.index');
     Route::post('/update-data-yayasan', [DataYayasanController::class, 'update'])->name('updateDataYayasan');
 
-    Route::get('gallery', [GalleryController::class, 'index'])->name('admin.gallery.index');
-    Route::get('gallery/create', [GalleryController::class, 'create'])->name('admin.gallery.create');
-    Route::post('gallery/store', [GalleryController::class, 'store'])->name('admin.gallery.store');
-    Route::get('Admin/gallery/{id}/edit', [GalleryController::class, 'edit'])->name('admin.gallery.edit');
-    Route::put('admin/gallery/update/{id}', [GalleryController::class, 'update'])->name('admin.gallery.update');
-    Route::delete('gallery/{id_galleries}', [GalleryController::class, 'destroy'])->name('admin.gallery.destroy');
+    // Route::get('gallery', [GalleryController::class, 'index'])->name('admin.gallery.index');
+    // Route::get('gallery/create', [GalleryController::class, 'create'])->name('admin.gallery.create');
+    // Route::post('gallery/store', [GalleryController::class, 'store'])->name('admin.gallery.store');
+    // Route::get('Admin/gallery/{id}/edit', [GalleryController::class, 'edit'])->name('admin.gallery.edit');
+    // Route::put('admin/gallery/update/{id}', [GalleryController::class, 'update'])->name('admin.gallery.update');
+    // Route::delete('gallery/{id_galleries}', [GalleryController::class, 'destroy'])->name('admin.gallery.destroy');
 
-    
+
 
     Route::get('address', [AddressController::class, 'index'])->name('admin.address.index');
     Route::get('address/create', [AddressController::class, 'create'])->name('admin.address.create');
@@ -139,15 +133,13 @@ Route::prefix('Admin')->middleware('auth')->group(function () {
     Route::get('address/{id}/edit', [AddressController::class, 'edit'])->name('admin.address.edit');
     Route::put('address/update/{id}', [AddressController::class, 'update'])->name('admin.address.update');
     Route::delete('address/{id}', [AddressController::class, 'destroy'])->name('admin.address.destroy');
-    
+
 
 });
 
 // Route Bagian Tampilan Website
-<<<<<<< HEAD
-=======
 // Route::resource('Home', HomeController::class)->only('index');
->>>>>>> 02def926f64002357abf63b2bb73f499ed9f7339
+
 Route::get('/', [HomeController::class, 'index'])->name('home');
 Route::resource('Announcement', AnnouncementController::class);
 Route::resource('News', NewsController::class)->only('index', 'show');
