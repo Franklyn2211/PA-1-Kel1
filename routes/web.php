@@ -9,21 +9,25 @@ use App\Http\Controllers\DonateController;
 use App\Http\Controllers\NewsController;
 use App\Http\Controllers\PartnershipController;
 use App\Http\Controllers\SponsorController;
-use App\Http\Controllers\StatisticsController;
-use App\Http\Controllers\VolunteerController;
+use App\Http\Controllers\StatistikController;
 use App\Http\Controllers\AboutController;
 use App\Http\Controllers\Admin\AdminNewsController;
 use App\Http\Controllers\Admin\NewsCategoryController;
 use App\Http\Controllers\AnnouncementController;
 use App\Http\Controllers\Admin\DonaturController;
 use App\Http\Controllers\Admin\AdminContactController;
-
+use App\Http\Controllers\Admin\AnakDisabilitasController;
+use App\Http\Controllers\Admin\AnakSekolahInformalController;
+use App\Http\Controllers\Admin\StafPegawaiController;
+use App\Http\Controllers\Admin\KemitraanController;
 use App\Http\Controllers\Admin\AdminAnnouncementController;
 use App\Http\Controllers\Admin\AnnouncementCategoryController;
 use App\Http\Controllers\Admin\HeroSectionController;
 use App\Http\Controllers\Admin\DataYayasanController;
 use App\Http\Controllers\Admin\GalleryController;
 use App\Http\Controllers\Admin\AddressController;
+use App\Http\Controllers\Admin\VolunteerController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -134,6 +138,51 @@ Route::prefix('Admin')->middleware('auth')->group(function () {
     Route::put('address/update/{id}', [AddressController::class, 'update'])->name('admin.address.update');
     Route::delete('address/{id}', [AddressController::class, 'destroy'])->name('admin.address.destroy');
 
+    Route::resource('anakdisabilitas', AnakDisabilitasController::class);
+    Route::get('anakdisabilitas', [AnakDisabilitasController::class, 'index'])->name('admin.anakdisabilitas.index');
+    Route::get('anakdisabilitas/create', [AnakDisabilitasController::class, 'create'])->name('admin.anakdisabilitas.create');
+    Route::post('anakdisabilitas/store', [AnakDisabilitasController::class, 'store'])->name('admin.anakdisabilitas.store');
+    Route::post('anakdisabilitas/{anakdisabilitas}', [AnakDisabilitasController::class, 'show'])->name('admin.anakdisabilitas.show');
+    Route::get('anakdisabilitas/{anakdisabilitas}/edit', [AnakDisabilitasController::class, 'edit'])->name('admin.anakdisabilitas.edit');
+    Route::put('anakdisabilitas', [AnakDisabilitasController::class, 'update'])->name('admin.anakdisabilitas.update');
+    Route::delete('anakdisabilitas/{anakdisabilitas}', [AnakDisabilitasController::class, 'destroy'])->name('admin.anakdisabilitas.destroy');
+
+    Route::resource('anaksekolahinformal', AnakSekolahInformalController::class);
+    Route::get('anaksekolahinformal', [AnakSekolahInformalController::class, 'index'])->name('admin.anaksekolahinformal.index');
+    Route::get('anaksekolahinformal/create', [AnakSekolahInformalController::class, 'create'])->name('admin.anaksekolahinformal.create');
+    Route::post('anaksekolahinformal/store', [AnakSekolahInformalController::class, 'store'])->name('admin.anaksekolahinformal.store');
+    Route::post('anaksekolahinformal/{anaksekolahinformal}', [AnakSekolahInformalController::class, 'show'])->name('admin.anaksekolahinformal.show');
+    Route::get('anaksekolahinformal/{anaksekolahinformal}/edit', [AnakSekolahInformalController::class, 'edit'])->name('admin.anaksekolahinformal.edit');
+    Route::put('anaksekolahinformal/{anaksekolahinformal}', [AnakSekolahInformalController::class, 'update'])->name('admin.anaksekolahinformal.update');
+        Route::delete('anaksekolahinformal/{anaksekolahinformal}', [AnakSekolahInformalController::class, 'destroy'])->name('admin.anaksekolahinformal.destroy');
+
+    Route::resource('stafpegawai', StafPegawaiController::class);
+    Route::get('stafpegawai', [StafPegawaiController::class, 'index'])->name('admin.stafpegawai.index');
+    Route::get('stafpegawai/create', [StafPegawaiController::class, 'create'])->name('admin.stafpegawai.create');
+    Route::post('stafpegawai', [StafPegawaiController::class, 'store'])->name('admin.stafpegawai.store');
+    Route::get('stafpegawai/{stafpegawai}', [StafPegawaiController::class, 'show'])->name('admin.stafpegawai.show');
+    Route::get('stafpegawai/{stafpegawai}/edit', [StafPegawaiController::class, 'edit'])->name('admin.stafpegawai.edit');
+    Route::put('stafpegawai/{stafpegawai}', [StafPegawaiController::class, 'update'])->name('admin.stafpegawai.update');
+    Route::delete('stafpegawai/{stafpegawai}', [StafPegawaiController::class, 'destroy'])->name('admin.stafpegawai.destroy');
+
+    Route::resource('volunteer', VolunteerController::class);
+    Route::get('volunteer', [VolunteerController::class, 'index'])->name('admin.volunteer.index');
+    Route::get('volunteer/create', [VolunteerController::class, 'create'])->name('admin.volunteer.create');
+    Route::post('volunteer', [VolunteerController::class, 'store'])->name('admin.volunteer.store');
+    Route::get('volunteer/{volunteer}', [VolunteerController::class, 'show'])->name('admin.volunteer.show');
+    Route::get('volunteer/{volunteer}/edit', [VolunteerController::class, 'edit'])->name('admin.volunteer.edit');
+    Route::put('volunteer/{volunteer}', [VolunteerController::class, 'update'])->name('admin.volunteer.update');
+    Route::delete('volunteer/{volunteer}', [VolunteerController::class, 'destroy'])->name('admin.volunteer.destroy');
+
+    Route::resource('kemitraan', KemitraanController::class);
+    Route::get('kemitraan', [KemitraanController::class, 'index'])->name('admin.kemitraan.index');
+    Route::get('kemitraan/create', [KemitraanController::class, 'create'])->name('admin.kemitraan.create');
+    Route::post('kemitraan', [KemitraanController::class, 'store'])->name('admin.kemitraan.store');
+    Route::get('kemitraan/{kemitraan}/edit', [KemitraanController::class, 'edit'])->name('admin.kemitraan.edit');
+    Route::put('kemitraan/{kemitraan}', [KemitraanController::class, 'update'])->name('admin.kemitraan.update');
+    Route::delete('kemitraan/{kemitraan}', [KemitraanController::class, 'destroy'])->name('admin.kemitraan.destroy');    
+
+
 
 });
 
@@ -149,7 +198,7 @@ Route::resource('Donate', DonateController::class)->only('index', 'store');
 Route::resource('Partnership', PartnershipController::class)->only('index');
 Route::resource('Sponsor', SponsorController::class)->only('index');
 Route::resource('Contact', ContactController::class)->only('index');
-Route::resource('Statistics', StatisticsController::class)->only('index');
+Route::resource('Statistik', StatistikController::class)->only('index');
 Route::resource('Volunteer', VolunteerController::class)->only('index');
 Route::resource('Relawan', RelawanController::class)->only('index', 'store');
 
