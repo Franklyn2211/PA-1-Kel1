@@ -1,4 +1,5 @@
 <?php
+
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
@@ -8,6 +9,7 @@ use Illuminate\Support\Facades\Auth;
 
 class AnakDisabilitasController extends Controller
 {
+
     public function index()
     {
         $anakdisabilitas = AnakDisabilitas::all();
@@ -16,7 +18,8 @@ class AnakDisabilitasController extends Controller
 
     public function create()
     {
-        return view('admin.anakdisabilitas.create');
+        $anakdisabilitas = AnakDisabilitas::all();
+        return view('admin.anakdisabilitas.create', compact('anakdisabilitas'));
     }
 
     public function store(Request $request)
@@ -35,6 +38,7 @@ class AnakDisabilitasController extends Controller
         return redirect()->route('admin.anakdisabilitas.index')->with('success', 'Anak disabilitas berhasil ditambahkan.');
     }
 
+    // Menampilkan detail anak disabilitas
     public function show(AnakDisabilitas $anakdisabilitas)
     {
         return view('admin.anakdisabilitas.show', compact('anakdisabilitas'));
@@ -45,6 +49,7 @@ class AnakDisabilitasController extends Controller
         return view('admin.anakdisabilitas.edit', compact('anakdisabilitas'));
     }
 
+    // Menyimpan perubahan saat inline editing dilakukan
     public function update(Request $request, AnakDisabilitas $anakdisabilitas)
     {
         $validatedData = $request->validate([
@@ -52,8 +57,6 @@ class AnakDisabilitasController extends Controller
             'umur' => 'required|integer',
             'tanggal_bergabung' => 'required|date',
         ]);
-
-        $validatedData['updated_by'] = auth()->id(); // Update ID user yang terakhir mengubah data
 
         $anakdisabilitas->update($validatedData);
 

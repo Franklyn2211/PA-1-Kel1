@@ -42,7 +42,7 @@
                                 </div>
                                 <div class="form-group">
                                     <label for="logo">Logo:</label>
-                                    <input type="file" class="form-control-file" id="logo" name="logo_path">
+                                    <input type="file" class="form-control-file" id="logo" name="logo">
                                 </div>
                                 <div class="form-group">
                                     <label for="program">Program:</label>

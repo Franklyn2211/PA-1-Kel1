@@ -12,7 +12,6 @@ return new class extends Migration {
      */
     public function up()
     {
-        // Membuat tabel untuk anak disabilitas
         Schema::create('anakdisabilitas', function (Blueprint $table) {
             $table->id();
             $table->string('nama');
@@ -23,6 +22,7 @@ return new class extends Migration {
             $table->string('updated_by')->nullable();
             $table->boolean('active')->default(true);
         });
+        
     }
 
     /**

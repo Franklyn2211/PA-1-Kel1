@@ -11,7 +11,7 @@ class AnakSekolahInformal extends Model
 
     protected $primaryKey = 'id';
     protected $table = 'anaksekolahinformal';
-    protected $fillable = ['nama', 'umur', 'tanggal_bergabung', 'created_by', 'updated_by', 'active'];
+    protected $fillable = ['id','nama', 'umur', 'tanggal_bergabung', 'created_by', 'updated_by', 'active'];
 
     /**
      * Get the user that created the child with disability.

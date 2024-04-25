@@ -47,18 +47,10 @@ class KemitraanController extends Controller
 
         $kemitraan = Kemitraan::findOrFail($id);
 
-        if ($request->hasFile('logo')) {
-            $request->validate([
-                'logo' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048', // Validasi untuk file gambar
-            ]);
-            // Mengunggah file logo baru ke direktori penyimpanan
-            $logoPath = $request->file('logo')->store('logos');
-            // Hapus logo lama
-            if ($kemitraan->logo_path) {
-                Storage::delete($kemitraan->logo_path);
-            }
-            // Update path logo
-            $kemitraan->logo_path = $logoPath;
+        if($request->hasFile('logo')){
+            $request->file('logo')->move('logokemitraan/', $request->file('logo')->getClientOriginalName());
+            $kemitraan->logo = $request->file('logo')->getClientOriginalName();
+            $kemitraan->save();
         }
 
         // Update nama dan program

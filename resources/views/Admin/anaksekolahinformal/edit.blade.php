@@ -1,5 +1,5 @@
 @extends('Admin.main')
-@section('title', 'Edit Anak Disabilitas')
+@section('title', 'Edit Anak Sekolah Informal')
 @section('content')
 
     <div class="content-wrapper">
@@ -29,7 +29,7 @@
                     <div class="col-md-6">
                         <div class="card">
                             <div class="card-body">
-                                <form action="{{ route('admin.anaksekolahinformal.update', $anaksekolahinformal->id) }}" method="POST">
+                                <form action="{{ route('admin.anaksekolahinformal.update', $anaksekolahinformal->id) }}" method="POST" enctype="multipart/form-data">>
                                     @csrf
                                     @method('PUT')
                                     <div class="form-group">

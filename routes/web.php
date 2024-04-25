@@ -8,7 +8,6 @@ use App\Http\Controllers\ContactController;
 use App\Http\Controllers\DonateController;
 use App\Http\Controllers\NewsController;
 use App\Http\Controllers\PartnershipController;
-use App\Http\Controllers\SponsorController;
 use App\Http\Controllers\StatistikController;
 use App\Http\Controllers\AboutController;
 use App\Http\Controllers\Admin\AdminNewsController;
@@ -20,6 +19,7 @@ use App\Http\Controllers\Admin\AnakDisabilitasController;
 use App\Http\Controllers\Admin\AnakSekolahInformalController;
 use App\Http\Controllers\Admin\StafPegawaiController;
 use App\Http\Controllers\Admin\KemitraanController;
+use App\Http\Controllers\Admin\SponsorController;
 use App\Http\Controllers\Admin\AdminAnnouncementController;
 use App\Http\Controllers\Admin\AnnouncementCategoryController;
 use App\Http\Controllers\Admin\HeroSectionController;
@@ -144,7 +144,7 @@ Route::prefix('Admin')->middleware('auth')->group(function () {
     Route::post('anakdisabilitas/store', [AnakDisabilitasController::class, 'store'])->name('admin.anakdisabilitas.store');
     Route::post('anakdisabilitas/{anakdisabilitas}', [AnakDisabilitasController::class, 'show'])->name('admin.anakdisabilitas.show');
     Route::get('anakdisabilitas/{anakdisabilitas}/edit', [AnakDisabilitasController::class, 'edit'])->name('admin.anakdisabilitas.edit');
-    Route::put('anakdisabilitas', [AnakDisabilitasController::class, 'update'])->name('admin.anakdisabilitas.update');
+    Route::put('anakdisabilitas/{anakdisabilitas}', [AnakDisabilitasController::class, 'update'])->name('admin.anakdisabilitas.update');
     Route::delete('anakdisabilitas/{anakdisabilitas}', [AnakDisabilitasController::class, 'destroy'])->name('admin.anakdisabilitas.destroy');
 
     Route::resource('anaksekolahinformal', AnakSekolahInformalController::class);
@@ -154,7 +154,7 @@ Route::prefix('Admin')->middleware('auth')->group(function () {
     Route::post('anaksekolahinformal/{anaksekolahinformal}', [AnakSekolahInformalController::class, 'show'])->name('admin.anaksekolahinformal.show');
     Route::get('anaksekolahinformal/{anaksekolahinformal}/edit', [AnakSekolahInformalController::class, 'edit'])->name('admin.anaksekolahinformal.edit');
     Route::put('anaksekolahinformal/{anaksekolahinformal}', [AnakSekolahInformalController::class, 'update'])->name('admin.anaksekolahinformal.update');
-        Route::delete('anaksekolahinformal/{anaksekolahinformal}', [AnakSekolahInformalController::class, 'destroy'])->name('admin.anaksekolahinformal.destroy');
+    Route::delete('anaksekolahinformal/{anaksekolahinformal}', [AnakSekolahInformalController::class, 'destroy'])->name('admin.anaksekolahinformal.destroy');
 
     Route::resource('stafpegawai', StafPegawaiController::class);
     Route::get('stafpegawai', [StafPegawaiController::class, 'index'])->name('admin.stafpegawai.index');
@@ -173,6 +173,14 @@ Route::prefix('Admin')->middleware('auth')->group(function () {
     Route::get('volunteer/{volunteer}/edit', [VolunteerController::class, 'edit'])->name('admin.volunteer.edit');
     Route::put('volunteer/{volunteer}', [VolunteerController::class, 'update'])->name('admin.volunteer.update');
     Route::delete('volunteer/{volunteer}', [VolunteerController::class, 'destroy'])->name('admin.volunteer.destroy');
+
+    Route::resource('sponsor', SponsorController::class);
+    Route::get('sponsor', [SponsorController::class, 'index'])->name('admin.sponsor.index');
+    Route::get('sponsor/create', [SponsorController::class, 'create'])->name('admin.sponsor.create');
+    Route::post('sponsor', [SponsorController::class, 'store'])->name('admin.sponsor.store');
+    Route::get('sponsor/{sponsor}/edit', [SponsorController::class, 'edit'])->name('admin.sponsor.edit');
+    Route::put('sponsor/{sponsor}', [SponsorController::class, 'update'])->name('admin.sponsor.update');
+    Route::delete('sponsor/{sponsor}', [SponsorController::class, 'destroy'])->name('admin.sponsor.destroy');
 
     Route::resource('kemitraan', KemitraanController::class);
     Route::get('kemitraan', [KemitraanController::class, 'index'])->name('admin.kemitraan.index');
@@ -196,9 +204,8 @@ Route::resource('About', AboutController::class)->only('index');
 Route::get('/News/{id_news}', 'NewsController@show')->name('news.show');
 Route::resource('Donate', DonateController::class)->only('index', 'store');
 Route::resource('Partnership', PartnershipController::class)->only('index');
-Route::resource('Sponsor', SponsorController::class)->only('index');
 Route::resource('Contact', ContactController::class)->only('index');
-Route::resource('Statistik', StatistikController::class)->only('index');
+Route::resource('Statistics', StatistikController::class)->only('index');
 Route::resource('Volunteer', VolunteerController::class)->only('index');
 Route::resource('Relawan', RelawanController::class)->only('index', 'store');
 
