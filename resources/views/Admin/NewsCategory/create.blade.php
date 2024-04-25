@@ -43,7 +43,7 @@
                                                     </div>
                                                     <div class="form-group mb-3">
                                                         <label for="description">Deskripsi</label>
-                                                        <textarea class="form-control" id="Description" name="Description" rows="5" placeholder="Deskripsi Kategori"></textarea>
+                                                        <textarea class="form-control" id="summernote" name="Description" rows="5" placeholder="Deskripsi Kategori"></textarea>
                                                         @error('Description')
                                                             <span class="text-danger mt-2">{{ $message }}</span>
                                                         @enderror

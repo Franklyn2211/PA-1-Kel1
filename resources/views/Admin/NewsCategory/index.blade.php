@@ -55,7 +55,7 @@
                                             <tr>
                                                 <td>{{ $loop->iteration }}</td>
                                                 <td>{{ $category->Name }}</td>
-                                                <td>{{ $category->Description }}</td>
+                                                <td>{!! $category->Description !!}</td>
                                                 <td>
                                                     <a href="{{ route('Admin.NewsCategory.edit', $category->id_news_categories) }}" class="btn btn-success btn-sm mr-1"><i class="fa-solid fa-pen"></i> Edit</a>
                                                     <form action="{{ route('Admin.NewsCategory.destroy', $category->id_news_categories) }}" method="POST" class="d-inline">
@@ -63,7 +63,7 @@
                                                         @method('DELETE')
                                                         <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('Apakah Anda yakin ingin menghapus kategori ini?')"><i class="fa-solid fa-trash-can"></i> Hapus</button>
                                                     </form>
-                                                    
+
                                                 </td>
                                             </tr>
                                         @endforeach

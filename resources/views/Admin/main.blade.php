@@ -20,6 +20,8 @@
     <link rel="stylesheet" href="/assets/plugins/datatables-buttons/css/buttons.bootstrap4.min.css">
     <!-- Theme style -->
     <link rel="stylesheet" href="/assets/dist/css/adminlte.min.css">
+    {{-- Summernote CSS di antara Head --}}
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.20/summernote-bs5.min.css" />
 </head>
 
 <body class="hold-transition sidebar-mini">
@@ -180,7 +182,7 @@
                                 </p>
                             </a>
                         </li>
-                        <li class="nav-item">
+                        <li class="nav-item menu">
                             <a href="/Admin/announcementCategories" class="nav-link">
                                 <i class="nav-icon fas fa-user-friends"></i>
                                 <p>
@@ -329,8 +331,29 @@
     <!-- AdminLTE App -->
     <script src="/assets/dist/js/adminlte.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-    <script src="{{ asset('tinymce/tinymce.min.js') }}"></script>
-    <script src="{{ asset('script.js') }}"></script>
+    {{-- Summernote JS --}}
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.20/summernote-bs5.min.js"></script>
+
+    <script>
+        $(document).ready(function() {
+            $('#summernote').summernote({
+                height: 200,
+            });
+        });
+
+        const navbar = document.querySelector('.fixed-top');
+        if (navbar) {
+            window.onscroll = () => {
+                if (window.scrollY > 100) {
+                    navbar.classList.add('scroll-nav-active');
+                    navbar.classList.remove('navbar-dark');
+                } else {
+                    navbar.classList.remove('scroll-nav-active');
+                    // navbar.classList.add('navbar-dark');
+                }
+            };
+}
+</script>
 
     <script>
         $(function() {

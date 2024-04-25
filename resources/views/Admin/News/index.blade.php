@@ -62,7 +62,7 @@
                                         <td>{{ $item->location }}</td>
                                         <td>{{ $item->tanggal }}</td>
                                         <td>{{ $item->category->Name }}</td> <!-- assuming you have a 'category' relationship in your News model -->
-                                        <td>{{ $item->description }}</td>
+                                        <td>{!! $item->description !!}</td>
                                         <td><img src="{{ asset('storage/app/public/photo/' . $item->photo) }}" alt="Foto" style="width: 100px;"></td>
                                         <td>
                                             <a href="{{ route('Admin.News.edit', $item->id_news) }}" class="btn btn-success btn-sm mr-1"><i class="fa-solid fa-pen"></i> Edit</a>

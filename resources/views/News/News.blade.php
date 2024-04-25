@@ -15,7 +15,7 @@
                         <div class="col-md-8">
                             <h5>{{ $berita->title }}</h5>
                             <!-- Tampilkan hanya sebagian deskripsi -->
-                            <p>{{ Str::limit($berita->description, 100) }}</p>
+                            <p>{!! $berita->description !!}</p>
                             <a href="{{ route('news.show',  ['id_news' => $berita->id_news]) }}" class="btn btn-primary">See More</a>
                         </div>
                     </div>

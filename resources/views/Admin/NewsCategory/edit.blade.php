@@ -29,7 +29,7 @@
                         <div class="card">
                             <div class="card-body">
                                 <form action="{{ route('Admin.NewsCategory.update', $newsCategory->id_news_categories) }}" method="POST" enctype="multipart/form-data">
-                                    
+
                                     @csrf
                                     <div class="row">
                                         <div class="col-12">
@@ -44,7 +44,7 @@
                                                     </div>
                                                     <div class="form-group mb-3">
                                                         <label for="description">Deskripsi</label>
-                                                        <textarea class="form-control" id="Description" name="Description" rows="10" required>{{ $newsCategory->Description ?? '' }}</textarea>
+                                                        <textarea class="form-control" id="summernote" name="Description" rows="10" required>{!! $newsCategory->Description ?? '' !!}</textarea>
                                                         @error('Description')
                                                             <span class="text-danger mt-2">{{ $message }}</span>
                                                         @enderror

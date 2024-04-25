@@ -60,7 +60,7 @@
                                                 </div>
                                                 <div class="form-group mb-3">
                                                     <label for="description">Deskripsi</label>
-                                                    <textarea name="description" id="default"  ></textarea>
+                                                    <textarea name="description" id="summernote" ></textarea>
                                                 </div>
                                                 <div class="form-group text-center">
                                                     <button type="submit" class="btn btn-primary">Simpan</button>
