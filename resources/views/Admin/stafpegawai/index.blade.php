@@ -30,10 +30,7 @@
                 </div>
                 <!-- /.card-header -->
                 <div class="card-body">
-                    @if ($stafpegawai->isEmpty())
-                        <p>Tidak ada data staf pegawai.</p>
-                    @else
-                        <table class="table table-striped table-bordered table-hover text-center">
+                    <table id="example1" class="table table-striped table-bordered table-hover text-center" style="width: 100%">
                             <thead>
                                 <tr>
                                     <th>#</th>
@@ -65,7 +62,6 @@
                                 @endforeach
                             </tbody>
                         </table>
-                    @endif
                 </div>
                 <!-- /.card-body -->
             </div>

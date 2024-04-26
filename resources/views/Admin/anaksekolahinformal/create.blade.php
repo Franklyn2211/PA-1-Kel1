@@ -29,7 +29,7 @@
                     <div class="col-md-6">
                         <div class="card">
                             <div class="card-body">
-                                <form action="{{ route('admin.anaksekolahinformal.store') }}" method="POST">
+                                <form action="{{ route('admin.anaksekolahinformal.store') }}" method="POST" enctype="multipart/form-data">
                                     @csrf
                                     <div class="form-group">
                                         <label for="nama">Nama:</label>

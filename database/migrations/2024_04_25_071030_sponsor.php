@@ -13,10 +13,10 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('sponsors', function (Blueprint $table) {
+        Schema::create('sponsor', function (Blueprint $table) {
             $table->id();
             $table->string('Name', 50);
-            $table->string('photo');
+            $table->string('poto');
             $table->text('Description');
             $table->string('created_by', 20)->default('adminYPA');
             $table->string('updated_by', 20)->nullable(true);
@@ -32,6 +32,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('sponsors');
+        Schema::dropIfExists('sponsor');
     }
 };
