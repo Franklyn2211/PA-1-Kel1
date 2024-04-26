@@ -14,14 +14,13 @@ return new class extends Migration
     public function up()
     {
         Schema::create('announcement_categories', function (Blueprint $table) {
-            $table->id();
-            $table->string('Name');
-            $table->string('Slug')->unique();
-            $table->text('Description');
-            $table->string('Created_by', 20)->default('adminYPA');
-            $table->string('Updated_by', 20)->nullable();
-            $table->boolean('Active')->default(true);
+            $table->string('id_announcement_categories')->primary();
+            $table->string('name');
+            $table->text('description');
             $table->timestamps();
+            $table->string('created_by', 20)->default('adminYPA');
+            $table->string('updated_by', 20)->nullable();
+            $table->boolean('active')->default(true);
         });
     }
 

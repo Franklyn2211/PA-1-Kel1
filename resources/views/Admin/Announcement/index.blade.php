@@ -1,5 +1,5 @@
 @extends('Admin.main')
-@section('title', 'News')
+@section('title', 'Announcement')
 @section('content')
 
 <div class="content-wrapper">
@@ -30,7 +30,7 @@
                     <div class="card">
                         <div class="card-header">
                             <div class="text-right">
-                                <a href="{{ route('admin.announcement.create') }}" class="btn btn-primary"><i class="fa-solid fa-plus"></i> Tambah Berita</a>
+                                <a href="{{ route('Admin.Announcement.create') }}" class="btn btn-primary"><i class="fa-solid fa-plus"></i> Tambah Berita</a>
                             </div>
                         </div>
                         <!-- /.card-header -->
@@ -42,27 +42,27 @@
                                         <th>#</th>
                                         <th>Judul</th>
                                         <th>Lokasi</th>
-                                        <th>Tanggal</th>
                                         <th>Kategori</th>
                                         <th>Deskripsi</th>
+                                        <th>Foto</th>
                                         <th>Aksi</th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    @foreach ($news as $item)
+                                    @foreach ($announcements as $item)
                                     <tr>
                                         <td>{{ $loop->iteration }}</td>
-                                        <td>{{ $item->Title }}</td>
-                                        <td>{{ $item->Location }}</td>
-                                        <td>{{ $item->tanggal }}</td>
-                                        <td>{{ $item->category->Name }}</td> <!-- assuming you have a 'category' relationship in your News model -->
-                                        <td>{{ $item->Description }}</td>
+                                        <td>{{ $item->title }}</td>
+                                        <td>{{ $item->location }}</td>
+                                        <td>{{ $item->category->name }}</td> <!-- assuming you have a 'category' relationship in your News model -->
+                                        <td>{!! $item->description !!}</td>
+                                        <td><img src="{{ asset('storage/app/public/photo/' . $item->photo) }}" alt="Foto" style="width: 100px;"></td>
                                         <td>
-                                            <a href="{{ route('admin.announcement.edit', $item->id) }}" class="btn btn-success btn-sm mr-1"><i class="fa-solid fa-pen"></i> Edit</a>
-                                            <form action="{{ route('admin.announcement.destroy', $item->id) }}" method="POST" class="d-inline">
+                                            <a href="{{ route('Admin.Announcement.edit', $item->id_announcements) }}" class="btn btn-success btn-sm mr-1"><i class="fa-solid fa-pen"></i> Edit</a>
+                                            <form action="{{ route('Admin.Announcement.destroy', $item->id_announcements) }}" method="POST" class="d-inline">
                                                 @csrf
                                                 @method('DELETE')
-                                                <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('Apakah Anda yakin ingin menghapus berita ini?')"><i class="fa-solid fa-trash-can"></i> Hapus</button>
+                                                <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('Apakah Anda yakin ingin menghapus pengumuman ini?')"><i class="fa-solid fa-trash-can"></i> Hapus</button>
                                             </form>
                                         </td>
                                     </tr>

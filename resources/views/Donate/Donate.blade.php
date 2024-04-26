@@ -7,7 +7,7 @@
         <div class="alert alert-success">
             {{ session('success') }}
         </div>
-    @endifa
+    @endif
     <p>Kami mengundang Anda untuk berpartisipasi dalam upaya amal kami dengan memberikan dukungan melalui formulir donasi berikut ini:</p>
     <form method="POST" action="{{ route('donate.store') }}" enctype="multipart/form-data">
         @csrf

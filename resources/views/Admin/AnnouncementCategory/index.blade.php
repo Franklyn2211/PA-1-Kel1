@@ -25,12 +25,17 @@
     <div class="content">
         <div class="container-fluid">
             <!-- Small boxes (Stat box) -->
+            @if(session('success'))
+                <div class="alert alert-success">
+                    {{ session('success') }}
+                </div>
+            @endif
             <div class="row">
                 <div class="col-12">
                     <div class="card">
                         <div class="card-header">
                             <div class="text-right">
-                                <a href="{{ route('admin.announcementCategory.create') }}" class="btn btn-primary"><i class="fa-solid fa-plus"></i> Tambah Kategori</a>
+                                <a href="{{ route('Admin.AnnouncementCategory.create') }}" class="btn btn-primary"><i class="fa-solid fa-plus"></i> Tambah Kategori</a>
                             </div>
                         </div>
                         <!-- /.card-header -->
@@ -46,14 +51,14 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    @foreach ($newsCategories as $category)
+                                    @foreach ($announcementCategories as $category)
                                     <tr>
                                         <td>{{ $loop->iteration }}</td>
-                                        <td>{{ $category->Name }}</td>
-                                        <td>{{ $category->Description }}</td>
+                                        <td>{{ $category->name }}</td>
+                                        <td>{!! $category->description !!}</td>
                                         <td>
-                                            <a href="{{ route('admin.announcementCategory.edit', $category->id) }}" class="btn btn-success btn-sm mr-1"><i class="fa-solid fa-pen"></i> Edit</a>
-                                            <form action="{{ route('admin.announcementCategory.destroy', $category->id) }}" method="POST" class="d-inline">
+                                            <a href="{{ route('Admin.AnnouncementCategory.edit', $category->id_announcement_categories) }}" class="btn btn-success btn-sm mr-1"><i class="fa-solid fa-pen"></i> Edit</a>
+                                            <form action="{{ route('Admin.AnnouncementCategory.destroy', $category->id_announcement_categories) }}" method="POST" class="d-inline">
                                                 @csrf
                                                 @method('DELETE')
                                                 <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('Apakah Anda yakin ingin menghapus kategori ini?')"><i class="fa-solid fa-trash-can"></i> Hapus</button>

@@ -182,14 +182,6 @@
                                 </p>
                             </a>
                         </li>
-                        <li class="nav-item menu">
-                            <a href="/Admin/announcementCategories" class="nav-link">
-                                <i class="nav-icon fas fa-user-friends"></i>
-                                <p>
-                                    Donate
-                                </p>
-                            </a>
-                        </li>
                         <li class="nav-item">
                             <a href="#" class="nav-link">
                               <i class="nav-icon fas fa-newspaper"></i>
@@ -201,14 +193,12 @@
                             <ul class="nav nav-treeview">
                               <li class="nav-item">
                                 <a href="{{ route('Admin.News.index') }}" class="nav-link">
-                                <a href="/Admin/News" class="nav-link">
                                   <i class="far fa-circle nav-icon"></i>
                                   <p>News</p>
                                 </a>
                               </li>
                               <li class="nav-item">
                                 <a href="{{ route('Admin.NewsCategory.index') }}" class="nav-link">
-                                <a href="/Admin/NewsCategory" class="nav-link">
                                   <i class="far fa-circle nav-icon"></i>
                                   <p>News Category</p>
                                 </a>
@@ -217,7 +207,7 @@
                         </li>
                         <li class="nav-item">
                             <a href="#" class="nav-link">
-                              <i class="nav-icon fas fa-search"></i>
+                              <i class="nav-icon fas fa-bullhorn"></i>
                               <p>
                                 Announcement
                                 <i class="fas fa-angle-left right"></i>
@@ -225,15 +215,15 @@
                             </a>
                             <ul class="nav nav-treeview">
                               <li class="nav-item">
-                                <a href="/Admin/announcementCategory" class="nav-link">
+                                <a href="{{ route('Admin.Announcement.index') }}" class="nav-link">
                                   <i class="far fa-circle nav-icon"></i>
-                                  <p>Announcement Category</p>
+                                  <p>Announcement</p>
                                 </a>
                               </li>
                               <li class="nav-item">
-                                <a href="/Admin/announcement" class="nav-link">
+                                <a href="{{route ('Admin.AnnouncementCategory.index')}}" class="nav-link">
                                   <i class="far fa-circle nav-icon"></i>
-                                  <p>Announcement</p>
+                                  <p>Announcement Category</p>
                                 </a>
                               </li>
                             </ul>
@@ -289,13 +279,21 @@
                             </ul>
                         </li>
                         <li class="nav-item">
-                            <a class="log-out ml-3" href="#" class="nav-link">
+                            <a href="" class="nav-link log-out">
                                 <i class="nav-icon fa-solid fa-power-off" style="color: red;"></i>
-                                Logout
+                                <p>Logout</p>
+                            </a>
                                 <form action="/logout" method="POST" id="logging-out">
                                     @csrf
                                 </form>
-                            </a>
+                                <style>
+                                    .log-out.nav-link {
+                                        color: #ffffff; /* Warna teks */
+                                        background-color: transparent !important; /* Hapus warna latar belakang */
+                                        box-shadow: none !important;
+                                    }
+                                </style>
+
                         </li>
                     </ul>
                 </nav>
@@ -354,7 +352,7 @@
                     navbar.classList.remove('navbar-dark');
                 } else {
                     navbar.classList.remove('scroll-nav-active');
-                    // navbar.classList.add('navbar-dark');
+                    navbar.classList.add('navbar-dark');
                 }
             };
 }
@@ -388,27 +386,6 @@
 
         });
     </script>
-
-    <script type="text/javascript">
-        $(document).on('click', '#btn-delete', function(e) {
-            e.preventDefault();
-            var form = $(this).closest("form");
-            Swal.fire({
-                title: 'Are you sure?',
-                text: "You will not be able to revert this!",
-                icon: 'warning',
-                showCancelButton: true,
-                confirmButtonColor: '#7367f0',
-                cancelButtonColor: '#82868b',
-                confirmButtonText: 'Yes, delete!'
-            }).then((result) => {
-                if (result.isConfirmed) {
-                    form.submit();
-                }
-            })
-        });
-    </script>
-
     <script>
         (function() {
             'use strict';
@@ -427,9 +404,12 @@
         })();
     </script>
 
-    <script>
+<script>
+    $(document).ready(function() {
         $(".log-out").on('click', function(e) {
             e.preventDefault();
+            $('.nav-link').removeClass('active'); // hapus kelas active dari semua link navigasi
+            $(this).addClass('active'); // tambahkan kelas active ke link yang diklik
             Swal.fire({
                 title: 'Are you sure?',
                 text: "You won't be able to revert this!",
@@ -444,7 +424,9 @@
                 }
             })
         });
-    </script>
+    });
+</script>
+
 
 </body>
 

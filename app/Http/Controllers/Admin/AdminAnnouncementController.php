@@ -5,10 +5,8 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Announcement;
-use App\Models\Announcement_Category; // Menggunakan model AnnouncementCategory
-use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Str; // Import Str untuk membuat slug
-use Illuminate\Support\Facades\Log;
+use App\Models\Announcement_category;
+use Illuminate\Support\Facades\Storage;
 
 class AdminAnnouncementController extends Controller
 {
@@ -21,8 +19,8 @@ class AdminAnnouncementController extends Controller
     public function create()
     {
         // Menampilkan form untuk membuat pengumuman baru
-        $categories = Announcement_Category::all(); // Mengambil semua kategori
-        return view('admin.announcement.create', compact('categories'));
+        $categories = Announcement_category::all(); // Mengambil semua kategori
+        return view('Admin.Announcement.create', compact('categories'));
     }
 
     public function store(Request $request)
@@ -30,71 +28,82 @@ class AdminAnnouncementController extends Controller
         $request->validate([
             'title' => 'required|string|max:255',
             'description' => 'required|string',
-            'announcement_categories_id' => 'required|integer',
-            'photo' => 'image|mimes:jpeg,png,jpg,gif|max:2048', // Sesuaikan aturan validasi dengan kebutuhan Anda
+            'photo' => 'image|mimes:jpeg,png,jpg,gif|max:5000',
+            'location'=> 'required|string',
         ]);
 
-        try {
-            $announcement = new Announcement();
+        $announcements = new Announcement([
+            'id_announcements' => Announcement::generateNextId(),
+            'title' => $request->get('title'),
+            'description' => $request->get('description'),
+            'location' => $request->get('location'),
+        ]);
 
-            $announcement->Title = $request->title;
-            $announcement->Description = $request->description;
-            $announcement->Announcement_categories_id = $request->announcement_categories_id;
+        $announcementCategory = Announcement_category::findOrFail($request->get('announcement_category_id'));
+        $announcements->category()->associate($announcementCategory);
 
-            // Buat slug dari judul (misalnya)
-            $announcement->Slug = Str::slug($request->title); 
-
-            if ($request->hasFile('photo')) {
-                $photo = $request->file('photo');
-                $fileName = time() . '_' . $photo->getClientOriginalName();
-                $photo->move(public_path('uploads'), $fileName);
-                $announcement->photo = $fileName;
-            }
-
-            $announcement->save();
-
-            Log::info('Pengumuman berhasil disimpan: ' . $announcement->id);
-
-            return redirect()->route('admin.announcements.index')->with('success', 'Pengumuman berhasil disimpan!');
-        } catch (\Exception $e) {
-            Log::error('Gagal menyimpan pengumuman: ' . $e->getMessage());
-            return back()->withInput()->with('error', 'Gagal menyimpan pengumuman. Silakan coba lagi.');
+        if ($request->hasFile('photo')) {
+            $file = $request->file('photo');
+            $filename = $file->getClientOriginalName();
+            $destinationPath = 'storage/app/public/photo';
+            $file->move($destinationPath, $filename);
+            $announcements->photo = $filename;
         }
+
+        $announcements->save();
+        return redirect()->route('Admin.Announcement.index')->with('success', 'Pengumuman berhasil disimpan!');
     }
 
-    public function update(Request $request, $id)
+    public function update(Request $request, Announcement $announcements)
     {
         $request->validate([
             'title' => 'required|string|max:255',
             'description' => 'required|string',
-            'announcement_categories_id' => 'required|integer|exists:announcement_categories,id', // Memastikan category_id yang diinput ada dalam tabel announcement_categories
+            'photo' => 'image|mimes:jpeg,png,jpg,gif|max:5000',
+            'location'=> 'required|string',
         ]);
 
-        $announcement = Announcement::findOrFail($id);
-        $announcement->Title = $request->title;
-        $announcement->Description = $request->description;
-        $announcement->Announcement_categories_id = $request->announcement_categories_id;
-        // Buat slug dari judul (misalnya)
-        $announcement->Slug = Str::slug($request->title); 
-        $announcement->save();
+        $data = [
+            'title' => $request->title,
+            'description' => $request->description,
+            'location' => $request->location,
+            'tanggal' => $request->tanggal,
+        ];
 
-        return redirect()->route('admin.announcements.index')->with('success', 'Pengumuman berhasil diperbarui!');
+        // Menghandle foto
+        if ($request->hasFile('photo')) {
+            // Menghapus foto lama jika ada
+            if ($announcements->photo) {
+                Storage::disk('public')->delete('photo/' . $announcements->photo);
+            }
+
+            // Menyimpan foto baru
+            $file = $request->file('photo');
+            $filename = $file->getClientOriginalName();
+            $destinationPath = 'storage/app/public/photo';
+            $file->move($destinationPath, $filename);
+            $data['photo'] = $filename;
+        }
+
+        $announcements->update($data);
+
+        return redirect()->route('Admin.Announcement.index')->with('success', 'Pengumuman berhasil diperbarui!');
     }
 
-    public function edit($id)
+    public function edit(Announcement $announcements)
     {
-        // Menampilkan form untuk mengedit pengumuman
-        $announcement = Announcement::findOrFail($id);
         $categories = Announcement_category::all(); // Mengambil semua kategori
-        return view('admin.announcement.edit', compact('announcement', 'categories'));
+        return view('Admin.Announcement.edit', compact('announcements', 'categories'));
     }
 
     public function destroy($id)
     {
-        // Menghapus pengumuman dari database
-        $announcement = Announcement::findOrFail($id);
-        $announcement->delete();
+        $announcements = Announcement::findOrFail($id);
+        if (Storage::disk('public')->exists('photo/' . $announcements->photo)) {
+            Storage::disk('public')->delete('photo/' . $announcements->photo);
+        }
+        $announcements->delete();
 
-        return redirect()->route('admin.announcements.index')->with('success', 'Pengumuman berhasil dihapus');
+        return redirect()->route('Admin.Announcement.index')->with('success', 'Pengumuman berhasil dihapus');
     }
 }
