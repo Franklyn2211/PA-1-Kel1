@@ -279,15 +279,6 @@
                                         <i class="far fa-circle nav-icon"></i>
                                         <p>Staf/Pegawai</p>
                                     </a>
-                                </li>
-                                <li class="nav-item">
-                                    <a href="/Admin/volunteer" class="nav-link">
-                                        <i class="far fa-circle nav-icon"></i>
-                                        <p>Volunteer</p>
-                                    </a>
-                                </li>
-                            </ul>
-                        </li>
                         <li class="nav-item">
                             <a class="log-out ml-3" href="#" class="nav-link">
                                 <i class="nav-icon fa-solid fa-power-off" style="color: red;"></i>

@@ -26,7 +26,6 @@ use App\Http\Controllers\Admin\HeroSectionController;
 use App\Http\Controllers\Admin\DataYayasanController;
 use App\Http\Controllers\Admin\GalleryController;
 use App\Http\Controllers\Admin\AddressController;
-use App\Http\Controllers\Admin\VolunteerController;
 
 /*
 |--------------------------------------------------------------------------
@@ -165,15 +164,6 @@ Route::prefix('Admin')->middleware('auth')->group(function () {
     Route::put('stafpegawai/{stafpegawai}', [StafPegawaiController::class, 'update'])->name('admin.stafpegawai.update');
     Route::delete('stafpegawai/{stafpegawai}', [StafPegawaiController::class, 'destroy'])->name('admin.stafpegawai.destroy');
 
-    Route::resource('volunteer', VolunteerController::class);
-    Route::get('volunteer', [VolunteerController::class, 'index'])->name('admin.volunteer.index');
-    Route::get('volunteer/create', [VolunteerController::class, 'create'])->name('admin.volunteer.create');
-    Route::post('volunteer', [VolunteerController::class, 'store'])->name('admin.volunteer.store');
-    Route::get('volunteer/{volunteer}', [VolunteerController::class, 'show'])->name('admin.volunteer.show');
-    Route::get('volunteer/{volunteer}/edit', [VolunteerController::class, 'edit'])->name('admin.volunteer.edit');
-    Route::put('volunteer/{volunteer}', [VolunteerController::class, 'update'])->name('admin.volunteer.update');
-    Route::delete('volunteer/{volunteer}', [VolunteerController::class, 'destroy'])->name('admin.volunteer.destroy');
-
     Route::resource('sponsor', SponsorController::class);
     Route::get('sponsor', [SponsorController::class, 'index'])->name('admin.sponsor.index');
     Route::get('sponsor/create', [SponsorController::class, 'create'])->name('admin.sponsor.create');
@@ -206,7 +196,6 @@ Route::resource('Donate', DonateController::class)->only('index', 'store');
 Route::resource('Partnership', PartnershipController::class)->only('index');
 Route::resource('Contact', ContactController::class)->only('index');
 Route::resource('Statistics', StatistikController::class)->only('index');
-Route::resource('Volunteer', VolunteerController::class)->only('index');
 Route::resource('Relawan', RelawanController::class)->only('index', 'store');
 
 Route::get('/donasi', [DonateController::class, 'donate'])->name('donate.donate');

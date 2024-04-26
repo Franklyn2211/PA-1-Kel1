@@ -125,18 +125,18 @@
                                     <th scope="col">No</th>
                                     <th scope="col">Nama</th>
                                     <th scope="col">Email</th>
-                                    <th scope="col">Jumlah Donasi</th>
-                                    <th scope="col">Gender</th>
+                                    <th scope="col">No.hp</th>
+                                    <th scope="col">Lokasi</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                @foreach($volunteer as $volunteer)
+                                @foreach ($relawans as $relawan)
                                 <tr>
                                     <td>{{ $loop->iteration }}</td>
-                                    <td>{{ $volunteer->nama }}</td>
-                                    <td>{{ $volunteer->email }}</td>
-                                    <td>{{ $volunteer->jumlah_donasi }}</td>
-                                    <td>{{ $volunteer->gender }}</td>
+                                    <td>{{ $relawan->nama_relawan }}</td>
+                                    <td>{{ $relawan->email }}</td>
+                                    <td>{{ $relawan->no_hp }}</td>
+                                    <td>{{ $relawan->lokasi }}</td>
                                 </tr>
                                 @endforeach
                             </tbody>
@@ -146,6 +146,42 @@
             </div>
         </div>
     </div>
+
+<div class="row justify-content-center mt-5">
+    <div class="col-md-8">
+        <div class="card shadow">
+            <div class="card-header bg-primary text-white text-center">
+                <h5 class="mb-0">Donatur</h5>
+            </div>
+            <div class="card-body">
+                <div class="table-responsive">
+                    <table class="table table-bordered table-sm mt-3 text-center">
+                        <thead class="thead-light">
+                            <tr>
+                                <th scope="col">No</th>
+                                <th scope="col">Nama</th>
+                                <th scope="col">Email</th>
+                                <th scope="col">No.hp</th>
+                                <th scope="col">Jumlah Donasi</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach ($donates as $donate)
+                            <tr>
+                                <td>{{ $loop->iteration }}</td>
+                                <td>{{ $donate->Name }}</td>
+                                <td>{{ $donate->Email }}</td>
+                                <td>{{ $donate->Phone_number }}</td>
+                                <td>{{ $donate->donation_amount }}</td>
+                            </tr>
+                            @endforeach
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 </div>
 
 @endsection

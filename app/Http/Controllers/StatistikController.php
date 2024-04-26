@@ -6,6 +6,8 @@ use App\Models\AnakDisabilitas; // Sesuaikan dengan model yang sesuai
 use App\Models\AnakSekolahInformal;
 use App\Models\StafPegawai;
 use App\Models\Volunteer;
+use App\Models\Donate;
+use App\Models\Relawan;
 
 class StatistikController extends Controller
 {
@@ -14,8 +16,9 @@ class StatistikController extends Controller
         $anakDisabilitas = AnakDisabilitas::all();
         $anakSekolahInformal = AnakSekolahInformal::all();
         $stafPegawai = StafPegawai::all();
-        $volunteer = Volunteer::all();
+        $donates = Donate::all();
+        $relawans = Relawan::all();
 
-        return view('statistik.statistics', compact('anakDisabilitas', 'anakSekolahInformal', 'stafPegawai', 'volunteer'));
+        return view('statistik.statistics', compact('anakDisabilitas', 'anakSekolahInformal', 'stafPegawai', 'donates', 'relawans'));
     }
 }
