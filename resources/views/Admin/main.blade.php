@@ -247,6 +247,14 @@
                             </a>
                         </li>
                         <li class="nav-item">
+                            <a href="/Admin/kontak" class="nav-link">
+                                <i class="nav-icon fas fa-user-friends"></i>
+                                <p>
+                                    Kontak
+                                </p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
                             <a href="/Admin/kemitraan" class="nav-link">
                                 <i class="nav-icon fas fa-user-friends"></i>
                                 <p>

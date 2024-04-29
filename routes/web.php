@@ -4,7 +4,6 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\RelawanController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\HomeController;
-use App\Http\Controllers\ContactController;
 use App\Http\Controllers\DonateController;
 use App\Http\Controllers\NewsController;
 use App\Http\Controllers\PartnershipController;
@@ -24,6 +23,7 @@ use App\Http\Controllers\Admin\AdminAnnouncementController;
 use App\Http\Controllers\Admin\AnnouncementCategoryController;
 use App\Http\Controllers\Admin\HeroSectionController;
 use App\Http\Controllers\Admin\DataYayasanController;
+use App\Http\Controllers\KontakController;
 use App\Http\Controllers\Admin\GalleryController;
 use App\Http\Controllers\Admin\AddressController;
 
@@ -58,6 +58,9 @@ Route::prefix('Admin')->middleware('auth')->group(function () {
     Route::get('donatur', [DonaturController::class, 'index'])->name('Admin.donate.donate');
     Route::delete('donatur/{donate}', [DonaturController::class, 'destroy'])->name('donate.destroy');
 
+    Route::get('kontak', [\App\Http\Controllers\Admin\KontakController::class, 'index'])->name('admin.kontak.index');
+    Route::delete('admin/kontak/{kontak}', [\App\Http\Controllers\Admin\KontakController::class, 'destroy'])->name('kontak.destroy');
+    Route::post('admin/kontak', [\App\Http\Controllers\Admin\KontakController::class, 'store'])->name('kontak.store');
     // Routes for news management
     Route::get('News', [AdminNewsController::class, 'index'])->name('Admin.News.index');
     Route::get('News/create', [AdminNewsController::class, 'create'])->name('Admin.News.create');
@@ -194,7 +197,7 @@ Route::resource('About', AboutController::class)->only('index');
 Route::get('/News/{id_news}', 'NewsController@show')->name('news.show');
 Route::resource('Donate', DonateController::class)->only('index', 'store');
 Route::resource('Partnership', PartnershipController::class)->only('index');
-Route::resource('Contact', ContactController::class)->only('index');
+Route::resource('Contact', KontakController::class)->only('index', 'store');
 Route::resource('Statistics', StatistikController::class)->only('index');
 Route::resource('Relawan', RelawanController::class)->only('index', 'store');
 
