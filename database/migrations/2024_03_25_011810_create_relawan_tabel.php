@@ -19,8 +19,8 @@ return new class extends Migration {
             $table->enum('lokasi', ['Wilayah I, Desa Lumban Silintong, Kecamatan Balige, Kabupaten Toba', 'Wilayah II, Desa Sawah Lamo, Kecamatan Andam Dewi, Kabupaten Tapanuli Tengah']);
             $table->binary('cv')->nullable();
             $table->timestamps();
-            $table->string('created_by')->nullable();
-            $table->string('updated_by')->nullable();
+            $table->string('created_by', 20)->default('adminYPA');
+            $table->string('updated_by', 20)->nullable(true);
             $table->boolean('active')->default(true);
         });
     }

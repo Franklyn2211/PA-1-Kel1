@@ -14,7 +14,7 @@ return new class extends Migration
     public function up()
     {
         Schema::create('sponsor', function (Blueprint $table) {
-            $table->id();
+            $table->string('id_sponsor')->primary();
             $table->string('Name', 50);
             $table->string('poto');
             $table->text('Description');

@@ -269,6 +269,8 @@
                                         <i class="far fa-circle nav-icon"></i>
                                         <p>Staf/Pegawai</p>
                                     </a>
+                                </li>
+                            </ul>
                         <li class="nav-item">
                             <a href="" class="nav-link log-out">
                                 <i class="nav-icon fa-solid fa-power-off" style="color: red;"></i>
@@ -284,7 +286,6 @@
                                         box-shadow: none !important;
                                     }
                                 </style>
-
                         </li>
                     </ul>
                 </nav>

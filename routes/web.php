@@ -142,7 +142,7 @@ Route::prefix('Admin')->middleware('auth')->group(function () {
     Route::get('anakdisabilitas', [AnakDisabilitasController::class, 'index'])->name('admin.anakdisabilitas.index');
     Route::get('anakdisabilitas/create', [AnakDisabilitasController::class, 'create'])->name('admin.anakdisabilitas.create');
     Route::post('anakdisabilitas/store', [AnakDisabilitasController::class, 'store'])->name('admin.anakdisabilitas.store');
-    Route::post('anakdisabilitas/{anakdisabilitas}', [AnakDisabilitasController::class, 'show'])->name('admin.anakdisabilitas.show');
+    Route::get('anakdisabilitas/{anakdisabilitas}', [AnakDisabilitasController::class, 'show'])->name('admin.anakdisabilitas.show');
     Route::get('anakdisabilitas/{anakdisabilitas}/edit', [AnakDisabilitasController::class, 'edit'])->name('admin.anakdisabilitas.edit');
     Route::put('anakdisabilitas/{anakdisabilitas}', [AnakDisabilitasController::class, 'update'])->name('admin.anakdisabilitas.update');
     Route::delete('anakdisabilitas/{anakdisabilitas}', [AnakDisabilitasController::class, 'destroy'])->name('admin.anakdisabilitas.destroy');

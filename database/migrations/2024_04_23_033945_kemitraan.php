@@ -13,12 +13,12 @@ return new class extends Migration {
     public function up()
     {
         Schema::create('kemitraan', function (Blueprint $table) {
-            $table->id();
+            $table->string('id_kemitraan')->primary();
             $table->string('nama');
             $table->string('logo');
             $table->string('program');
-            $table->string('created_by')->nullable();
-            $table->string('updated_by')->nullable();
+            $table->string('created_by', 20)->default('adminYPA');
+            $table->string('updated_by', 20)->nullable(true);
             $table->boolean('active')->default(true);
             $table->timestamps();
         });

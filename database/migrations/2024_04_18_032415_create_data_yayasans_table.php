@@ -12,7 +12,7 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('data_yayasans', function (Blueprint $table) {
-            $table->increments('id_data_yayasans');
+            $table->string('id_data_yayasans')->primary();
             $table->string('nama_yayasan', 40)->nullable(true);
             $table->string('singkatan_nama_yayasan', 20)->nullable(true);
             $table->text('sejarah');
@@ -21,7 +21,7 @@ return new class extends Migration
             $table->string('logo_yayasan', 100)->nullable(true);
             $table->string('created_by', 20)->default('adminYPA');
             $table->string('updated_by', 20)->nullable(true);
-            $table->boolean('active')->default(true); 
+            $table->boolean('active')->default(true);
             $table->timestamps();
         });
     }

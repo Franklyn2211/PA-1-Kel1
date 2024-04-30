@@ -30,9 +30,11 @@
                     <div class="col-md-6">
                         <div class="card">
                             <div class="card-body">
-                                <p><strong>Nama:</strong> {{ $anakdisabilitas->nama }}</p>
-                                <p><strong>Umur:</strong> {{ $anakdisabilitas->umur }}</p>
-                                <p><strong>Tanggal Bergabung:</strong> {{ $anakdisabilitas->tanggal_bergabung }}</p>
+                                @foreach ($anakdisabilitas as $item)
+                                <p><strong>Nama:</strong> {{ $item->nama }}</p>
+                                <p><strong>Umur:</strong> {{ $item->umur }}</p>
+                                <p><strong>Tanggal Bergabung:</strong> {{ $item->tanggal_bergabung }}</p>
+                                @endforeach
                             </div>
                         </div>
                     </div>
