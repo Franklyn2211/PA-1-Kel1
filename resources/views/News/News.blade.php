@@ -7,19 +7,18 @@
         <div class="row">
             <div class="col-md-8">
                 @foreach($news as $berita)
-                <div class="news-card">
+                <div class="news-card mb-4">
                     <div class="row align-items-center">
                         <div class="col-md-4">
-                            <img src="{{ asset('storage/app/public/photo/' . $berita->photo) }}" alt="{{ $berita->title }}" class="img-fluid">
+                            <img src="{{ asset('storage/app/public/photo/' . $berita->photo) }}" alt="{{ $berita->title }}" class="img-fluid rounded">
                         </div>
                         <div class="col-md-8">
                             <h5>{{ $berita->title }}</h5>
                             <!-- Tampilkan hanya sebagian deskripsi -->
                             <p>{!! $berita->description !!}</p>
-                            <a href="{{ route('news.show',  ['id_news' => $berita->id_news]) }}" class="btn btn-primary">See More</a>
+                            <a href="{{ route('news.show', ['id_news' => $berita->id_news]) }}" class="btn btn-primary">See More</a>
                         </div>
                     </div>
-
                 </div>
                 @endforeach
                 <div class="d-flex justify-content-center">

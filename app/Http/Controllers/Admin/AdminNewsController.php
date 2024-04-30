@@ -6,7 +6,6 @@ use Illuminate\Http\Request;
 use App\Models\News;
 use App\Models\Newscategory;
 use Illuminate\Support\Facades\Storage;
-use ILLuminate\Support\Str;
 
 class AdminNewsController extends Controller
 {

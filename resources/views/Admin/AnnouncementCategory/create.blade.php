@@ -1,5 +1,5 @@
 @extends('Admin.main')
-@section('title', 'Tambah Announcement Category')
+@section('title', 'Announcement Category')
 @section('content')
 <div class="content-wrapper">
     <!-- Content Header (Page header) -->
@@ -28,8 +28,7 @@
                 <div class="col-12">
                     <div class="card">
                         <div class="card-body">
-                            <form action="{{ route('admin.announcementCategory.store') }}" method="post"
-                                enctype="multipart/form-data">
+                            <form action="{{ route('Admin.AnnouncementCategory.store') }}" method="post" enctype="multipart/form-data">
                                 @csrf
                                 <div class="row">
                                     <div class="col-12">
@@ -45,7 +44,7 @@
                                                 </div>
                                                 <div class="form-group mb-3">
                                                     <label for="description">Deskripsi</label>
-                                                    <textarea class="form-control" id="description" name="description"
+                                                    <textarea class="form-control" id="summernote" name="description"
                                                         rows="5" placeholder="Deskripsi Kategori"></textarea>
                                                     @error('description')
                                                     <span class="text-danger mt-2">{{ $message }}</span>

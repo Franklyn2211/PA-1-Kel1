@@ -24,42 +24,52 @@ class AnakDisabilitasController extends Controller
 
     public function store(Request $request)
     {
-        $validatedData = $request->validate([
+        $request->validate([
             'nama' => 'required|string',
             'umur' => 'required|integer',
             'tanggal_bergabung' => 'required|date',
         ]);
 
-        $validatedData['created_by'] = auth()->id(); // Menyimpan ID user yang membuat data
-        $validatedData['updated_by'] = auth()->id(); // Menyimpan ID user yang terakhir mengubah data
+        $anakdisabilitas = new AnakDisabilitas([
+            'id_anakdisabilitas' => AnakDisabilitas::generateNextId(),
+            'nama' => $request->get('nama'),
+            'umur' => $request->get('umur'),
+            'tanggal_bergabung' => $request->get('tanggal_bergabung'),
+        ]);
 
-        AnakDisabilitas::create($validatedData);
-
+        $anakdisabilitas->save();
         return redirect()->route('admin.anakdisabilitas.index')->with('success', 'Anak disabilitas berhasil ditambahkan.');
     }
 
     // Menampilkan detail anak disabilitas
     public function show(AnakDisabilitas $anakdisabilitas)
     {
+        $anakdisabilitas = AnakDisabilitas::all();
         return view('admin.anakdisabilitas.show', compact('anakdisabilitas'));
     }
 
     public function edit(AnakDisabilitas $anakdisabilitas)
     {
+        $anakdisabilitas = AnakDisabilitas::all();
         return view('admin.anakdisabilitas.edit', compact('anakdisabilitas'));
     }
 
     // Menyimpan perubahan saat inline editing dilakukan
     public function update(Request $request, AnakDisabilitas $anakdisabilitas)
     {
-        $validatedData = $request->validate([
+        $request->validate([
             'nama' => 'required|string',
             'umur' => 'required|integer',
             'tanggal_bergabung' => 'required|date',
         ]);
 
-        $anakdisabilitas->update($validatedData);
+        $data = [
+            'nama' => $request->nama,
+            'umur' => $request->umur,
+            'tanggal_bergabung' => $request->tanggal_bergabung,
+        ];
 
+        $anakdisabilitas->update($data);
         return redirect()->route('admin.anakdisabilitas.index')->with('success', 'Data berhasil diperbarui.');
     }
 

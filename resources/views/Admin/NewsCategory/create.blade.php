@@ -48,8 +48,6 @@
                                                             <span class="text-danger mt-2">{{ $message }}</span>
                                                         @enderror
                                                     </div>
-                                                    <!-- Jika Anda ingin menyembunyikan form input "Created_by" -->
-                                                    <!-- <input type="hidden" name="created_by" value="{{ auth()->user()->id }}"> -->
                                                     <div class="form-group text-center"> <!-- Perubahan di sini -->
                                                         <button type="submit" class="btn btn-primary">Simpan</button>
                                                     </div>

@@ -9,23 +9,34 @@ class AnakSekolahInformal extends Model
 {
     use HasFactory;
 
-    protected $primaryKey = 'id';
+    protected $primaryKey = 'id_anaksekolahinformal';
     protected $table = 'anaksekolahinformal';
-    protected $fillable = ['id','nama', 'umur', 'tanggal_bergabung', 'created_by', 'updated_by', 'active'];
+    public $incrementing = false;
+    protected $fillable = [
+        'id_anaksekolahinformal',
+        'nama',
+        'umur',
+        'tanggal_bergabung',
+        'created_by',
+        'updated_by',
+        'active',
+    ];
+protected $casts = [
+    'active' => 'boolean',
+];
 
-    /**
-     * Get the user that created the child with disability.
-     */
-    public function creator(): BelongsTo
-    {
-        return $this->belongsTo(User::class, 'created_by');
-    }
+public static function generateNextId(){
+    $latestId = self::orderBy('id_anaksekolahinformal', 'desc')->first();
 
-    /**
-     * Get the user that last updated the child with disability.
-     */
-    public function editor(): BelongsTo
-    {
-        return $this->belongsTo(User::class, 'updated_by');
-    }
+    // Mengambil nomor dari ID terakhir
+    $lastNumber = $latestId ? intval(substr($latestId->id_anaksekolahinformal, 1)) : 0;
+
+    // Menambahkan 1 untuk mendapatkan nomor berikutnya
+    $nextNumber = $lastNumber + 1;
+
+    // Mengonversi nomor berikutnya ke format yang diinginkan (NXX)
+    $nextId = 'ASI' . str_pad($nextNumber, 2, '0', STR_PAD_LEFT);
+
+    return $nextId;
+}
 }
