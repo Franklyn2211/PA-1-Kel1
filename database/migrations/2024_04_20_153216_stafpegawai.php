@@ -16,6 +16,7 @@ return new class extends Migration {
             $table->string('id_stafpegawai')->primary();
             $table->string('nama');
             $table->integer('umur');
+            $table->string('photo')->nullable();
             $table->date('tanggal_bergabung');
             $table->string('jabatan');
             $table->timestamps();
