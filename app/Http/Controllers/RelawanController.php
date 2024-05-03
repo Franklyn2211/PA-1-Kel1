@@ -11,7 +11,7 @@ class RelawanController extends Controller
         
         $relawan = Relawan::all();
         return view('Relawan.Relawan', compact('relawan'));
-    }   
+    }
 
     public function store(Request $request)
     {
@@ -19,7 +19,7 @@ class RelawanController extends Controller
         $request->validate([
             'nama_relawan' => 'required|string',
             'email' => 'required|email|unique:relawan,email',
-            'no_hp' => 'required|string',
+            'no_hp' => 'required|numeric',
             'tanggallahir' => 'required|date',
             'lokasi' => 'required|string',
             'cv' => 'nullable|file',
@@ -30,12 +30,12 @@ class RelawanController extends Controller
 
         // Simpan data relawan ke dalam database
         $relawan = new Relawan([
-            'id_relawan' => $nextId,  
-            'nama_relawan' => $request->get('nama_relawan'),  
-            'email' => $request->get('email'),  
-            'no_hp' => $request->get('no_hp'),  
-            'tanggallahir' => $request->get('tanggallahir'),  
-            'lokasi' => $request->get('lokasi'), 
+            'id_relawan' => $nextId,
+            'nama_relawan' => $request->get('nama_relawan'),
+            'email' => $request->get('email'),
+            'no_hp' => $request->get('no_hp'),
+            'tanggallahir' => $request->get('tanggallahir'),
+            'lokasi' => $request->get('lokasi'),
         ]);
 
         // Jika ada file CV yang diunggah, simpan ke dalam storage

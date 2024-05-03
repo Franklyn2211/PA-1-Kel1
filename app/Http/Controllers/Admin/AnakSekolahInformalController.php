@@ -18,23 +18,25 @@ class AnakSekolahInformalController extends Controller
 
     public function create()
     {
-        $anaksekolahinformal = AnakSekolahInformal::all();
-        return view('admin.anaksekolahinformal.create', compact('anaksekolahinformal'));
+        return view('admin.anaksekolahinformal.create');
     }
 
     public function store(Request $request)
     {
-        $validatedData = $request->validate([
+        $request->validate([
             'nama' => 'required|string',
             'umur' => 'required|integer',
             'tanggal_bergabung' => 'required|date',
         ]);
 
-        $validatedData['created_by'] = auth()->id(); // Menyimpan ID user yang membuat data
-        $validatedData['updated_by'] = auth()->id(); // Menyimpan ID user yang terakhir mengubah data
+        $anaksekolahinformal = new AnakSekolahInformal([
+            'id_anaksekolahinformal' => AnakSekolahInformal::generateNextId(),
+            'nama' => $request->get('nama'),
+            'umur' => $request->get('umur'),
+            'tanggal_bergabung' => $request->get('tanggal_bergabung'),
+        ]);
 
-        AnakSekolahInformal::create($validatedData);
-
+        $anaksekolahinformal->save();
         return redirect()->route('admin.anaksekolahinformal.index')->with('success', 'Anak sekolah informal berhasil ditambahkan.');
     }
 

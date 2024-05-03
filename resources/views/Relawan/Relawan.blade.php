@@ -16,7 +16,7 @@
         <label for="email">Email</label><br>
         <input type="email" id="email" name="email"><br>
         <label for="no_hp">No. Hp</label><br>
-        <input type="tel" id="no_hp" name="no_hp"><br>
+        <input type="tel" id="phone" name="no_hp" pattern="[0-9]{9,15}" required><br>
         <label for="tanggallahir">Tanggal Lahir</label><br>
         <input type="date" id="tanggallahir" name="tanggallahir"><br>
         <label for="lokasi">Lokasi yang dipilih*</label><br>

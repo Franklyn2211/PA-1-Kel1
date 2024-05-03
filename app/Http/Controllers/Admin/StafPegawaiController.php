@@ -5,7 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\StafPegawai;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth; // Tambahkan baris ini untuk mengimpor kelas Auth
+use Illuminate\Support\Facades\Storage;
 
 class StafPegawaiController extends Controller
 {
@@ -22,18 +22,31 @@ class StafPegawaiController extends Controller
 
     public function store(Request $request)
     {
-        $validatedData = $request->validate([
+        $request->validate([
             'nama' => 'required|string',
             'umur' => 'required|integer',
             'tanggal_bergabung' => 'required|date',
             'jabatan' => 'required|string',
+            'photo' => 'nullable|image|mimes:jpeg,png,jpg|max:5000',
         ]);
 
-        $validatedData['created_by'] = Auth::id(); // Menyimpan ID user yang membuat data
-        $validatedData['updated_by'] = Auth::id(); // Menyimpan ID user yang terakhir mengubah data
+        $stafpegawai = new StafPegawai([
+            'id_stafpegawai' => StafPegawai::generateNextId(),
+            'nama' => $request->get('nama'),
+            'umur' => $request->get('umur'),
+            'tanggal_bergabung' => $request->get('tanggal_bergabung'),
+            'jabatan' => $request->get('jabatan')
+        ]);
 
-        StafPegawai::create($validatedData);
+        if ($request->hasFile('photo')) {
+            $file = $request->file('photo');
+            $filename = $file->getClientOriginalName();
+            $destinationPath = 'storage/app/public/photo';
+            $file->move($destinationPath, $filename);
+            $stafpegawai->photo = $filename;
+        }
 
+        $stafpegawai->save();
         return redirect()->route('admin.stafpegawai.index')->with('success', 'Staf pegawai berhasil ditambahkan.');
     }
 
@@ -49,24 +62,49 @@ class StafPegawaiController extends Controller
 
     public function update(Request $request, StafPegawai $stafpegawai)
     {
-        $validatedData = $request->validate([
+        $request->validate([
             'nama' => 'required|string',
             'umur' => 'required|integer',
             'tanggal_bergabung' => 'required|date',
             'jabatan' => 'required|string',
+            'photo' => 'nullable|image|mimes:jpeg,png,jpg|max:5000',
         ]);
 
-        $validatedData['updated_by'] = Auth::id(); // Menyimpan ID user yang terakhir mengubah data
+        $data = [
+            'nama' => $request->nama,
+            'umur' => $request->umur,
+            'tanggal_bergabung' => $request->tanggal_bergabung,
+            'jabatan' => $request->jabatan,
+        ];
 
-        $stafpegawai->update($validatedData);
+        if ($request->hasFile('photo')) {
+            // Menghapus foto lama jika ada
+            if ($stafpegawai->photo) {
+                Storage::disk('public')->delete('photo/' . $stafpegawai->photo);
+            }
 
+            // Menyimpan foto baru
+            $file = $request->file('photo');
+            $filename = $file->getClientOriginalName();
+            $destinationPath = 'storage/app/public/photo';
+            $file->move($destinationPath, $filename);
+            $data['photo'] = $filename;
+        }
+
+        $stafpegawai->update($data);
         return redirect()->route('admin.stafpegawai.index')->with('success', 'Data berhasil diperbarui.');
     }
 
-    public function destroy(StafPegawai $stafpegawai)
+    public function destroy($id)
     {
-        $stafpegawai->delete();
+        $stafpegawai = StafPegawai::findOrFail($id);
 
+        // Hapus foto dari storage jika ada
+        if (Storage::disk('public')->exists('photo/' . $stafpegawai->photo)) {
+            Storage::disk('public')->delete('photo/' . $stafpegawai->photo);
+        }
+
+        $stafpegawai->delete();
         return redirect()->route('admin.stafpegawai.index')->with('success', 'Data berhasil dihapus.');
     }
 }

@@ -16,7 +16,7 @@
         <label for="Email">Email*</label><br>
         <input type="email" id="Email" name="Email" required><br>
         <label for="Phone_number">No. Hp*</label><br>
-        <input type="tel" id="Phone_number" name="Phone_number" required><br>
+        <input type="tel" id="phone" name="Phone_number" pattern="[0-9]{9,15}" required><br>
         <label for="no-rekening">No. Rekening*</label><br>
         <span><strong>1687210113<br>
         BNI a.n Pendidikan Anak Rumah Damai</strong></span><br>

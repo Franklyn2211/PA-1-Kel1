@@ -32,7 +32,7 @@ class NewsCategory extends Model
     $latestId = self::orderBy('id_news_categories', 'desc')->first();
 
     // Mengambil nomor dari ID terakhir
-    $lastNumber = $latestId ? intval(substr($latestId->id_news_categories, 1)) : 0;
+    $lastNumber = $latestId ? intval(substr($latestId->id_news_categories, 2)) : 0;
 
     // Menambahkan 1 untuk mendapatkan nomor berikutnya
     $nextNumber = $lastNumber + 1;
