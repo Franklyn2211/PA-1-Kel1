@@ -22,12 +22,22 @@ class KemitraanController extends Controller
 
     public function store(Request $request)
     {
-        $kemitraan = Kemitraan::create($request->all());
+        $request->validate([
+            'nama' => 'required|string|max:255',
+            'program' => 'required|string',
+        ]);
+
+        $kemitraan = new Kemitraan([
+            'id_kemitraan' => Kemitraan::generateNextId(),
+            'nama' => $request->get('nama'),
+            'program' => $request->get('program'),
+        ]);
         if($request->hasFile('logo')){
             $request->file('logo')->move('logokemitraan/', $request->file('logo')->getClientOriginalName());
             $kemitraan->logo = $request->file('logo')->getClientOriginalName();
-            $kemitraan->save();
+            
         }
+        $kemitraan->save();
         return redirect()->route('admin.kemitraan.index')
             ->with('success', 'Kemitraan berhasil ditambahkan.');
     }

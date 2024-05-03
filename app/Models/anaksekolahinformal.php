@@ -29,7 +29,7 @@ public static function generateNextId(){
     $latestId = self::orderBy('id_anaksekolahinformal', 'desc')->first();
 
     // Mengambil nomor dari ID terakhir
-    $lastNumber = $latestId ? intval(substr($latestId->id_anaksekolahinformal, 1)) : 0;
+    $lastNumber = $latestId ? intval(substr($latestId->id_anaksekolahinformal, 3)) : 0;
 
     // Menambahkan 1 untuk mendapatkan nomor berikutnya
     $nextNumber = $lastNumber + 1;
