@@ -8,6 +8,7 @@ class RelawanController extends Controller
 {
     public function index()
     {
+        
         $relawan = Relawan::all();
         return view('Relawan.Relawan', compact('relawan'));
     }
