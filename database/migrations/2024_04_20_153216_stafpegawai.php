@@ -18,7 +18,7 @@ return new class extends Migration {
             $table->integer('umur');
             $table->string('photo')->nullable();
             $table->date('tanggal_bergabung');
-            $table->string('jabatan');
+            $table->enum('jabatan', ['Ketua Yayasan','Pengajar','Staff']);
             $table->timestamps();
             $table->string('created_by', 20)->default('adminYPA');
             $table->string('updated_by', 20)->nullable(true);

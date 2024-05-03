@@ -18,8 +18,7 @@ class AnakDisabilitasController extends Controller
 
     public function create()
     {
-        $anakdisabilitas = AnakDisabilitas::all();
-        return view('admin.anakdisabilitas.create', compact('anakdisabilitas'));
+        return view('admin.anakdisabilitas.create');
     }
 
     public function store(Request $request)
@@ -42,9 +41,9 @@ class AnakDisabilitasController extends Controller
     }
 
     // Menampilkan detail anak disabilitas
-    public function show(AnakDisabilitas $anakdisabilitas)
+    public function show($id)
     {
-        $anakdisabilitas = AnakDisabilitas::all();
+        $anakdisabilitas = AnakDisabilitas::findOrFail($id);
         return view('admin.anakdisabilitas.show', compact('anakdisabilitas'));
     }
 

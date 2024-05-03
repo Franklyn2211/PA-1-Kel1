@@ -27,10 +27,11 @@ class AnakDisabilitas extends Model
     ];
 
     public static function generateNextId(){
+
         $latestId = self::orderBy('id_anakdisabilitas', 'desc')->first();
 
         // Mengambil nomor dari ID terakhir
-        $lastNumber = $latestId ? intval(substr($latestId->id_anakdisabilitas, 1)) : 0;
+        $lastNumber = $latestId ? intval(substr($latestId->id_anakdisabilitas, 2)) : 0;
 
         // Menambahkan 1 untuk mendapatkan nomor berikutnya
         $nextNumber = $lastNumber + 1;

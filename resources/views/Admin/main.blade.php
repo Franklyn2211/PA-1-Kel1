@@ -75,7 +75,7 @@
             <!-- Brand Logo -->
             <a href="/Admin" class="brand-link">
                 <img src="{{ asset('assets/img/logo.png') }}" alt="Admin Logo"
-                class="brand-image img-circle elevation-3" style="opacity: .8">
+                    class="brand-image img-circle elevation-3" style="opacity: .8">
                 <span class="brand-text font-weight-light">Admin</span>
             </a>
 
@@ -111,59 +111,29 @@
                             <a href="#" class="nav-link">
                                 <i class="nav-icon fas fa-tachometer-alt"></i>
                                 <p>
-                                  Dashboard
-                                  <i class="right fas fa-angle-left"></i>
+                                    Dashboard
+                                    <i class="right fas fa-angle-left"></i>
                                 </p>
-                              </a>
+                            </a>
                             <ul class="nav nav-treeview">
                                 <li class="nav-item">
-                                    <a href="/Admin/data-yayasan" class="nav-link">
-                                      <i class="far fa-circle nav-icon"></i>
-                                      <p>Data Yayasan</p>
+                                    <a href="{{ route('Admin.DataYayasan.index') }}" class="nav-link">
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p>Data Yayasan</p>
                                     </a>
                                 </li>
                                 <li class="nav-item">
                                     <a href="/Admin/hero-section" class="nav-link">
-                                      <i class="far fa-circle nav-icon"></i>
-                                      <p>Hero Section</p>
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p>Hero Section</p>
                                     </a>
                                 </li>
                                 <li class="nav-item">
                                     <a href="/Admin/gallery" class="nav-link">
-                                      <i class="far fa-circle nav-icon"></i>
-                                      <p>Gallery</p>
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p>Gallery</p>
                                     </a>
                                 </li>
-                                <li class="nav-item">
-                                    <a href="/Admin/sosial-media" class="nav-link">
-                                      <i class="far fa-circle nav-icon"></i>
-                                      <p>Social Media</p>
-                                    </a>
-                                </li>
-                              <li class="nav-item">
-                                <a href="/Admin/address" class="nav-link">
-                                  <i class="far fa-circle nav-icon"></i>
-                                  <p>Address</p>
-                                </a>
-                              </li>
-                              <li class="nav-item">
-                                <a href="/Admin/phone-number" class="nav-link">
-                                  <i class="far fa-circle nav-icon"></i>
-                                  <p>Phone Number</p>
-                                </a>
-                              </li>
-                              <li class="nav-item">
-                                <a href="/Admin/email" class="nav-link">
-                                  <i class="far fa-circle nav-icon"></i>
-                                  <p>Email</p>
-                                </a>
-                              </li>
-                              <li class="nav-item">
-                                <a href="/Admin/e-monry" class="nav-link">
-                                  <i class="far fa-circle nav-icon"></i>
-                                  <p>E Money</p>
-                                </a>
-                              </li>
                             </ul>
                         </li>
                         <li class="nav-item">
@@ -184,48 +154,48 @@
                         </li>
                         <li class="nav-item">
                             <a href="#" class="nav-link">
-                              <i class="nav-icon fas fa-newspaper"></i>
-                              <p>
-                                News
-                                <i class="fas fa-angle-left right"></i>
-                              </p>
+                                <i class="nav-icon fas fa-newspaper"></i>
+                                <p>
+                                    News
+                                    <i class="fas fa-angle-left right"></i>
+                                </p>
                             </a>
                             <ul class="nav nav-treeview">
-                              <li class="nav-item">
-                                <a href="{{ route('Admin.News.index') }}" class="nav-link">
-                                  <i class="far fa-circle nav-icon"></i>
-                                  <p>News</p>
-                                </a>
-                              </li>
-                              <li class="nav-item">
-                                <a href="{{ route('Admin.NewsCategory.index') }}" class="nav-link">
-                                  <i class="far fa-circle nav-icon"></i>
-                                  <p>News Category</p>
-                                </a>
-                              </li>
+                                <li class="nav-item">
+                                    <a href="{{ route('Admin.News.index') }}" class="nav-link">
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p>News</p>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="{{ route('Admin.NewsCategory.index') }}" class="nav-link">
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p>News Category</p>
+                                    </a>
+                                </li>
                             </ul>
                         </li>
                         <li class="nav-item">
                             <a href="#" class="nav-link">
-                              <i class="nav-icon fas fa-bullhorn"></i>
-                              <p>
-                                Announcement
-                                <i class="fas fa-angle-left right"></i>
-                              </p>
+                                <i class="nav-icon fas fa-bullhorn"></i>
+                                <p>
+                                    Announcement
+                                    <i class="fas fa-angle-left right"></i>
+                                </p>
                             </a>
                             <ul class="nav nav-treeview">
-                              <li class="nav-item">
-                                <a href="{{ route('Admin.Announcement.index') }}" class="nav-link">
-                                  <i class="far fa-circle nav-icon"></i>
-                                  <p>Announcement</p>
-                                </a>
-                              </li>
-                              <li class="nav-item">
-                                <a href="{{route ('Admin.AnnouncementCategory.index')}}" class="nav-link">
-                                  <i class="far fa-circle nav-icon"></i>
-                                  <p>Announcement Category</p>
-                                </a>
-                              </li>
+                                <li class="nav-item">
+                                    <a href="{{ route('Admin.Announcement.index') }}" class="nav-link">
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p>Announcement</p>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="{{ route('Admin.AnnouncementCategory.index') }}" class="nav-link">
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p>Announcement Category</p>
+                                    </a>
+                                </li>
                             </ul>
                         </li>
                         <li class="nav-item">
@@ -276,16 +246,18 @@
                                 <i class="nav-icon fa-solid fa-power-off" style="color: red;"></i>
                                 <p>Logout</p>
                             </a>
-                                <form action="/logout" method="POST" id="logging-out">
-                                    @csrf
-                                </form>
-                                <style>
-                                    .log-out.nav-link {
-                                        color: #ffffff; /* Warna teks */
-                                        background-color: transparent !important; /* Hapus warna latar belakang */
-                                        box-shadow: none !important;
-                                    }
-                                </style>
+                            <form action="/logout" method="POST" id="logging-out">
+                                @csrf
+                            </form>
+                            <style>
+                                .log-out.nav-link {
+                                    color: #ffffff;
+                                    /* Warna teks */
+                                    background-color: transparent !important;
+                                    /* Hapus warna latar belakang */
+                                    box-shadow: none !important;
+                                }
+                            </style>
                         </li>
                     </ul>
                 </nav>
@@ -346,9 +318,9 @@
                     navbar.classList.remove('scroll-nav-active');
                     navbar.classList.add('navbar-dark');
                 }
-            };
-}
-</script>
+            };
+        }
+    </script>
 
     <script>
         $(function() {
@@ -396,28 +368,28 @@
         })();
     </script>
 
-<script>
-    $(document).ready(function() {
-        $(".log-out").on('click', function(e) {
-            e.preventDefault();
-            $('.nav-link').removeClass('active'); // hapus kelas active dari semua link navigasi
-            $(this).addClass('active'); // tambahkan kelas active ke link yang diklik
-            Swal.fire({
-                title: 'Are you sure?',
-                text: "You won't be able to revert this!",
-                icon: 'warning',
-                showCancelButton: true,
-                confirmButtonColor: '#7367f0',
-                cancelButtonColor: '#82868b',
-                confirmButtonText: 'Yes, Log Out !'
-            }).then((result) => {
-                if (result.isConfirmed) {
-                    $('#logging-out').submit()
-                }
-            })
+    <script>
+        $(document).ready(function() {
+            $(".log-out").on('click', function(e) {
+                e.preventDefault();
+                $('.nav-link').removeClass('active'); // hapus kelas active dari semua link navigasi
+                $(this).addClass('active'); // tambahkan kelas active ke link yang diklik
+                Swal.fire({
+                    title: 'Are you sure?',
+                    text: "You won't be able to revert this!",
+                    icon: 'warning',
+                    showCancelButton: true,
+                    confirmButtonColor: '#7367f0',
+                    cancelButtonColor: '#82868b',
+                    confirmButtonText: 'Yes, Log Out !'
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        $('#logging-out').submit()
+                    }
+                })
+            });
         });
-    });
-</script>
+    </script>
 
 
 </body>

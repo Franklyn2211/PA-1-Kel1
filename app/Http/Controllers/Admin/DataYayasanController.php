@@ -4,72 +4,103 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use App\Models\Data_Yayasan;
+use App\Models\Data_yayasan;
+use Illuminate\Support\Facades\Storage;
 
 class DataYayasanController extends Controller
 {
     public function index()
     {
-        // Retrieve a single data yayasan
-        $dataYayasan = Data_Yayasan::first();
-        
-        // Return the view with data yayasan
-        return view('admin.DataYayasan.index', compact('dataYayasan'));
+        $dataYayasan = Data_yayasan::all();
+        return view('Admin.DataYayasan.index', compact('dataYayasan'));
     }
 
-    public function update(Request $request)
-    {
-        // Validate the request
-        $validatedData = $request->validate([
+    public function create(){
+        return view('Admin.DataYayasan.create');
+    }
+
+    public function store(Request $request){
+        $request->validate([
             'nama_yayasan' => 'required|max:50',
             'singkatan_nama_yayasan' => 'required|max:20',
             'sejarah' => 'required',
             'visi' => 'required',
             'misi' => 'required',
-            'input_logo_yayasan' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
         ]);
 
-        // Check if the data yayasan already exists
-        $dataYayasan = Data_Yayasan::first();
+        $dataYayasan = new Data_yayasan([
+            'id_data_yayasans' => Data_yayasan::generateNextId(),
+            'nama_yayasan' => $request->get('nama_yayasan'),
+           'singkatan_nama_yayasan' => $request->get('singkatan_nama_yayasan'),
+           'sejarah' => $request->get('sejarah'),
+            'visi' => $request->get('visi'),
+           'misi' => $request->get('misi')
+       ]);
+       if ($request->hasFile('logo_yayasan')) {
+        $file = $request->file('logo_yayasan');
+        $filename = $file->getClientOriginalName();
+        $destinationPath = 'storage/app/public/logoyayasan';
+        $file->move($destinationPath, $filename);
+        $dataYayasan->logo_yayasan = $filename;
+    }
 
-        // If data yayasan exists, update the attributes
-        if ($dataYayasan) {
-            $dataYayasan->nama_yayasan = $validatedData['nama_yayasan'];
-            $dataYayasan->singkatan_nama_yayasan = $validatedData['singkatan_nama_yayasan'];
-            $dataYayasan->sejarah = $validatedData['sejarah'];
-            $dataYayasan->visi = $validatedData['visi'];
-            $dataYayasan->misi = $validatedData['misi'];
+    $dataYayasan->save();
+    return redirect()->route('Admin.DataYayasan.index')->with('success', 'Data Yayasan berhasil disimpan!');
 
-            // Handle image upload if provided
-            if ($request->hasFile('input_logo_yayasan')) {
-                $image = $request->file('input_logo_yayasan');
-                $imageName = time().'.'.$image->getClientOriginalExtension();
-                $image->move(public_path('images'), $imageName);
-                $dataYayasan->logo_yayasan = 'images/'.$imageName;
+    }
+
+    public function edit(Data_yayasan $dataYayasan){
+        return view('Admin.DataYayasan.edit', compact('dataYayasan'));
+    }
+    public function update(Request $request, Data_yayasan $dataYayasan)
+    {
+        $request->validate([
+            'nama_yayasan' => 'required|max:50',
+            'singkatan_nama_yayasan' => 'required|max:20',
+            'sejarah' => 'required',
+            'visi' => 'required',
+            'misi' => 'required',
+        ]);
+
+        $data = [
+            'nama_yayasan' => $request->nama_yayasan,
+           'singkatan_nama_yayasan' => $request->singkatan_nama_yayasan,
+           'sejarah' => $request->sejarah,
+           'visi' => $request->visi,
+           'misi' => $request->misi,
+        ];
+        // Menghandle foto
+        if ($request->hasFile('logo_yayasan')) {
+            // Menghapus foto lama jika ada
+            if ($dataYayasan->logo_yayasan) {
+                Storage::disk('public')->delete('logoyayasan/' . $dataYayasan->logo_yayasan);
             }
 
-            $dataYayasan->save();
-        } else {
-            // If data yayasan doesn't exist, create a new one
-            $dataYayasan = new Data_Yayasan();
-            $dataYayasan->nama_yayasan = $validatedData['nama_yayasan'];
-            $dataYayasan->singkatan_nama_yayasan = $validatedData['singkatan_nama_yayasan'];
-            $dataYayasan->sejarah = $validatedData['sejarah'];
-            $dataYayasan->visi = $validatedData['visi'];
-            $dataYayasan->misi = $validatedData['misi'];
-
-            // Handle image upload if provided
-            if ($request->hasFile('input_logo_yayasan')) {
-                $image = $request->file('input_logo_yayasan');
-                $imageName = time().'.'.$image->getClientOriginalExtension();
-                $image->move(public_path('images'), $imageName);
-                $dataYayasan->logo_yayasan = 'images/'.$imageName;
-            }
-
-            $dataYayasan->save();
+            // Menyimpan foto baru
+            $file = $request->file('logo_yayasan');
+            $filename = $file->getClientOriginalName();
+            $destinationPath = 'storage/app/public/logoyayasan';
+            $file->move($destinationPath, $filename);
+            $data['logo_yayasan'] = $filename;
         }
 
-        // Redirect back to the index page with success message
-        return redirect()->route('admin.data_yayasan.index')->with('success', 'Data yayasan updated successfully');
+        $dataYayasan->update($data);
+
+        return redirect()->route('Admin.DataYayasan.index')->with('success', 'Data yayasan telah di edit');
+    }
+
+    public function destroy($id)
+    {
+        // Menghapus news dari database
+        $dataYayasan = Data_yayasan::findOrFail($id);
+
+        // Hapus foto dari storage jika ada
+        if (Storage::disk('public')->exists('logoyayasan/' . $dataYayasan->photo)) {
+            Storage::disk('public')->delete('logoyayasan/' . $dataYayasan->photo);
+        }
+
+        $dataYayasan->delete();
+
+        return redirect()->route('Admin.DataYayasan.index')->with('success', 'Data Yayasan berhasil dihapus');
     }
 }

@@ -95,8 +95,12 @@ Route::prefix('Admin')->middleware('auth')->group(function () {
         Route::get('hero-section', [HeroSectionController::class, 'index'])->name('admin.hero.index');
         Route::post('hero-section/update', [HeroSectionController::class, 'update'])->name('updateHeroSection');
 
-        Route::get('/data-yayasan', [DataYayasanController::class, 'index'])->name('admin.data_yayasan.index');
-        Route::post('/update-data-yayasan', [DataYayasanController::class, 'update'])->name('updateDataYayasan');
+        Route::get('data-yayasan', [DataYayasanController::class, 'index'])->name('Admin.DataYayasan.index');
+        Route::get('/create-data-yayasan', [DataYayasanController::class, 'create'])->name('Admin.DataYayasan.create');
+        Route::post('/data-yayasan', [DataYayasanController::class, 'store'])->name('Admin.DataYayasan.store');
+        Route::get('data-yayasan/{dataYayasan}/edit', [DataYayasanController::class, 'edit'])->name('Admin.DataYayasan.edit');
+        Route::post('data-yayasan/{dataYayasan}', [DataYayasanController::class,'update'])->name('Admin.DataYayasan.update');
+        Route::delete('data-yayasan/{dataYayasan}', [DataYayasanController::class, 'destroy'])->name('Admin.DataYayasan.destroy');
 
         Route::get('gallery', [GalleryController::class, 'index'])->name('admin.gallery.index');
         Route::get('gallery/create', [GalleryController::class, 'create'])->name('admin.gallery.create');
@@ -115,22 +119,6 @@ Route::prefix('Admin')->middleware('auth')->group(function () {
         Route::delete('address/{id}', [AddressController::class, 'destroy'])->name('admin.address.destroy');
 
 
-
-    Route::get('hero-section', [HeroSectionController::class, 'index'])->name('admin.hero.index');
-    Route::post('hero-section/update', [HeroSectionController::class, 'update'])->name('updateHeroSection');
-
-    Route::get('/data-yayasan', [DataYayasanController::class, 'index'])->name('admin.data_yayasan.index');
-    Route::post('/update-data-yayasan', [DataYayasanController::class, 'update'])->name('updateDataYayasan');
-
-    // Route::get('gallery', [GalleryController::class, 'index'])->name('admin.gallery.index');
-    // Route::get('gallery/create', [GalleryController::class, 'create'])->name('admin.gallery.create');
-    // Route::post('gallery/store', [GalleryController::class, 'store'])->name('admin.gallery.store');
-    // Route::get('Admin/gallery/{id}/edit', [GalleryController::class, 'edit'])->name('admin.gallery.edit');
-    // Route::put('admin/gallery/update/{id}', [GalleryController::class, 'update'])->name('admin.gallery.update');
-    // Route::delete('gallery/{id_galleries}', [GalleryController::class, 'destroy'])->name('admin.gallery.destroy');
-
-
-
     Route::get('address', [AddressController::class, 'index'])->name('admin.address.index');
     Route::get('address/create', [AddressController::class, 'create'])->name('admin.address.create');
     Route::post('address/store', [AddressController::class, 'store'])->name('admin.address.store');
@@ -142,7 +130,7 @@ Route::prefix('Admin')->middleware('auth')->group(function () {
     Route::get('anakdisabilitas', [AnakDisabilitasController::class, 'index'])->name('admin.anakdisabilitas.index');
     Route::get('anakdisabilitas/create', [AnakDisabilitasController::class, 'create'])->name('admin.anakdisabilitas.create');
     Route::post('anakdisabilitas/store', [AnakDisabilitasController::class, 'store'])->name('admin.anakdisabilitas.store');
-    Route::get('anakdisabilitas/{anakdisabilitas}', [AnakDisabilitasController::class, 'show'])->name('admin.anakdisabilitas.show');
+    Route::get('anakdisabilitas/{id}', [AnakDisabilitasController::class, 'show'])->name('admin.anakdisabilitas.show');
     Route::get('anakdisabilitas/{anakdisabilitas}/edit', [AnakDisabilitasController::class, 'edit'])->name('admin.anakdisabilitas.edit');
     Route::put('anakdisabilitas/{anakdisabilitas}', [AnakDisabilitasController::class, 'update'])->name('admin.anakdisabilitas.update');
     Route::delete('anakdisabilitas/{anakdisabilitas}', [AnakDisabilitasController::class, 'destroy'])->name('admin.anakdisabilitas.destroy');
@@ -162,7 +150,7 @@ Route::prefix('Admin')->middleware('auth')->group(function () {
     Route::post('stafpegawai', [StafPegawaiController::class, 'store'])->name('admin.stafpegawai.store');
     Route::get('stafpegawai/{stafpegawai}', [StafPegawaiController::class, 'show'])->name('admin.stafpegawai.show');
     Route::get('stafpegawai/{stafpegawai}/edit', [StafPegawaiController::class, 'edit'])->name('admin.stafpegawai.edit');
-    Route::put('stafpegawai/{stafpegawai}', [StafPegawaiController::class, 'update'])->name('admin.stafpegawai.update');
+    Route::post('stafpegawai/{stafpegawai}', [StafPegawaiController::class, 'update'])->name('admin.stafpegawai.update');
     Route::delete('stafpegawai/{stafpegawai}', [StafPegawaiController::class, 'destroy'])->name('admin.stafpegawai.destroy');
 
     Route::resource('sponsor', SponsorController::class);

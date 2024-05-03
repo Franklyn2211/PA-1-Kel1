@@ -6,7 +6,7 @@
     <div class="container px-5 my-5">
         <div class="row gx-5 align-items-center">
             @if($dataYayasan)
-            <div class="col-lg-6 text-center"><img class="img-fluid rounded mb-5 mb-lg-0" src="{{ $dataYayasan->logo_yayasan }}" /></div>
+            <div class="col-lg-6 text-center"><img src="{{ asset ('assets/img/logo.png') }}" style="width: 400px; height: auto;" /></div>
             <div class="col-lg-6">
                 <h2 class="fw-bolder text-center">{{ $dataYayasan->nama_yayasan }}</h2>
                 <p class="lead fw-normal text-muted text-center mb-0">{{ $dataYayasan->sejarah }}</p>
@@ -23,8 +23,7 @@
 <section class="py-5">
     <div class="container px-5 my-5">
         <div class="row gx-5 align-items-center">
-            <div class="col-lg-6 order-first order-lg-last text-center"><img class="img-fluid rounded mb-5 mb-lg-0" src="https://dummyimage.com/600x400/343a40/6c757d" alt="..." /></div>
-            <div class="col-lg-6">
+            <div class="text-center">
                 <h2 class="fw-bolder text-center">VISI</h2>
                 @if($dataYayasan)
                 <p class="lead fw-normal text-muted text-center mb-4">{{ $dataYayasan->visi }}</p>
@@ -37,4 +36,17 @@
         </div>
     </div>
 </section>
+<div class="card" style="width: 18rem;">
+    @if ($stafpegawai->photo)
+                        <img src="{{ asset('storage/app/public/photo/' . $stafpegawai->photo) }}"
+                            alt="Foto Berita" style="max-width: 200px; margin-top: 10px;">
+                    @else
+                        <p>Tidak ada foto tersedia.</p>
+                    @endif
+    <div class="card-body">
+      <h5 class="card-title">Card title</h5>
+      <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+      <a href="#" class="btn btn-primary">Go somewhere</a>
+    </div>
+  </div>
 @endsection

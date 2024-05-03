@@ -19,7 +19,7 @@ class DonateController extends Controller
         $request->validate([
             'Name' => 'required|string',
             'Email' => 'required|email|unique:donates,Email',
-            'Phone_number' => 'required|string',
+            'Phone_number' => 'required|numeric',
             'donation_amount' => 'required|numeric',
             'evidence_of_transfer' => 'nullable|file',
             'Description' => 'required|string',

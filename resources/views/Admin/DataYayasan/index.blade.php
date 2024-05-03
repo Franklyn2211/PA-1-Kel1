@@ -1,6 +1,7 @@
 @extends('Admin.main')
 @section('title', 'Data Yayasan')
 @section('content')
+
 <div class="content-wrapper">
     <!-- Content Header (Page header) -->
     <div class="content-header">
@@ -19,103 +20,70 @@
         </div><!-- /.container-fluid -->
     </div>
     <!-- /.content-header -->
+
+    <!-- Main content -->
     <div class="content">
         <div class="container-fluid">
-            <div id="item-4" class="card shadow-sm">
-                <div class="card-header bg-primary text-white">
-                    <span class="fs-5">@yield('title')</span>
+            <!-- Small boxes (Stat box) -->
+            @if(session('success'))
+                <div class="alert alert-success">
+                    {{ session('success') }}
                 </div>
-                <div class="card-body">
-                    <form action="{{ route('updateDataYayasan') }}" method="post" enctype='multipart/form-data'>
-                        @csrf
-                        <div class="mb-3">
-                            <label for="nama_yayasan" class="form-label">Nama Yayasan</label>
-                            <input type="text" class="form-control" id="nama_yayasan" name="nama_yayasan" value="{{ $dataYayasan ? $dataYayasan->nama_yayasan : '' }}" required>
-                            @error("nama_yayasan")
-                                <span class="text-danger">{{ $message }}</span>
-                            @enderror
-                        </div>
-                        <div class="mb-3">
-                            <label for="singkatan_nama_yayasan" class="form-label">Singkatan Nama Yayasan</label>
-                            <input type="text" class="form-control" id="singkatan_nama_yayasan" name="singkatan_nama_yayasan" value="{{ $dataYayasan ? $dataYayasan->singkatan_nama_yayasan : '' }}" required>
-                            @error("singkatan_nama_yayasan")
-                                <span class="text-danger">{{ $message }}</span>
-                            @enderror
-                        </div>
-                        <div class="mb-3">
-                            <label for="sejarah" class="form-label">Sejarah</label>
-                            <textarea class="form-control" id="sejarah" name="sejarah" rows="4">{{ $dataYayasan ? $dataYayasan->sejarah : '' }}</textarea>
-                            @error("sejarah")
-                                <span class="text-danger">{{ $message }}</span>
-                            @enderror
-                        </div>
-                        <div class="mb-3">
-                            <label for="visi" class="form-label">Visi</label>
-                            <textarea class="form-control" id="visi" name="visi" rows="4">{{ $dataYayasan ? $dataYayasan->visi : '' }}</textarea>
-                            @error("visi")
-                                <span class="text-danger">{{ $message }}</span>
-                            @enderror
-                        </div>
-                        <div class="mb-3">
-                            <label for="misi" class="form-label">Misi</label>
-                            <textarea class="form-control" id="misi" name="misi" rows="4">{{ $dataYayasan ? $dataYayasan->misi : '' }}</textarea>
-                            @error("misi")
-                                <span class="text-danger">{{ $message }}</span>
-                            @enderror
-                        </div>
-                        <div class="mb-3">
-                            <label for="input_logo_yayasan" class="form-label">Logo Yayasan</label>
-                            <div class="p-3 border mb-2 border-1 w-100 d-flex justify-content-center">
-                                @if ($dataYayasan && $dataYayasan->logo_yayasan)
-                                    <img src="{{ asset($dataYayasan->logo_yayasan) }}" alt="logo yayasan" style="max-width: 400px; max-height: 300px;">
-                                @else
-                                    <p>No logo available.</p>
-                                @endif
+            @endif
+            <div class="row">
+                <div class="col-12">
+                    <div class="card">
+                        <div class="card-header">
+                            <div class="text-right">
+                                <a href="{{ route('Admin.DataYayasan.create') }}" class="btn btn-primary"><i class="fa-solid fa-plus"></i> Tambah Data Yayasan</a>
                             </div>
-                            <input type="file" class="form-control" id="input_logo_yayasan" name="input_logo_yayasan">
-                            @error("input_logo_yayasan")
-                                <span class="text-danger">{{ $message }}</span>
-                            @enderror
                         </div>
-                        <button type="submit" class="btn btn-primary">Save</button>
-                    </form>
-                </div>
+                        <!-- /.card-header -->
+                        <div class="card-body">
+                            <table id="example1" class="table table-striped table-bordered table-hover text-center"
+                                style="width: 100%">
+                                <thead>
+                                    <tr>
+                                        <th>#</th>
+                                        <th>Nama Yayasan</th>
+                                        <th>Singkatan Nama Yayasan</th>
+                                        <th>Sejarah</th>
+                                        <th>Visi</th>
+                                        <th>Misi</th>
+                                        <th>Aksi</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach ($dataYayasan as $item)
+                                    <tr>
+                                        <td>{{ $loop->iteration }}</td>
+                                        <td>{{ $item->nama_yayasan }}</td>
+                                        <td>{{ $item->singkatan_nama_yayasan }}</td>
+                                        <td>{{ $item->sejarah }}</td>
+                                        <td>{{ $item->visi }}</td>
+                                        <td>{{ $item->misi }}</td>
+                                        <td>
+                                            <a href="{{ route('Admin.DataYayasan.edit', $item->id_data_yayasans) }}" class="btn btn-success btn-sm mr-1"><i class="fa-solid fa-pen"></i> Edit</a>
+                                            <form action="{{ route('Admin.DataYayasan.destroy', $item->id_data_yayasans) }}" method="POST" class="d-inline">
+                                                @csrf
+                                                @method('DELETE')
+                                                <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('Apakah Anda yakin ingin menghapus Data Yayasan ini?')"><i class="fa-solid fa-trash-can"></i> Hapus</button>
+                                            </form>
+                                        </td>
+                                    </tr>
+                                    @endforeach
+                                </tbody>
+                            </table>
+
+                        </div>
+                        <!-- /.card-body -->
+                    </div>
+                    <!-- /.card -->
+                </div><!-- /.container-fluid -->
             </div>
+            <!-- /.content -->
         </div>
     </div>
 </div>
+
 @endsection
-
-@push('scripts')
-<script src="https://cdn.ckeditor.com/ckeditor5/30.0.0/classic/ckeditor.js"></script>
-<script>
-    ClassicEditor
-        .create(document.querySelector('#sejarah'))
-        .catch(error => {
-            console.error(error);
-        });
-
-    ClassicEditor
-        .create(document.querySelector('#visi'))
-        .catch(error => {
-            console.error(error);
-        });
-
-    ClassicEditor
-        .create(document.querySelector('#misi'))
-        .catch(error => {
-            console.error(error);
-        });
-</script>
-
-@if (session('alert-type') === 'success')
-<script>
-    Swal.fire({
-        icon: 'success',
-        title: '{{ session('message') }}',
-        showConfirmButton: true,
-        timer: 2000
-    });
-</script>
-@endif
-@endpush
