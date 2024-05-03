@@ -60,7 +60,7 @@
                                         <td>{{ $loop->iteration }}</td>
                                         <td>{{ $item->title }}</td>
                                         <td>{{ $item->location }}</td>
-                                        <td>{{ $item->tanggal }}</td>
+                                        <td>{{ $item->date }}</td>
                                         <td>{{ $item->category->Name }}</td> <!-- assuming you have a 'category' relationship in your News model -->
                                         <td>{!! $item->description !!}</td>
                                         <td><img src="{{ asset('storage/app/public/photo/' . $item->photo) }}" alt="Foto" style="width: 100px;"></td>

@@ -12,11 +12,13 @@ return new class extends Migration {
      */
     public function up()
     {
-        Schema::create('anakdisabilitas', function (Blueprint $table) {
-            $table->string('id_anakdisabilitas')->primary();
-            $table->string('nama');
-            $table->integer('umur');
-            $table->date('tanggal_bergabung');
+        Schema::create('staff', function (Blueprint $table) {
+            $table->string('id_staff')->primary();
+            $table->string('name');
+            $table->integer('age');
+            $table->string('photo')->nullable();
+            $table->date('date_joined');
+            $table->enum('job_title', ['Ketua Yayasan','Pengajar','Staff']);
             $table->timestamps();
             $table->string('created_by', 20)->default('adminYPA');
             $table->string('updated_by', 20)->nullable(true);
@@ -32,6 +34,6 @@ return new class extends Migration {
      */
     public function down()
     {
-        Schema::dropIfExists('anakdisabilitas');
+        Schema::dropIfExists('staff');
     }
 };

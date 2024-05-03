@@ -15,74 +15,52 @@ class DataYayasanController extends Controller
         return view('Admin.DataYayasan.index', compact('dataYayasan'));
     }
 
-    public function create(){
+    public function create()
+    {
         return view('Admin.DataYayasan.create');
     }
 
-    public function store(Request $request){
+    public function store(Request $request)
+    {
         $request->validate([
-            'nama_yayasan' => 'required|max:50',
-            'singkatan_nama_yayasan' => 'required|max:20',
-            'sejarah' => 'required',
+            'foundation_name' => 'required|max:50',
+            'history' => 'required',
             'visi' => 'required',
             'misi' => 'required',
         ]);
 
         $dataYayasan = new Data_yayasan([
-            'id_data_yayasans' => Data_yayasan::generateNextId(),
-            'nama_yayasan' => $request->get('nama_yayasan'),
-           'singkatan_nama_yayasan' => $request->get('singkatan_nama_yayasan'),
-           'sejarah' => $request->get('sejarah'),
+            'id_foundation_data' => Data_yayasan::generateNextId(),
+            'foundation_name' => $request->get('foundation_name'),
+            'history' => $request->get('history'),
             'visi' => $request->get('visi'),
-           'misi' => $request->get('misi')
-       ]);
-       if ($request->hasFile('logo_yayasan')) {
-        $file = $request->file('logo_yayasan');
-        $filename = $file->getClientOriginalName();
-        $destinationPath = 'storage/app/public/logoyayasan';
-        $file->move($destinationPath, $filename);
-        $dataYayasan->logo_yayasan = $filename;
-    }
+            'misi' => $request->get('misi')
+        ]);
 
-    $dataYayasan->save();
-    return redirect()->route('Admin.DataYayasan.index')->with('success', 'Data Yayasan berhasil disimpan!');
+        $dataYayasan->save();
+        return redirect()->route('Admin.DataYayasan.index')->with('success', 'Data Yayasan berhasil disimpan!');
 
     }
 
-    public function edit(Data_yayasan $dataYayasan){
+    public function edit(Data_yayasan $dataYayasan)
+    {
         return view('Admin.DataYayasan.edit', compact('dataYayasan'));
     }
     public function update(Request $request, Data_yayasan $dataYayasan)
     {
         $request->validate([
-            'nama_yayasan' => 'required|max:50',
-            'singkatan_nama_yayasan' => 'required|max:20',
-            'sejarah' => 'required',
+            'foundation_name' => 'required|max:50',
+            'history' => 'required',
             'visi' => 'required',
             'misi' => 'required',
         ]);
 
         $data = [
-            'nama_yayasan' => $request->nama_yayasan,
-           'singkatan_nama_yayasan' => $request->singkatan_nama_yayasan,
-           'sejarah' => $request->sejarah,
-           'visi' => $request->visi,
-           'misi' => $request->misi,
+            'foundation_name' => $request->foundation_name,
+            'history' => $request->history,
+            'visi' => $request->visi,
+            'misi' => $request->misi,
         ];
-        // Menghandle foto
-        if ($request->hasFile('logo_yayasan')) {
-            // Menghapus foto lama jika ada
-            if ($dataYayasan->logo_yayasan) {
-                Storage::disk('public')->delete('logoyayasan/' . $dataYayasan->logo_yayasan);
-            }
-
-            // Menyimpan foto baru
-            $file = $request->file('logo_yayasan');
-            $filename = $file->getClientOriginalName();
-            $destinationPath = 'storage/app/public/logoyayasan';
-            $file->move($destinationPath, $filename);
-            $data['logo_yayasan'] = $filename;
-        }
 
         $dataYayasan->update($data);
 

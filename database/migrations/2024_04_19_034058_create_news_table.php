@@ -14,7 +14,7 @@ return new class extends Migration
         $table->string('id_news')->primary();
         $table->string('title');
         $table->string('location');
-        $table->date('tanggal');
+        $table->date('date');
         $table->string('photo')->nullable();
         $table->string('news_category_id'); // Kolom news_category_id yang benar
         $table->foreign('news_category_id')->references('id_news_categories')->on('news_categories')->cascadeOnUpdate()->cascadeOnDelete();

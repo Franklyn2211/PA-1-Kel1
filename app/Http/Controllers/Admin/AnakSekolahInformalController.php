@@ -24,16 +24,16 @@ class AnakSekolahInformalController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'nama' => 'required|string',
-            'umur' => 'required|integer',
-            'tanggal_bergabung' => 'required|date',
+            'name' => 'required|string',
+            'age' => 'required|integer',
+            'date_joined' => 'required|date',
         ]);
 
         $anaksekolahinformal = new AnakSekolahInformal([
-            'id_anaksekolahinformal' => AnakSekolahInformal::generateNextId(),
-            'nama' => $request->get('nama'),
-            'umur' => $request->get('umur'),
-            'tanggal_bergabung' => $request->get('tanggal_bergabung'),
+            'id_informal_school_child' => AnakSekolahInformal::generateNextId(),
+            'name' => $request->get('name'),
+            'age' => $request->get('age'),
+            'date_joined' => $request->get('date_joined'),
         ]);
 
         $anaksekolahinformal->save();
@@ -55,9 +55,9 @@ class AnakSekolahInformalController extends Controller
     public function update(Request $request, AnakSekolahInformal $anaksekolahinformal)
     {
         $validatedData = $request->validate([
-            'nama' => 'required|string',
-            'umur' => 'required|integer',
-            'tanggal_bergabung' => 'required|date',
+            'name' => 'required|string',
+            'age' => 'required|integer',
+            'date_joined' => 'required|date',
         ]);
 
         $anaksekolahinformal->update($validatedData);

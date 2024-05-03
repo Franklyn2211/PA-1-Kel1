@@ -12,17 +12,16 @@ return new class extends Migration {
      */
     public function up()
     {
-        Schema::create('anaksekolahinformal', function (Blueprint $table) {
-            $table->string('id_anaksekolahinformal')->primary();
-            $table->string('nama');
-            $table->integer('umur');
-            $table->date('tanggal_bergabung');
-            $table->timestamps();
+        Schema::create('partnership', function (Blueprint $table) {
+            $table->string('id_partnership')->primary();
+            $table->string('name');
+            $table->string('logo');
+            $table->string('program');
             $table->string('created_by', 20)->default('adminYPA');
             $table->string('updated_by', 20)->nullable(true);
             $table->boolean('active')->default(true);
+            $table->timestamps();
         });
-
     }
 
     /**
@@ -32,6 +31,6 @@ return new class extends Migration {
      */
     public function down()
     {
-        Schema::dropIfExists('anaksekolahinformal');
+        Schema::dropIfExists('partnership');
     }
 };

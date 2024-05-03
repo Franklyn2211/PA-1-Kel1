@@ -12,11 +12,11 @@ return new class extends Migration {
      */
     public function up()
     {
-        Schema::create('kontak', function (Blueprint $table) {
-            $table->id();
-            $table->string('nama');
+        Schema::create('contact', function (Blueprint $table) {
+            $table->string('id_contact')->primary();
+            $table->string('name');
             $table->string('email');
-            $table->string('phone');
+            $table->string('phone_number');
             $table->text('message');
             $table->string('created_by')->nullable();
             $table->string('updated_by')->nullable();
@@ -32,6 +32,6 @@ return new class extends Migration {
      */
     public function down()
     {
-        Schema::dropIfExists('kontak');
+        Schema::dropIfExists('contact');
     }
 };

@@ -57,14 +57,13 @@
                                     @foreach ($dataYayasan as $item)
                                     <tr>
                                         <td>{{ $loop->iteration }}</td>
-                                        <td>{{ $item->nama_yayasan }}</td>
-                                        <td>{{ $item->singkatan_nama_yayasan }}</td>
-                                        <td>{{ $item->sejarah }}</td>
-                                        <td>{{ $item->visi }}</td>
-                                        <td>{{ $item->misi }}</td>
+                                        <td>{{ $item->foundation_name }}</td>
+                                        <td>{!! $item->history !!}</td>
+                                        <td>{!! $item->visi !!}</td>
+                                        <td>{!! $item->misi !!}</td>
                                         <td>
-                                            <a href="{{ route('Admin.DataYayasan.edit', $item->id_data_yayasans) }}" class="btn btn-success btn-sm mr-1"><i class="fa-solid fa-pen"></i> Edit</a>
-                                            <form action="{{ route('Admin.DataYayasan.destroy', $item->id_data_yayasans) }}" method="POST" class="d-inline">
+                                            <a href="{{ route('Admin.DataYayasan.edit', $item->id_foundation_data) }}" class="btn btn-success btn-sm mr-1"><i class="fa-solid fa-pen"></i> Edit</a>
+                                            <form action="{{ route('Admin.DataYayasan.destroy', $item->id_foundation_data) }}" method="POST" class="d-inline">
                                                 @csrf
                                                 @method('DELETE')
                                                 <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('Apakah Anda yakin ingin menghapus Data Yayasan ini?')"><i class="fa-solid fa-trash-can"></i> Hapus</button>

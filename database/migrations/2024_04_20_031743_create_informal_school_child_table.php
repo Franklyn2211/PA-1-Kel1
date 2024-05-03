@@ -12,16 +12,17 @@ return new class extends Migration {
      */
     public function up()
     {
-        Schema::create('kemitraan', function (Blueprint $table) {
-            $table->string('id_kemitraan')->primary();
-            $table->string('nama');
-            $table->string('logo');
-            $table->string('program');
+        Schema::create('informal_school_child', function (Blueprint $table) {
+            $table->string('id_informal_school_child')->primary();
+            $table->string('name');
+            $table->integer('age');
+            $table->date('date_joined');
+            $table->timestamps();
             $table->string('created_by', 20)->default('adminYPA');
             $table->string('updated_by', 20)->nullable(true);
             $table->boolean('active')->default(true);
-            $table->timestamps();
         });
+
     }
 
     /**
@@ -31,6 +32,6 @@ return new class extends Migration {
      */
     public function down()
     {
-        Schema::dropIfExists('kemitraan');
+        Schema::dropIfExists('informal_school_child');
     }
 };

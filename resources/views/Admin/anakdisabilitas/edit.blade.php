@@ -29,20 +29,20 @@
                 <div class="col-md-6">
                     <div class="card">
                         <div class="card-body">
-                            <form action="{{ route('admin.anakdisabilitas.update', $anakdisabilitas->id) }}" method="POST" enctype="multipart/form-data">>
+                            <form action="{{ route('admin.anakdisabilitas.update', $anakdisabilitas->id_child_with_disabilities) }}" method="POST" enctype="multipart/form-data">>
                                 @csrf
                                 @method('PUT')
                                 <div class="form-group">
-                                    <label for="nama">Nama:</label>
-                                    <input type="text" id="nama" name="nama" class="form-control" value="{{ $anakdisabilitas->nama }}">
+                                    <label for="name">Nama:</label>
+                                    <input type="text" id="name" name="name" class="form-control" value="{{ $anakdisabilitas->name ?? '' }}">
                                 </div>
                                 <div class="form-group">
-                                    <label for="umur">Umur:</label>
-                                    <input type="number" id="umur" name="umur" class="form-control" value="{{ $anakdisabilitas->umur }}">
+                                    <label for="age">Umur:</label>
+                                    <input type="number" id="age" name="age" class="form-control" value="{{ $anakdisabilitas->age ?? '' }}">
                                 </div>
                                 <div class="form-group">
-                                    <label for="tanggal_bergabung">Tanggal Bergabung:</label>
-                                    <input type="date" id="tanggal_bergabung" name="tanggal_bergabung" class="form-control" value="{{ $anakdisabilitas->tanggal_bergabung }}">
+                                    <label for="date_joined">Tanggal Bergabung:</label>
+                                    <input type="date" id="date_joined" name="date_joined" class="form-control" value="{{ $anakdisabilitas->date_joined ?? '' }}">
                                 </div>
                                 <button type="submit" class="btn btn-primary">Simpan</button>
                             </form>

@@ -23,19 +23,19 @@ class StafPegawaiController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'nama' => 'required|string',
-            'umur' => 'required|integer',
-            'tanggal_bergabung' => 'required|date',
-            'jabatan' => 'required|string',
+            'name' => 'required|string',
+            'age' => 'required|integer',
+            'date_joined' => 'required|date',
+            'job_title' => 'required|string',
             'photo' => 'nullable|image|mimes:jpeg,png,jpg|max:5000',
         ]);
 
         $stafpegawai = new StafPegawai([
-            'id_stafpegawai' => StafPegawai::generateNextId(),
-            'nama' => $request->get('nama'),
-            'umur' => $request->get('umur'),
-            'tanggal_bergabung' => $request->get('tanggal_bergabung'),
-            'jabatan' => $request->get('jabatan')
+            'id_staff' => StafPegawai::generateNextId(),
+            'name' => $request->get('name'),
+            'age' => $request->get('age'),
+            'date_joined' => $request->get('date_joined'),
+            'job_title' => $request->get('job_title')
         ]);
 
         if ($request->hasFile('photo')) {
@@ -63,18 +63,18 @@ class StafPegawaiController extends Controller
     public function update(Request $request, StafPegawai $stafpegawai)
     {
         $request->validate([
-            'nama' => 'required|string',
-            'umur' => 'required|integer',
-            'tanggal_bergabung' => 'required|date',
-            'jabatan' => 'required|string',
+            'name' => 'required|string',
+            'age' => 'required|integer',
+            'date_joined' => 'required|date',
+            'job_title' => 'required|string',
             'photo' => 'nullable|image|mimes:jpeg,png,jpg|max:5000',
         ]);
 
         $data = [
-            'nama' => $request->nama,
-            'umur' => $request->umur,
-            'tanggal_bergabung' => $request->tanggal_bergabung,
-            'jabatan' => $request->jabatan,
+            'name' => $request->name,
+            'age' => $request->age,
+            'date_joined' => $request->date_joined,
+            'job_title' => $request->job_title,
         ];
 
         if ($request->hasFile('photo')) {

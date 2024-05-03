@@ -9,15 +9,16 @@ class StafPegawai extends Model
 {
     use HasFactory;
 
-    protected $primaryKey = 'id_stafpegawai';
-    protected $table = 'stafpegawai';
+    protected $primaryKey = 'id_staff';
+    protected $table = 'staff';
     public $incrementing = false;
     protected $fillable = [
-        'id_stafpegawai',
-        'nama',
-        'umur',
-        'tanggal_bergabung',
-        'jabatan',
+        'id_staff',
+        'name',
+        'age',
+        'date_joined',
+        'job_title',
+        'photo',
         'created_by',
         'updated_by',
         'active',
@@ -27,16 +28,16 @@ class StafPegawai extends Model
     ];
 
     public static function generateNextId(){
-        $latestId = self::orderBy('id_stafpegawai', 'desc')->first();
+        $latestId = self::orderBy('id_staff', 'desc')->first();
 
         // Mengambil nomor dari ID terakhir
-        $lastNumber = $latestId ? intval(substr($latestId->id_stafpegawai, 2)) : 0;
+        $lastNumber = $latestId ? intval(substr($latestId->id_staff, 2)) : 0;
 
         // Menambahkan 1 untuk mendapatkan nomor berikutnya
         $nextNumber = $lastNumber + 1;
 
         // Mengonversi nomor berikutnya ke format yang diinginkan (NXX)
-        $nextId = 'SP' . str_pad($nextNumber, 2, '0', STR_PAD_LEFT);
+        $nextId = 'S' . str_pad($nextNumber, 2, '0', STR_PAD_LEFT);
 
         return $nextId;
     }

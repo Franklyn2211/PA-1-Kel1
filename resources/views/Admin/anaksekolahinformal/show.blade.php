@@ -30,9 +30,9 @@
                     <div class="col-md-6">
                         <div class="card">
                             <div class="card-body">
-                                <p><strong>Nama:</strong> {{ $anaksekolahinformal->nama }}</p>
-                                <p><strong>Umur:</strong> {{ $anaksekolahinformal->umur }}</p>
-                                <p><strong>Tanggal Bergabung:</strong> {{ $anaksekolahinformal->tanggal_bergabung }}</p>
+                                <p><strong>Nama:</strong> {{ $anaksekolahinformal->name }}</p>
+                                <p><strong>Umur:</strong> {{ $anaksekolahinformal->age }}</p>
+                                <p><strong>Tanggal Bergabung:</strong> {{ $anaksekolahinformal->date_joined }}</p>
                             </div>
                         </div>
                     </div>

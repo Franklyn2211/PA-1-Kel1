@@ -32,16 +32,16 @@
                                 <form action="{{ route('admin.anakdisabilitas.store') }}" method="POST" enctype="multipart/form-data">
                                     @csrf
                                     <div class="form-group">
-                                        <label for="nama">Nama:</label>
-                                        <input type="text" id="nama" name="nama" class="form-control" value="{{ old('nama') }}">
+                                        <label for="name">Nama:</label>
+                                        <input type="text" id="name" name="name" class="form-control">
                                     </div>
                                     <div class="form-group">
-                                        <label for="umur">Umur:</label>
-                                        <input type="number" id="umur" name="umur" class="form-control" value="{{ old('umur') }}">
+                                        <label for="age">Umur:</label>
+                                        <input type="number" id="age" name="age" class="form-control">
                                     </div>
                                     <div class="form-group">
-                                        <label for="tanggal_bergabung">Tanggal Bergabung:</label>
-                                        <input type="date" id="tanggal_bergabung" name="tanggal_bergabung" class="form-control" value="{{ old('tanggal_bergabung') }}">
+                                        <label for="date_joined">Tanggal Bergabung:</label>
+                                        <input type="date" id="date_joined" name="date_joined" class="form-control">
                                     </div>
                                     <button type="submit" class="btn btn-primary">Simpan</button>
                                 </form>

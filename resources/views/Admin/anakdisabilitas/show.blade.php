@@ -28,9 +28,9 @@
             <!-- Detail Box -->
             <div class="card">
                 <div class="card-body">
-                    <p><strong>Nama:</strong> {{ $anakdisabilitas->nama }}</p>
-                    <p><strong>Umur:</strong> {{ $anakdisabilitas->umur }}</p>
-                    <p><strong>Tanggal Bergabung:</strong> {{ $anakdisabilitas->tanggal_bergabung }}</p>
+                    <p><strong>Nama:</strong> {{ $anakdisabilitas->name }}</p>
+                    <p><strong>Umur:</strong> {{ $anakdisabilitas->age }}</p>
+                    <p><strong>Tanggal Bergabung:</strong> {{ $anakdisabilitas->date_joined }}</p>
                 </div>
             </div>
             <!-- /.card -->

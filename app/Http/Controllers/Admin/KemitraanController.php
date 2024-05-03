@@ -41,7 +41,7 @@ class KemitraanController extends Controller
     public function update(Request $request, $id)
     {
         $request->validate([
-            'nama' => 'required',
+            'name' => 'required',
             'program' => 'required',
         ]);
 
@@ -53,8 +53,8 @@ class KemitraanController extends Controller
             $kemitraan->save();
         }
 
-        // Update nama dan program
-        $kemitraan->nama = $request->get('nama');
+        // Update name dan program
+        $kemitraan->name = $request->get('name');
         $kemitraan->program = $request->get('program');
 
         $kemitraan->save();

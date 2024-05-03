@@ -15,14 +15,14 @@ class News extends Model
 
     protected $fillable = [
         'id_news',
-        'title',  
+        'title',
         'location',
-        'tanggal',
+        'date',
         'photo',
         'description',
         'created_by',
         'updated_by',
-        'active', 
+        'active',
     ];
 
     protected $casts = [

@@ -314,6 +314,15 @@
             $('#summernote').summernote({
                 height: 200,
             });
+            $('#visi').summernote({
+                height: 65,
+            });
+            $('#history').summernote({
+                height: 65,
+            });
+            $('#misi').summernote({
+                height: 65,
+            });
         });
 
         const navbar = document.querySelector('.fixed-top');

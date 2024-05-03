@@ -36,10 +36,10 @@
                     @endif
                 </div>
                 <div class="col-md-9">
-                    <p><strong>Nama:</strong> {{ $stafpegawai->nama }}</p>
-                    <p><strong>Umur:</strong> {{ $stafpegawai->umur }}</p>
-                    <p><strong>Tanggal Bergabung:</strong> {{ $stafpegawai->tanggal_bergabung }}</p>
-                    <p><strong>Jabatan:</strong> {{ $stafpegawai->jabatan }}</p>
+                    <p><strong>Nama:</strong> {{ $stafpegawai->name }}</p>
+                    <p><strong>Umur:</strong> {{ $stafpegawai->age }}</p>
+                    <p><strong>Tanggal Bergabung:</strong> {{ $stafpegawai->date_joined }}</p>
+                    <p><strong>Jabatan:</strong> {{ $stafpegawai->job_title }}</p>
                 </div>
             </div>
         </div>

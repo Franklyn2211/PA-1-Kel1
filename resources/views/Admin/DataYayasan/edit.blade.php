@@ -25,7 +25,7 @@
                     <div class="col-12">
                         <div class="card">
                             <div class="card-body">
-                                <form action="{{ route('Admin.DataYayasan.update', $dataYayasan->id_data_yayasans) }}" method="post"
+                                <form action="{{ route('Admin.DataYayasan.update', $dataYayasan->id_foundation_data) }}" method="post"
                                     enctype='multipart/form-data'>
                                     @csrf
                                     <div class="row">
@@ -33,37 +33,25 @@
                                             <div class="card">
                                                 <div class="card-body">
                                                     <div class="form-group mb-3">
-                                                        <label for="nama_yayasan" class="form-label">Nama Yayasan</label>
-                                                        <input type="text" class="form-control" id="nama_yayasan"
-                                                            name="nama_yayasan"
-                                                            value="{{ $dataYayasan ? $dataYayasan->nama_yayasan : '' }}"
+                                                        <label for="foundation_name" class="form-label">Nama Yayasan</label>
+                                                        <input type="text" class="form-control" id="foundation_name"
+                                                            name="foundation_name"
+                                                            value="{{ $dataYayasan ? $dataYayasan->foundation_name : '' }}"
                                                             required>
-                                                        @error('nama_yayasan')
+                                                        @error('foundation_name')
                                                             <span class="text-danger">{{ $message }}</span>
                                                         @enderror
                                                     </div>
                                                     <div class="form-group mb-3">
-                                                        <label for="singkatan_nama_yayasan" class="form-label">Singkatan
-                                                            Nama
-                                                            Yayasan</label>
-                                                        <input type="text" class="form-control"
-                                                            id="singkatan_nama_yayasan" name="singkatan_nama_yayasan"
-                                                            value="{{ $dataYayasan ? $dataYayasan->singkatan_nama_yayasan : '' }}"
-                                                            required>
-                                                        @error('singkatan_nama_yayasan')
-                                                            <span class="text-danger">{{ $message }}</span>
-                                                        @enderror
-                                                    </div>
-                                                    <div class="form-group mb-3">
-                                                        <label for="sejarah" class="form-label">Sejarah</label>
-                                                        <textarea class="form-control" id="sejarah" name="sejarah">{{ $dataYayasan ? $dataYayasan->sejarah : '' }}</textarea>
-                                                        @error('sejarah')
+                                                        <label for="history" class="form-label">Sejarah</label>
+                                                        <textarea class="form-control" id="history" name="history">{{ $dataYayasan ? $dataYayasan->history : '' }}</textarea>
+                                                        @error('history')
                                                             <span class="text-danger">{{ $message }}</span>
                                                         @enderror
                                                     </div>
                                                     <div class="form-group mb-3">
                                                         <label for="visi" class="form-label">Visi</label>
-                                                        <textarea class="form-control" id="visi" name="visi">{{ $dataYayasan ? $dataYayasan->visi : '' }}</textarea>
+                                                        <textarea class="form-control" id="summernote" name="visi">{{ $dataYayasan ? $dataYayasan->visi : '' }}</textarea>
                                                         @error('visi')
                                                             <span class="text-danger">{{ $message }}</span>
                                                         @enderror

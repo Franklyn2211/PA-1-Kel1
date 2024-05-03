@@ -27,27 +27,27 @@
                     <div class="col-12">
                         <div class="card">
                             <div class="card-body">
-                                <form action="{{ route('admin.stafpegawai.update', $stafpegawai->id_stafpegawai) }}"
+                                <form action="{{ route('admin.stafpegawai.update', $stafpegawai->id_staff) }}"
                                     method="POST" enctype="multipart/form-data">
                                     @csrf
                                     <div class="form-group">
-                                        <label for="nama">Nama</label>
-                                        <input type="text" name="nama" id="nama" class="form-control"
-                                            value="{{ $stafpegawai->nama }}" required>
+                                        <label for="name">Nama</label>
+                                        <input type="text" name="name" id="name" class="form-control"
+                                            value="{{ $stafpegawai->name }}" required>
                                     </div>
                                     <div class="form-group">
-                                        <label for="umur">Umur</label>
-                                        <input type="number" name="umur" id="umur" class="form-control"
-                                            value="{{ $stafpegawai->umur }}" required>
+                                        <label for="age">Umur</label>
+                                        <input type="number" name="age" id="age" class="form-control"
+                                            value="{{ $stafpegawai->age }}" required>
                                     </div>
                                     <div class="form-group">
-                                        <label for="tanggal_bergabung">Tanggal Bergabung</label>
-                                        <input type="date" name="tanggal_bergabung" id="tanggal_bergabung"
-                                            class="form-control" value="{{ $stafpegawai->tanggal_bergabung }}" required>
+                                        <label for="date_joined">Tanggal Bergabung</label>
+                                        <input type="date" name="date_joined" id="date_joined"
+                                            class="form-control" value="{{ $stafpegawai->date_joined }}" required>
                                     </div>
                                     <div class="form-group">
-                                        <label for="jabatan">Jabatan</label>
-                                        <select class="form-control" id="jabatan" name="jabatan" value="{{ $stafpegawai->jabatan }}" required>
+                                        <label for="jon_title">Jabatan</label>
+                                        <select class="form-control" id="job_title" name="job_title" value="{{ $stafpegawai->job_title }}" required>
                                             <option value="Ketua Yayasan">Ketua Yayasan</option>
                                             <option value="Pengajar">Pengajar</option>
                                             <option value="Staff">Staff</option>

@@ -9,14 +9,14 @@ class AnakDisabilitas extends Model
 {
     use HasFactory;
 
-    protected $primaryKey = 'id_anakdisabilitas';
-    protected $table = 'anakdisabilitas';
+    protected $primaryKey = 'id_child_with_disabilities';
+    protected $table = 'child_with_disabilities';
     public $incrementing = false;
     protected $fillable = [
-        'id_anakdisabilitas',
-        'nama',
-        'umur',
-        'tanggal_bergabung',
+        'id_child_with_disabilities',
+        'name',
+        'age',
+        'date_joined',
         'created_by',
         'updated_by',
         'active',
@@ -28,16 +28,16 @@ class AnakDisabilitas extends Model
 
     public static function generateNextId(){
 
-        $latestId = self::orderBy('id_anakdisabilitas', 'desc')->first();
+        $latestId = self::orderBy('id_child_with_disabilities', 'desc')->first();
 
         // Mengambil nomor dari ID terakhir
-        $lastNumber = $latestId ? intval(substr($latestId->id_anakdisabilitas, 2)) : 0;
+        $lastNumber = $latestId ? intval(substr($latestId->id_child_with_disabilities, 2)) : 0;
 
         // Menambahkan 1 untuk mendapatkan nomor berikutnya
         $nextNumber = $lastNumber + 1;
 
         // Mengonversi nomor berikutnya ke format yang diinginkan (NXX)
-        $nextId = 'AD' . str_pad($nextNumber, 2, '0', STR_PAD_LEFT);
+        $nextId = 'CD' . str_pad($nextNumber, 2, '0', STR_PAD_LEFT);
 
         return $nextId;
     }

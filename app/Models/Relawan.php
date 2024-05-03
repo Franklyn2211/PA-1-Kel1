@@ -9,17 +9,17 @@ class Relawan extends Model
 {
     use HasFactory;
 
-    protected $table = 'relawan';
-    protected $primaryKey = 'id_relawan';
+    protected $table = 'volunteers';
+    protected $primaryKey = 'id_volunteers';
     public $incrementing = false;
 
     protected $fillable = [
-        'id_relawan',
-        'nama_relawan',
+        'id_volunteers',
+        'name',
         'email',
-        'no_hp',
-        'tanggallahir',
-        'lokasi',
+        'phone_number',
+        'date_of_birth',
+        'location',
         'cv',
         'created_by',
         'updated_by',
@@ -27,14 +27,14 @@ class Relawan extends Model
     ];
 
     protected $casts = [
-        'tanggallahir' => 'date',
+        'date_of_birth' => 'date',
         'active' => 'boolean',
     ];
 
     public static function generateNextId()
 {
     // Mendapatkan ID terakhir dari database
-    $latestId = self::orderBy('id_relawan', 'desc')->first();
+    $latestId = self::orderBy('id_volunteers', 'desc')->first();
 
     // Mengambil nomor dari ID terakhir
     $lastNumber = $latestId ? intval(substr($latestId->id_relawan, 1)) : 0;
@@ -43,7 +43,7 @@ class Relawan extends Model
     $nextNumber = $lastNumber + 1;
 
     // Mengonversi nomor berikutnya ke format yang diinginkan (NXX)
-    $nextId = 'R' . str_pad($nextNumber, 2, '0', STR_PAD_LEFT);
+    $nextId = 'V' . str_pad($nextNumber, 2, '0', STR_PAD_LEFT);
 
     return $nextId;
 }

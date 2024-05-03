@@ -11,7 +11,7 @@ class AboutController extends Controller
     public function index()
 {
     // Retrieve a single hero section
-    $dataYayasan = Data_yayasan::all();
+    $dataYayasan = Data_yayasan::first();
     $stafpegawai = StafPegawai::all();
 
     // Return the view with hero section data

@@ -43,8 +43,8 @@
                                                     <input type="text" class="form-control" id="location" name="location" placeholder="Lokasi Berita">
                                                 </div>
                                                 <div class="form-group mb-3">
-                                                    <label for="tanggal">Tanggal</label>
-                                                    <input type="date" class="form-control" id="tanggal" name="tanggal">
+                                                    <label for="date">Tanggal</label>
+                                                    <input type="date" class="form-control" id="date" name="date">
                                                 </div>
                                                 <div class="form-group mb-3">
                                                     <label for="photo">Foto</label>

@@ -12,7 +12,7 @@
                 <div class="col-md-4">
                     <h2>{{ $news->title }}</h2>
                     <p class="text-break">{{ $news->description }}</p>
-                    <p>{{ $news->tanggal }}</p>
+                    <p>{{ $news->date }}</p>
                 </div>
             </div>
             <div class="col-md-4">

@@ -53,10 +53,10 @@
                                 @foreach ($stafpegawai as $staf)
                                     <tr>
                                         <td>{{ $loop->iteration }}</td>
-                                        <td>{{ $staf->nama }}</td>
-                                        <td>{{ $staf->umur }}</td>
-                                        <td>{{ $staf->tanggal_bergabung }}</td>
-                                        <td>{{ $staf->jabatan }}</td>
+                                        <td>{{ $staf->name }}</td>
+                                        <td>{{ $staf->age }}</td>
+                                        <td>{{ $staf->date_joined }}</td>
+                                        <td>{{ $staf->job_title }}</td>
                                         <td><img src="{{ asset('storage/app/public/photo/' . $staf->photo) }}"
                                                 alt="Foto" style="width: 100px;"></td>
                                         <td>
