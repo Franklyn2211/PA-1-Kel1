@@ -26,7 +26,7 @@
             <div class="container-fluid">
                 <!-- Small boxes (Stat box) -->
                 <div class="row">
-                    <div class="col-md-6">
+                    <div class="col-md-12">
                         <div class="card">
                             <div class="card-body">
                                 <form action="{{ route('admin.anaksekolahinformal.store') }}" method="POST" enctype="multipart/form-data">
@@ -36,14 +36,23 @@
                                         <input type="text" id="name" name="name" class="form-control">
                                     </div>
                                     <div class="form-group">
-                                        <label for="age">Umur:</label>
-                                        <input type="number" id="age" name="age" class="form-control">
+                                        <label for="date_of_birth">Tanggal Lahir:</label>
+                                        <input type="date" id="date_of_birth" name="date_of_birth" class="form-control">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="gender">Jenis Kelamin:</label>
+                                        <select id="gender" name="gender" class="form-control">
+                                            <option value="Laki-Laki">Laki-Laki</option>
+                                            <option value="Perempuan">Perempuan</option>
+                                        </select>
                                     </div>
                                     <div class="form-group">
                                         <label for="date_joined">Tanggal Bergabung:</label>
                                         <input type="date" id="date_joined" name="date_joined" class="form-control">
                                     </div>
-                                    <button type="submit" class="btn btn-primary">Simpan</button>
+                                    <div class="form-group text-center"> <!-- Perubahan di sini -->
+                                        <button type="submit" class="btn btn-primary">Simpan</button>
+                                    </div>
                                 </form>
                             </div>
                         </div>

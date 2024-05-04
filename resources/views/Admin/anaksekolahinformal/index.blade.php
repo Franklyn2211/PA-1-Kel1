@@ -41,7 +41,9 @@
                                         <tr>
                                             <th>#</th>
                                             <th>Nama</th>
+                                            <th>Tanggal Lahir</th>
                                             <th>Umur</th>
+                                            <th>Jenis Kelamin</th>
                                             <th>Tanggal Bergabung</th>
                                             <th>Aksi</th>
                                         </tr>
@@ -51,7 +53,9 @@
                                             <tr>
                                                 <td>{{ $loop->iteration }}</td>
                                                 <td>{{ $anaksekolahinformal->name }}</td>
-                                                <td>{{ $anaksekolahinformal->age }}</td>
+                                                <td>{{ $anaksekolahinformal->date_of_birth }}</td>
+                                                <td>{{ \Carbon\Carbon::parse($anaksekolahinformal->date_of_birth)->age }}</td> <!-- Hitung umur -->
+                                                <td>{{ $anaksekolahinformal->gender }}</td>
                                                 <td>{{ $anaksekolahinformal->date_joined }}</td>
                                                 <td>
                                                     <a href="{{ route('admin.anaksekolahinformal.show', $anaksekolahinformal) }}" class="btn btn-info btn-sm">Lihat</a>

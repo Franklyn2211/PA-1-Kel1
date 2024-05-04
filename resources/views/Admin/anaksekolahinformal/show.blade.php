@@ -31,7 +31,9 @@
                         <div class="card">
                             <div class="card-body">
                                 <p><strong>Nama:</strong> {{ $anaksekolahinformal->name }}</p>
-                                <p><strong>Umur:</strong> {{ $anaksekolahinformal->age }}</p>
+                                <p><strong>Tanggal Lahir:</strong> {{ $anaksekolahinformal->date_of_birth }}</p>
+                                <p><strong>Jenis Kelamin:</strong> {{ $anaksekolahinformal->gender }}</p>
+                                <p><strong>Umur:</strong> {{ \Carbon\Carbon::parse($anaksekolahinformal->date_of_birth)->age }}</p>
                                 <p><strong>Tanggal Bergabung:</strong> {{ $anaksekolahinformal->date_joined }}</p>
                             </div>
                         </div>

@@ -113,26 +113,10 @@ Route::prefix('Admin')->middleware('auth')->group(function () {
         Route::delete('gallery/{id_galleries}', [GalleryController::class, 'destroy'])->name('admin.gallery.destroy');
 
 
-
-        Route::get('address', [AddressController::class, 'index'])->name('admin.address.index');
-        Route::get('address/create', [AddressController::class, 'create'])->name('admin.address.create');
-        Route::post('address/store', [AddressController::class, 'store'])->name('admin.address.store');
-        Route::get('address/{id}/edit', [AddressController::class, 'edit'])->name('admin.address.edit');
-        Route::put('address/update/{id}', [AddressController::class, 'update'])->name('admin.address.update');
-        Route::delete('address/{id}', [AddressController::class, 'destroy'])->name('admin.address.destroy');
-
-
-    Route::get('address', [AddressController::class, 'index'])->name('admin.address.index');
-    Route::get('address/create', [AddressController::class, 'create'])->name('admin.address.create');
-    Route::post('address/store', [AddressController::class, 'store'])->name('admin.address.store');
-    Route::get('address/{id}/edit', [AddressController::class, 'edit'])->name('admin.address.edit');
-    Route::put('address/update/{id}', [AddressController::class, 'update'])->name('admin.address.update');
-    Route::delete('address/{id}', [AddressController::class, 'destroy'])->name('admin.address.destroy');
-
     Route::resource('anakdisabilitas', AnakDisabilitasController::class);
     Route::get('anakdisabilitas', [AnakDisabilitasController::class, 'index'])->name('admin.anakdisabilitas.index');
     Route::get('anakdisabilitas/create', [AnakDisabilitasController::class, 'create'])->name('admin.anakdisabilitas.create');
-    Route::post('anakdisabilitas/store', [AnakDisabilitasController::class, 'store'])->name('admin.anakdisabilitas.store');
+    Route::post('anakdisabilitas', [AnakDisabilitasController::class, 'store'])->name('admin.anakdisabilitas.store');
     Route::get('anakdisabilitas/{id}', [AnakDisabilitasController::class, 'show'])->name('admin.anakdisabilitas.show');
     Route::get('anakdisabilitas/{anakdisabilitas}/edit', [AnakDisabilitasController::class, 'edit'])->name('admin.anakdisabilitas.edit');
     Route::put('anakdisabilitas/{anakdisabilitas}', [AnakDisabilitasController::class, 'update'])->name('admin.anakdisabilitas.update');

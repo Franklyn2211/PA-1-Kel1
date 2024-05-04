@@ -15,7 +15,8 @@ class AnakSekolahInformal extends Model
     protected $fillable = [
         'id_informal_school_child',
         'name',
-        'age',
+        'date_of_birth',
+        'gender',
         'date_joined',
         'created_by',
         'updated_by',
