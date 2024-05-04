@@ -131,7 +131,7 @@
                                 <li class="nav-item">
                                     <a href="/Admin/gallery" class="nav-link">
                                         <i class="far fa-circle nav-icon"></i>
-                                        <p>Gallery</p>
+                                        <p>Galeri</p>
                                     </a>
                                 </li>
                             </ul>
@@ -156,7 +156,7 @@
                             <a href="#" class="nav-link">
                                 <i class="nav-icon fas fa-newspaper"></i>
                                 <p>
-                                    News
+                                    Berita
                                     <i class="fas fa-angle-left right"></i>
                                 </p>
                             </a>
@@ -164,13 +164,13 @@
                                 <li class="nav-item">
                                     <a href="{{ route('Admin.News.index') }}" class="nav-link">
                                         <i class="far fa-circle nav-icon"></i>
-                                        <p>News</p>
+                                        <p>Berita</p>
                                     </a>
                                 </li>
                                 <li class="nav-item">
                                     <a href="{{ route('Admin.NewsCategory.index') }}" class="nav-link">
                                         <i class="far fa-circle nav-icon"></i>
-                                        <p>News Category</p>
+                                        <p>Kategori Berita</p>
                                     </a>
                                 </li>
                             </ul>
@@ -179,7 +179,7 @@
                             <a href="#" class="nav-link">
                                 <i class="nav-icon fas fa-bullhorn"></i>
                                 <p>
-                                    Announcement
+                                    Pengumuman
                                     <i class="fas fa-angle-left right"></i>
                                 </p>
                             </a>
@@ -187,13 +187,13 @@
                                 <li class="nav-item">
                                     <a href="{{ route('Admin.Announcement.index') }}" class="nav-link">
                                         <i class="far fa-circle nav-icon"></i>
-                                        <p>Announcement</p>
+                                        <p>Pengumuman</p>
                                     </a>
                                 </li>
                                 <li class="nav-item">
                                     <a href="{{ route('Admin.AnnouncementCategory.index') }}" class="nav-link">
                                         <i class="far fa-circle nav-icon"></i>
-                                        <p>Announcement Category</p>
+                                        <p>Kategori Pengumuman</p>
                                     </a>
                                 </li>
                             </ul>
@@ -233,19 +233,19 @@
                                 <li class="nav-item">
                                     <a href="/Admin/anakdisabilitas" class="nav-link">
                                         <i class="far fa-circle nav-icon"></i>
-                                        <p>Anak Disabilitas</p>
+                                        <p>Anak Spesial</p>
                                     </a>
                                 </li>
                                 <li class="nav-item">
                                     <a href="/Admin/anaksekolahinformal" class="nav-link">
                                         <i class="far fa-circle nav-icon"></i>
-                                        <p>Anak Sekolah Informal</p>
+                                        <p>Anak Pesisir Danau</p>
                                     </a>
                                 </li>
                                 <li class="nav-item">
                                     <a href="/Admin/stafpegawai" class="nav-link">
                                         <i class="far fa-circle nav-icon"></i>
-                                        <p>Staf/Pegawai</p>
+                                        <p>Staf dan Pegawai</p>
                                     </a>
                                 </li>
                             </ul>
