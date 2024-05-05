@@ -21,8 +21,8 @@
             </div>
         @endforeach
     </div>
-    <div class="mt-4">
-        {{ $sponsor->links() }} 
+    <div class="d-flex justify-content-end mt-3">
+        {{ $sponsor->links('pagination::simple-bootstrap-5') }}
     </div>
 </div>
 @endsection
