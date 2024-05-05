@@ -27,7 +27,8 @@
                 <!-- Small boxes (Stat box) -->
                 <div class="card">
                     <div class="card-body">
-                        <table id="example1" class="table table-striped table-bordered table-hover text-center" style="width: 100%">
+                        <table id="example1" class="table table-striped table-bordered table-hover text-center"
+                            style="width: 100%">
                             <thead>
                                 <tr>
                                     <th>#</th>
@@ -47,13 +48,16 @@
                                         <td>{{ $item->phone_number }}</td> <!-- Perbaikan disini -->
                                         <td>{{ $item->message }}</td> <!-- Perbaikan disini -->
                                         <td>
-                                            <a href="mailto:{{ $item->email }}?subject=Balasan%20untuk%20{{ $item->name }}" class="btn btn-primary btn-sm">
+                                            <a href="mailto:{{ $item->email }}?subject=Balasan%20untuk%20{{ $item->name }}"
+                                                class="btn btn-primary btn-sm">
                                                 <i class="fa-solid fa-envelope"></i> Jawab
                                             </a>
-                                            <form action="{{ route('kontak.destroy', $item->id_contact) }}" method="POST" class="d-inline">
+                                            <form action="{{ route('kontak.destroy', $item->id_contact) }}" method="POST"
+                                                class="d-inline">
                                                 @csrf
                                                 @method('DELETE')
-                                                <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('Are you sure you want to delete this contact?')">
+                                                <button type="submit" class="btn btn-danger btn-sm"
+                                                    onclick="return confirm('Are you sure you want to delete this contact?')">
                                                     <i class="fa-solid fa-trash-can"></i> Delete
                                                 </button>
                                             </form>
@@ -64,11 +68,9 @@
                         </table>
                     </div>
                 </div>
-                    </div><!-- /.container-fluid -->
-                </div>
-                <!-- /.content -->
-            </div>
+            </div><!-- /.container-fluid -->
         </div>
+        <!-- /.content -->
     </div>
 
 @endsection

@@ -15,7 +15,8 @@ return new class extends Migration {
         Schema::create('child_with_disabilities', function (Blueprint $table) {
             $table->string('id_child_with_disabilities')->primary();
             $table->string('name');
-            $table->integer('age');
+            $table->enum('gender', ['Laki-Laki', 'Perempuan']);
+            $table->date('date_of_birth');
             $table->date('date_joined');
             $table->timestamps();
             $table->string('created_by', 20)->default('adminYPA');

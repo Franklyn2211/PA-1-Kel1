@@ -30,14 +30,13 @@
                         <!-- small box -->
                         <div class="small-box bg-info">
                             <div class="inner">
-                                <h3>{{ $totalRelawan }}</h3>
+                                <h3>{{ $totalVolunteer}}</h3>
                                 <p>Relawan</p>
                             </div>
                             <div class="icon">
                                 <i class="fas fa-user-friends"></i>
                             </div>
-                            <a href="/Admin/relawan" class="small-box-footer">More info <i
-                                    class="fas fa-arrow-circle-right"></i></a>
+                            <a href="/Admin/relawan" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
                         </div>
                     </div>
                     <!-- ./col -->
@@ -51,8 +50,7 @@
                             <div class="icon">
                                 <i class="fas fa-donate"></i>
                             </div>
-                            <a href="/Admin/donatur" class="small-box-footer">More info <i
-                                    class="fas fa-arrow-circle-right"></i></a>
+                            <a href="/Admin/donatur" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
                         </div>
                     </div>
                     <!-- ./col -->
@@ -60,112 +58,42 @@
                         <!-- small box -->
                         <div class="small-box bg-info">
                             <div class="inner">
-                                <h3>{{ $totalNews }}</h3>
-                                <p>News</p>
+                                <h3>{{$totalanakdisabilitas}}</h3>
+                                <p>Anak Spesial</p>
                             </div>
                             <div class="icon">
-                                <i class="fas fa-newspaper"></i>
+                                <i class="fas fa-user-friends"></i>
                             </div>
-                            <a href="{{ route('Admin.News.index') }}" class="small-box-footer">More info <i
-                                    class="fas fa-arrow-circle-right"></i></a>
+                            <a href="/Admin/relawan" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-6">
+                        <!-- small box -->
+                        <div class="small-box bg-info">
+                            <div class="inner">
+                                <h3>{{$totalanaksekolahinformal}}</h3>
+                                <p>Anak Pesisir Danau</p>
+                            </div>
+                            <div class="icon">
+                                <i class="fas fa-user-friends"></i>
+                            </div>
+                            <a href="/Admin/relawan" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-6">
+                        <!-- small box -->
+                        <div class="small-box bg-info">
+                            <div class="inner">
+                                <h3>{{$totalstafpegawai}}</h3>
+                                <p>Staf dan Pegawai</p>
+                            </div>
+                            <div class="icon">
+                                <i class="fas fa-user-friends"></i>
+                            </div>
+                            <a href="/Admin/relawan" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
                         </div>
                     </div>
                     <!-- ./col -->
-                    <div class="col-lg-3 col-6">
-                        <!-- small box -->
-                        <div class="small-box bg-danger">
-                            <div class="inner">
-                                <h3>{{ $totalAnnouncement }}</h3>
-
-                                <p>Pengumuman</p>
-                            </div>
-                            <div class="icon">
-                                <i class="fas fa-bullhorn"></i>
-                            </div>
-                            <a href="{{ route('Admin.Announcement.index') }}" class="small-box-footer">More info <i
-                                    class="fas fa-arrow-circle-right"></i></a>
-                        </div>
-                    </div>
-                    <!-- ./col -->
-                    <div class="col-lg-3 col-6">
-                        <!-- small box -->
-                        <div class="small-box bg-success">
-                            <div class="inner">
-                                <h3>{{ $totalSponsor }}</h3>
-
-                                <p>Sponsor</p>
-                            </div>
-                            <div class="icon">
-                                <i class="fas fa-handshake"></i>
-                            </div>
-                            <a href="{{ route('admin.sponsor.index') }}" class="small-box-footer">More info <i
-                                    class="fas fa-arrow-circle-right"></i></a>
-                        </div>
-                    </div>
-                    <!-- ./col -->
-                    <div class="col-lg-3 col-6">
-                        <!-- small box -->
-                        <div class="small-box bg-primary">
-                            <div class="inner">
-                                <h3>{{ $totalKemitraan }}</h3>
-
-                                <p>Kemitraan</p>
-                            </div>
-                            <div class="icon">
-                                <i class="fas fa-handshake"></i>
-                            </div>
-                            <a href="{{ route('admin.kemitraan.index') }}" class="small-box-footer">More info <i
-                                    class="fas fa-arrow-circle-right"></i></a>
-                        </div>
-                    </div>
-                    <!-- ./col -->
-                    <div class="col-lg-3 col-6">
-                        <!-- small box -->
-                        <div class="small-box bg-pink">
-                            <div class="inner">
-                                <h3>{{ $totalAnakDisabilitas }}</h3>
-
-                                <p>Anak Disabilitas</p>
-                            </div>
-                            <div class="icon">
-                                <i class="fas fa-heart"></i>
-                            </div>
-                            <a href="{{ route('admin.anakdisabilitas.index') }}" class="small-box-footer">More info <i
-                                    class="fas fa-arrow-circle-right"></i></a>
-                        </div>
-                    </div>
-                    <!-- ./col -->
-                    <div class="col-lg-3 col-6">
-                        <!-- small box -->
-                        <div class="small-box bg-danger">
-                            <div class="inner">
-                                <h3>{{ $totalSiswaInformal }}</h3>
-
-                                <p>Siswa Informal</p>
-                            </div>
-                            <div class="icon">
-                                <i class="fas fa-child"></i>
-                            </div>
-                            <a href="{{ route('admin.anaksekolahinformal.index') }}" class="small-box-footer">More info <i
-                                    class="fas fa-arrow-circle-right"></i></a>
-                        </div>
-                    </div>
-                    <!-- ./col -->
-                    <div class="col-lg-3 col-6">
-                        <!-- small box -->
-                        <div class="small-box bg-secondary">
-                            <div class="inner">
-                                <h3>{{ $totalStaf }}</h3>
-
-                                <p>Staf/Pegawai</p>
-                            </div>
-                            <div class="icon">
-                                <i class="fas fa-users"></i>
-                            </div>
-                            <a href="{{ route('admin.stafpegawai.index') }}" class="small-box-footer">More info <i
-                                    class="fas fa-arrow-circle-right"></i></a>
-                        </div>
-                    </div>
                 </div>
                 <!-- /.row -->
             </div><!-- /.container-fluid -->
