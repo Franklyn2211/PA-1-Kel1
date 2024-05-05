@@ -5,11 +5,8 @@ use App\Http\Controllers\RelawanController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\DonateController;
-<<<<<<< HEAD
 use App\Http\Controllers\SponsorsController;
-=======
 use App\Http\Controllers\Admin\DashboardController;
->>>>>>> 336e8d942531d4d6b01c3b480285e410f39748e8
 use App\Http\Controllers\NewsController;
 use App\Http\Controllers\PartnershipController;
 use App\Http\Controllers\StatistikController;
@@ -145,13 +142,10 @@ Route::prefix('Admin')->middleware('auth')->group(function () {
     Route::resource('anakdisabilitas', AnakDisabilitasController::class);
     Route::get('anakdisabilitas', [AnakDisabilitasController::class, 'index'])->name('admin.anakdisabilitas.index');
     Route::get('anakdisabilitas/create', [AnakDisabilitasController::class, 'create'])->name('admin.anakdisabilitas.create');
-<<<<<<< HEAD
     Route::post('anakdisabilitas/store', [AnakDisabilitasController::class, 'store'])->name('admin.anakdisabilitas.store');
     Route::get('anakdisabilitas/{anakdisabilitas}', [AnakDisabilitasController::class, 'show'])->name('admin.anakdisabilitas.show');
-=======
     Route::post('anakdisabilitas', [AnakDisabilitasController::class, 'store'])->name('admin.anakdisabilitas.store');
     Route::get('anakdisabilitas/{id}', [AnakDisabilitasController::class, 'show'])->name('admin.anakdisabilitas.show');
->>>>>>> 336e8d942531d4d6b01c3b480285e410f39748e8
     Route::get('anakdisabilitas/{anakdisabilitas}/edit', [AnakDisabilitasController::class, 'edit'])->name('admin.anakdisabilitas.edit');
     Route::put('anakdisabilitas/{anakdisabilitas}', [AnakDisabilitasController::class, 'update'])->name('admin.anakdisabilitas.update');
     Route::delete('anakdisabilitas/{anakdisabilitas}', [AnakDisabilitasController::class, 'destroy'])->name('admin.anakdisabilitas.destroy');
