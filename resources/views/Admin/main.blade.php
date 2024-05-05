@@ -392,13 +392,13 @@
                 $('.nav-link').removeClass('active'); // hapus kelas active dari semua link navigasi
                 $(this).addClass('active'); // tambahkan kelas active ke link yang diklik
                 Swal.fire({
-                    title: 'Are you sure?',
-                    text: "You won't be able to revert this!",
+                    title: 'Anda Yakin?',
+                    text: "Anda tidak akan bisa mengembalikannya !",
                     icon: 'warning',
                     showCancelButton: true,
                     confirmButtonColor: '#7367f0',
                     cancelButtonColor: '#82868b',
-                    confirmButtonText: 'Yes, Log Out !'
+                    confirmButtonText: 'Ya, Keluar !'
                 }).then((result) => {
                     if (result.isConfirmed) {
                         $('#logging-out').submit()

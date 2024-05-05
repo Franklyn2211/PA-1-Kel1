@@ -44,28 +44,33 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        @foreach ($relawans as $relawan)
+                                        @foreach ($volunteers as $volunteers)
                                             <tr>
                                                 <td>{{ $loop->iteration }}</td>
-                                                <td>{{ $relawan->name }}</td>
-                                                <td>{{ $relawan->email }}</td>
-                                                <td>{{ $relawan->phone_number }}</td>
-                                                <td>{{ date('d-m-Y', strtotime($relawan->date_of_birth)) }}</td>
-                                                <td>{{ $relawan->location }}</td>
+                                                <td>{{ $volunteers->name }}</td>
+                                                <td>{{ $volunteers->email }}</td>
+                                                <td>{{ $volunteers->phone_number }}</td>
+                                                <td>{{ date('d-m-Y', strtotime($volunteers->date_of_birth)) }}</td>
+                                                <td>{{ $volunteers->location }}</td>
                                                 <td>
-                                                    @if ($relawan->cv)
-                                                    <a href="{{ asset('storage/app/public/CV/' . $relawan->cv) }}" class="btn btn-primary btn-sm" target="_blank">Lihat CV</a>
+                                                    @if ($volunteers->cv)
+                                                    <a href="{{ asset('storage/app/public/CV/' . $volunteers->cv) }}" class="btn btn-primary btn-sm" target="_blank">Lihat CV</a>
                                                     @else
                                                         CV tidak tersedia.
                                                     @endif
                                                 </td>
                                                 <td>
-                                                    <form action="{{ route('relawan.destroy', $relawan->id_volunteers) }}" method="POST" class="d-inline">
+                                                    <a href="mailto:{{ $volunteers->email }}?subject=Balasan%20untuk%20{{ $volunteers->name }}" class="btn btn-primary btn-sm">
+                                                        <i class="fa-solid fa-envelope"></i> Jawab
+                                                    </a>
+                                                    <form action="{{ route('relawan.destroy', $volunteers->id_volunteers) }}" method="POST" class="d-inline">
                                                         @csrf
                                                         @method('DELETE')
-                                                        <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('Apakah Anda yakin ingin menghapus relawan ini?')"><i class="fa-solid fa-trash-can"></i> Hapus</button>
+                                                        <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('Apakah Anda yakin ingin menghapus relawan ini?')">
+                                                            <i class="fa-solid fa-trash-can"></i> Hapus
+                                                        </button>
                                                     </form>
-                                                </td>
+                                                </td>                                                
                                             </tr>
                                         @endforeach
                                     </tbody>

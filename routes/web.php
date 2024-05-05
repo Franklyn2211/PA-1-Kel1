@@ -5,15 +5,16 @@ use App\Http\Controllers\RelawanController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\DonateController;
+use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\NewsController;
 use App\Http\Controllers\PartnershipController;
 use App\Http\Controllers\StatistikController;
 use App\Http\Controllers\AboutController;
+use App\Http\Controllers\AnnouncementController;
+use App\Http\Controllers\KontakController;
 use App\Http\Controllers\Admin\AdminNewsController;
 use App\Http\Controllers\Admin\NewsCategoryController;
-use App\Http\Controllers\AnnouncementController;
 use App\Http\Controllers\Admin\DonaturController;
-use App\Http\Controllers\Admin\AdminContactController;
 use App\Http\Controllers\Admin\AnakDisabilitasController;
 use App\Http\Controllers\Admin\AnakSekolahInformalController;
 use App\Http\Controllers\Admin\StafPegawaiController;
@@ -23,9 +24,10 @@ use App\Http\Controllers\Admin\AdminAnnouncementController;
 use App\Http\Controllers\Admin\AnnouncementCategoryController;
 use App\Http\Controllers\Admin\HeroSectionController;
 use App\Http\Controllers\Admin\DataYayasanController;
-use App\Http\Controllers\KontakController;
 use App\Http\Controllers\Admin\GalleryController;
-use App\Http\Controllers\Admin\AddressController;
+use App\Http\Controllers\Admin\AdminKontakController;
+use App\Http\Controllers\Admin\AdminRelawanController;
+use SebastianBergmann\CodeCoverage\Report\Html\Dashboard;
 
 /*
 |--------------------------------------------------------------------------
@@ -48,19 +50,22 @@ Route::post('/logout', [AuthController::class, 'logout']);
 
 // Route Dashboard Admin
 Route::prefix('Admin')->middleware('auth')->group(function () {
-    Route::get('/', [\App\Http\Controllers\Admin\DashboardController::class, 'index']);
-    Route::get('relawan', [\App\Http\Controllers\Admin\RelawanController::class, 'index'])->name('admin.relawan');
-    Route::delete('Admin/relawan/{relawan}', [\App\Http\Controllers\Admin\RelawanController::class, 'destroy'])->name('relawan.destroy');
-    Route::post('Admin/relawan', [\App\Http\Controllers\Admin\RelawanController::class, 'store'])->name('relawan.store');
+    
+    Route::get('/', [DashboardController::class, 'index'])->name('Admin.dashboard');
+
+    Route::get('relawan', [AdminRelawanController::class, 'index'])->name('Admin.relawan.relawan');
+    Route::delete('relawan/{relawan}', [AdminRelawanController::class, 'destroy'])->name('relawan.destroy');
 
 
-    // Route::resource('news', AdminNewsController::class)->except('show');
+    Route::get('kontak', [AdminKontakController::class, 'index'])->name('Admin.kontak.kontak');
+    Route::delete('kontak/{kontak}', [AdminKontakController::class, 'destroy'])->name('kontak.destroy');
+
+
+
     Route::get('donatur', [DonaturController::class, 'index'])->name('Admin.donate.donate');
     Route::delete('donatur/{donate}', [DonaturController::class, 'destroy'])->name('donate.destroy');
 
-    Route::get('kontak', [\App\Http\Controllers\Admin\KontakController::class, 'index'])->name('admin.kontak.index');
-    Route::delete('admin/kontak/{kontak}', [\App\Http\Controllers\Admin\KontakController::class, 'destroy'])->name('kontak.destroy');
-    Route::post('admin/kontak', [\App\Http\Controllers\Admin\KontakController::class, 'store'])->name('kontak.store');
+    
     // Routes for news management
     Route::get('News', [AdminNewsController::class, 'index'])->name('Admin.News.index');
     Route::get('News/create', [AdminNewsController::class, 'create'])->name('Admin.News.create');
@@ -174,6 +179,11 @@ Route::resource('Contact', KontakController::class)->only('index', 'store');
 Route::resource('Statistics', StatistikController::class)->only('index');
 Route::resource('Relawan', RelawanController::class)->only('index', 'store');
 
-Route::get('/donasi', [DonateController::class, 'donate'])->name('donate.donate');
-Route::post('/donasi', [DonateController::class, 'store'])->name('donate.store');
+Route::get('/donate', [DonateController::class, 'donate'])->name('donate.donate');
+Route::post('/donate', [DonateController::class, 'store'])->name('donate.store');
 
+Route::get('/kontak', [KontakController::class, 'kontak'])->name('kontak.kontak');
+Route::post('/kontak', [KontakController::class, 'store'])->name('kontak.store');
+
+Route::get('/relawan', [RelawanController::class, 'relawan'])->name('relawan.relawan');
+Route::post('/relawan', [RelawanController::class, 'store'])->name('relawan.store');
