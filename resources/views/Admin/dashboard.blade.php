@@ -30,7 +30,7 @@
                         <!-- small box -->
                         <div class="small-box bg-info">
                             <div class="inner">
-                                <h3>{{ $totalRelawan }}</h3>
+                                <h3>{{ $totalVolunteer}}</h3>
                                 <p>Relawan</p>
                             </div>
                             <div class="icon">
@@ -56,32 +56,41 @@
                     <!-- ./col -->
                     <div class="col-lg-3 col-6">
                         <!-- small box -->
-                        <div class="small-box bg-warning">
+                        <div class="small-box bg-info">
                             <div class="inner">
-                                <h3>{{ $totalNews }}</h3>
-                                <p>News</p>
+                                <h3>{{$totalanakdisabilitas}}</h3>
+                                <p>Anak Spesial</p>
                             </div>
                             <div class="icon">
-                                <i class="ion ion-person-add"></i>
+                                <i class="fas fa-user-friends"></i>
                             </div>
-                            <a href="{{ route('Admin.News.index') }}" class="small-box-footer">More info <i
-                                    class="fas fa-arrow-circle-right"></i></a>
+                            <a href="/Admin/relawan" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
                         </div>
                     </div>
-                    <!-- ./col -->
-                     <div class="col-lg-3 col-6">
+                    <div class="col-lg-3 col-6">
                         <!-- small box -->
-                        <div class="small-box bg-danger">
+                        <div class="small-box bg-info">
                             <div class="inner">
-                                <h3>65</h3>
-
-                                <p>News</p>
+                                <h3>{{$totalanaksekolahinformal}}</h3>
+                                <p>Anak Pesisir Danau</p>
                             </div>
                             <div class="icon">
-                                <i class="ion ion-pie-graph"></i>
+                                <i class="fas fa-user-friends"></i>
                             </div>
-                            <a href="/Admin/news" class="small-box-footer">More info <i
-                                    class="fas fa-arrow-circle-right"></i></a>
+                            <a href="/Admin/relawan" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-6">
+                        <!-- small box -->
+                        <div class="small-box bg-info">
+                            <div class="inner">
+                                <h3>{{$totalstafpegawai}}</h3>
+                                <p>Staf dan Pegawai</p>
+                            </div>
+                            <div class="icon">
+                                <i class="fas fa-user-friends"></i>
+                            </div>
+                            <a href="/Admin/relawan" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
                         </div>
                     </div>
                     <!-- ./col -->
