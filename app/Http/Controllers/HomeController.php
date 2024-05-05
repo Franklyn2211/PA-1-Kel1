@@ -3,6 +3,7 @@ namespace App\Http\Controllers;
 
 use App\Models\AnakDisabilitas;
 use App\Models\AnakSekolahInformal;
+use App\Models\Announcement;
 use App\Models\Donate;
 use App\Models\News;
 use Illuminate\Http\Request;
@@ -21,6 +22,8 @@ class HomeController extends Controller
         // Retrieve gallery data (assuming you want to use it as well)
         $galleries = Gallery::all();
         $news = News::all();
+        $announcement = Announcement::all();
+        $sponsor = Sponsor::all();
 
         //statistik
         $totalDonatur = Donate::count();
@@ -33,6 +36,8 @@ class HomeController extends Controller
             'heroSection',
             'galleries',
             'news',
+            'announcement',
+            'sponsor',
             'totalDonatur',
             'totalSponsor',
             'totalAnakDisabilitas',

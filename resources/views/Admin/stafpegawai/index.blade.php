@@ -1,5 +1,5 @@
 @extends('Admin.main')
-@section('title', 'Staf Pegawai')
+@section('title', 'Staf')
 @section('content')
 
     <div class="content-wrapper">

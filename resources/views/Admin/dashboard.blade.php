@@ -61,7 +61,7 @@
                         <div class="small-box bg-info">
                             <div class="inner">
                                 <h3>{{ $totalNews }}</h3>
-                                <p>News</p>
+                                <p>Berita</p>
                             </div>
                             <div class="icon">
                                 <i class="fas fa-newspaper"></i>
@@ -125,7 +125,7 @@
                             <div class="inner">
                                 <h3>{{ $totalAnakDisabilitas }}</h3>
 
-                                <p>Anak Disabilitas</p>
+                                <p>Anak Spesial</p>
                             </div>
                             <div class="icon">
                                 <i class="fas fa-heart"></i>
@@ -137,7 +137,7 @@
                     <!-- ./col -->
                     <div class="col-lg-3 col-6">
                         <!-- small box -->
-                        <div class="small-box bg-danger">
+                        <div class="small-box bg-warning">
                             <div class="inner">
                                 <h3>{{ $totalSiswaInformal }}</h3>
 

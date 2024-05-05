@@ -7,8 +7,8 @@
         <!-- Contact form-->
         <div class="bg-light rounded-3 py-5 px-4 px-md-5 mb-5">
             <div class="text-center mb-5">
-                <h1 class="fw-bolder">Get in touch</h1>
-                <p class="lead fw-normal text-muted mb-0">We'd love to hear from you</p>
+                <h1 class="fw-bolder">Hubungi Kami</h1>
+                <p class="lead fw-normal text-muted mb-0"></p>
             </div>
             <div class="row gx-5 justify-content-center">
                 <div class="col-lg-8 col-xl-6">

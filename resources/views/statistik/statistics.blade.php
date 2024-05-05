@@ -11,7 +11,7 @@
         <div class="col-md-8">
             <div class="card shadow">
                 <div class="card-header bg-primary text-white text-center">
-                    <h5 class="mb-0">Anak Disabilitas</h5>
+                    <h5 class="mb-0">Anak Spesial</h5>
                 </div>
                 <div class="card-body">
                     <div class="table-responsive">
@@ -20,7 +20,6 @@
                                 <tr>
                                     <th scope="col">No</th>
                                     <th scope="col">Nama</th>
-                                    <th scope="col">Umur</th>
                                     <th scope="col">Tanggal Bergabung</th>
                                 </tr>
                             </thead>
@@ -29,7 +28,6 @@
                                 <tr>
                                     <td>{{ $loop->iteration }}</td>
                                     <td>{{ $anak->nama }}</td>
-                                    <td>{{ $anak->umur }}</td>
                                     <td>{{ $anak->tanggal_bergabung }}</td>
                                 </tr>
                                 @endforeach
@@ -45,7 +43,7 @@
         <div class="col-md-8">
             <div class="card shadow">
                 <div class="card-header bg-primary text-white text-center">
-                    <h5 class="mb-0">Anak Sekolah Informal</h5>
+                    <h5 class="mb-0">Siswa Informal</h5>
                 </div>
                 <div class="card-body">
                     <div class="table-responsive">
@@ -54,7 +52,6 @@
                                 <tr>
                                     <th scope="col">No</th>
                                     <th scope="col">Nama</th>
-                                    <th scope="col">Umur</th>
                                     <th scope="col">Tanggal Bergabung</th>
                                 </tr>
                             </thead>
@@ -63,7 +60,6 @@
                                 <tr>
                                     <td>{{ $loop->iteration }}</td>
                                     <td>{{ $anak->nama }}</td>
-                                    <td>{{ $anak->umur }}</td>
                                     <td>{{ $anak->tanggal_bergabung }}</td>
                                 </tr>
                                 @endforeach
@@ -79,7 +75,7 @@
         <div class="col-md-8">
             <div class="card shadow">
                 <div class="card-header bg-primary text-white text-center">
-                    <h5 class="mb-0">Staf/Pegawai</h5>
+                    <h5 class="mb-0">Staf</h5>
                 </div>
                 <div class="card-body">
                     <div class="table-responsive">
@@ -88,7 +84,6 @@
                                 <tr>
                                     <th scope="col">No</th>
                                     <th scope="col">Nama</th>
-                                    <th scope="col">Umur</th>
                                     <th scope="col">Tanggal Bergabung</th>
                                     <th scope="col">Jabatan</th>
                                 </tr>
@@ -98,7 +93,6 @@
                                 <tr>
                                     <td>{{ $loop->iteration }}</td>
                                     <td>{{ $staf->nama }}</td>
-                                    <td>{{ $staf->umur }}</td>
                                     <td>{{ $staf->tanggal_bergabung }}</td>
                                     <td>{{ $staf->jabatan }}</td>
                                 </tr>
@@ -125,7 +119,6 @@
                                     <th scope="col">No</th>
                                     <th scope="col">Nama</th>
                                     <th scope="col">Email</th>
-                                    <th scope="col">No.hp</th>
                                     <th scope="col">Lokasi</th>
                                 </tr>
                             </thead>
@@ -133,10 +126,9 @@
                                 @foreach ($relawans as $relawan)
                                 <tr>
                                     <td>{{ $loop->iteration }}</td>
-                                    <td>{{ $relawan->nama_relawan }}</td>
+                                    <td>{{ $relawan->name }}</td>
                                     <td>{{ $relawan->email }}</td>
-                                    <td>{{ $relawan->no_hp }}</td>
-                                    <td>{{ $relawan->lokasi }}</td>
+                                    <td>{{ $relawan->location }}</td>
                                 </tr>
                                 @endforeach
                             </tbody>

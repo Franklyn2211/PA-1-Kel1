@@ -62,8 +62,8 @@
         <div class="container px-5 my-5">
             <div class="row gx-5">
                 <div class="col-lg-4 mb-5 mb-lg-0">
-                    @if (isset($dataHeroSection))
-                        <h2 class="fw-bolder mb-0">{{ $dataHeroSection->header }}</h2>
+                    @if (isset($heroSection))
+                        <h2 class="fw-bolder mb-0">{{ $heroSection->header }}</h2>
                     @else
                         <h2 class="fw-bolder mb-0">Default Header</h2>
                     @endif
@@ -72,54 +72,86 @@
                     <div class="row gx-5 row-cols-1 row-cols-md-2">
                         <div class="col mb-5 mb-md-0 h-100">
                             <div class="feature bg-primary bg-gradient text-white rounded-3 mb-3"><i
-                                    class="bi bi-toggles2"></i></div>
-                            <h2 class="h5">Featured title</h2>
-                            <p class="mb-0">Paragraph of text beneath the heading to explain the heading. Here is just a
-                                bit more text.</p>
+                                    class="fas fa-wheelchair"></i></div>
+                            <h2 class="h5">Anak Spesial</h2>
+                            <p class="mb-0">Terletak di Wilayah</p>
                         </div>
                         <div class="col h-100">
                             <div class="feature bg-primary bg-gradient text-white rounded-3 mb-3"><i
-                                    class="bi bi-toggles2"></i></div>
-                            <h2 class="h5">Featured title</h2>
-                            <p class="mb-0">Paragraph of text beneath the heading to explain the heading. Here is just a
-                                bit more text.</p>
+                                    class="fas fa-child"></i></div>
+                            <h2 class="h5">Siswa Informal</h2>
+                            <p class="mb-0">Desa Lumban Silintong, Kecamatan Balige, Kabupaten Toba</p>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
     </section>
-    <!-- Blog preview section-->
-    <section class="py-5">
-        <div class="container px-5 my-5">
-            <div class="row gx-5 justify-content-center">
-                <div class="col-lg-8 col-xl-6">
-                    <div class="text-center">
-                        <h2 class="fw-bolder">Berita</h2>
-                    </div>
-                </div>
+    <section id="mitra-kampus" class="splide container p-5" aria-label="Beautiful Images">
+        <h1 class="text-center fw-bold">SPONSOR</h1>
+        <div class="d-flex justify-content-center mb-4">
+            <div id="underline-line-mitra" class="bg-primary"></div>
+        </div>
+
+
+        <div class="splide__slider">
+            <div class="splide__track">
+                <ul class="splide__list">
+                    @foreach ($sponsor as $item)
+                    <img src="{{asset('potosponsor/' . $item->poto ) }}" alt="" style="width:100px;" class="img-fluid">
+                    @endforeach
+                </ul>
             </div>
-            <div class="row gx-5">
-                @foreach ($news as $berita)
-                    <div class="col-lg-4 mb-5">
-                        <div class="card h-100 shadow border-0">
-                            <img class="card-img-top" src="{{ asset('storage/app/public/photo/' . $berita->photo) }}"
-                                alt="..." style="width: 100%; height:43%" />
-                            <div class="card-body p-4">
-                                <a class="text-decoration-none link-dark stretched-link" href="#!">
-                                    <h5 class="card-title mb-3">{{ $berita->title }}</h5>
-                                </a>
-                                <p class="card-text mb-0">{!! $berita->description !!}</p>
+        </div>
+
+    </section>
+    {{-- <section id="testimoni" class="splide container bg-informasi-umum p-5" aria-label="Beautiful Images">
+        <h1 class="text-center fw-bold mb-5">Testimoni</h1>
+
+        <div class="splide__slider">
+            <div class="splide__track">
+                <ul class="splide__list">
+
+                    <li class="splide__slide d-flex justify-content-center" data-splide-interval="2000">
+                        <div class="card" style="">
+                            <div class="bg-primary bg-image-container card-img-top"></div>
+                            <div class="d-flex justify-content-center">
+                                <div class="image-container">
+                                    <img src="" class="cropped-image" alt="foto-profil">
+                                </div>
+                            </div>
+                            <div class="card-body">
+                                <h5 class="card-title fw-bold"></h5>
+                                <div id="tempat-pill" class="d-flex gap-1 mb-4">
+                                    <div class="pill d-inline text-muted">
+
+                                    </div>
+
+                                    <div class="pill d-inline text-muted">
+
+                                    </div>
+
+                                    <div class="pill d-inline text-muted">
+
+                                    </div>
+                                </div>
+                                <div class="d-flex justify-content-center align-items-center border border-1 rounded p-3"
+                                    style="height: 200px;">
+                                    <p class="card-text fs-7">
+
+                                    </p>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                @endforeach
+                    </li>
+
+                </ul>
             </div>
         </div>
-    </section>
+    </section> --}}
     <section id="informasi-umum" class="bg-informasi-umum container text-center">
         <div class="p-5">
-            <h1><strong>Statistik</strong></h1>
+            <a href="{{route('Statistics.index')}}"><h1><strong>Statistik</strong></h1></a>
             <div class="d-flex justify-content-center mb-4">
                 <div id="underline-line-informasi-umum" class=" bg-primary"></div>
             </div>
@@ -131,7 +163,7 @@
                     </div>
                     <div class="card-body">
                         <h3>{{$totalAnakDisabilitas}}</h3>
-                        <span class="fs-5"><strong>Anak Disabilitas</strong></span>
+                        <span class="fs-5"><strong>Anak Spesial</strong></span>
                     </div>
                 </div>
 
@@ -179,68 +211,59 @@
             </div>
         </div>
     </section>
-
-    <section id="mitra-kampus" class="splide container p-5" aria-label="Beautiful Images">
-        <h1 class="text-center fw-bold">SPONSOR</h1>
-        <div class="d-flex justify-content-center mb-4">
-            <div id="underline-line-mitra" class="bg-primary"></div>
-        </div>
-
-
-        <div class="splide__slider">
-            <div class="splide__track">
-                <ul class="splide__list">
-
-
-
-                </ul>
+    <!-- Blog preview section-->
+    <section class="py-5">
+        <div class="container px-5 my-5">
+            <div class="row gx-5 justify-content-center">
+                <div class="col-lg-8 col-xl-6">
+                    <div class="text-center">
+                        <h2 class="fw-bolder">Berita</h2>
+                    </div>
+                </div>
             </div>
-        </div>
-
-    </section>
-    <section id="testimoni" class="splide container bg-informasi-umum p-5" aria-label="Beautiful Images">
-        <h1 class="text-center fw-bold mb-5">Testimoni</h1>
-
-        <div class="splide__slider">
-            <div class="splide__track">
-                <ul class="splide__list">
-
-                    <li class="splide__slide d-flex justify-content-center" data-splide-interval="2000">
-                        <div class="card" style="">
-                            <div class="bg-primary bg-image-container card-img-top"></div>
-                            <div class="d-flex justify-content-center">
-                                <div class="image-container">
-                                    <img src="" class="cropped-image" alt="foto-profil">
-                                </div>
-                            </div>
-                            <div class="card-body">
-                                <h5 class="card-title fw-bold"></h5>
-                                <div id="tempat-pill" class="d-flex gap-1 mb-4">
-                                    <div class="pill d-inline text-muted">
-
-                                    </div>
-
-                                    <div class="pill d-inline text-muted">
-
-                                    </div>
-
-                                    <div class="pill d-inline text-muted">
-
-                                    </div>
-                                </div>
-                                <div class="d-flex justify-content-center align-items-center border border-1 rounded p-3"
-                                    style="height: 200px;">
-                                    <p class="card-text fs-7">
-
-                                    </p>
-                                </div>
+            <div class="row gx-5">
+                @foreach ($news as $berita)
+                    <div class="col-lg-4 mb-5">
+                        <div class="card h-100 shadow border-0">
+                            <img class="card-img-top" src="{{ asset('storage/app/public/photo/' . $berita->photo) }}"
+                                alt="..." style="width: 100%; height:43%" />
+                            <div class="card-body p-4">
+                                <a class="text-decoration-none link-dark stretched-link" href="{{ route('news.show', ['id_news' => $berita->id_news]) }}">
+                                    <h5 class="card-title mb-3">{{ $berita->title }}</h5>
+                                </a>
+                                <p class="card-text mb-0">{!! $berita->description !!}</p>
                             </div>
                         </div>
-                    </li>
-
-                </ul>
+                    </div>
+                @endforeach
             </div>
         </div>
     </section>
-
+    <section class="py-5">
+        <div class="container px-5 my-5">
+            <div class="row gx-5 justify-content-center">
+                <div class="col-lg-8 col-xl-6">
+                    <div class="text-center">
+                        <h2 class="fw-bolder">Pengumuman</h2>
+                    </div>
+                </div>
+            </div>
+            <div class="row gx-5">
+                @foreach ($announcement as $pengumuman)
+                    <div class="col-lg-4 mb-5">
+                        <div class="card h-100 shadow border-0">
+                            <img class="card-img-top" src="{{ asset('storage/app/public/photo/' . $pengumuman->photo) }}"
+                                alt="..." style="width: 100%; height:43%" />
+                            <div class="card-body p-4">
+                                <a class="text-decoration-none link-dark stretched-link" href="">
+                                    <h5 class="card-title mb-3">{{ $pengumuman->title }}</h5>
+                                </a>
+                                <p class="card-text mb-0">{!! $pengumuman->description !!}</p>
+                            </div>
+                        </div>
+                    </div>
+                @endforeach
+            </div>
+        </div>
+    </section>
 @endsection

@@ -1,5 +1,5 @@
 @extends('Admin.main')
-@section('title', 'Add Sponsor')
+@section('title', 'Tambah Sponsor')
 @section('content')
     <div class="content-wrapper">
         <div class="content-header">
@@ -36,7 +36,7 @@
                                     </div>
                                     <div class="form-group mb-3">
                                         <label for="Description">Deskripsi</label>
-                                        <textarea class="form-control" name="Description" id="Description" ></textarea>
+                                        <textarea class="form-control" name="Description" id="summernote" ></textarea>
                                     </div>
                                     <div class="form-group text-center">
                                         <button type="submit" class="btn btn-primary">Simpan</button>

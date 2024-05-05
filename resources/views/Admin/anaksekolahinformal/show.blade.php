@@ -1,5 +1,5 @@
 @extends('Admin.main')
-@section('title', 'Detail Anak Sekolah Informal')
+@section('title', 'Detail Siswa Informal')
 @section('content')
 
     <div class="content-wrapper">

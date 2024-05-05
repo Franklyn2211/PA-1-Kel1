@@ -46,7 +46,7 @@
                                                 <td>
                                                     <img src="{{asset('potosponsor/' . $sponsors->poto ) }}" alt="" style="width:100px;" class="img-fluid">
                                                 </td>
-                                                <td>{{ $sponsors->Description }}</td>
+                                                <td>{!! $sponsors->Description !!}</td>
                                                 <td>
                                                     <a href="{{ route('admin.sponsor.edit', $sponsors->id_sponsor) }}" class="btn btn-primary btn-sm">Edit</a>
                                                     <form action="{{ route('admin.sponsor.destroy', $sponsors->id_sponsor) }}" method="POST" style="display: inline;">

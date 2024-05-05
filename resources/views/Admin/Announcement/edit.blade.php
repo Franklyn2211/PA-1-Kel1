@@ -1,5 +1,5 @@
 @extends('Admin.main')
-@section('title', 'Announcement')
+@section('title', 'Pengumuman')
 @section('content')
     <div class="content-wrapper">
         <!-- Content Header (Page header) -->

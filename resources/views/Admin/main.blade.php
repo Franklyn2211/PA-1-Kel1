@@ -41,32 +41,6 @@
                     <a href="/Admin" class="nav-link">Dashboard</a>
                 </li>
             </ul>
-
-            <!-- Right navbar links -->
-            <ul class="navbar-nav ml-auto">
-                <!-- Navbar Search -->
-                <li class="nav-item">
-                    <a class="nav-link" data-widget="navbar-search" href="#" role="button">
-                        <i class="fas fa-search"></i>
-                    </a>
-                    <div class="navbar-search-block">
-                        <form class="form-inline">
-                            <div class="input-group input-group-sm">
-                                <input class="form-control form-control-navbar" type="search" placeholder="Search"
-                                    aria-label="Search">
-                                <div class="input-group-append">
-                                    <button class="btn btn-navbar" type="submit">
-                                        <i class="fas fa-search"></i>
-                                    </button>
-                                    <button class="btn btn-navbar" type="button" data-widget="navbar-search">
-                                        <i class="fas fa-times"></i>
-                                    </button>
-                                </div>
-                            </div>
-                        </form>
-                    </div>
-                </li>
-            </ul>
         </nav>
         <!-- /.navbar -->
 
@@ -108,7 +82,7 @@
                         <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
                         <li class="nav-item menu">
-                            <a href="#" class="nav-link">
+                            <a href="{{route('Admin.dashboard')}}" class="nav-link">
                                 <i class="nav-icon fas fa-tachometer-alt"></i>
                                 <p>
                                     Dashboard
@@ -132,6 +106,24 @@
                                     <a href="/Admin/gallery" class="nav-link">
                                         <i class="far fa-circle nav-icon"></i>
                                         <p>Galeri</p>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="/Admin/anakdisabilitas" class="nav-link">
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p>Anak Spesial</p>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="/Admin/anaksekolahinformal" class="nav-link">
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p>Siswa Informal</p>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="/Admin/stafpegawai" class="nav-link">
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p>Staf dan Pegawai</p>
                                     </a>
                                 </li>
                             </ul>
@@ -200,7 +192,7 @@
                         </li>
                         <li class="nav-item">
                             <a href="/Admin/sponsor" class="nav-link">
-                                <i class="nav-icon fas fa-user-friends"></i>
+                                <i class="nav-icon fas fa-handshake"></i>
                                 <p>
                                     Sponsor
                                 </p>
@@ -208,47 +200,20 @@
                         </li>
                         <li class="nav-item">
                             <a href="/Admin/kontak" class="nav-link">
-                                <i class="nav-icon fas fa-user-friends"></i>
+                                <i class="nav-icon fas fa-message"></i>
                                 <p>
-                                    Kontak
+                                    Pesan
                                 </p>
                             </a>
                         </li>
                         <li class="nav-item">
                             <a href="/Admin/kemitraan" class="nav-link">
-                                <i class="nav-icon fas fa-user-friends"></i>
+                                <i class="nav-icon fas fa-handshake"></i>
                                 <p>
                                     Kemitraan
                                 </p>
                             </a>
                         </li>
-                        <li class="nav-item">
-                            <a href="#" class="nav-link">
-                                <i class="nav-icon fas fa-user-friends"></i>
-                                <p>
-                                    Statistik <i class="right fas fa-angle-left"></i>
-                                </p>
-                            </a>
-                            <ul class="nav nav-treeview">
-                                <li class="nav-item">
-                                    <a href="/Admin/anakdisabilitas" class="nav-link">
-                                        <i class="far fa-circle nav-icon"></i>
-                                        <p>Anak Spesial</p>
-                                    </a>
-                                </li>
-                                <li class="nav-item">
-                                    <a href="/Admin/anaksekolahinformal" class="nav-link">
-                                        <i class="far fa-circle nav-icon"></i>
-                                        <p>Anak Pesisir Danau</p>
-                                    </a>
-                                </li>
-                                <li class="nav-item">
-                                    <a href="/Admin/stafpegawai" class="nav-link">
-                                        <i class="far fa-circle nav-icon"></i>
-                                        <p>Staf dan Pegawai</p>
-                                    </a>
-                                </li>
-                            </ul>
                         <li class="nav-item">
                             <a href="" class="nav-link log-out">
                                 <i class="nav-icon fa-solid fa-power-off" style="color: red;"></i>

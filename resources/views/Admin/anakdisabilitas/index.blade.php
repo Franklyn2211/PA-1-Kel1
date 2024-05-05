@@ -1,5 +1,5 @@
 @extends('Admin.main')
-@section('title', 'Anak Disabilitas')
+@section('title', 'Anak Spesial')
 @section('content')
 
     <div class="content-wrapper">
