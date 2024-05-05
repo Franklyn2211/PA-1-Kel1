@@ -21,6 +21,7 @@ class HomeController extends Controller
         // Retrieve gallery data (assuming you want to use it as well)
         $galleries = Gallery::all();
         $news = News::all();
+        $sponsors = Sponsor::all();
 
         //statistik
         $totalDonatur = Donate::count();
@@ -37,7 +38,8 @@ class HomeController extends Controller
             'totalSponsor',
             'totalAnakDisabilitas',
             'totalSiswaInformal',
-            'totalStaf'
+            'totalStaf',
+            'sponsors'
         ));
     }
 }

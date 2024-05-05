@@ -185,19 +185,24 @@
         <div class="d-flex justify-content-center mb-4">
             <div id="underline-line-mitra" class="bg-primary"></div>
         </div>
-
-
-        <div class="splide__slider">
-            <div class="splide__track">
-                <ul class="splide__list">
-
-
-
-                </ul>
-            </div>
+        <div class="row gx-5">
+            @foreach ($sponsors as $sponsor)
+                <div class="col-lg-4 mb-5">
+                    <div class="card h-100 shadow border-0">
+                        <img class="card-img-top" src="{{ asset('potosponsor/' . $sponsor->poto) }}"
+                            alt="..." style="width: 100%; height:43%" />
+                        <div class="card-body p-4">
+                            <a class="text-decoration-none link-dark stretched-link" href="#!">
+                                <h5 class="card-title mb-3">{{ $sponsor->Name }}</h5>
+                            </a>
+                            <p class="card-text mb-0">{!! $sponsor->Description !!}</p>
+                        </div>
+                    </div>
+                </div>
+            @endforeach
         </div>
-
-    </section>
+    </div>
+</section>
     <section id="testimoni" class="splide container bg-informasi-umum p-5" aria-label="Beautiful Images">
         <h1 class="text-center fw-bold mb-5">Testimoni</h1>
 
