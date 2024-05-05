@@ -10,56 +10,55 @@ class HeroSectionController extends Controller
     public function index()
     {
         // Retrieve a single hero section
-        $dataHeroSection = Hero_Section::first();
-        
+        $heroSection = Hero_Section::all();
+
         // Return the view with hero section data
-        return view('admin.HeroSection.index', compact('dataHeroSection'));
+        return view('Admin.HeroSection.index', compact('heroSection'));
     }
 
-    public function update(Request $request)
-    {
-        // Validate the request
-        $validatedData = $request->validate([
-            'input_judul_header' => 'required|max:50',
-            'input_deskripsi_header' => 'nullable|max:300',
-            'input_bg_hero' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
+    public function create(){
+        return view('Admin.HeroSection.create');
+    }
+
+    public function store(Request $request){
+        $request->validate([
+            'header' => 'required|string|max:255',
+            'paragraph' => 'required|string',
         ]);
 
-        // Check if the hero section already exists
-        $heroSection = Hero_Section::first();
+        $heroSection = new Hero_Section([
+            'id_hero_sections' => Hero_Section::generateNextId(),
+            'header' => $request->get('header'),
+            'paragraph' => $request->get('paragraph'),
+        ]);
 
-        // If hero section exists, update the attributes
-        if ($heroSection) {
-            $heroSection->header = $validatedData['input_judul_header'];
-            $heroSection->paragraph = $validatedData['input_deskripsi_header'];
+        $heroSection->save();
+        return redirect()->route('Admin.HeroSection.index')->with('success', 'Data Home berhasil disimpan!');
+    }
 
-            // Handle image upload if provided
-            if ($request->hasFile('input_bg_hero')) {
-                $image = $request->file('input_bg_hero');
-                $imageName = time().'.'.$image->getClientOriginalExtension();
-                $image->move(public_path('images'), $imageName);
-                $heroSection->bg_image = 'images/'.$imageName;
-            }
+    public function edit(Hero_Section $heroSection){
+        return view('Admin.HeroSection.edit', compact('heroSection'));
+    }
 
-            $heroSection->save();
-        } else {
-            // If hero section doesn't exist, create a new one
-            $heroSection = new Hero_Section();
-            $heroSection->header = $validatedData['input_judul_header'];
-            $heroSection->paragraph = $validatedData['input_deskripsi_header'];
+    public function update(Request $request, Hero_Section $heroSection)
+    {
+        $request->validate([
+            'header' => 'required|string|max:255',
+            'paragraph' => 'required|string',
+        ]);
 
-            // Handle image upload if provided
-            if ($request->hasFile('input_bg_hero')) {
-                $image = $request->file('input_bg_hero');
-                $imageName = time().'.'.$image->getClientOriginalExtension();
-                $image->move(public_path('images'), $imageName);
-                $heroSection->bg_image = 'images/'.$imageName;
-            }
+        $data = [
+            'header' => $request->header,
+            'paragraph' => $request->paragraph,
+        ];
+        $heroSection->update($data);
+        return redirect()->route('Admin.HeroSection.index')->with('success', 'Data Home berhasil diedit');
+    }
 
-            $heroSection->save();
-        }
+    public function destroy($id){
+        $hero_Section = Hero_Section::findOrFail($id);
+        $hero_Section->delete();
 
-        // Redirect back to the index page with success message
-        return redirect()->route('admin.hero.index')->with('success', 'Hero section updated successfully');
+        return redirect()->route('Admin.HeroSection.index')->with('success', 'Data Home berhasil dihapus!');
     }
 }

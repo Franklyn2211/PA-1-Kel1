@@ -4,8 +4,8 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>@yield("title") | Admin</title>
-    
+    <title>@yield("title")</title>
+
     <!-- Favicon -->
     <link rel="icon" type="image/x-icon" href="{{ asset('assets/img/logo.png') }}" />
 
@@ -31,15 +31,25 @@
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
 
     <!-- Vendor CSS Files -->
-    <link href="{{ asset('assets/vendor/bootstrap-icons/bootstrap-icons.css') }}" rel="stylesheet">
-    <link href="{{ asset('assets/vendor/aos/aos.css') }}" rel="stylesheet">
-    <link href="{{ asset('assets/vendor/glightbox/css/glightbox.min.css') }}" rel="stylesheet">
-    <link href="{{ asset('assets/vendor/swiper/swiper-bundle.min.css') }}" rel="stylesheet">
-    <link href="{{ asset('assets/css/media_query.css') }}" rel="stylesheet">
-    <link href="{{ asset('assets/css/bootstrap.css') }}" rel="stylesheet">
-    <link href="{{ asset('assets/css/animate.css') }}" rel="stylesheet">
-    <link href="{{ asset('assets/css/owl.carousel.css') }}" rel="stylesheet">
-    <link href="{{ asset('assets/css/owl.theme.default.css') }}" rel="stylesheet">
+    <link href="{{ asset('assets/vendor/bootstrap/css/bootstrap.min.css') }}" rel="stylesheet" />
+    <link href="{{ asset('assets/vendor/bootstrap-icons/bootstrap-icons.css') }}" rel="stylesheet" />
+    <link href="{{ asset('assets/vendor/aos/aos.css') }}" rel="stylesheet" />
+    <link href="{{ asset('assets/vendor/glightbox/css/glightbox.min.css') }}" rel="stylesheet" />
+    <link href="{{ asset('assets/vendor/swiper/swiper-bundle.min.css') }}" rel="stylesheet" />
+    <link href="{{ asset('assets/css/media_query.css') }}" rel="stylesheet" type="text/css"/>
+    <link href="{{ asset('assets/css/bootstrap.css') }}" rel="stylesheet" type="text/css"/>
+    <link href="{{ asset('assets/css/animate.css') }}" rel="stylesheet" type="text/css"/>
+    <link href="https://fonts.googleapis.com/css?family=Poppins" rel="stylesheet">
+    <link href="{{ asset('assets/css/owl.carousel.css') }}" rel="stylesheet" type="text/css"/>
+    <link href="{{ asset('assets/css/owl.theme.default.css') }}" rel="stylesheet" type="text/css"/>
+    <!-- Bootstrap CSS -->
+    <link href="{{ asset('assets/css/style_1.css') }}" rel="stylesheet" type="text/css"/>
+        <!-- Favicon -->
+        <link href="img/favicon.ico" rel="icon">
+
+<!-- Google Web Fonts -->
+<link rel="preconnect" href="https://fonts.gstatic.com">
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
 
     <!-- Font Awesome -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.0/css/all.min.css" rel="stylesheet">

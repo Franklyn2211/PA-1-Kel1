@@ -48,8 +48,8 @@
                                                 </td>
                                                 <td>{{ $sponsors->Description }}</td>
                                                 <td>
-                                                    <a href="{{ route('admin.sponsor.edit', $sponsors->id) }}" class="btn btn-primary btn-sm">Edit</a>
-                                                    <form action="{{ route('admin.sponsor.destroy', $sponsors->id) }}" method="POST" style="display: inline;">
+                                                    <a href="{{ route('admin.sponsor.edit', $sponsors->id_sponsor) }}" class="btn btn-primary btn-sm">Edit</a>
+                                                    <form action="{{ route('admin.sponsor.destroy', $sponsors->id_sponsor) }}" method="POST" style="display: inline;">
                                                         @csrf
                                                         @method('DELETE')
                                                         <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('Are you sure you want to delete this sponsor?')"><i class="fa-solid fa-trash-can"></i> Hapus</button>

@@ -22,12 +22,21 @@ class SponsorController extends Controller
 
     public function store(Request $request)
     {
-        $sponsor = Sponsor::create($request->all());
+        $request->validate([
+            'Name' => 'required|string|max:255',
+            'Description' => 'required|string',
+        ]);
+
+        $sponsor = new Sponsor([
+            'id_sponsor' => Sponsor::generateNextId(),
+            'Name' => $request->get('Name'),
+            'Description' => $request->get('Description'),
+        ]);
         if($request->hasFile('poto')){
             $request->file('poto')->move('potosponsor/', $request->file('poto')->getClientOriginalName());
             $sponsor->poto = $request->file('poto')->getClientOriginalName();
-            $sponsor->save();
         }
+        $sponsor->save();
         return redirect()->route('admin.sponsor.index')
             ->with('success', 'Sponsor berhasil ditambahkan.');
     }

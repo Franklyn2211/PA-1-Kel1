@@ -21,7 +21,7 @@
             {{ session('success') }}
         </div>
     @endif
-    <form method="POST" action="{{ url('/Relawan') }}" enctype="multipart/form-data">
+    <form method="POST" action="{{ route('relawan.store') }}" enctype="multipart/form-data">
         @csrf
         <label for="name">Nama</label><br>
         <input type="text" id="name" name="name" required><br>
