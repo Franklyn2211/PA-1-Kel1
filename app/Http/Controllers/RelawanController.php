@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
+
 use App\Models\Relawan;
 use Illuminate\Http\Request;
 
@@ -8,20 +9,19 @@ class RelawanController extends Controller
 {
     public function index()
     {
-        
-        $relawan = Relawan::all();
-        return view('Relawan.Relawan', compact('relawan'));
+        $relawan = Relawan::all(); // Update variable name
+        return view('Relawan.Relawan', compact('relawan')); // Update compact variable name
     }
 
     public function store(Request $request)
     {
         // Validasi input
         $request->validate([
-            'nama_relawan' => 'required|string',
-            'email' => 'required|email|unique:relawan,email',
-            'no_hp' => 'required|numeric',
-            'tanggallahir' => 'required|date',
-            'lokasi' => 'required|string',
+            'name' => 'required|string',
+            'email' => 'required|email|unique:volunteers,email', // Update table name in validation rules
+            'phone_number' => 'required|numeric',
+            'date_of_birth' => 'required|date',
+            'location' => 'required|string',
             'cv' => 'nullable|file',
         ]);
 
@@ -30,13 +30,14 @@ class RelawanController extends Controller
 
         // Simpan data relawan ke dalam database
         $relawan = new Relawan([
-            'id_relawan' => $nextId,
-            'nama_relawan' => $request->get('nama_relawan'),
+            'id_volunteers' => $nextId,
+            'name' => $request->get('name'),
             'email' => $request->get('email'),
-            'no_hp' => $request->get('no_hp'),
-            'tanggallahir' => $request->get('tanggallahir'),
-            'lokasi' => $request->get('lokasi'),
+            'phone_number' => $request->get('phone_number'),
+            'date_of_birth' => $request->get('date_of_birth'),
+            'location' => $request->get('location'),
         ]);
+
 
         // Jika ada file CV yang diunggah, simpan ke dalam storage
         if ($request->hasFile('cv')) {

@@ -1,5 +1,5 @@
 @extends('Admin.main')
-@section('title', 'Data Yayasan')
+@section('title', 'Tambah Data Yayasan')
 @section('content')
     <div class="content-wrapper">
         <!-- Content Header (Page header) -->
@@ -33,23 +33,16 @@
                                             <div class="card">
                                                 <div class="card-body">
                                                     <div class="form-group mb-3">
-                                                        <label for="nama_yayasan" class="form-label">Nama Yayasan</label>
-                                                        <input type="text" class="form-control" id="nama_yayasan" name="nama_yayasan" placeholder="Nama Yayasan">
-                                                        @error('nama_yayasan')
+                                                        <label for="foundation_name" class="form-label">Nama Yayasan</label>
+                                                        <input type="text" class="form-control" id="foundation_name" name="foundation_name" placeholder="Nama Yayasan">
+                                                        @error('foundation_name')
                                                             <span class="text-danger">{{ $message }}</span>
                                                         @enderror
                                                     </div>
                                                     <div class="form-group mb-3">
-                                                        <label for="singkatan_nama_yayasan" class="form-label">Singkatan Nama Yayasan</label>
-                                                        <input type="text" class="form-control" id="singkatan_nama_yayasan" name="singkatan_nama_yayasan" placeholder="Singkatan Nama Yayasan">
-                                                        @error('singkatan_nama_yayasan')
-                                                            <span class="text-danger">{{ $message }}</span>
-                                                        @enderror
-                                                    </div>
-                                                    <div class="form-group mb-3">
-                                                        <label for="sejarah" class="form-label">Sejarah</label>
-                                                        <textarea class="form-control" id="sejarah" name="sejarah"></textarea>
-                                                        @error('sejarah')
+                                                        <label for="history" class="form-label">Sejarah</label>
+                                                        <textarea class="form-control" id="history" name="history"></textarea>
+                                                        @error('history')
                                                             <span class="text-danger">{{ $message }}</span>
                                                         @enderror
                                                     </div>

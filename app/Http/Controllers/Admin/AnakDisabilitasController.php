@@ -24,16 +24,16 @@ class AnakDisabilitasController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'nama' => 'required|string',
-            'umur' => 'required|integer',
-            'tanggal_bergabung' => 'required|date',
+            'name' => 'required|string',
+            'age' => 'required|integer',
+            'date_joined' => 'required|date',
         ]);
 
         $anakdisabilitas = new AnakDisabilitas([
-            'id_anakdisabilitas' => AnakDisabilitas::generateNextId(),
-            'nama' => $request->get('nama'),
-            'umur' => $request->get('umur'),
-            'tanggal_bergabung' => $request->get('tanggal_bergabung'),
+            'id_child_with_disabilities' => AnakDisabilitas::generateNextId(),
+            'name' => $request->get('name'),
+            'age' => $request->get('age'),
+            'date_joined' => $request->get('date_joined'),
         ]);
 
         $anakdisabilitas->save();
@@ -57,16 +57,24 @@ class AnakDisabilitasController extends Controller
     public function update(Request $request, AnakDisabilitas $anakdisabilitas)
     {
         $request->validate([
-            'nama' => 'required|string',
-            'umur' => 'required|integer',
-            'tanggal_bergabung' => 'required|date',
+            'name' => 'required|string',
+            'age' => 'required|integer',
+            'date_joined' => 'required|date',
         ]);
 
+<<<<<<< HEAD
         $anakdisabilitas->update([
             'nama' => $request->nama,
             'umur' => $request->umur,
             'tanggal_bergabung' => $request->tanggal_bergabung,
         ]);
+=======
+        $data = [
+            'name' => $request->name,
+            'age' => $request->age,
+            'date_joined' => $request->date_joined,
+        ];
+>>>>>>> 336e8d942531d4d6b01c3b480285e410f39748e8
 
         return redirect()->route('admin.anakdisabilitas.index')->with('success', 'Data berhasil diperbarui.');
     }

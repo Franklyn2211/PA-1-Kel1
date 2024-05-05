@@ -1,43 +1,49 @@
 <?php
 
 namespace App\Http\Controllers;
-use App\Models\Kontak;
+
+use App\Models\Contact;
 use Illuminate\Http\Request;
 
 class KontakController extends Controller
 {
-
     public function index()
     {
-        $kontak = Kontak::all();
-
-        return view('Contact.Contact', compact('kontak'));
+        $contacts = Contact::all();
+        return view('contact.contact', compact('contacts'));
     }
 
     public function store(Request $request)
     {
-        // Validasi data yang diterima dari formulir kontak
+        // Validasi input
         $request->validate([
-            'nama' => 'required|string|max:255',
-            'email' => 'required|email|max:255',
-            'phone' => 'required|string|max:20',
-            'message' => 'required|string|max:1000',
+            'name' => 'required|string',
+            'email' => 'required|email',
+            'phone_number' => 'required|numeric',
+            'message' => 'required|string',
         ]);
 
+        // Generate ID untuk kontak
+        $nextId = Contact::generateNextId();
 
-       // Simpan data relawan ke dalam database
-       $kontak = new Kontak([
-           'nama' => $request->get('nama'),  
-           'email' => $request->get('email'),  
-           'phone' => $request->get('phone'),  
-           'message' => $request->get('message'),  
-       ]);
+        // Pastikan ID yang dihasilkan belum digunakan
+        while (Contact::find($nextId)) {
+            $nextId = Contact::generateNextId();
+        }
 
-    // Simpan data kontak
-    $kontak->save();
+        // Simpan data kontak ke dalam database
+        $contact = new Contact([
+            'id_contact' => $nextId,
+            'name' => $request->input('name'),
+            'email' => $request->input('email'),
+            'phone_number' => $request->input('phone_number'),
+            'message' => $request->input('message'),
+        ]);
 
-    // Redirect kembali ke halaman sebelumnya dengan pesan sukses
-    return redirect()->back()->with('success', 'Kontak berhasil ditambahkan.');
-}
+        // Simpan data kontak
+        $contact->save();
 
+        // Redirect kembali ke halaman sebelumnya dengan pesan sukses
+        return redirect()->back()->with('success', 'Pesan berhasil dikirim.');
+    }
 }

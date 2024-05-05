@@ -7,18 +7,16 @@ use Illuminate\Database\Eloquent\Model;
 
 class Data_yayasan extends Model
 {
-    protected $primaryKey = 'id_data_yayasans';
-    protected $table = 'data_yayasans';
+    protected $primaryKey = 'id_foundation_data';
+    protected $table = 'foundation_data';
     public $incrementing = false;
 
     protected $fillable = [
-        'id_data_yayasans',
-        'nama_yayasan',
-        'singkatan_nama_yayasan',
-        'sejarah',
+        'id_foundation_data',
+        'foundation_name',
+        'history',
         'visi',
         'misi',
-        'logo_yayasan',
         'created_by',
         'updated_by',
         'active',
@@ -28,16 +26,16 @@ class Data_yayasan extends Model
     ];
 
     public static function generateNextId(){
-        $latestId = self::orderBy('id_data_yayasans', 'desc')->first();
+        $latestId = self::orderBy('id_foundation_data', 'desc')->first();
 
         // Mengambil nomor dari ID terakhir
-        $lastNumber = $latestId ? intval(substr($latestId->id_data_yayasans, 2)) : 0;
+        $lastNumber = $latestId ? intval(substr($latestId->id_foundation_data, 2)) : 0;
 
         // Menambahkan 1 untuk mendapatkan nomor berikutnya
         $nextNumber = $lastNumber + 1;
 
         // Mengonversi nomor berikutnya ke format yang diinginkan (NXX)
-        $nextId = 'DY' . str_pad($nextNumber, 2, '0', STR_PAD_LEFT);
+        $nextId = 'FD' . str_pad($nextNumber, 2, '0', STR_PAD_LEFT);
 
         return $nextId;
     }

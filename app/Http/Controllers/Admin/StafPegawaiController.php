@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\StafPegawai;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
+use Carbon\Carbon;
 
 class StafPegawaiController extends Controller
 {
@@ -23,19 +24,26 @@ class StafPegawaiController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'nama' => 'required|string',
-            'umur' => 'required|integer',
-            'tanggal_bergabung' => 'required|date',
-            'jabatan' => 'required|string',
+            'name' => 'required|string',
+            'date_of_birth' => 'required|date',
+            'gender' => 'required|in:Laki-Laki,Perempuan',
+            'date_joined' => 'required|date',
+            'job_title' => 'required|string',
             'photo' => 'nullable|image|mimes:jpeg,png,jpg|max:5000',
         ]);
 
+        // Hitung usia dari tanggal lahir
+        $dateOfBirth = Carbon::parse($request->get('date_of_birth'));
+        $age = $dateOfBirth->age;
+
         $stafpegawai = new StafPegawai([
-            'id_stafpegawai' => StafPegawai::generateNextId(),
-            'nama' => $request->get('nama'),
-            'umur' => $request->get('umur'),
-            'tanggal_bergabung' => $request->get('tanggal_bergabung'),
-            'jabatan' => $request->get('jabatan')
+            'id_staff' => StafPegawai::generateNextId(),
+            'name' => $request->get('name'),
+            'age' => $age,
+            'date_of_birth' => $dateOfBirth,
+            'gender' => $request->get('gender'),
+            'date_joined' => $request->get('date_joined'),
+            'job_title' => $request->get('job_title')
         ]);
 
         if ($request->hasFile('photo')) {
@@ -50,31 +58,28 @@ class StafPegawaiController extends Controller
         return redirect()->route('admin.stafpegawai.index')->with('success', 'Staf pegawai berhasil ditambahkan.');
     }
 
-    public function show(StafPegawai $stafpegawai)
-    {
-        return view('admin.stafpegawai.show', compact('stafpegawai'));
-    }
-
-    public function edit(StafPegawai $stafpegawai)
-    {
-        return view('admin.stafpegawai.edit', compact('stafpegawai'));
-    }
-
     public function update(Request $request, StafPegawai $stafpegawai)
     {
         $request->validate([
-            'nama' => 'required|string',
-            'umur' => 'required|integer',
-            'tanggal_bergabung' => 'required|date',
-            'jabatan' => 'required|string',
+            'name' => 'required|string',
+            'date_of_birth' => 'required|date',
+            'gender' => 'required|in:Laki-Laki,Perempuan',
+            'date_joined' => 'required|date',
+            'job_title' => 'required|string',
             'photo' => 'nullable|image|mimes:jpeg,png,jpg|max:5000',
         ]);
 
+        // Hitung usia dari tanggal lahir
+        $dateOfBirth = Carbon::parse($request->get('date_of_birth'));
+        $age = $dateOfBirth->age;
+
         $data = [
-            'nama' => $request->nama,
-            'umur' => $request->umur,
-            'tanggal_bergabung' => $request->tanggal_bergabung,
-            'jabatan' => $request->jabatan,
+            'name' => $request->name,
+            'age' => $age,
+            'date_of_birth' => $dateOfBirth,
+            'gender' => $request->gender,
+            'date_joined' => $request->date_joined,
+            'job_title' => $request->job_title,
         ];
 
         if ($request->hasFile('photo')) {
@@ -93,6 +98,16 @@ class StafPegawaiController extends Controller
 
         $stafpegawai->update($data);
         return redirect()->route('admin.stafpegawai.index')->with('success', 'Data berhasil diperbarui.');
+    }
+
+    public function show(StafPegawai $stafpegawai)
+    {
+        return view('admin.stafpegawai.show', compact('stafpegawai'));
+    }
+
+    public function edit(StafPegawai $stafpegawai)
+    {
+        return view('admin.stafpegawai.edit', compact('stafpegawai'));
     }
 
     public function destroy($id)

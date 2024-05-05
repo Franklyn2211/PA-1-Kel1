@@ -38,17 +38,17 @@
                                                     <div class="form-group mb-3">
                                                         <label for="title">Judul</label>
                                                         <input type="text" class="form-control" id="title"
-                                                            name="title" value="{{ $news->title ?? '' }}" required>
+                                                            name="title" value="{{ $news->title }}" required>
                                                     </div>
                                                     <div class="form-group mb-3">
                                                         <label for="location">Lokasi</label>
                                                         <input type="text" class="form-control" id="location"
-                                                            name="location" value="{{ $news->location ?? '' }}", required>
+                                                            name="location" value="{{ $news->location }}", required>
                                                     </div>
                                                     <div class="form-group mb-3">
-                                                        <label for="tanggal">Tanggal</label>
-                                                        <input type="date" class="form-control" id="tanggal"
-                                                            name="tanggal" value="{{ $news->tanggal ?? '' }}">
+                                                        <label for="date">Tanggal</label>
+                                                        <input type="date" class="form-control" id="date"
+                                                            name="date" value="{{ $news->date }}">
                                                     </div>
                                                     <div class="form-group mb-3">
                                                         <label for="photo">Foto</label>
@@ -79,7 +79,7 @@
                                                     </div>
                                                     <div class="form-group mb-3">
                                                         <label for="description">Deskripsi</label>
-                                                        <textarea name="description" id="summernote">{!! $news->description ?? '' !!}</textarea>
+                                                        <textarea name="description" id="summernote">{!! $news->description !!}</textarea>
                                                     </div>
                                                     <div class="form-group text-center">
                                                         <button type="submit" class="btn btn-primary">Simpan</button>

@@ -9,18 +9,18 @@
             {{ session('success') }}
         </div>
     @endif
-    <form method="POST" action="{{ url('/Relawan') }}" enctype="multipart/form-data">
+    <form method="POST" action="{{ route('relawan.store') }}" enctype="multipart/form-data">
         @csrf
-        <label for="nama_relawan">Nama</label><br>
-        <input type="text" id="nama_relawan" name="nama_relawan" required><br>
+        <label for="name">Nama</label><br>
+        <input type="text" id="name" name="name" required><br>
         <label for="email">Email</label><br>
         <input type="email" id="email" name="email"><br>
-        <label for="no_hp">No. Hp</label><br>
-        <input type="tel" id="phone" name="no_hp" pattern="[0-9]{9,15}" required><br>
-        <label for="tanggallahir">Tanggal Lahir</label><br>
-        <input type="date" id="tanggallahir" name="tanggallahir"><br>
-        <label for="lokasi">Lokasi yang dipilih*</label><br>
-        <select id="lokasi" name="lokasi">
+        <label for="phone_number">No. Hp</label><br>
+        <input type="tel" id="phone" name="phone_number" pattern="[0-9]{9,15}" required><br>
+        <label for="date_of_birth">Tanggal Lahir</label><br>
+        <input type="date" id="date_of_birth" name="date_of_birth"><br>
+        <label for="location">Lokasi yang dipilih*</label><br>
+        <select id="location" name="location">
             <option value="Wilayah I, Desa Lumban Silintong, Kecamatan Balige, Kabupaten Toba">Wilayah I, Desa Lumban Silintong, Kecamatan Balige, Kabupaten Toba</option>
             <option value="Wilayah II, Desa Sawah Lamo, Kecamatan Andam Dewi, Kabupaten Tapanuli Tengah">Wilayah II, Desa Sawah Lamo, Kecamatan Andam Dewi, Kabupaten Tapanuli Tengah</option>
         </select><br>

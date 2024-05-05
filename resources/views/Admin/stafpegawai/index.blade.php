@@ -42,7 +42,9 @@
                                 <tr>
                                     <th>#</th>
                                     <th>Nama</th>
+                                    <th>Tanggal Lahir</th>
                                     <th>Umur</th>
+                                    <th>Jenis Kelamin</th>
                                     <th>Tanggal Bergabung</th>
                                     <th>Jabatan</th>
                                     <th>Foto</th>
@@ -53,10 +55,12 @@
                                 @foreach ($stafpegawai as $staf)
                                     <tr>
                                         <td>{{ $loop->iteration }}</td>
-                                        <td>{{ $staf->nama }}</td>
-                                        <td>{{ $staf->umur }}</td>
-                                        <td>{{ $staf->tanggal_bergabung }}</td>
-                                        <td>{{ $staf->jabatan }}</td>
+                                        <td>{{ $staf->name }}</td>
+                                        <td>{{ $staf->date_of_birth }}</td>
+                                        <td>{{ \Carbon\Carbon::parse($staf->date_of_birth)->age }}</td> <!-- Hitung umur -->
+                                        <td>{{ $staf->gender }}</td>
+                                        <td>{{ $staf->date_joined }}</td>
+                                        <td>{{ $staf->job_title }}</td>
                                         <td><img src="{{ asset('storage/app/public/photo/' . $staf->photo) }}"
                                                 alt="Foto" style="width: 100px;"></td>
                                         <td>

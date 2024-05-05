@@ -29,21 +29,27 @@
                                     enctype="multipart/form-data">
                                     @csrf
                                     <div class="form-group">
-                                        <label for="nama">Nama</label>
-                                        <input type="text" name="nama" id="nama" class="form-control" required>
+                                        <label for="name">Nama</label>
+                                        <input type="text" name="name" id="name" class="form-control" required>
                                     </div>
                                     <div class="form-group">
-                                        <label for="umur">Umur</label>
-                                        <input type="number" name="umur" id="umur" class="form-control" required>
+                                        <label for="date_of_birth">Tanggal Lahir:</label>
+                                        <input type="date" id="date_of_birth" name="date_of_birth" class="form-control" required>
                                     </div>
                                     <div class="form-group">
-                                        <label for="tanggal_bergabung">Tanggal Bergabung</label>
-                                        <input type="date" name="tanggal_bergabung" id="tanggal_bergabung"
-                                            class="form-control" required>
+                                        <label for="gender">Jenis Kelamin:</label>
+                                        <select id="gender" name="gender" class="form-control">
+                                            <option value="Laki-Laki">Laki-Laki</option>
+                                            <option value="Perempuan">Perempuan</option>
+                                        </select>
                                     </div>
                                     <div class="form-group">
-                                        <label for="jabatan">Jabatan</label>
-                                        <select class="form-control" id="jabatan" name="jabatan">
+                                        <label for="date_joined">Tanggal Bergabung</label>
+                                        <input type="date" name="date_joined" id="date_joined" class="form-control" required>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="job_title">Jabatan</label>
+                                        <select class="form-control" id="job_title" name="job_title">
                                             <option value="Ketua Yayasan">Ketua Yayasan</option>
                                             <option value="Pengajar">Pengajar</option>
                                             <option value="Staff">Staff</option>
@@ -51,9 +57,14 @@
                                     </div>
                                     <div class="form-group">
                                         <label for="photo">Foto</label>
-                                        <input type="file" class="form-control" id="photo" name="photo">
+                                        <input type="file" class="form-control @error('photo') is-invalid @enderror" id="photo" name="photo" required>
+                                        @error('photo')
+                                            <div class="invalid-feedback">{{ $message }}</div>
+                                        @enderror
                                     </div>
-                                    <button type="submit" class="btn btn-primary">Tambah</button>
+                                    <div class="form-group text-center"> <!-- Perubahan di sini -->
+                                        <button type="submit" class="btn btn-primary">Simpan</button>
+                                    </div>
                                 </form>
                             </div>
                         </div>

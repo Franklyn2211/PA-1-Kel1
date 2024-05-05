@@ -50,9 +50,9 @@
                                         @foreach ($anakdisabilitas as $anakdisabilitas)
                                             <tr>
                                                 <td>{{ $loop->iteration }}</td>
-                                                <td>{{ $anakdisabilitas->nama }}</td>
-                                                <td>{{ $anakdisabilitas->umur }}</td>
-                                                <td>{{ $anakdisabilitas->tanggal_bergabung }}</td>
+                                                <td>{{ $anakdisabilitas->name }}</td>
+                                                <td>{{ $anakdisabilitas->age }}</td>
+                                                <td>{{ $anakdisabilitas->date_joined }}</td>
                                                 <td>
                                                     <a href="{{ route('admin.anakdisabilitas.show', $anakdisabilitas) }}" class="btn btn-info btn-sm">Lihat</a>
                                                     <a href="{{ route('admin.anakdisabilitas.edit', $anakdisabilitas) }}" class="btn btn-primary btn-sm">Edit</a>

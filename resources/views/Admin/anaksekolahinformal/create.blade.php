@@ -26,24 +26,33 @@
             <div class="container-fluid">
                 <!-- Small boxes (Stat box) -->
                 <div class="row">
-                    <div class="col-md-6">
+                    <div class="col-md-12">
                         <div class="card">
                             <div class="card-body">
                                 <form action="{{ route('admin.anaksekolahinformal.store') }}" method="POST" enctype="multipart/form-data">
                                     @csrf
                                     <div class="form-group">
-                                        <label for="nama">Nama:</label>
-                                        <input type="text" id="nama" name="nama" class="form-control" value="{{ old('nama') }}">
+                                        <label for="name">Nama:</label>
+                                        <input type="text" id="name" name="name" class="form-control">
                                     </div>
                                     <div class="form-group">
-                                        <label for="umur">Umur:</label>
-                                        <input type="number" id="umur" name="umur" class="form-control" value="{{ old('umur') }}">
+                                        <label for="date_of_birth">Tanggal Lahir:</label>
+                                        <input type="date" id="date_of_birth" name="date_of_birth" class="form-control">
                                     </div>
                                     <div class="form-group">
-                                        <label for="tanggal_bergabung">Tanggal Bergabung:</label>
-                                        <input type="date" id="tanggal_bergabung" name="tanggal_bergabung" class="form-control" value="{{ old('tanggal_bergabung') }}">
+                                        <label for="gender">Jenis Kelamin:</label>
+                                        <select id="gender" name="gender" class="form-control">
+                                            <option value="Laki-Laki">Laki-Laki</option>
+                                            <option value="Perempuan">Perempuan</option>
+                                        </select>
                                     </div>
-                                    <button type="submit" class="btn btn-primary">Simpan</button>
+                                    <div class="form-group">
+                                        <label for="date_joined">Tanggal Bergabung:</label>
+                                        <input type="date" id="date_joined" name="date_joined" class="form-control">
+                                    </div>
+                                    <div class="form-group text-center"> <!-- Perubahan di sini -->
+                                        <button type="submit" class="btn btn-primary">Simpan</button>
+                                    </div>
                                 </form>
                             </div>
                         </div>

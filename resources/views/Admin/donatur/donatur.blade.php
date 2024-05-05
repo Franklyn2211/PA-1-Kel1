@@ -60,12 +60,18 @@
                                                 </td>
                                                 <td>{{ $donate->Description }}</td>                                                
                                                 <td>
+                                                    <a href="mailto:{{ $donate->Email }}?subject=Balasan%20untuk%20{{ $donate->Name }}" class="btn btn-primary btn-sm">
+                                                        <i class="fa-solid fa-envelope"></i> Jawab
+                                                    </a>
                                                     <form action="{{ route('donate.destroy', $donate->id_donate) }}" method="POST" class="d-inline">
                                                         @csrf
                                                         @method('DELETE')
-                                                        <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('Apakah Anda yakin ingin menghapus donasi ini?')"><i class="fa-solid fa-trash-can"></i> Hapus</button>
+                                                        <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('Apakah Anda yakin ingin menghapus donasi ini?')">
+                                                            <i class="fa-solid fa-trash-can"></i> Hapus
+                                                        </button>
                                                     </form>
                                                 </td>
+                                                
                                             </tr>
                                         @endforeach
                                     </tbody>

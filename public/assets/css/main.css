@@ -26,7 +26,7 @@
     --background-color-rgb: 255, 255, 255;
     --default-color: #212529;
     --default-color-rgb: 33, 37, 41;
-    --heading-color: #7a6960;
+    --heading-color: #000000c4;
     --heading-color-rgb: 122, 105, 96;
     --accent-color: #eb5d1e;
     --accent-color-rgb: 235, 93, 30;
@@ -1647,7 +1647,7 @@ section,
 .slider-nav li.active {
     font-weight: bold;
 }
-/* 
+/*
 /* # Starter Section Section
 --------------------------------------------------------------*/
 .daftar-relawan {
@@ -1735,16 +1735,16 @@ section,
     position: relative;
     background-color: #dbe2ef;
 }
-/* 
+/*
 .footer-top {
     position: absolute;
     bottom: 0;
     left: 0;
     right: 0;
     width: 100%;
-    background-color: #dbe2ef; 
-    color: white; 
-    padding: 20px 0; 
+    background-color: #dbe2ef;
+    color: white;
+    padding: 20px 0;
 } */
 
 /* .footer-bottom {
@@ -1755,5 +1755,5 @@ section,
     width: 100%;
     background-color: #0b3057;
     color: white;
-    padding: 20px 0; 
+    padding: 20px 0;
 } */

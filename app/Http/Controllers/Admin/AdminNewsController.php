@@ -29,7 +29,7 @@ class AdminNewsController extends Controller
             'description' => 'required|string',
             'photo' => 'nullable|image|mimes:jpeg,png,jpg|max:5000', // Sesuaikan validasi untuk photo
             'location' => 'required|string',
-            'tanggal' => 'required|date',
+            'date' => 'required|date',
         ]);
 
         $news = new News([
@@ -37,7 +37,7 @@ class AdminNewsController extends Controller
             'title' => $request->get('title'),
             'description' => $request->get('description'),
             'location' => $request->get('location'),
-            'tanggal' => $request->get('tanggal'),
+            'date' => $request->get('date'),
         ]);
 
         $newsCategory = NewsCategory::findOrFail($request->get('news_category_id'));
@@ -62,14 +62,14 @@ class AdminNewsController extends Controller
             'description' => 'required|string',
             'photo' => 'nullable|image|mimes:jpeg,png,jpg|max:5000',
             'location' => 'required|string',
-            'tanggal' => 'required|date',
+            'date' => 'required|date',
         ]);
 
         $data = [
             'title' => $request->title,
             'description' => $request->description,
             'location' => $request->location,
-            'tanggal' => $request->tanggal,
+            'date' => $request->date,
         ];
 
         // Menghandle foto

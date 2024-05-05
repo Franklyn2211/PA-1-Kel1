@@ -12,6 +12,17 @@
             </div>
             <div class="row gx-5 justify-content-center">
                 <div class="col-lg-8 col-xl-6">
+                    <!-- Validation Errors -->
+                    @if ($errors->any())
+                        <div class="alert alert-danger">
+                            <ul>
+                                @foreach ($errors->all() as $error)
+                                    <li>{{ $error }}</li>
+                                @endforeach
+                            </ul>
+                        </div>
+                    @endif
+
                     @if(session('success'))
                         <div class="alert alert-success">
                             {{ session('success') }}
@@ -21,8 +32,8 @@
                         @csrf
                         <!-- Name input-->
                         <div class="form-floating mb-3">
-                            <input class="form-control" name="nama" id="nama" type="text" placeholder="Enter your name..." required>
-                            <label for="nama">Full name</label>
+                            <input class="form-control" name="name" id="name" type="text" placeholder="Enter your name..." required>
+                            <label for="name">Full name</label>
                             <div class="invalid-feedback">A name is required.</div>
                         </div>
                         <!-- Email address input-->
@@ -34,8 +45,8 @@
                         </div>
                         <!-- Phone number input-->
                         <div class="form-floating mb-3">
-                            <input class="form-control" name="phone" id="phone" type="tel" placeholder="Enter your phone..." required>
-                            <label for="phone">Phone number</label>
+                            <input class="form-control" name="phone_number" id="phone_number" type="tel" placeholder="Enter your phone..." required>
+                            <label for="phone_number">Phone number</label>
                             <div class="invalid-feedback">A phone number is required.</div>
                         </div>
                         <!-- Message input-->

@@ -16,9 +16,9 @@ class DonaturController extends Controller
 
     public function destroy($id)
     {
-        $donate = Donate::findOrFail($id);
+        $donates = Donate::findOrFail($id);
 
-        $donate->delete();
+        $donates->delete();
 
         return back()->with('success', 'Donatur berhasil dihapus.');
 
