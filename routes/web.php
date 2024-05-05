@@ -5,6 +5,7 @@ use App\Http\Controllers\RelawanController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\DonateController;
+use App\Http\Controllers\SponsorsController;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\NewsController;
 use App\Http\Controllers\PartnershipController;
@@ -141,6 +142,8 @@ Route::prefix('Admin')->middleware('auth')->group(function () {
     Route::resource('anakdisabilitas', AnakDisabilitasController::class);
     Route::get('anakdisabilitas', [AnakDisabilitasController::class, 'index'])->name('admin.anakdisabilitas.index');
     Route::get('anakdisabilitas/create', [AnakDisabilitasController::class, 'create'])->name('admin.anakdisabilitas.create');
+    Route::post('anakdisabilitas/store', [AnakDisabilitasController::class, 'store'])->name('admin.anakdisabilitas.store');
+    Route::get('anakdisabilitas/{anakdisabilitas}', [AnakDisabilitasController::class, 'show'])->name('admin.anakdisabilitas.show');
     Route::post('anakdisabilitas', [AnakDisabilitasController::class, 'store'])->name('admin.anakdisabilitas.store');
     Route::get('anakdisabilitas/{id}', [AnakDisabilitasController::class, 'show'])->name('admin.anakdisabilitas.show');
     Route::get('anakdisabilitas/{anakdisabilitas}/edit', [AnakDisabilitasController::class, 'edit'])->name('admin.anakdisabilitas.edit');
@@ -197,6 +200,7 @@ Route::resource('Donate', DonateController::class)->only('index', 'store');
 Route::resource('Partnership', PartnershipController::class)->only('index');
 Route::resource('Contact', KontakController::class)->only('index', 'store');
 Route::resource('Statistics', StatistikController::class)->only('index');
+Route::resource('Sponsor', SponsorsController::class)->only('index');
 Route::resource('Relawan', RelawanController::class)->only('index', 'store');
 
 Route::get('/donate', [DonateController::class, 'donate'])->name('donate.donate');
