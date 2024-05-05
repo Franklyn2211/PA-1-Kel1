@@ -18,7 +18,7 @@ class RelawanController extends Controller
         // Validasi input
         $request->validate([
             'name' => 'required|string',
-            'email' => 'required|email|unique:Relawans,email', // Update table name in validation rules
+            'email' => 'required|email|unique:volunteers,email', // Update table name in validation rules
             'phone_number' => 'required|numeric',
             'date_of_birth' => 'required|date',
             'location' => 'required|string',
@@ -56,12 +56,3 @@ class RelawanController extends Controller
     }
 
 }
-
-
-
-
-
-
-
-
-
