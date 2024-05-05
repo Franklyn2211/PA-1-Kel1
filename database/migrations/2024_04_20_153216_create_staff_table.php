@@ -15,7 +15,8 @@ return new class extends Migration {
         Schema::create('staff', function (Blueprint $table) {
             $table->string('id_staff')->primary();
             $table->string('name');
-            $table->integer('age');
+            $table->enum('gender', ['Laki-Laki', 'Perempuan']);
+            $table->date('date_of_birth');
             $table->string('photo')->nullable();
             $table->date('date_joined');
             $table->enum('job_title', ['Ketua Yayasan','Pengajar','Staff']);

@@ -1,16 +1,16 @@
 <?php
 
 namespace App\Http\Controllers;
-use App\Models\Relawan;
+
+use App\Models\Volunteer; // Update namespace to use Volunteer model
 use Illuminate\Http\Request;
 
 class RelawanController extends Controller
 {
     public function index()
     {
-
-        $relawan = Relawan::all();
-        return view('Relawan.Relawan', compact('relawan'));
+        $volunteers = Volunteer::all(); // Update variable name
+        return view('Volunteer.Volunteer', compact('volunteers')); // Update compact variable name
     }
 
     public function store(Request $request)
@@ -18,7 +18,7 @@ class RelawanController extends Controller
         // Validasi input
         $request->validate([
             'name' => 'required|string',
-            'email' => 'required|email|unique:relawan,email',
+            'email' => 'required|email|unique:volunteers,email', // Update table name in validation rules
             'phone_number' => 'required|numeric',
             'date_of_birth' => 'required|date',
             'location' => 'required|string',
@@ -26,10 +26,10 @@ class RelawanController extends Controller
         ]);
 
         // Generate ID untuk relawan
-        $nextId = Relawan::generateNextId();
+        $nextId = Volunteer::generateNextId();
 
         // Simpan data relawan ke dalam database
-        $relawan = new Relawan([
+        $Volunteers = new Volunteer([
             'id_volunteers' => $nextId,
             'name' => $request->get('name'),
             'email' => $request->get('email'),
@@ -38,20 +38,30 @@ class RelawanController extends Controller
             'location' => $request->get('location'),
         ]);
 
+
         // Jika ada file CV yang diunggah, simpan ke dalam storage
         if ($request->hasFile('cv')) {
             $file = $request -> file('cv');
             $namaFile = $file ->getClientOriginalName();
             $destinationPath = 'storage/app/public/CV';
             $file -> move($destinationPath,$namaFile);
-            $relawan-> cv = $namaFile;
+            $Volunteers-> cv = $namaFile;
         }
 
         // Simpan data relawan
-        $relawan->save();
+        $Volunteers->save();
 
         // Redirect kembali ke halaman sebelumnya dengan pesan sukses
         return redirect()->back()->with('success', 'Relawan berhasil ditambahkan.');
     }
 
 }
+
+
+
+
+
+
+
+
+

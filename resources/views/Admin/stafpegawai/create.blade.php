@@ -33,13 +33,19 @@
                                         <input type="text" name="name" id="name" class="form-control" required>
                                     </div>
                                     <div class="form-group">
-                                        <label for="age">Umur</label>
-                                        <input type="number" name="age" id="age" class="form-control" required>
+                                        <label for="date_of_birth">Tanggal Lahir:</label>
+                                        <input type="date" id="date_of_birth" name="date_of_birth" class="form-control" required>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="gender">Jenis Kelamin:</label>
+                                        <select id="gender" name="gender" class="form-control">
+                                            <option value="Laki-Laki">Laki-Laki</option>
+                                            <option value="Perempuan">Perempuan</option>
+                                        </select>
                                     </div>
                                     <div class="form-group">
                                         <label for="date_joined">Tanggal Bergabung</label>
-                                        <input type="date" name="date_joined" id="date_joined"
-                                            class="form-control" required>
+                                        <input type="date" name="date_joined" id="date_joined" class="form-control" required>
                                     </div>
                                     <div class="form-group">
                                         <label for="job_title">Jabatan</label>
@@ -51,9 +57,14 @@
                                     </div>
                                     <div class="form-group">
                                         <label for="photo">Foto</label>
-                                        <input type="file" class="form-control" id="photo" name="photo">
+                                        <input type="file" class="form-control @error('photo') is-invalid @enderror" id="photo" name="photo" required>
+                                        @error('photo')
+                                            <div class="invalid-feedback">{{ $message }}</div>
+                                        @enderror
                                     </div>
-                                    <button type="submit" class="btn btn-primary">Tambah</button>
+                                    <div class="form-group text-center"> <!-- Perubahan di sini -->
+                                        <button type="submit" class="btn btn-primary">Simpan</button>
+                                    </div>
                                 </form>
                             </div>
                         </div>

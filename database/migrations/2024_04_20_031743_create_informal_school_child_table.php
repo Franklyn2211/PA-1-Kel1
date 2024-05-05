@@ -15,7 +15,8 @@ return new class extends Migration {
         Schema::create('informal_school_child', function (Blueprint $table) {
             $table->string('id_informal_school_child')->primary();
             $table->string('name');
-            $table->integer('age');
+            $table->enum('gender', ['Laki-Laki', 'Perempuan']);
+            $table->date('date_of_birth');
             $table->date('date_joined');
             $table->timestamps();
             $table->string('created_by', 20)->default('adminYPA');

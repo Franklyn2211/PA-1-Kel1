@@ -22,23 +22,21 @@ class AuthController extends Controller
             'email' => 'required',
             'password' => 'required'
         ]);
-
-
+    
         $user = User::where('email', $credentials['email'])->first();
-
+    
         if ($user && Hash::check($credentials['password'], $user->password)) {
-            // User exists and password matches
             if (Auth::attempt($credentials)) {
                 $request->session()->regenerate();
-        
                 return redirect()->intended('/Admin');
             }
-        
         } else {
-
-            return redirect('/login')->withErrors(['email' => 'These credentials do not match our records.']);
+            return redirect('/login')->withErrors([
+                'email' => 'Email atau kata sandi tidak valid.',
+            ]);
         }
     }
+    
 
     public function logout(Request $request)
     {

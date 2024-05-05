@@ -15,7 +15,8 @@ class StafPegawai extends Model
     protected $fillable = [
         'id_staff',
         'name',
-        'age',
+        'date_of_birth',
+        'gender',
         'date_joined',
         'job_title',
         'photo',

@@ -13,7 +13,7 @@ return new class extends Migration {
         Schema::create('volunteers', function (Blueprint $table) {
             $table->string('id_volunteers')->primary();
             $table->string('name');
-            $table->string('email')->unique();
+            $table->string('email');
             $table->string('phone_number');
             $table->date('date_of_birth');
             $table->enum('location', ['Wilayah I, Desa Lumban Silintong, Kecamatan Balige, Kabupaten Toba', 'Wilayah II, Desa Sawah Lamo, Kecamatan Andam Dewi, Kabupaten Tapanuli Tengah']);

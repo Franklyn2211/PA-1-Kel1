@@ -9,8 +9,9 @@ class DonateController extends Controller
 {
     public function index()
     {
-        $donate = Donate::all();
-        return view('Donate.Donate', compact('donate'));
+        $donates = Donate::all();
+
+        return view('Donate.Donate', compact('donates'));
     }
 
     public function store(Request $request)
@@ -18,7 +19,7 @@ class DonateController extends Controller
         // Validasi input
         $request->validate([
             'Name' => 'required|string',
-            'Email' => 'required|email|unique:donates,Email',
+            'Email' => 'required|email',
             'Phone_number' => 'required|numeric',
             'donation_amount' => 'required|numeric',
             'evidence_of_transfer' => 'nullable|file',
@@ -26,7 +27,7 @@ class DonateController extends Controller
         ]);
 
         // Simpan data donasi
-        $donate = new Donate([
+        $donates = new Donate([
             'id_donate' => Donate::generateNextId(),
             'Name' => $request->get('Name'),
             'Email' => $request->get('Email'),
@@ -35,21 +36,19 @@ class DonateController extends Controller
             'Description' => $request->get('Description'),
         ]);
 
-
         // Upload bukti transfer jika ada
         if ($request->hasFile('evidence_of_transfer')) {
             $file = $request->file('evidence_of_transfer');
             $fileName = $file->getClientOriginalName();
             $destinationPath = 'storage/app/public/evidence_of_transfer';
             $file->move($destinationPath, $fileName);
-            $donate->evidence_of_transfer = $fileName;
+            $donates->evidence_of_transfer = $fileName;
         }
 
         // Simpan data donasi
-        $donate->save();
+        $donates->save();
 
         // Redirect dengan pesan sukses
         return redirect()->back()->with('success', 'Donasi berhasil dikirim.');
     }
-
 }
