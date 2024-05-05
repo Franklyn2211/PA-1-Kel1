@@ -32,7 +32,7 @@ class StafPegawai extends Model
         $latestId = self::orderBy('id_staff', 'desc')->first();
 
         // Mengambil nomor dari ID terakhir
-        $lastNumber = $latestId ? intval(substr($latestId->id_staff, 2)) : 0;
+        $lastNumber = $latestId ? intval(substr($latestId->id_staff, 1)) : 0;
 
         // Menambahkan 1 untuk mendapatkan nomor berikutnya
         $nextNumber = $lastNumber + 1;

@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use App\Models\Volunteer;
+use App\Models\Relawan;
 use Illuminate\Http\Request;
 
 class AdminRelawanController extends Controller
@@ -11,17 +11,17 @@ class AdminRelawanController extends Controller
     // In your controller method
 public function index()
 {
-    $volunteers = Volunteer::all(); // Assuming Volunteer is your model name
-    return view('Admin.relawan.relawan', compact('volunteers'));
+    $relawan = Relawan::all(); // Assuming Volunteer is your model name
+    return view('Admin.relawan.relawan', compact('relawan'));
 }
 
 
 
 public function destroy($id)
 {
-    $volunteers = volunteer::findOrFail($id);
+    $relawan = Relawan::findOrFail($id);
 
-    $volunteers->delete();
+    $relawan->delete();
 
     return back()->with('success', 'Donatur berhasil dihapus.');
 
