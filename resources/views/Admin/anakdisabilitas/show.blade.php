@@ -25,15 +25,19 @@
     <!-- Main content -->
     <div class="content">
         <div class="container-fluid">
-            <!-- Detail Box -->
-            <div class="card">
-                <div class="card-body">
-                    <p><strong>Nama:</strong> {{ $anakdisabilitas->nama }}</p>
-                    <p><strong>Umur:</strong> {{ $anakdisabilitas->umur }}</p>
-                    <p><strong>Tanggal Bergabung:</strong> {{ $anakdisabilitas->tanggal_bergabung }}</p>
+            <!-- Small boxes (Stat box) -->
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="card">
+                        <div class="card-body">
+                            <p><strong>Nama:</strong> {{ $anakdisabilitas->nama }}</p>
+                            <p><strong>Umur:</strong> {{ $anakdisabilitas->umur }}</p>
+                            <p><strong>Tanggal Bergabung:</strong> {{ $anakdisabilitas->tanggal_bergabung }}</p>
+                        </div>
+                    </div>
                 </div>
             </div>
-            <!-- /.card -->
+            <!-- /.row -->
         </div><!-- /.container-fluid -->
     </div>
     <!-- /.content -->

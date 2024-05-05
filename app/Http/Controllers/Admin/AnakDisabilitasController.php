@@ -47,7 +47,7 @@ class AnakDisabilitasController extends Controller
         return view('admin.anakdisabilitas.show', compact('anakdisabilitas'));
     }
 
-    public function edit(AnakDisabilitas $anakdisabilitas)
+    public function edit($id)
     {
         $anakdisabilitas = AnakDisabilitas::all();
         return view('admin.anakdisabilitas.edit', compact('anakdisabilitas'));
@@ -62,18 +62,18 @@ class AnakDisabilitasController extends Controller
             'tanggal_bergabung' => 'required|date',
         ]);
 
-        $data = [
+        $anakdisabilitas->update([
             'nama' => $request->nama,
             'umur' => $request->umur,
             'tanggal_bergabung' => $request->tanggal_bergabung,
-        ];
+        ]);
 
-        $anakdisabilitas->update($data);
         return redirect()->route('admin.anakdisabilitas.index')->with('success', 'Data berhasil diperbarui.');
     }
 
-    public function destroy(AnakDisabilitas $anakdisabilitas)
+    public function destroy($id)
     {
+        $anakdisabilitas = AnakDisabilitas::findOrFail($id); 
         $anakdisabilitas->delete();
 
         return redirect()->route('admin.anakdisabilitas.index')->with('success', 'Data berhasil dihapus.');

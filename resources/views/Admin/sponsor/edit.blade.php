@@ -24,7 +24,7 @@
                     <div class="col-md-12">
                         <div class="card">
                             <div class="card-body">
-                                <form action="{{ route('admin.sponsor.update', $sponsor->id) }}" method="POST" enctype="multipart/form-data">
+                                <form action="{{ route('admin.sponsor.update', $sponsor->id_sponsor) }}" method="POST" enctype="multipart/form-data">
                                     @csrf
                                     @method('PUT')
                                     <div class="form-group">

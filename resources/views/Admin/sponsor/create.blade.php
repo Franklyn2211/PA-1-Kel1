@@ -36,7 +36,7 @@
                                     </div>
                                     <div class="form-group mb-3">
                                         <label for="Description">Deskripsi</label>
-                                        <textarea name="Description" id="summernote" ></textarea>
+                                        <textarea class="form-control" name="Description" id="Description" ></textarea>
                                     </div>
                                     <div class="form-group text-center">
                                         <button type="submit" class="btn btn-primary">Simpan</button>
