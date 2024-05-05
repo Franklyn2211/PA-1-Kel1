@@ -11,11 +11,10 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('hero__sections', function (Blueprint $table) {
-            $table->string('id_hero__sections')->primary();
-            $table->string('header', 50)->nullable(true);
-            $table->string('paragraph', 300)->nullable(true);
-            $table->string('bg_image')->nullable();
+        Schema::create('hero_sections', function (Blueprint $table) {
+            $table->string('id_hero_sections')->primary();
+            $table->string('header');
+            $table->text('paragraph');
             $table->string('created_by', 20)->default('adminYPA');
             $table->string('updated_by', 20)->nullable(true);
             $table->boolean('active')->default(true);
@@ -28,6 +27,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('hero__sections');
+        Schema::dropIfExists('hero_sections');
     }
 };

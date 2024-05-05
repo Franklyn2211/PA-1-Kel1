@@ -1,6 +1,7 @@
 @extends('Admin.main')
-@section('title', 'Hero Section')
+@section('title', 'Home')
 @section('content')
+
 <div class="content-wrapper">
     <!-- Content Header (Page header) -->
     <div class="content-header">
@@ -19,60 +20,64 @@
         </div><!-- /.container-fluid -->
     </div>
     <!-- /.content-header -->
+
+    <!-- Main content -->
     <div class="content">
         <div class="container-fluid">
-            <div id="item-4" class="card shadow-sm">
-                <div class="card-header bg-primary text-white">
-                    <span class="fs-5">@yield('title')</span>
+            <!-- Small boxes (Stat box) -->
+            @if(session('success'))
+                <div class="alert alert-success">
+                    {{ session('success') }}
                 </div>
-                <div class="card-body">
-                    <form action="{{ route('updateHeroSection') }}" method="post" enctype='multipart/form-data'>
-                        @csrf
-                        <div class="mb-3">
-                            <label for="input_judul_header" class="form-label">Header Hero</label>
-                            <input type="text" class="form-control" id="input_judul_header" name="input_judul_header" value="{{ $dataHeroSection ? $dataHeroSection->header : '' }}" required>
-                            @error("input_judul_header")
-                                <span class="text-danger">{{ $message }}</span>
-                            @enderror
-                        </div>
-                        <div class="mb-3">
-                            <label for="input_deskripsi_header" class="form-label">Deskripsi</label>
-                            <textarea class="form-control" id="input_deskripsi_header" name="input_deskripsi_header" rows="4">{{ $dataHeroSection ? $dataHeroSection->paragraph : '' }}</textarea>
-                            @error("input_deskripsi_header")
-                                <span class="text-danger">{{ $message }}</span>
-                            @enderror
-                        </div>
-                        <div class="mb-3">
-                            <label for="input_bg_hero" class="form-label">Background Hero</label>
-                            <div class="p-3 border mb-2 border-1 w-100 d-flex justify-content-center">
-                                @if ($dataHeroSection && $dataHeroSection->bg_image)
-                                    <img src="{{ asset($dataHeroSection->bg_image) }}" alt="bg image" style="width: 50%">
-                                @else
-                                    <p>No background image available.</p>
-                                @endif
+            @endif
+            <div class="row">
+                <div class="col-12">
+                    <div class="card">
+                        <div class="card-header">
+                            <div class="text-right">
+                                <a href="{{ route('Admin.HeroSection.create') }}" class="btn btn-primary"><i class="fa-solid fa-plus"></i> Tambah Berita</a>
                             </div>
-                            <input type="file" class="form-control" id="input_bg_hero" name="input_bg_hero">
-                            @error("input_bg_hero")
-                                <span class="text-danger">{{ $message }}</span>
-                            @enderror
                         </div>
-                        <button type="submit" class="btn btn-primary">Save</button>
-                    </form>
-                </div>
+                        <!-- /.card-header -->
+                        <div class="card-body">
+                            <table id="example1" class="table table-striped table-bordered table-hover text-center"
+                                style="width: 100%">
+                                <thead>
+                                    <tr>
+                                        <th>#</th>
+                                        <th>Judul</th>
+                                        <th>Deskripsi</th>
+                                        <th>Aksi</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach ($heroSection as $item)
+                                    <tr>
+                                        <td>{{ $loop->iteration }}</td>
+                                        <td>{{ $item->header }}</td>
+                                        <td>{!! $item->paragraph !!}</td>
+                                        <td>
+                                            <a href="{{ route('Admin.HeroSection.edit', $item->id_hero_sections) }}" class="btn btn-success btn-sm mr-1"><i class="fa-solid fa-pen"></i> Edit</a>
+                                            <form action="{{ route('Admin.HeroSection.destroy', $item->id_hero_sections) }}" method="POST" class="d-inline">
+                                                @csrf
+                                                @method('DELETE')
+                                                <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('Apakah Anda yakin ingin menghapus berita ini?')"><i class="fa-solid fa-trash-can"></i> Hapus</button>
+                                            </form>
+                                        </td>
+                                    </tr>
+                                    @endforeach
+                                </tbody>
+                            </table>
+
+                        </div>
+                        <!-- /.card-body -->
+                    </div>
+                    <!-- /.card -->
+                </div><!-- /.container-fluid -->
             </div>
+            <!-- /.content -->
         </div>
     </div>
 </div>
-@endsection
 
-@push('scripts')
-<script src="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.18/summernote-bs4.min.js"></script>
-<script>
-    $(document).ready(function() {
-        $('#input_deskripsi_header').summernote({
-            height: 100,
-            maxHeight: 250,
-        });
-    });
-</script>
-@endpush
+@endsection

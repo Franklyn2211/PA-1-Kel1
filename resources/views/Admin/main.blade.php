@@ -123,9 +123,9 @@
                                     </a>
                                 </li>
                                 <li class="nav-item">
-                                    <a href="/Admin/hero-section" class="nav-link">
+                                    <a href="/Admin/home" class="nav-link">
                                         <i class="far fa-circle nav-icon"></i>
-                                        <p>Hero Section</p>
+                                        <p>Home</p>
                                     </a>
                                 </li>
                                 <li class="nav-item">

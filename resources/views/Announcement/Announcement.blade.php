@@ -36,7 +36,7 @@
                 </div>
                 <p class="text-center"><strong>Lokasi:</strong> {{ $announcement->location }}</p>
                 <p class="text-center"><strong>Deskripsi:</strong></p>
-                <div class="modal-description">
+                <div class="modal-description text-center">
                     <p class="text-center overflow-auto" style="max-height: 300px;">{!! $announcement->description !!}</p>
                 </div>
             </div>

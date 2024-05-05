@@ -40,26 +40,24 @@ class GalleryController extends Controller
             'photo' => 'image|mimes:jpeg,png,jpg,gif|max:5000', // max 5MB
         ]);
 
-        // Simpan gambar di dalam direktori public
-        $destinationPath = 'public/photo';
-
-        // Mendapatkan nama file asli
-        $fileName = $request->file('photo')->getClientOriginalName();
-
-        // Menggunakan storeAs() method untuk menyimpan gambar
-        $request->file('photo')->storeAs($destinationPath, $fileName);
-
-        // Membuat objek Gallery baru
-        $gallery = new Gallery([
+        $galleries = new Gallery([
+            'id_galleries' => Gallery::generateNextId(),
             'title' => $request->get('title'),
             'description' => $request->get('description'),
-            'photo' => $fileName, // Menyimpan nama file gambar
         ]);
 
-        // Simpan objek Gallery
-        $gallery->save();
+        if ($request->hasFile('photo')) {
+            $file = $request->file('photo');
+            $filename = $file->getClientOriginalName();
+            $destinationPath = public_path('storage/galeri');
+            $file->move($destinationPath, $filename);
+            $galleries->photo = $filename;
+        }
 
-        return redirect()->route('admin.gallery.index')->with('success', 'Gallery created successfully.');
+        // Simpan objek Gallery
+        $galleries->save();
+
+        return redirect()->route('admin.gallery.index')->with('success', 'Galeri berhasil di tambahkan');
     }
 
     /**
@@ -68,15 +66,15 @@ class GalleryController extends Controller
      */
     public function edit($id)
     {
-        $gallery = Gallery::findOrFail($id);
-        return view('admin.gallery.edit', compact('gallery'));
+        $galleries = Gallery::findOrFail($id);
+        return view('admin.gallery.edit', compact('galleries'));
     }
 
     /**
      * Update the specified resource in storage.
      *
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Gallery $galleries)
     {
         $request->validate([
             'title' => 'required',
@@ -84,30 +82,27 @@ class GalleryController extends Controller
             'photo' => 'image|mimes:jpeg,png,jpg,gif|max:5000', // max 2MB
         ]);
 
-        // Mendapatkan objek Gallery berdasarkan ID
-        $gallery = Gallery::findOrFail($id);
-
-        // Mengupdate atribut Gallery
-        $gallery->title = $request->title;
-        $gallery->description = $request->description;
-
-        // Upload foto baru jika disediakan
+        $data = [
+            'title' => $request->title,
+            'description' => $request->description,
+        ];
+        // Menghandle foto
         if ($request->hasFile('photo')) {
             // Menghapus foto lama jika ada
-            if ($gallery->photo) {
-                Storage::delete('public/photo/' . $gallery->photo);
+            if ($galleries->photo) {
+                Storage::disk('public')->delete('galeri/' . $galleries->photo);
             }
 
-            // Simpan foto baru
-            $fileName = $request->file('photo')->getClientOriginalName();
-            $request->file('photo')->storeAs('public/photo', $fileName);
-            $gallery->photo = $fileName;
+            // Menyimpan foto baru
+            $file = $request->file('photo');
+            $filename = $file->getClientOriginalName();
+            $destinationPath = public_path('storage/galeri');
+            $file->move($destinationPath, $filename);
+            $data['photo'] = $filename;
         }
 
-        // Simpan perubahan ke database
-        $gallery->save();
-
-        return redirect()->route('admin.gallery.index')->with('success', 'Gallery updated successfully.');
+        $galleries->update($data);
+        return redirect()->route('admin.gallery.index')->with('success', 'Galeri berhasil diedit');
     }
 
     /**
@@ -116,15 +111,15 @@ class GalleryController extends Controller
      */
     public function destroy($id)
     {
-        $gallery = Gallery::findOrFail($id);
+        $galleries = Gallery::findOrFail($id);
 
-        // Hapus foto dari penyimpanan jika ada
-        if ($gallery->photo) {
-            Storage::delete('public/photo/' . $gallery->photo);
+        // Hapus foto dari storage jika ada
+        if (Storage::disk('public')->exists('galeri/' . $galleries->photo)) {
+            Storage::disk('public')->delete('galeri/' . $galleries->photo);
         }
 
         // Hapus gallery dari database
-        $gallery->delete();
+        $galleries->delete();
 
         return redirect()->route('admin.gallery.index')->with('success', 'Gallery deleted successfully.');
     }

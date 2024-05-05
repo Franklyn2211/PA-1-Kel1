@@ -45,7 +45,7 @@
                                                 </div>
                                                 <div class="form-group mb-3">
                                                     <label for="description">Deskripsi</label>
-                                                    <textarea class="form-control" id="description" name="description"
+                                                    <textarea class="form-control" id="summernote" name="description"
                                                         rows="5" placeholder="Deskripsi Galeri"></textarea>
                                                     @error('description')
                                                     <span class="text-danger mt-2">{{ $message }}</span>
@@ -76,12 +76,4 @@
         </div>
     </div>
 </div>
-@endsection
-
-@section('styles')
-<style>
-    .ck-editor__editable_inline {
-        min-height: 200px;
-    }
-</style>
 @endsection

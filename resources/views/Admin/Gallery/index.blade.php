@@ -1,5 +1,5 @@
 @extends('Admin.main')
-@section('title', 'Gallery')
+@section('title', 'Galeri')
 @section('content')
 
 <div class="content-wrapper">
@@ -25,6 +25,11 @@
     <div class="content">
         <div class="container-fluid">
             <!-- Small boxes (Stat box) -->
+            @if(session('success'))
+                <div class="alert alert-success">
+                    {{ session('success') }}
+                </div>
+            @endif
             <div class="row">
                 <div class="col-12">
                     <div class="card">
@@ -51,13 +56,13 @@
                                     <tr>
                                         <td>{{ $loop->iteration }}</td>
                                         <td>{{ $gallery->title }}</td>
-                                        <td>{{ $gallery->description }}</td>
-                                        <td><img src="{{ asset('public/photo' . $gallery->photo) }}" alt="{{ $gallery->title }}" style="max-width: 100px;"></td>
+                                        <td>{!! $gallery->description !!}</td>
+                                        <td><img src="{{ asset('storage/galeri/' . $gallery->photo) }}" alt="{{ $gallery->title }}" style="max-width: 100px;"></td>
                                         <td>
-                                            <a href="{{ route('admin.gallery.edit', ['id' => $gallery->id]) }}" class="btn btn-success btn-sm mr-1"><i class="fa-solid fa-pen"></i> Edit</a>
+                                            <a href="{{ route('admin.gallery.edit', $gallery->id_galleries) }}" class="btn btn-success btn-sm mr-1"><i class="fa-solid fa-pen"></i> Edit</a>
 
 
-                                              <form action="{{ route('admin.gallery.destroy', $gallery->id) }}" method="POST" class="d-inline">
+                                              <form action="{{ route('admin.gallery.destroy', $gallery->id_galleries) }}" method="POST" class="d-inline">
                                                 @csrf
                                                 @method('DELETE')
                                                 <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('Are you sure you want to delete this image?')"><i class="fa-solid fa-trash-can"></i> Delete</button>

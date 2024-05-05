@@ -26,16 +26,15 @@
                 <div class="col-12">
                     <div class="card">
                         <div class="card-body">
-                            <form action="{{ route('admin.gallery.update', ['id' => $gallery->id]) }}" method="post" enctype="multipart/form-data">
-                                @method('put')
+                            <form action="{{ route('admin.gallery.update', $galleries->id_galleries) }}" method="post" enctype="multipart/form-data">
                                 @csrf
                                 <div class="form-group">
                                     <label for="title">Judul</label>
-                                    <input type="text" class="form-control" id="title" name="title" value="{{ $gallery->title ?? '' }}" required>
+                                    <input type="text" class="form-control" id="title" name="title" value="{{ $galleries->title ?? '' }}" required>
                                 </div>
                                 <div class="form-group">
                                     <label for="description">Deskripsi</label>
-                                    <textarea class="form-control" id="description" name="description" rows="10" required>{{ $gallery->description ?? '' }}</textarea>
+                                    <textarea class="form-control" id="description" name="description" rows="10" required>{!! $galleries->description ?? '' !!}</textarea>
                                 </div>
                                 <div class="form-group">
                                     <label for="photo">Foto</label>
