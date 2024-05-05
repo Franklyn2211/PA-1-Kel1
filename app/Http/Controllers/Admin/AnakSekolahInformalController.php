@@ -43,17 +43,12 @@ class anaksekolahinformalController extends Controller
         $anaksekolahinformal->save();
         return redirect()->route('admin.anaksekolahinformal.index')->with('success', 'Anak disabilitas berhasil ditambahkan.');
     }
-
-<<<<<<< HEAD
-    // Menampilkan detail anak sekolah informal
-    public function show(AnakSekolahInformal $anaksekolahinformal)
-=======
     public function show($id)
->>>>>>> 336e8d942531d4d6b01c3b480285e410f39748e8
     {
         $anaksekolahinformal = anaksekolahinformal::findOrFail($id);
         return view('admin.anaksekolahinformal.show', compact('anaksekolahinformal'));
     }
+    
 
     public function edit(anaksekolahinformal $anaksekolahinformal)
     {

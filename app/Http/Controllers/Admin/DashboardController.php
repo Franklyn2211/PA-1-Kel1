@@ -16,7 +16,7 @@ class DashboardController extends Controller
 {
     public function index()
     {
-        $totalVolunteer = Volunteer::count(); // Mengambil jumlah total relawan dari database
+        $totalVolunteer = Relawan::count(); // Mengambil jumlah total relawan dari database
         $totalDonatur = Donate::count();
         $totalanakdisabilitas = AnakDisabilitas::count();
         $totalanaksekolahinformal = AnakSekolahInformal::count();
