@@ -8,7 +8,7 @@ class SponsorsController extends Controller
 {
     public function index()
     {
-        $sponsor = Sponsor::paginate(6);
+        $sponsor = Sponsor::paginate(3);
         return view('Sponsor.Sponsor', compact('sponsor'));
     }
 

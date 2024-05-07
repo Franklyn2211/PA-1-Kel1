@@ -38,8 +38,8 @@
                             <form action="{{ route('admin.kemitraan.store') }}" method="POST" enctype="multipart/form-data">
                                 @csrf
                                 <div class="form-group">
-                                    <label for="nama">Nama Kemitraan:</label>
-                                    <input type="text" class="form-control" id="nama" name="nama">
+                                    <label for="name">Nama Kemitraan:</label>
+                                    <input type="text" class="form-control" id="name" name="name">
                                 </div>
                                 <div class="form-group">
                                     <label for="logo">Logo:</label>

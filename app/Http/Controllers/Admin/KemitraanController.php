@@ -23,13 +23,13 @@ class KemitraanController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'nama' => 'required|string|max:255',
+            'name' => 'required|string|max:255',
             'program' => 'required|string',
         ]);
 
         $kemitraan = new Kemitraan([
-            'id_kemitraan' => Kemitraan::generateNextId(),
-            'nama' => $request->get('nama'),
+            'id_partnership' => Kemitraan::generateNextId(),
+            'name' => $request->get('name'),
             'program' => $request->get('program'),
         ]);
         if($request->hasFile('logo')){

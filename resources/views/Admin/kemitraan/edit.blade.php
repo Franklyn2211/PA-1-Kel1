@@ -37,8 +37,8 @@
                                 @csrf
                                 @method('PUT')
                                 <div class="form-group">
-                                    <label for="nama">Nama Kemitraan:</label>
-                                    <input type="text" class="form-control" id="nama" name="nama" value="{{ $kemitraan->nama }}">
+                                    <label for="name">Nama Kemitraan:</label>
+                                    <input type="text" class="form-control" id="name" name="name" value="{{ $kemitraan->name }}">
                                 </div>
                                 <div class="form-group">
                                     <label for="logo">Logo:</label>
