@@ -41,8 +41,8 @@
                                 <thead>
                                     <tr>
                                         <th>#</th>
-                                        <th>Nama Kemitraan</th>
                                         <th>Logo</th>
+                                        <th>Nama Kemitraan</th>
                                         <th>Program</th>
                                         <th>Aksi</th>
                                     </tr>
@@ -51,10 +51,10 @@
                                     @foreach ($kemitraan as $mitra)
                                     <tr>
                                         <td>{{ $loop->iteration }}</td>
-                                        <td>{{ $mitra->nama }}</td>
                                         <td>
                                             <img src="{{asset('logokemitraan/' . $mitra->logo ) }}" alt="" style="width:100px;" class="img-fluid">
                                         </td>
+                                        <td>{{ $mitra->name }}</td>
                                         <td>{{ $mitra->program }}</td>
                                         <td>
                                             <a href="{{ route('admin.kemitraan.edit', $mitra) }}" class="btn btn-primary btn-sm">Edit</a>

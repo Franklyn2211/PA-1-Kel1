@@ -10,7 +10,7 @@
     <div class="row justify-content-center">
         <div class="col-md-10">
             <div class="card shadow">
-                <div class="card-header bg-primary text-white text-center">
+                <div class="card-header text-white text-center"style="background-color:rgb(16, 44, 87);">
                     <h5 class="mb-0 text-white">Daftar Kemitraan</h5>
                 </div>
                 
@@ -20,8 +20,8 @@
                             <thead class="thead-light">
                                 <tr>
                                     <th scope="col">No</th>
-                                    <th scope="col">Nama Kemitraan</th>
                                     <th scope="col">Logo</th>
+                                    <th scope="col">Nama Kemitraan</th>
                                     <th scope="col">Program</th>
                                 </tr>
                             </thead>
@@ -29,10 +29,10 @@
                                 @foreach($kemitraan as $index => $mitra)
                                 <tr>
                                     <td>{{ $index + 1 }}</td>
-                                    <td>{{ $mitra->nama }}</td>
                                     <td>
                                         <img src="{{asset('logokemitraan/' . $mitra->logo) }}" alt="" style="width:100px;">
                                     </td>
+                                    <td>{{ $mitra->name }}</td>
                                     <td>{{ $mitra->program }}</td>
                                 </tr>
                                 @endforeach
