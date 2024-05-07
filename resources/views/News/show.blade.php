@@ -3,6 +3,7 @@
 @section('css')
     <link rel="stylesheet" href="{{ asset('assets/vendor/bootstrap/css/bootstrap.min.css') }}">
 @endsection
+
 @section('content')
 
 <!-- Modal Search Start -->
@@ -41,15 +42,9 @@
                 <div class="position-relative rounded overflow-hidden mb-3">
                     <img src="{{ asset('storage/app/public/photo/' . $news->photo) }}" class="img-zoomin img-fluid rounded w-100" alt="">
                     <div class="position-absolute text-white px-4 py-2 bg-primary rounded" style="top: 20px; right: 20px;">                                              
-                        {{!! $news->category->name!!}}
+                        {{ $news->category->name }}
                     </div>
                 </div>
-                {{-- <div class="d-flex justify-content-between">
-                    <a href="#" class="text-dark link-hover me-3"><i class="fa fa-clock"></i> 06 minute read</a>
-                    <a href="#" class="text-dark link-hover me-3"><i class="fa fa-eye"></i> 3.5k Views</a>
-                    <a href="#" class="text-dark link-hover me-3"><i class="fa fa-comment-dots"></i> 05 Comment</a>
-                    <a href="#" class="text-dark link-hover"><i class="fa fa-arrow-up"></i> 1.5k Share</a>
-                </div> --}}
                 <p class="my-4">{!! $news->description !!}</p>
                 
                 <div class="tab-class">
@@ -60,137 +55,70 @@
                             </li>
                             <li class="nav-item mb-3">
                                 <a class="d-flex py-2 bg-light rounded-pill active me-2" data-bs-toggle="pill" href="#tab-1">
-                                    <span class="text-dark" style="width: 100px;">{{ $news->category->name}}</span>
+                                    <span class="text-dark" style="width: 100px;">{{ $news->category->name }}</span>
                                 </a>
                             </li>
                         </ul>
                         <div class="d-flex align-items-center">
                             <h5 class="mb-0 me-3">Share:</h5>
-                            <i class="fab fa-facebook-f link-hover btn btn-square rounded-circle border-primary text-dark me-2"></i>
-                            <i class="btn fab bi-twitter link-hover btn btn-square rounded-circle border-primary text-dark me-2"></i>
-                            <i class="btn fab fa-instagram link-hover btn btn-square rounded-circle border-primary text-dark me-2"></i>
-                            <i class="btn fab fa-linkedin-in link-hover btn btn-square rounded-circle border-primary text-dark"></i>
+                            <!-- Facebook -->
+                            <a href="https://www.facebook.com/sharer/sharer.php?u={{ urlencode(Request::url()) }}" target="_blank" class="fab fa-facebook-f link-hover btn btn-square rounded-circle border-primary text-dark me-2"></a>
+                            <!-- Twitter -->
+                            <a href="https://twitter.com/intent/tweet?url={{ urlencode(Request::url()) }}" target="_blank" class="fab fa-twitter link-hover btn btn-square rounded-circle border-primary text-dark me-2"></a>
+                            <!-- Instagram (Tidak mendukung sharing langsung, link ke profil saja) -->
+                            <a href="https://www.instagram.com/" target="_blank" class="fab fa-instagram link-hover btn btn-square rounded-circle border-primary text-dark me-2"></a>
+                            <!-- LinkedIn -->
+                            <a href="https://www.linkedin.com/sharing/share-offsite/?url={{ urlencode(Request::url()) }}" target="_blank" class="fab fa-linkedin-in link-hover btn btn-square rounded-circle border-primary text-dark me-2"></a>
+                            <!-- WhatsApp -->
+                            <a href="https://api.whatsapp.com/send?text={{ urlencode(Request::url()) }}" target="_blank" class="fab fa-whatsapp link-hover btn btn-square rounded-circle border-primary text-dark"></a>
                         </div>
-                    </div>
-                <div class="bg-light rounded my-4 p-4">
-                    <h4 class="mb-4">You Might Also Like</h4>
-                    <div class="row g-4">
-                        <div class="col-lg-6">
-                            <div class="d-flex align-items-center p-3 bg-white rounded">
-                                <img src="img/chatGPT.jpg" class="img-fluid rounded" alt="">
-                                <div class="ms-3">
-                                    <a href="#" class="h5 mb-2">Lorem Ipsum is simply dummy text of the printing</a>
-                                    <p class="text-dark mt-3 mb-0 me-3"><i class="fa fa-clock"></i> 06 minute read</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-6">
-                            <div class="d-flex align-items-center p-3 bg-white rounded">
-                                <img src="img/chatGPT-1.jpg" class="img-fluid rounded" alt="">
-                                <div class="ms-3">
-                                    <a href="#" class="h5 mb-2">Lorem Ipsum is simply dummy text of the printing</a>
-                                    <p class="text-dark mt-3 mb-0 me-3"><i class="fa fa-clock"></i> 06 minute read</p>
-                                </div>
-                            </div>
-                        </div>
+                        
                     </div>
                 </div>
-                <div class="bg-light rounded p-4">
-                    <h4 class="mb-4">Comments</h4>
-                    <div class="p-4 bg-white rounded mb-4">
-                        <div class="row g-4">
-                            <div class="col-3">
-                                <img src="img/footer-4.jpg" class="img-fluid rounded-circle w-100" alt="">
-                            </div>
-                            <div class="col-9">
-                                <div class="d-flex justify-content-between">
-                                    <h5>James Boreego</h5>
-                                    <a href="#" class="link-hover text-body fs-6"><i class="fas fa-long-arrow-alt-right me-1"></i> Reply</a>
-                                </div>
-                                <small class="text-body d-block mb-3"><i class="fas fa-calendar-alt me-1"></i> Dec 9, 2024</small>
-                                <p class="mb-0">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy Lorem Ipsum has been the industry's standard dummy type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="p-4 bg-white rounded mb-0">
-                        <div class="row g-4">
-                            <div class="col-3">
-                                <img src="img/footer-4.jpg" class="img-fluid rounded-circle w-100" alt="">
-                            </div>
-                            <div class="col-9">
-                                <div class="d-flex justify-content-between">
-                                    <h5>James Boreego</h5>
-                                    <a href="#" class="link-hover text-body fs-6"><i class="fas fa-long-arrow-alt-right me-1"></i> Reply</a>
-                                </div>
-                                <small class="text-body d-block mb-3"><i class="fas fa-calendar-alt me-1"></i> Dec 9, 2024</small>
-                                <p class="mb-0">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy Lorem Ipsum has been the industry's standard dummy type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="bg-light rounded p-4 my-4">
-                    <h4 class="mb-4">Leave A Comment</h4>
+            </div>
+            <div class="col-md-3 animate-box" data-animate-effect="fadeInRight">
+                <div class="p-3 rounded border bg-light mb-4">
                     <form action="#">
-                        <div class="row g-4">
-                            <div class="col-lg-6">
-                                <input type="text" class="form-control py-3" placeholder="Full Name">
-                            </div>
-                            <div class="col-lg-6">
-                                <input type="email" class="form-control py-3" placeholder="Email Address">
-                            </div>
-                            <div class="col-12">
-                                <textarea class="form-control" name="textarea" id="" cols="30" rows="7" placeholder="Write Your Comment Here"></textarea>
-                            </div>
-                            <div class="col-12">
-                                <button class="form-control btn btn-primary py-3" type="button">Submit Now</button>
-                            </div>
+                        <div class="input-group">
+                            <input type="search" class="form-control" placeholder="Search..." aria-label="Search" aria-describedby="button-addon2">
+                            <button class="btn btn-outline-primary" type="button" id="button-addon2">Search</button>
                         </div>
                     </form>
                 </div>
-            </div>
-            <div class="col-lg-4">
-                <!-- Sidebar Start -->
-                <div class="row g-4">
-                    <div class="col-12">
-                        <!-- Search Form -->
-                        <div class="p-3 rounded border bg-light mb-4">
-                            <h4 class="mb-3">Search</h4>
-                            <form action="#">
-                                <div class="input-group">
-                                    <input type="search" class="form-control" placeholder="Search..." aria-label="Search" aria-describedby="button-addon2">
-                                    <button class="btn btn-outline-primary" type="button" id="button-addon2">Search</button>
-                                </div>
-                            </form>
-                        </div>
-                        <!-- Popular Categories -->
-                        <div class="p-3 rounded border bg-light mb-4">
-                            <h4 class="mb-3">Popular Categories</h4>
-                            <ul class="list-unstyled">
-                                {{-- @foreach($popularCategories as $category)
-                                <li><a href="#">{{ $category->name }}</a></li> --}}
-                                {{-- @endforeach --}}
-                            </ul>
-                        </div>
-                        <!-- Popular News -->
-                        <div class="p-3 rounded border bg-light mb-4">
-                            <h4 class="mb-3">Popular News</h4>
-                            <div class="list-group">
-                                {{-- @foreach($popularNews as $newsItem)
-                                <a href="#" class="list-group-item list-group-item-action">{{ $newsItem->title }}</a>
-                                @endforeach --}}
-                            </div>
-                        </div>
-                    </div>
+                <div>
+                    <div class="fh5co_heading fh5co_heading_border_bottom py-2 mb-4">Kategori</div>
                 </div>
-                <!-- Sidebar End -->
+                <div class="clearfix"></div>
+                <div class="fh5co_tags_all">
+                    <a href="#" class="fh5co_tagg">{{ $news->category->name }}</a>
+                </div>
+                <div>
+                    <div class="fh5co_heading fh5co_heading_border_bottom pt-3 py-2 mb-4">Most Popular</div>
+                </div>
+                <div class="row pb-3">
+                    <?php
+                        // Mendapatkan daftar berita populer secara acak
+                        $randomNews = \App\Models\News::inRandomOrder()->limit(2)->get();
+                    ?>
+                    @foreach ($randomNews as $berita)
+                        <div class="col-5 align-self-center">
+                            <a href="{{ route('news.show', ['id_news' => $berita->id_news]) }}"> <!-- Tautan di sekitar gambar -->
+                                <img src="{{ asset('storage/app/public/photo/' . $berita->photo) }}" alt="{{ $berita->title }}" class="fh5co_most_trading"/>
+                            </a>
+                        </div>
+                        <div class="col-7 paddding">
+                            <a href="{{ route('news.show', ['id_news' => $berita->id_news]) }}"> <!-- Tautan di sekitar judul -->
+                                <div class="most_fh5co_treding_font">{{ $berita->title }}</div>
+                            </a>
+                            <div class="most_fh5co_treding_font_123">{{ $berita->created_at->format('F d, Y') }}</div>
+                        </div>
+                    @endforeach
+                </div>
+                
             </div>
         </div>
     </div>
 </div>
 <!-- Single Product End -->
 
-
 @endsection
-
