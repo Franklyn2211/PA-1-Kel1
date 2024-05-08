@@ -46,7 +46,6 @@
                                     <tr>
                                         <th>#</th>
                                         <th>Nama Yayasan</th>
-                                        <th>Singkatan Nama Yayasan</th>
                                         <th>Sejarah</th>
                                         <th>Visi</th>
                                         <th>Misi</th>

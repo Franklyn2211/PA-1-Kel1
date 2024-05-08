@@ -215,6 +215,14 @@
                             </a>
                         </li>
                         <li class="nav-item">
+                            <a href="/Admin/testimoni" class="nav-link">
+                                <i class="nav-icon fas fa-user"></i>
+                                <p>
+                                    Testimoni
+                                </p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
                             <a href="" class="nav-link log-out">
                                 <i class="nav-icon fa-solid fa-power-off" style="color: red;"></i>
                                 <p>Logout</p>

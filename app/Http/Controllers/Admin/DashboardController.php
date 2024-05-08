@@ -12,32 +12,34 @@ use App\Models\Relawan;
 use App\Models\News;
 use App\Models\Sponsor;
 use App\Models\StafPegawai;
+use App\Models\Testimoni;
 use Illuminate\Http\Request;
 
 class DashboardController extends Controller
 {
     public function index()
     {
-        $totalRelawan = Relawan::count(); // Mengambil jumlah total relawan dari database
-        $totalDonatur = Donate::count();
-        $totalNews = News::count();
-        $totalAnnouncement = Announcement::count();
+        $totalTestimoni = Testimoni::count();
         $totalSponsor = Sponsor::count();
+        $totalPengumuman = Announcement::count();
         $totalKemitraan = Kemitraan::count();
-        $totalAnakDisabilitas = AnakDisabilitas::count();
+        $totalBerita = News::count();
+        $totalVolunteer = Relawan::count(); // Mengambil jumlah total relawan dari database
+        $totalDonatur = Donate::count();
+        $totalanakdisabilitas = AnakDisabilitas::count();
         $totalSiswaInformal = AnakSekolahInformal::count();
-        $totalStaf = StafPegawai::count();
-
+        $totalstafpegawai = StafPegawai::count();
         return view('Admin.dashboard', compact(
-            'totalRelawan',
-            'totalDonatur',
-            'totalNews',
-            'totalAnnouncement',
-            'totalSponsor',
             'totalKemitraan',
-            'totalAnakDisabilitas',
+            'totalBerita',
+            'totalVolunteer',
+            'totalDonatur',
+            'totalanakdisabilitas',
             'totalSiswaInformal',
-            'totalStaf'
+            'totalstafpegawai',
+            'totalPengumuman',
+            'totalSponsor',
+            'totalTestimoni'
         ));
     }
 }

@@ -1,6 +1,7 @@
 @extends('Admin.main')
-@section('title', 'Tambah Staf')
+@section('title', 'Edit Testimoni')
 @section('content')
+
     <div class="content-wrapper">
         <!-- Content Header (Page header) -->
         <div class="content-header">
@@ -21,46 +22,44 @@
         <!-- /.content-header -->
         <div class="content">
             <div class="container-fluid">
+                <!-- Small boxes (Stat box) -->
                 <div class="row">
                     <div class="col-12">
                         <div class="card">
                             <div class="card-body">
-                                <form action="{{ route('admin.stafpegawai.store') }}" method="POST"
-                                    enctype="multipart/form-data">
+                                <form action="{{ route('admin.testimoni.update', $testimoni->id_testimonies) }}"
+                                    method="POST" enctype="multipart/form-data">
                                     @csrf
                                     <div class="form-group">
                                         <label for="name">Nama</label>
-                                        <input type="text" name="name" id="name" class="form-control" required>
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="date_of_birth">Tanggal Lahir:</label>
-                                        <input type="date" id="date_of_birth" name="date_of_birth" class="form-control" required>
+                                        <input type="text" name="name" id="name" class="form-control"
+                                            value="{{ $testimoni->name }}" required>
                                     </div>
                                     <div class="form-group">
                                         <label for="gender">Jenis Kelamin:</label>
                                         <select id="gender" name="gender" class="form-control">
-                                            <option value="Laki-Laki">Laki-Laki</option>
-                                            <option value="Perempuan">Perempuan</option>
+                                            <option value="Laki-Laki" {{ $testimoni->gender == 'Laki-Laki' ? 'selected' : '' }}>Laki-Laki</option>
+                                            <option value="Perempuan" {{ $testimoni->gender == 'Perempuan' ? 'selected' : '' }}>Perempuan</option>
                                         </select>
                                     </div>
-                                    <div class="form-group">
-                                        <label for="date_joined">Tanggal Bergabung</label>
-                                        <input type="date" name="date_joined" id="date_joined" class="form-control" required>
+                                    <div class="form-group mb-3">
+                                        <label for="description">Deskripsi</label>
+                                        <textarea name="description" id="summernote">{!! $testimoni->description !!}</textarea>
                                     </div>
-                                    <div class="form-group">
-                                        <label for="job_title">Jabatan</label>
-                                        <select class="form-control" id="job_title" name="job_title">
-                                            <option value="Ketua Yayasan">Ketua Yayasan</option>
-                                            <option value="Pengajar">Pengajar</option>
-                                            <option value="Staff">Staff</option>
-                                        </select>
-                                    </div>
-                                    <div class="form-group">
+                                    <div class="form-group mb-3">
                                         <label for="photo">Foto</label>
                                         <input type="file" class="form-control @error('photo') is-invalid @enderror" id="photo" name="photo">
                                         @error('photo')
                                             <div class="invalid-feedback">{{ $message }}</div>
                                         @enderror
+                                        <div class="p-3 border mb-2 border-1 w-100 d-flex justify-content-center">
+                                            @if ($testimoni->photo)
+                                                <img src="{{ asset('storage/app/public/photo/' . $testimoni->photo) }}"
+                                                    alt="Foto Berita" style="max-width: 200px; margin-top: 10px;">
+                                            @else
+                                                <p>Tidak ada foto tersedia.</p>
+                                            @endif
+                                        </div>
                                     </div>
                                     <div class="form-group text-center"> <!-- Perubahan di sini -->
                                         <button type="submit" class="btn btn-primary">Simpan</button>

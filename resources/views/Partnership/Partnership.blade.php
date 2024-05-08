@@ -13,7 +13,7 @@
                 <div class="card-header bg-primary text-white text-center">
                     <h5 class="mb-0 text-white">Daftar Kemitraan</h5>
                 </div>
-                
+
                 <div class="card-body">
                     <div class="table-responsive">
                         <table class="table table-bordered table-striped mt-3 text-center">

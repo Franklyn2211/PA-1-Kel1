@@ -19,7 +19,7 @@
                             <p class="lead fw-normal text-white-50 mb-4">Default Paragraph</p>
                         @endif
                         <div class="d-grid gap-3 d-sm-flex justify-content-sm-center justify-content-xl-start">
-                            <a class="btn btn-danger btn-lg px-4 me-sm-3" href="/Donate">Ayo Donasi</a>
+                            <a class="btn btn-primary btn-lg px-4 me-sm-3" href="/Donate">Ayo Donasi</a>
                         </div>
                     </div>
                 </div>
@@ -105,50 +105,66 @@
         </div>
 
     </section>
-    {{-- <section id="testimoni" class="splide container bg-informasi-umum p-5" aria-label="Beautiful Images">
-        <h1 class="text-center fw-bold mb-5">Testimoni</h1>
+    <section class="py-5">
+        <div class="container my-5">
+            <h1 class="text-center fw-bold mb-5">Testimoni</h1>
 
-        <div class="splide__slider">
-            <div class="splide__track">
-                <ul class="splide__list">
-
-                    <li class="splide__slide d-flex justify-content-center" data-splide-interval="2000">
-                        <div class="card" style="">
-                            <div class="bg-primary bg-image-container card-img-top"></div>
-                            <div class="d-flex justify-content-center">
-                                <div class="image-container">
-                                    <img src="" class="cropped-image" alt="foto-profil">
+            <div class="row justify-content-center">
+                <div class="col-md-8">
+                    <div class="card-header bg-primary text-white text-center">
+                        <h5 class="mb-0 text-white">Daftar Kemitraan</h5>
+                    </div>
+                    <div class="card-body px-5">
+                        @if ($testimoni->count() > 0)
+                            <div id="carouselExampleControls" class="carousel slide" data-ride="carousel" data-interval="5000">
+                                <div class="carousel-inner">
+                                    @php $chunkedTestimonis = $testimoni->chunk(3); @endphp
+                                    @foreach ($chunkedTestimonis as $key => $chunk)
+                                        <div class="carousel-item{{ $key === 0 ? ' active' : '' }}">
+                                            <div class="row justify-content-center align-items-center">
+                                                @foreach ($chunk as $testimoni)
+                                                    <div class="col-md-4 text-center mb-4">
+                                                        <div class="card">
+                                                            <div class="card-img-container">
+                                                                @if ($testimoni->photo)
+                                                                    <img src="{{ asset('storage/app/public/photo/' . $testimoni->photo) }}"
+                                                                        class="card-img-top rounded-circle"
+                                                                        style="object-fit: cover; width: 130px; height: 130px;"
+                                                                        alt="{{ $testimoni->name }}">
+                                                                @else
+                                                                    <img src="{{ asset('storage/app/public/nophoto/image.png') }}"
+                                                                        class="card-img-top rounded-circle"
+                                                                        style="object-fit: cover; width: 130px; height: 130px;"
+                                                                        alt="No Photo">
+                                                                @endif
+                                                            </div>
+                                                            <h5 class="card-title">{{ $testimoni->name }}</h5>
+                                                            <p class="card-text">{!! $testimoni->description !!}</p>
+                                                        </div>
+                                                    </div>
+                                                @endforeach
+                                            </div>
+                                        </div>
+                                    @endforeach
                                 </div>
+                                <button class="carousel-control-prev" type="button" data-target="#carouselExampleControls" data-slide="prev">
+                                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                    <span class="visually-hidden">Previous</span>
+                                </button>
+                                <button class="carousel-control-next" type="button" data-target="#carouselExampleControls" data-slide="next">
+                                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                    <span class="visually-hidden">Next</span>
+                                </button>
                             </div>
-                            <div class="card-body">
-                                <h5 class="card-title fw-bold"></h5>
-                                <div id="tempat-pill" class="d-flex gap-1 mb-4">
-                                    <div class="pill d-inline text-muted">
-
-                                    </div>
-
-                                    <div class="pill d-inline text-muted">
-
-                                    </div>
-
-                                    <div class="pill d-inline text-muted">
-
-                                    </div>
-                                </div>
-                                <div class="d-flex justify-content-center align-items-center border border-1 rounded p-3"
-                                    style="height: 200px;">
-                                    <p class="card-text fs-7">
-
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
-                    </li>
-
-                </ul>
+                        @else
+                            <p>Tidak ada testimoni yang tersedia.</p>
+                        @endif
+                    </div>
+                </div>
             </div>
         </div>
-    </section> --}}
+
+    </section>
     <section id="informasi-umum" class="bg-informasi-umum container text-center">
         <div class="p-5">
             <a href="{{route('Statistics.index')}}"><h1><strong>Statistik</strong></h1></a>
@@ -178,8 +194,6 @@
                         <span class="fs-5"><strong>Siswa Informal</strong></span>
                     </div>
                 </div>
-
-                <div class="d-none d-md-inline vertical-line"></div>
 
                 <div style="width: 10rem">
                     <div class="mt-4">

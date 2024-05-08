@@ -9,6 +9,14 @@
     <!-- Favicon -->
     <link rel="icon" type="image/x-icon" href="{{ asset('assets/img/logo.png') }}" />
 
+     <!-- Google Web Fonts -->
+     <link rel="preconnect" href="https://fonts.googleapis.com">
+     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+     <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;500;600&family=Playfair+Display:wght@400;500;600&display=swap" rel="stylesheet">
+    <!-- Icon Font Stylesheet -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css"/>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
+
     <!-- Bootstrap icons -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css" rel="stylesheet">
 
@@ -66,14 +74,14 @@
     <main class="flex-shrink-0">
         <!-- Navigation -->
         <nav class="navbar navbar-expand-lg fixed-top navbar-blue bg-blue">
-            <div class="container px-5">
+            <div class="container px-4">
                 <a class="navbar-brand" href="/" style="color: white; display: flex; align-items: center;">
                     <img src="{{ asset('assets/img/logo.png') }}" alt="YPA Rumah Damai" width="50" height="50" class="d-inline-block align-text-top">
-                    <span style="margin-left: 10px;">YPA Rumah Damai</span>
+                    <span class="fw-bold" style="margin-left: 10px">YPA Rumah Damai</span>
                 </a>
 
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
+                    <span class="fas fa-bars" style="color: white;"><i class="" ></i></span>
                 </button>
 
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">

@@ -30,7 +30,6 @@
                                 <form action="{{ route('admin.stafpegawai.update', $stafpegawai->id_staff) }}"
                                     method="POST" enctype="multipart/form-data">
                                     @csrf
-                                    @method('PUT')
                                     <div class="form-group">
                                         <label for="name">Nama</label>
                                         <input type="text" name="name" id="name" class="form-control"

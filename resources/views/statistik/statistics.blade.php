@@ -92,9 +92,9 @@
                                 @foreach($stafPegawai as $staf)
                                 <tr>
                                     <td>{{ $loop->iteration }}</td>
-                                    <td>{{ $staf->nama }}</td>
-                                    <td>{{ $staf->tanggal_bergabung }}</td>
-                                    <td>{{ $staf->jabatan }}</td>
+                                    <td>{{ $staf->name }}</td>
+                                    <td>{{ $staf->date_joined }}</td>
+                                    <td>{{ $staf->job_title }}</td>
                                 </tr>
                                 @endforeach
                             </tbody>

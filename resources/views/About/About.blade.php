@@ -2,13 +2,13 @@
 @section('title', 'About')
 @section('content')
     <!-- About section one-->
-    <section class="py-5" id="scroll-target">
+    <section class="py-3" id="scroll-target">
         <div class="container px-5 my-5">
             <div class="row gx-5 align-items-center">
                 @if ($dataYayasan)
-                    <div class="col-lg-6 text-center"><img src="{{ asset('assets/img/logo.png') }}"
-                            style="width: 340px; height: auto;" /></div>
-                    <div class="col-lg-6">
+                    <div class="col-lg-4 text-center"><img src="{{ asset('assets/img/logo.png') }}"
+                            style="width: 320px; height: auto;" /></div>
+                    <div class="col-lg-8">
                         <h2 class="fw-bolder text-center">{{ $dataYayasan->foundation_name }}</h2>
                         <p class="lead fw-normal text-muted text-center mb-0">{!! $dataYayasan->history !!}</p>
                     </div>
@@ -21,7 +21,7 @@
         </div>
     </section>
     <!-- About section two-->
-    <section class="py-5">
+    <section class="py-3">
         <div class="container px-5 my-5">
             <div class="row gx-5 align-items-center">
                 <div class="text-center">
@@ -38,9 +38,9 @@
         </div>
     </section>
     <section class="py-5">
-        <h2 class="fw-bolder text-center">Kepengurusan YPA Rumah Damai</h2>
         <div class="container px-5 my-5 bg-blue" style="border-radius: 10px; padding: 30px">
             <div class="row gx-5 align-items-center">
+                <h2 class="fw-bolder text-center mb-4" style="color: white;">Kepengurusan YPA Rumah Damai</h2>
                 @if ($stafpegawai->count() > 0)
                     <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel"
                         data-bs-interval="5000">
@@ -48,24 +48,34 @@
                             @php $chunkedStafs = $stafpegawai->chunk(3); @endphp
                             @foreach ($chunkedStafs as $key => $chunk)
                                 <div class="carousel-item{{ $key === 0 ? ' active' : '' }}">
-                                    <div class="row">
+                                    <div class="row justify-content-center align-items-center">
                                         @foreach ($chunk as $staf)
-                                            <div class="col-lg-4 text-center">
-                                                <h5 class="bg-blue">{{ $staf->job_title }}</h5>
-                                                @if ($staf->photo)
-                                                    <img src="{{ asset('storage/app/public/photo/' . $staf->photo) }}"
-                                                        class="bd-placeholder-img rounded-circle"
-                                                        style="object-fit: cover; width: 150px; height: 150px;">
-                                                @else
-                                                    <img src="{{ asset('storage/app/public/nophoto/image.png') }}"
-                                                        class="bd-placeholder-img rounded-circle"
-                                                        style="object-fit: cover; width: 150px; height: 150px;">
-                                                @endif
-                                                <p>{{ $staf->name }}</p>
-                                                <button type="button" class="btn btn-primary btn-detail"
-                                                    data-bs-toggle="modal" data-bs-target="#stafModal{{ $staf->id_staff }}">
-                                                    Lihat Detail
-                                                </button>
+                                            <div class="col-md-3 text-center mb-4">
+                                                <div class="card">
+                                                    <h5 class="card-title">{{ $staf->name }}</h5>
+                                                    <div
+                                                        class="card-img-container d-flex justify-content-center align-items-center">
+                                                        @if ($staf->photo)
+                                                            <img src="{{ asset('storage/app/public/photo/' . $staf->photo) }}"
+                                                                class="card-img-top rounded-circle"
+                                                                style="object-fit: cover; width: 130px; height: 130px;"
+                                                                alt="{{ $staf->name }}">
+                                                        @else
+                                                            <img src="{{ asset('storage/app/public/nophoto/image.png') }}"
+                                                                class="card-img-top rounded-circle"
+                                                                style="object-fit: cover; width: 150px; height: 150px;"
+                                                                alt="No Photo">
+                                                        @endif
+                                                    </div>
+                                                    <div class="card-body">
+                                                        <p class="card-text">{{ $staf->job_title }}</p>
+                                                        <button type="button" class="btn btn-dark btn-detail"
+                                                            data-bs-toggle="modal"
+                                                            data-bs-target="#stafModal{{ $staf->id_staff }}">
+                                                            Lihat Detail
+                                                        </button>
+                                                    </div>
+                                                </div>
                                             </div>
                                         @endforeach
                                     </div>
@@ -89,6 +99,7 @@
             </div>
         </div>
     </section>
+
     @foreach ($stafpegawai as $staf)
         <div class="modal fade" id="stafModal{{ $staf->id_staff }}" tabindex="-1"
             aria-labelledby="stafModalLabel{{ $staf->id_staff }}" aria-hidden="true">
@@ -101,8 +112,15 @@
                     </div>
                     <div class="modal-body">
                         <div class="text-center">
-                            <img src="{{ asset('storage/app/public/photo/' . $staf->photo) }}"
-                                class="img-fluid modal-image" alt="{{ $staf->title }}" style="max-width: 100%; max-height: 300px;">
+                            @if ($staf->photo)
+                                <img src="{{ asset('storage/app/public/photo/' . $staf->photo) }}"
+                                    class="img-fluid modal-image" alt="{{ $staf->title }}"
+                                    style="max-width: 100%; max-height: 300px;">
+                            @else
+                                <img src="{{ asset('storage/app/public/nophoto/image.png') }}"
+                                    class="card-img-top rounded-circle"
+                                    style="object-fit: cover; width: 150px; height: 150px;" alt="No Photo">
+                            @endif
                         </div>
                         <p class="text-center"><strong>Nama : </strong> {{ $staf->name }}</p>
                         <p class="text-center"><strong>Tanggal Bergabung : </strong>{{ $staf->date_joined }}</p>

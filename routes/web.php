@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Admin\TestimoniesController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\RelawanController;
 use App\Http\Controllers\AuthController;
@@ -28,7 +29,6 @@ use App\Http\Controllers\Admin\DataYayasanController;
 use App\Http\Controllers\Admin\GalleryController;
 use App\Http\Controllers\Admin\AdminKontakController;
 use App\Http\Controllers\Admin\AdminRelawanController;
-use SebastianBergmann\CodeCoverage\Report\Html\Dashboard;
 
 /*
 |--------------------------------------------------------------------------
@@ -184,7 +184,13 @@ Route::prefix('Admin')->middleware('auth')->group(function () {
     Route::put('kemitraan/{kemitraan}', [KemitraanController::class, 'update'])->name('admin.kemitraan.update');
     Route::delete('kemitraan/{kemitraan}', [KemitraanController::class, 'destroy'])->name('admin.kemitraan.destroy');
 
-
+    Route::resource('testimoni', TestimoniesController::class);
+    Route::get('testimoni', [TestimoniesController::class, 'index'])->name('admin.testimoni.index');
+    Route::get('testimoni/create', [TestimoniesController::class, 'create'])->name('admin.testimoni.create');
+    Route::post('testimoni', [TestimoniesController::class, 'store'])->name('admin.testimoni.store');
+    Route::get('testimoni/{testimoni}/edit', [TestimoniesController::class, 'edit'])->name('admin.testimoni.edit');
+    Route::post('testimoni/{testimoni}', [TestimoniesController::class, 'update'])->name('admin.testimoni.update');
+    Route::delete('testimoni/{testimoni}', [TestimoniesController::class, 'destroy'])->name('admin.testimoni.destroy');
 
 });
 

@@ -1,7 +1,6 @@
 @extends('Admin.main')
-@section('title', 'Tambah Anak Spesial')
+@section('title', 'Tambah Testimoni')
 @section('content')
-
     <div class="content-wrapper">
         <!-- Content Header (Page header) -->
         <div class="content-header">
@@ -20,24 +19,18 @@
             </div><!-- /.container-fluid -->
         </div>
         <!-- /.content-header -->
-
-        <!-- Main content -->
         <div class="content">
             <div class="container-fluid">
-                <!-- Small boxes (Stat box) -->
                 <div class="row">
-                    <div class="col-md-12">
+                    <div class="col-12">
                         <div class="card">
                             <div class="card-body">
-                                <form action="{{ route('admin.anakdisabilitas.store') }}" method="POST" enctype="multipart/form-data">
+                                <form action="{{ route('admin.testimoni.store') }}" method="POST"
+                                    enctype="multipart/form-data">
                                     @csrf
                                     <div class="form-group">
-                                        <label for="name">Nama:</label>
-                                        <input type="text" id="name" name="name" class="form-control">
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="date_of_birth">Tanggal Lahir:</label>
-                                        <input type="date" id="date_of_birth" name="date_of_birth" class="form-control">
+                                        <label for="name">Nama</label>
+                                        <input type="text" name="name" id="name" class="form-control" required>
                                     </div>
                                     <div class="form-group">
                                         <label for="gender">Jenis Kelamin:</label>
@@ -46,9 +39,16 @@
                                             <option value="Perempuan">Perempuan</option>
                                         </select>
                                     </div>
+                                    <div class="form-group mb-3">
+                                        <label for="description">Deskripsi</label>
+                                        <textarea name="description" id="summernote" ></textarea>
+                                    </div>
                                     <div class="form-group">
-                                        <label for="date_joined">Tanggal Bergabung:</label>
-                                        <input type="date" id="date_joined" name="date_joined" class="form-control">
+                                        <label for="photo">Foto</label>
+                                        <input type="file" class="form-control @error('photo') is-invalid @enderror" id="photo" name="photo">
+                                        @error('photo')
+                                            <div class="invalid-feedback">{{ $message }}</div>
+                                        @enderror
                                     </div>
                                     <div class="form-group text-center"> <!-- Perubahan di sini -->
                                         <button type="submit" class="btn btn-primary">Simpan</button>
@@ -58,10 +58,7 @@
                         </div>
                     </div>
                 </div>
-                <!-- /.row -->
-            </div><!-- /.container-fluid -->
+            </div>
         </div>
-        <!-- /.content -->
     </div>
-
 @endsection

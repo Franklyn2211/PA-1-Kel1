@@ -6,6 +6,7 @@ use App\Models\AnakSekolahInformal;
 use App\Models\Announcement;
 use App\Models\Donate;
 use App\Models\News;
+use App\Models\Testimoni;
 use Illuminate\Http\Request;
 use App\Models\Hero_Section;
 use App\Models\Gallery; // Import Gallery model if it's not already imported
@@ -31,6 +32,7 @@ class HomeController extends Controller
         $totalAnakDisabilitas = AnakDisabilitas::count();
         $totalSiswaInformal = AnakSekolahInformal::count();
         $totalStaf = StafPegawai::count();
+        $testimoni = Testimoni::all();
 
         return view('Home.Home', compact(
             'heroSection',
@@ -42,7 +44,8 @@ class HomeController extends Controller
             'totalSponsor',
             'totalAnakDisabilitas',
             'totalSiswaInformal',
-            'totalStaf'
+            'totalStaf',
+            'testimoni',
         ));
     }
 }
