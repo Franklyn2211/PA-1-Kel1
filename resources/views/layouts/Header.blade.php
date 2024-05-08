@@ -25,6 +25,19 @@
 
     <!-- Core theme CSS -->
     <link href="{{ asset('assets/css/styles.css') }}" rel="stylesheet">
+    <!-- Google Web Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&family=Raleway:wght@100;600;800&display=swap" rel="stylesheet"> 
+
+    <!-- Icon Font Stylesheet -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css"/>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
+
+    <!-- Libraries Stylesheet -->
+    <link href="lib/animate/animate.min.css" rel="stylesheet">
+    <link href="lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
+
 
     <!-- Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;500;600;700;800&family=Raleway:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
@@ -47,6 +60,18 @@
         <!-- Favicon -->
         <link href="img/favicon.ico" rel="icon">
 
+        <link href="{{ asset('assets/css/media_query.css') }}" rel="stylesheet" type="text/css"/>
+        <link href="{{ asset('assets/css/bootstrap.css') }}" rel="stylesheet" type="text/css"/>
+        <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet"
+              integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+        <link href="{{ asset('assets/css/animate.css') }}" rel="stylesheet" type="text/css"/>
+        <link href="https://fonts.googleapis.com/css?family=Poppins" rel="stylesheet">
+        <link href="{{ asset('assets/css/owl.carousel.css') }}" rel="stylesheet" type="text/css"/>
+        <link href="{{ asset('assets/css/owl.theme.default.css') }}" rel="stylesheet" type="text/css"/>
+        <!-- Bootstrap CSS -->
+        <link href="{{ asset('assets/css/style_1.css') }}" rel="stylesheet" type="text/css"/>
+        <!-- Modernizr JS -->
+        <script src="{{ asset('assets/js/modernizr-3.5.0.min.js') }}"></script>
 <!-- Google Web Fonts -->
 <link rel="preconnect" href="https://fonts.gstatic.com">
 <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">

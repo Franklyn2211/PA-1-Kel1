@@ -25,6 +25,7 @@ class HomeController extends Controller
         $news = News::all();
         $announcement = Announcement::all();
         $sponsor = Sponsor::all();
+        $sponsors = Sponsor::all();
 
         //statistik
         $totalDonatur = Donate::count();
@@ -46,6 +47,7 @@ class HomeController extends Controller
             'totalSiswaInformal',
             'totalStaf',
             'testimoni',
+            'sponsors'
         ));
     }
 }

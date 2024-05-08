@@ -3,28 +3,39 @@
 @section('title', 'Pengumuman')
 
 @section('content')
-<div class="container py-5">
-    <div class="row row-cols-1 row-cols-md-3 g-4">
-        @foreach ($announcements as $announcement)
-        <div class="col">
-            <div class="card h-100 text-center">
-                <img src="{{ asset('storage/app/public/photo/' . $announcement->photo) }}" class="card-img-top mx-auto mt-3" style="width: 200px; height: 200px; object-fit: cover;" alt="{{ $announcement->title }}">
-                <div class="card-body d-flex flex-column justify-content-center align-items-center">
-                    <h5 class="card-title text-center text-dark mb-4">{{ $announcement->title }}</h5>
-                    <button type="button" class="btn btn-primary btn-detail" data-bs-toggle="modal" data-bs-target="#announcementModal{{ $announcement->id_announcements }}">
-                        Lihat Detail
-                    </button>
+<div class="container-fluid blog py-5">
+    <div class="container py-5">
+        <div class="row g-4 justify-content-center">
+            @foreach ($announcements as $announcement)
+            <div class="col-md-6 col-lg-6 col-xl-4 wow fadeInUp" data-wow-delay="0.1s">
+                <div class="blog-item rounded">
+                    <div class="blog-img">
+                        <img src="{{ asset('storage/app/public/photo/' . $announcement->photo) }}" class="img-fluid w-100" alt="Image">
+                    </div>
+                    <div class="blog-centent p-4">
+                        <div class="d-flex justify-content-between mb-4">
+                            <p class="mb-0 text-muted"><i class="fa fa-calendar-alt text-primary"></i> {{ $announcement->location}}</p>
+                            <a href="#" class="text-muted"><span class="fa fa-search text-primary"></span>{{ $announcement->category->name}}</a>
+                        </div>
+                        <a href="#" class="h4">{{ $announcement->title }}</a>
+                        <!-- Empty description section -->
+                        <p class="my-4"></p>
+                        <div class="text-center"> <!-- Center-align the button -->
+                            <a href="#" class="btn btn-primary rounded-pill text-white py-2 px-4 mb-1" data-bs-toggle="modal" data-bs-target="#announcementModal{{ $announcement->id_announcements }}">
+                                Lihat Detail
+                            </a>
+                        </div>
+                    </div>
                 </div>
             </div>
+            @endforeach
         </div>
-        @endforeach
     </div>
 </div>
 
-<!-- Modals -->
 @foreach ($announcements as $announcement)
 <div class="modal fade" id="announcementModal{{ $announcement->id_announcements }}" tabindex="-1" aria-labelledby="announcementModalLabel{{ $announcement->id_announcements }}" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered modal-lg">
+    <div class="modal-dialog modal-dialog-centered modal-lg modal-dialog-scrollable">
         <div class="modal-content">
             <div class="modal-header">
                 <h5 class="modal-title text-center text-dark w-100" id="announcementModalLabel{{ $announcement->id_announcements }}">{{ $announcement->title }}</h5>
@@ -32,11 +43,11 @@
             </div>
             <div class="modal-body">
                 <div class="text-center">
-                    <img src="{{ asset('storage/app/public/photo/' . $announcement->photo) }}" class="img-fluid rounded mb-3" alt="{{ $announcement->title }}">
+                    <img src="{{ asset('storage/app/public/photo/' . $announcement->photo) }}" class="img-fluid rounded mb-3" alt="{{ $announcement->title }}" style="max-width: 100%; width: 75%; margin: 0 auto;">
                 </div>
                 <p class="text-center"><strong>Lokasi:</strong> {{ $announcement->location }}</p>
                 <p class="text-center"><strong>Deskripsi:</strong></p>
-                <div class="modal-description text-center">
+                <div class="modal-description">
                     <p class="text-center overflow-auto" style="max-height: 300px;">{!! $announcement->description !!}</p>
                 </div>
             </div>
@@ -47,6 +58,7 @@
     </div>
 </div>
 @endforeach
+
 @endsection
 
 @section('scripts')

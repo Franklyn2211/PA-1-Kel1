@@ -51,7 +51,7 @@ class SponsorController extends Controller
     {
         $request->validate([
             'Name' => 'required|string|max:50',
-            'Description' => 'required|string',
+            'Description' => 'required|string|max:250',
         ]);
 
         $sponsor = Sponsor::findOrFail($id);
