@@ -19,10 +19,10 @@
                         <table class="table table-bordered table-striped mt-3 text-center">
                             <thead class="thead-light">
                                 <tr>
-                                    <th scope="col">No</th>
-                                    <th scope="col">Logo</th>
-                                    <th scope="col">Nama Kemitraan</th>
-                                    <th scope="col">Program</th>
+                                    <th scope="col" style="text-align: center">No</th>
+                                    <th scope="col" style="text-align: center">Logo</th>
+                                    <th scope="col" style="text-align: center">Nama Kemitraan</th>
+                                    <th scope="col" style="text-align: center">Program</th>
                                 </tr>
                             </thead>
                             <tbody>

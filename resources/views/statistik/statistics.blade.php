@@ -18,8 +18,8 @@
                         <table class="table table-bordered table-sm mt-3 text-center">
                             <thead class="thead-light">
                                 <tr>
-                                    <th scope="col">No</th>
-                                    <th scope="col">Nama</th>
+                                    <th scope="col" style="text-align: center">No</th>
+                                    <th scope="col" style="text-align: center">Nama</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -48,8 +48,8 @@
                         <table class="table table-bordered table-sm mt-3 text-center">
                             <thead class="thead-light">
                                 <tr>
-                                    <th scope="col">No</th>
-                                    <th scope="col">Nama</th>
+                                    <th scope="col" style="text-align: center">No</th>
+                                    <th scope="col" style="text-align: center">Nama</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -78,8 +78,8 @@
                         <table class="table table-bordered table-sm mt-3 text-center" >
                             <thead class="thead-light">
                                 <tr>
-                                    <th scope="col">No</th>
-                                    <th scope="col">Nama</th>
+                                    <th scope="col" style="text-align: center">No</th>
+                                    <th scope="col" style="text-align: center">Nama</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -108,9 +108,9 @@
                     <table class="table table-bordered table-sm mt-3 text-center">
                         <thead class="thead-light">
                             <tr>
-                                <th scope="col">No</th>
-                                <th scope="col">Nama</th>
-                                <th scope="col">Jumlah Donasi</th>
+                                <th scope="col" style="text-align: center">No</th>
+                                <th scope="col" style="text-align: center">Nama</th>
+                                <th scope="col" style="text-align: center">Jumlah Donasi</th>
                             </tr>
                         </thead>
                         <tbody>
