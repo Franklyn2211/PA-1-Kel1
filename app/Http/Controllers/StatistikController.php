@@ -13,12 +13,13 @@ class StatistikController extends Controller
 {
     public function index()
     {
-        $anakDisabilitas = AnakDisabilitas::all();
-        $anakSekolahInformal = AnakSekolahInformal::all();
-        $stafPegawai = StafPegawai::all();
+        $totalAnakDisabilitas = AnakDisabilitas::count();
+        $totalAnakSekolahInformal = AnakSekolahInformal::count();
+        $totalDonatur = Donate::count();
+        $totalrelawans = Relawan::count();
         $donates = Donate::all();
         $relawans = Relawan::all();
 
-        return view('statistik.statistics', compact('anakDisabilitas', 'anakSekolahInformal', 'stafPegawai', 'donates', 'relawans'));
+        return view('statistik.statistics', compact('totalAnakDisabilitas', 'totalAnakSekolahInformal', 'totalDonatur', 'totalrelawans', 'relawans', 'donates'));
     }
 }
