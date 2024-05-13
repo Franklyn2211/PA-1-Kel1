@@ -29,9 +29,9 @@
                     <div class="col-md-12">
                         <div class="card">
                             <div class="card-body">
-                                <form action="{{ route('admin.anakdisabilitas.update', ['anakdisabilitas' => $anakdisabilitas->id_child_with_disabilities]) }}" method="POST" enctype="multipart/form-data">
+                                <form action="{{ route('admin.anakdisabilitas.update', $anakdisabilitas->id_child_with_disabilities) }}" method="POST" enctype="multipart/form-data">
                                     @csrf
-                                    @method('PUT')                                
+                                    @method('PUT')
                                     <div class="form-group">
                                         <label for="name">Nama:</label>
                                         <input type="text" id="name" name="name" class="form-control" value="{{ $anakdisabilitas->name ?? '' }}">

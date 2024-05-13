@@ -53,7 +53,7 @@
                 </div>
                 <div class="clearfix"></div>
                 <div class="fh5co_tags_all">
-                    <a href="#" class="fh5co_tagg">{{ $berita->category->name }}</a>
+                    <a href="#" class="fh5co_tagg">{{ $berita->category->Name }}</a>
                 </div>
                 <div>
                     <div class="fh5co_heading fh5co_heading_border_bottom pt-3 py-2 mb-4">Most Popular</div>

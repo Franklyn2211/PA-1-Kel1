@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Admin\TestimoniesController;
+use App\Http\Controllers\FooterController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\RelawanController;
 use App\Http\Controllers\AuthController;
@@ -29,7 +30,6 @@ use App\Http\Controllers\Admin\DataYayasanController;
 use App\Http\Controllers\Admin\GalleryController;
 use App\Http\Controllers\Admin\AdminKontakController;
 use App\Http\Controllers\Admin\AdminRelawanController;
-
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -128,7 +128,7 @@ Route::prefix('Admin')->middleware('auth')->group(function () {
         Route::get('address/create', [AddressController::class, 'create'])->name('admin.address.create');
         Route::post('address/store', [AddressController::class, 'store'])->name('admin.address.store');
         Route::get('address/{id}/edit', [AddressController::class, 'edit'])->name('admin.address.edit');
-        Route::put('address/update/{id}', [AddressController::class, 'update'])->name('admin.address.update');
+        Route::post('address/update/{id}', [AddressController::class, 'update'])->name('admin.address.update');
         Route::delete('address/{id}', [AddressController::class, 'destroy'])->name('admin.address.destroy');
 
 
@@ -136,27 +136,23 @@ Route::prefix('Admin')->middleware('auth')->group(function () {
     Route::get('address/create', [AddressController::class, 'create'])->name('admin.address.create');
     Route::post('address/store', [AddressController::class, 'store'])->name('admin.address.store');
     Route::get('address/{id}/edit', [AddressController::class, 'edit'])->name('admin.address.edit');
-    Route::put('address/update/{id}', [AddressController::class, 'update'])->name('admin.address.update');
+    Route::post('address/update/{id}', [AddressController::class, 'update'])->name('admin.address.update');
     Route::delete('address/{id}', [AddressController::class, 'destroy'])->name('admin.address.destroy');
 
-    Route::resource('anakdisabilitas', AnakDisabilitasController::class);
     Route::get('anakdisabilitas', [AnakDisabilitasController::class, 'index'])->name('admin.anakdisabilitas.index');
     Route::get('anakdisabilitas/create', [AnakDisabilitasController::class, 'create'])->name('admin.anakdisabilitas.create');
-    Route::post('anakdisabilitas/store', [AnakDisabilitasController::class, 'store'])->name('admin.anakdisabilitas.store');
-    Route::get('anakdisabilitas/{anakdisabilitas}', [AnakDisabilitasController::class, 'show'])->name('admin.anakdisabilitas.show');
     Route::post('anakdisabilitas', [AnakDisabilitasController::class, 'store'])->name('admin.anakdisabilitas.store');
     Route::get('anakdisabilitas/{id}', [AnakDisabilitasController::class, 'show'])->name('admin.anakdisabilitas.show');
     Route::get('anakdisabilitas/{anakdisabilitas}/edit', [AnakDisabilitasController::class, 'edit'])->name('admin.anakdisabilitas.edit');
     Route::put('anakdisabilitas/{anakdisabilitas}', [AnakDisabilitasController::class, 'update'])->name('admin.anakdisabilitas.update');
     Route::delete('anakdisabilitas/{anakdisabilitas}', [AnakDisabilitasController::class, 'destroy'])->name('admin.anakdisabilitas.destroy');
 
-    Route::resource('anaksekolahinformal', AnakSekolahInformalController::class);
     Route::get('anaksekolahinformal', [AnakSekolahInformalController::class, 'index'])->name('admin.anaksekolahinformal.index');
     Route::get('anaksekolahinformal/create', [AnakSekolahInformalController::class, 'create'])->name('admin.anaksekolahinformal.create');
     Route::post('anaksekolahinformal/store', [AnakSekolahInformalController::class, 'store'])->name('admin.anaksekolahinformal.store');
     Route::post('anaksekolahinformal/{anaksekolahinformal}', [AnakSekolahInformalController::class, 'show'])->name('admin.anaksekolahinformal.show');
     Route::get('anaksekolahinformal/{anaksekolahinformal}/edit', [AnakSekolahInformalController::class, 'edit'])->name('admin.anaksekolahinformal.edit');
-    Route::put('anaksekolahinformal/{anaksekolahinformal}', [AnakSekolahInformalController::class, 'update'])->name('admin.anaksekolahinformal.update');
+    Route::post('anaksekolahinformal/{anaksekolahinformal}', [AnakSekolahInformalController::class, 'update'])->name('admin.anaksekolahinformal.update');
     Route::delete('anaksekolahinformal/{anaksekolahinformal}', [AnakSekolahInformalController::class, 'destroy'])->name('admin.anaksekolahinformal.destroy');
 
     Route::resource('stafpegawai', StafPegawaiController::class);
@@ -173,7 +169,7 @@ Route::prefix('Admin')->middleware('auth')->group(function () {
     Route::get('sponsor/create', [SponsorController::class, 'create'])->name('admin.sponsor.create');
     Route::post('sponsor', [SponsorController::class, 'store'])->name('admin.sponsor.store');
     Route::get('sponsor/{sponsor}/edit', [SponsorController::class, 'edit'])->name('admin.sponsor.edit');
-    Route::put('sponsor/{sponsor}', [SponsorController::class, 'update'])->name('admin.sponsor.update');
+    Route::post('sponsor/{sponsor}', [SponsorController::class, 'update'])->name('admin.sponsor.update');
     Route::delete('sponsor/{sponsor}', [SponsorController::class, 'destroy'])->name('admin.sponsor.destroy');
 
     Route::resource('kemitraan', KemitraanController::class);
@@ -181,7 +177,7 @@ Route::prefix('Admin')->middleware('auth')->group(function () {
     Route::get('kemitraan/create', [KemitraanController::class, 'create'])->name('admin.kemitraan.create');
     Route::post('kemitraan', [KemitraanController::class, 'store'])->name('admin.kemitraan.store');
     Route::get('kemitraan/{kemitraan}/edit', [KemitraanController::class, 'edit'])->name('admin.kemitraan.edit');
-    Route::put('kemitraan/{kemitraan}', [KemitraanController::class, 'update'])->name('admin.kemitraan.update');
+    Route::post('kemitraan/{kemitraan}', [KemitraanController::class, 'update'])->name('admin.kemitraan.update');
     Route::delete('kemitraan/{kemitraan}', [KemitraanController::class, 'destroy'])->name('admin.kemitraan.destroy');
 
     Route::resource('testimoni', TestimoniesController::class);
@@ -191,6 +187,13 @@ Route::prefix('Admin')->middleware('auth')->group(function () {
     Route::get('testimoni/{testimoni}/edit', [TestimoniesController::class, 'edit'])->name('admin.testimoni.edit');
     Route::post('testimoni/{testimoni}', [TestimoniesController::class, 'update'])->name('admin.testimoni.update');
     Route::delete('testimoni/{testimoni}', [TestimoniesController::class, 'destroy'])->name('admin.testimoni.destroy');
+
+    Route::get('Footer', [App\Http\Controllers\Admin\FooterController::class, 'index'])->name('Admin.Footer.index');
+    Route::get('Footer/create', [App\Http\Controllers\Admin\FooterController::class, 'create'])->name('Admin.Footer.create');
+    Route::post('Footer', [App\Http\Controllers\Admin\FooterController::class, 'store'])->name('Admin.Footer.store');
+    Route::get('Footer/{footer}/edit', [App\Http\Controllers\Admin\FooterController::class, 'edit'])->name('Admin.Footer.edit');
+    Route::post('Footer/{footer}', [App\Http\Controllers\Admin\FooterController::class, 'update'])->name('Admin.Footer.update');
+    Route::delete('Footer/{footer}', [App\Http\Controllers\Admin\FooterController::class, 'destroy'])->name('Admin.Footer.destroy');
 
 });
 
@@ -217,3 +220,4 @@ Route::post('/kontak', [KontakController::class, 'store'])->name('kontak.store')
 
 Route::get('/relawan', [RelawanController::class, 'relawan'])->name('relawan.relawan');
 Route::post('/relawan', [RelawanController::class, 'store'])->name('relawan.store');
+Route::get('footer', [FooterController::class, 'index'])->name('layouts.Footer');

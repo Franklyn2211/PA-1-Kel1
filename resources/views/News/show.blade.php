@@ -30,8 +30,8 @@
 <div class="container-fluid py-12">
     <div class="container py-5">
         <ol class="breadcrumb justify-content-start mb-4">
-            <li class="breadcrumb-item"><a href="#">Home</a></li>
-            <li class="breadcrumb-item"><a href="#">News</a></li>
+            <li class="breadcrumb-item"><a href="/">Home</a></li>
+            <li class="breadcrumb-item"><a href="/News">News</a></li>
             <li class="breadcrumb-item active text-dark">{{ $news->date}}</li>
         </ol>
         <div class="row g-4">
@@ -41,12 +41,9 @@
                 </div>
                 <div class="position-relative rounded overflow-hidden mb-3">
                     <img src="{{ asset('storage/app/public/photo/' . $news->photo) }}" class="img-zoomin img-fluid rounded w-100" alt="">
-                    <div class="position-absolute text-white px-4 py-2 bg-primary rounded" style="top: 20px; right: 20px;">                                              
-                        {{ $news->category->name }}
-                    </div>
                 </div>
                 <p class="my-4">{!! $news->description !!}</p>
-                
+
                 <div class="tab-class">
                     <div class="d-flex justify-content-between border-bottom mb-4">
                         <ul class="nav nav-pills d-inline-flex text-center">
@@ -62,17 +59,17 @@
                         <div class="d-flex align-items-center">
                             <h5 class="mb-0 me-3">Share:</h5>
                             <!-- Facebook -->
-                            <a href="https://www.facebook.com/sharer/sharer.php?u={{ urlencode(Request::url()) }}" target="_blank" class="fab fa-facebook-f link-hover btn btn-square rounded-circle border-primary text-dark me-2"></a>
+                            <a href="https://www.facebook.com/sharer/sharer.php?u={{ urlencode(Request::url()) }}" target="_blank" class="fab fa-facebook-f link-hover  text-dark me-2"></a>
                             <!-- Twitter -->
-                            <a href="https://twitter.com/intent/tweet?url={{ urlencode(Request::url()) }}" target="_blank" class="fab fa-twitter link-hover btn btn-square rounded-circle border-primary text-dark me-2"></a>
+                            <a href="https://twitter.com/intent/tweet?url={{ urlencode(Request::url()) }}" target="_blank" class="fab fa-twitter link-hover  text-dark me-2"></a>
                             <!-- Instagram (Tidak mendukung sharing langsung, link ke profil saja) -->
-                            <a href="https://www.instagram.com/" target="_blank" class="fab fa-instagram link-hover btn btn-square rounded-circle border-primary text-dark me-2"></a>
+                            <a href="https://www.instagram.com/" target="_blank" class="fab fa-instagram link-hover  text-dark me-2"></a>
                             <!-- LinkedIn -->
-                            <a href="https://www.linkedin.com/sharing/share-offsite/?url={{ urlencode(Request::url()) }}" target="_blank" class="fab fa-linkedin-in link-hover btn btn-square rounded-circle border-primary text-dark me-2"></a>
+                            <a href="https://www.linkedin.com/sharing/share-offsite/?url={{ urlencode(Request::url()) }}" target="_blank" class="fab fa-linkedin-in link-hover  text-dark me-2"></a>
                             <!-- WhatsApp -->
-                            <a href="https://api.whatsapp.com/send?text={{ urlencode(Request::url()) }}" target="_blank" class="fab fa-whatsapp link-hover btn btn-square rounded-circle border-primary text-dark"></a>
+                            <a href="https://api.whatsapp.com/send?text={{ urlencode(Request::url()) }}" target="_blank" class="fab fa-whatsapp link-hover  text-dark"></a>
                         </div>
-                        
+
                     </div>
                 </div>
             </div>
@@ -90,7 +87,7 @@
                 </div>
                 <div class="clearfix"></div>
                 <div class="fh5co_tags_all">
-                    <a href="#" class="fh5co_tagg">{{ $news->category->name }}</a>
+                    <a href="#" class="fh5co_tagg">{{ $news->category->Name }}</a>
                 </div>
                 <div>
                     <div class="fh5co_heading fh5co_heading_border_bottom pt-3 py-2 mb-4">Most Popular</div>
@@ -114,7 +111,7 @@
                         </div>
                     @endforeach
                 </div>
-                
+
             </div>
         </div>
     </div>

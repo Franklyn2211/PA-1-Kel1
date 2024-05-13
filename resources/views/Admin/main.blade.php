@@ -97,6 +97,12 @@
                                     </a>
                                 </li>
                                 <li class="nav-item">
+                                    <a href="{{ route('Admin.Footer.index') }}" class="nav-link">
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p>Footer</p>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
                                     <a href="/Admin/home" class="nav-link">
                                         <i class="far fa-circle nav-icon"></i>
                                         <p>Home</p>

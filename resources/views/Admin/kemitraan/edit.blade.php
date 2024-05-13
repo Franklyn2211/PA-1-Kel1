@@ -33,7 +33,7 @@
                         </div>
                         <!-- /.card-header -->
                         <div class="card-body">
-                            <form action="{{ route('admin.kemitraan.update', $kemitraan->id) }}" method="POST" enctype="multipart/form-data">
+                            <form action="{{ route('admin.kemitraan.update', $kemitraan->id_partnership) }}" method="POST" enctype="multipart/form-data">
                                 @csrf
                                 @method('PUT')
                                 <div class="form-group">

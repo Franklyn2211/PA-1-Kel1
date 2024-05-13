@@ -50,33 +50,30 @@
                                 <div class="carousel-item{{ $key === 0 ? ' active' : '' }}">
                                     <div class="row justify-content-center align-items-center">
                                         @foreach ($chunk as $staf)
-                                            <div class="col-md-3 text-center mb-4">
-                                                <div class="card">
-                                                    <h5 class="card-title">{{ $staf->name }}</h5>
-                                                    <div
-                                                        class="card-img-container d-flex justify-content-center align-items-center">
-                                                        @if ($staf->photo)
-                                                            <img src="{{ asset('storage/app/public/photo/' . $staf->photo) }}"
-                                                                class="card-img-top rounded-circle"
-                                                                style="object-fit: cover; width: 130px; height: 130px;"
-                                                                alt="{{ $staf->name }}">
-                                                        @else
-                                                            <img src="{{ asset('storage/app/public/nophoto/image.png') }}"
-                                                                class="card-img-top rounded-circle"
-                                                                style="object-fit: cover; width: 150px; height: 150px;"
-                                                                alt="No Photo">
-                                                        @endif
-                                                    </div>
-                                                    <div class="card-body">
-                                                        <p class="card-text">{{ $staf->job_title }}</p>
-                                                        <button type="button" class="btn btn-dark btn-detail"
-                                                            data-bs-toggle="modal"
-                                                            data-bs-target="#stafModal{{ $staf->id_staff }}">
-                                                            Lihat Detail
-                                                        </button>
-                                                    </div>
+                                        <div class="col-6 col-md-4 mb-4">
+                                            <div class="card h-100">
+                                                <div class="card-body text-center">
+                                                    @if ($staf->photo)
+                                                        <img src="{{ asset('storage/app/public/photo/' . $staf->photo) }}"
+                                                            class="card-img-top rounded-circle" alt="{{ $staf->name }}"
+                                                            style="width: 150px; height: 150px; object-fit: cover;">
+                                                    @else
+                                                        <img src="{{ asset('storage/app/public/nophoto/image.png') }}"
+                                                            class="card-img-top rounded-circle" alt="No Photo"
+                                                            style="width: 150px; height: 150px; object-fit: cover;">
+                                                    @endif
+                                                    <h5 class="card-title mt-3">{{ $staf->name }}</h5>
+                                                    <p class="card-text">{{ $staf->job_title }}</p>
+                                                    <button type="button" class="btn btn-dark btn-detail"
+                                                        data-bs-toggle="modal"
+                                                        data-bs-target="#stafModal{{ $staf->id_staff }}">
+                                                        Lihat Detail
+                                                    </button>
                                                 </div>
                                             </div>
+                                        </div>
+
+
                                         @endforeach
                                     </div>
                                 </div>
@@ -123,6 +120,7 @@
                             @endif
                         </div>
                         <p class="text-center"><strong>Nama : </strong> {{ $staf->name }}</p>
+                        <p class="text-center"><strong>Jenis Kelamin : </strong> {{ $staf->gender }}</p>
                         <p class="text-center"><strong>Tanggal Bergabung : </strong>{{ $staf->date_joined }}</p>
                     </div>
                     <div class="modal-footer justify-content-center">

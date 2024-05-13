@@ -1,8 +1,7 @@
 @extends('layouts.layout')
-
 @section('title', 'Home')
-
 @section('content')
+
     <header class="py-5" style="background-color: #0B3057;">
         <div class="container px-5">
             <div class="row gx-5 align-items-center justify-content-center">
@@ -98,7 +97,8 @@
             <div class="splide__track">
                 <ul class="splide__list">
                     @foreach ($sponsor as $item)
-                    <img src="{{asset('potosponsor/' . $item->poto ) }}" alt="" style="width:100px;" class="img-fluid">
+                        <img src="{{ asset('potosponsor/' . $item->poto) }}" alt="" style="width:100px;"
+                            class="img-fluid">
                     @endforeach
                 </ul>
             </div>
@@ -116,7 +116,8 @@
                     </div>
                     <div class="card-body px-5">
                         @if ($testimoni->count() > 0)
-                            <div id="carouselExampleControls" class="carousel slide" data-ride="carousel" data-interval="5000">
+                            <div id="carouselExampleControls" class="carousel slide" data-ride="carousel"
+                                data-interval="5000">
                                 <div class="carousel-inner">
                                     @php $chunkedTestimonis = $testimoni->chunk(3); @endphp
                                     @foreach ($chunkedTestimonis as $key => $chunk)
@@ -147,11 +148,13 @@
                                         </div>
                                     @endforeach
                                 </div>
-                                <button class="carousel-control-prev" type="button" data-target="#carouselExampleControls" data-slide="prev">
+                                <button class="carousel-control-prev" type="button"
+                                    data-target="#carouselExampleControls" data-slide="prev">
                                     <span class="carousel-control-prev-icon" aria-hidden="true"></span>
                                     <span class="visually-hidden">Previous</span>
                                 </button>
-                                <button class="carousel-control-next" type="button" data-target="#carouselExampleControls" data-slide="next">
+                                <button class="carousel-control-next" type="button"
+                                    data-target="#carouselExampleControls" data-slide="next">
                                     <span class="carousel-control-next-icon" aria-hidden="true"></span>
                                     <span class="visually-hidden">Next</span>
                                 </button>
@@ -166,8 +169,10 @@
 
     </section>
     <section id="informasi-umum" class="bg-informasi-umum container text-center">
-        <div class="p-5">
-            <a href="{{route('Statistics.index')}}"><h1><strong>Statistik</strong></h1></a>
+        <div class="py-5">
+            <a href="{{ route('Statistics.index') }}">
+                <h1><strong>Statistik</strong></h1>
+            </a>
             <div class="d-flex justify-content-center mb-4">
                 <div id="underline-line-informasi-umum" class=" bg-primary"></div>
             </div>
@@ -178,19 +183,16 @@
                         <i class="fas fa-wheelchair" style="font-size: 80px"></i>
                     </div>
                     <div class="card-body">
-                        <h3>{{$totalAnakDisabilitas}}</h3>
+                        <h3>{{ $totalAnakDisabilitas }}</h3>
                         <span class="fs-5"><strong>Anak Spesial</strong></span>
                     </div>
                 </div>
-
-                <div class="d-none d-md-inline vertical-line"></div>
-
                 <div style="width: 10rem">
                     <div class="mt-4">
                         <i class="fas fa-child" style="font-size: 80px"></i>
                     </div>
                     <div class="card-body">
-                        <h3>{{$totalSiswaInformal}}</h3>
+                        <h3>{{ $totalSiswaInformal }}</h3>
                         <span class="fs-5"><strong>Siswa Informal</strong></span>
                     </div>
                 </div>
@@ -200,7 +202,7 @@
                         <i class="fas fa-users" style="font-size: 80px"></i>
                     </div>
                     <div class="card-body">
-                        <h3>{{$totalStaf}}</h3>
+                        <h3>{{ $totalStaf }}</h3>
                         <span class="fs-5"><strong>Staf/Pegawai</strong></span>
                     </div>
                 </div>
@@ -209,7 +211,7 @@
                         <i class="fas fa-donate" style="font-size: 80px"></i>
                     </div>
                     <div class="card-body">
-                        <h3>{{$totalDonatur}}</h3>
+                        <h3>{{ $totalDonatur }}</h3>
                         <span class="fs-5"><strong>Donatur</strong></span>
                     </div>
                 </div>
@@ -218,7 +220,7 @@
                         <i class="fas fa-handshake" style="font-size: 80px"></i>
                     </div>
                     <div class="card-body">
-                        <h3>{{$totalSponsor}}</h3>
+                        <h3>{{ $totalSponsor }}</h3>
                         <span class="fs-5"><strong>Sponsor</strong></span>
                     </div>
                 </div>
@@ -242,70 +244,11 @@
                             <img class="card-img-top" src="{{ asset('storage/app/public/photo/' . $berita->photo) }}"
                                 alt="..." style="width: 100%; height:43%" />
                             <div class="card-body p-4">
-                                <a class="text-decoration-none link-dark stretched-link" href="{{ route('news.show', ['id_news' => $berita->id_news]) }}">
+                                <a class="text-decoration-none link-dark stretched-link"
+                                    href="{{ route('news.show', ['id_news' => $berita->id_news]) }}">
                                     <h5 class="card-title mb-3">{{ $berita->title }}</h5>
                                 </a>
                                 <p class="card-text mb-0">{!! $berita->description !!}</p>
-
-    <section id="mitra-kampus" class="splide container p-5" aria-label="Beautiful Images">
-        <h1 class="text-center fw-bold">SPONSOR</h1>
-        <div class="d-flex justify-content-center mb-4">
-            <div id="underline-line-mitra" class="bg-primary"></div>
-        </div>
-        <div class="row gx-5">
-            @foreach ($sponsors as $sponsor)
-                <div class="col-lg-4 mb-5">
-                    <div class="card h-100 shadow border-0">
-                        <img class="card-img-top" src="{{ asset('potosponsor/' . $sponsor->poto) }}"
-                            alt="..." style="width: 100%; height:43%" />
-                        <div class="card-body p-4">
-                            <a class="text-decoration-none link-dark stretched-link" href="#!">
-                                <h5 class="card-title mb-3">{{ $sponsor->Name }}</h5>
-                            </a>
-                            <p class="card-text mb-0">{!! $sponsor->Description !!}</p>
-                        </div>
-                    </div>
-                </div>
-            @endforeach
-        </div>
-    </div>
-</section>
-    <section id="testimoni" class="splide container bg-informasi-umum p-5" aria-label="Beautiful Images">
-        <h1 class="text-center fw-bold mb-5">Testimoni</h1>
-
-        <div class="splide__slider">
-            <div class="splide__track">
-                <ul class="splide__list">
-
-                    <li class="splide__slide d-flex justify-content-center" data-splide-interval="2000">
-                        <div class="card" style="">
-                            <div class="bg-primary bg-image-container card-img-top"></div>
-                            <div class="d-flex justify-content-center">
-                                <div class="image-container">
-                                    <img src="" class="cropped-image" alt="foto-profil">
-                                </div>
-                            </div>
-                            <div class="card-body">
-                                <h5 class="card-title fw-bold"></h5>
-                                <div id="tempat-pill" class="d-flex gap-1 mb-4">
-                                    <div class="pill d-inline text-muted">
-
-                                    </div>
-
-                                    <div class="pill d-inline text-muted">
-
-                                    </div>
-
-                                    <div class="pill d-inline text-muted">
-
-                                    </div>
-                                </div>
-                                <div class="d-flex justify-content-center align-items-center border border-1 rounded p-3"
-                                    style="height: 200px;">
-                                    <p class="card-text fs-7">
-
-                                    </p>
-                                </div>
                             </div>
                         </div>
                     </div>

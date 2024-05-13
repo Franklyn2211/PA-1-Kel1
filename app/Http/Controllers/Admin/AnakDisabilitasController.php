@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use App\Models\anakdisabilitas;
+use App\Models\AnakDisabilitas;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Carbon\Carbon;
@@ -27,13 +27,13 @@ class anakdisabilitasController extends Controller
     {
         $request->validate([
             'name' => 'required|string',
-            'gender' => 'required|in:Laki-Laki,Perempuan',
+            'gender' => 'required|string',
             'date_of_birth' => 'required|date',
             'date_joined' => 'required|date',
         ]);
 
-        $anakdisabilitas = new anakdisabilitas([
-            'id_child_with_disabilities' => anakdisabilitas::generateNextId(),
+        $anakdisabilitas = new AnakDisabilitas([
+            'id_child_with_disabilities' => AnakDisabilitas::generateNextId(),
             'name' => $request->get('name'),
             'gender' => $request->get('gender'),
             'date_of_birth' => $request->get('date_of_birth'),
@@ -46,20 +46,20 @@ class anakdisabilitasController extends Controller
 
     public function show($id)
     {
-        $anakdisabilitas = anakdisabilitas::findOrFail($id);
+        $anakdisabilitas = AnakDisabilitas::findOrFail($id);
         return view('admin.anakdisabilitas.show', compact('anakdisabilitas'));
     }
 
-    public function edit(anakdisabilitas $anakdisabilitas)
+    public function edit(AnakDisabilitas $anakdisabilitas)
     {
         return view('admin.anakdisabilitas.edit', compact('anakdisabilitas'));
     }
 
-    public function update(Request $request, anakdisabilitas $anakdisabilitas)
+    public function update(Request $request, AnakDisabilitas $anakdisabilitas)
     {
         $request->validate([
             'name' => 'required|string',
-            'gender' => 'required|in:Laki-Laki,Perempuan',
+            'gender' => 'required|string',
             'date_of_birth' => 'required|date',
             'date_joined' => 'required|date',
         ]);
