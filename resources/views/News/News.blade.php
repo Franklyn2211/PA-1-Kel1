@@ -22,7 +22,7 @@
                         </div>
                         <div class="col-md-7 animate-box">
                             <a href="{{ route('news.show', ['id_news' => $berita->id_news]) }}" class="fh5co_magna py-2">{{ $berita->title }}</a>
-                            <a href="{{ route('news.show', ['id_news' => $berita->id_news]) }}" class="fh5co_mini_time py-3"> {{ $berita->create_by }} - {{ $berita->date }} </a>
+                            <a href="{{ route('news.show', ['id_news' => $berita->id_news]) }}" class="fh5co_mini_time py-3"> {{ $berita->created_by }} - {{ $berita->date }} </a>
                             <div class="fh5co_consectetur">
                                 {{-- Batasi deskripsi hanya 4 baris --}}
                                 <?php
@@ -41,10 +41,10 @@
             </div>
             <div class="col-md-3 animate-box" data-animate-effect="fadeInRight">
                 <div class="p-3 rounded border bg-light mb-4">
-                    <form action="#">
+                    <form action="{{ route('news.search') }}" method="GET">
                         <div class="input-group">
-                            <input type="search" class="form-control" placeholder="Search..." aria-label="Search" aria-describedby="button-addon2">
-                            <button class="btn btn-outline-primary" type="button" id="button-addon2">Search</button>
+                            <input type="search" name="query" class="form-control" placeholder="Search..." aria-label="Search" aria-describedby="button-addon2">
+                            <button class="btn btn-outline-primary" type="submit" id="button-addon2">Search</button>
                         </div>
                     </form>
                 </div>
@@ -53,17 +53,15 @@
                 </div>
                 <div class="clearfix"></div>
                 <div class="fh5co_tags_all">
-                    <a href="#" class="fh5co_tagg">{{ $berita->category->name }}</a>
+                    @foreach ($newscategories as $category)
+                        <a href="#" class="fh5co_tagg">{{ $berita->category->name }}</a>
+                    @endforeach
                 </div>
                 <div>
                     <div class="fh5co_heading fh5co_heading_border_bottom pt-3 py-2 mb-4">Most Popular</div>
                 </div>
                 <div class="row pb-3">
-                    <?php
-                        // Acak urutan berita populer
-                        $randomNews = $news->shuffle();
-                    ?>
-                    @foreach ($randomNews as $berita)
+                    @foreach ($popularNews as $berita)
                         <div class="col-5 align-self-center">
                             <a href="{{ route('news.show', ['id_news' => $berita->id_news]) }}"> <!-- Tautan di sekitar gambar -->
                                 <img src="{{ asset('storage/app/public/photo/' . $berita->photo) }}" alt="{{ $berita->title }}" class="fh5co_most_trading"/>

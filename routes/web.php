@@ -122,23 +122,6 @@ Route::prefix('Admin')->middleware('auth')->group(function () {
     Route::post('Admin/gallery/{galleries}', [GalleryController::class, 'update'])->name('admin.gallery.update');
     Route::delete('gallery/{galleries}', [GalleryController::class, 'destroy'])->name('admin.gallery.destroy');
 
-
-
-        Route::get('address', [AddressController::class, 'index'])->name('admin.address.index');
-        Route::get('address/create', [AddressController::class, 'create'])->name('admin.address.create');
-        Route::post('address/store', [AddressController::class, 'store'])->name('admin.address.store');
-        Route::get('address/{id}/edit', [AddressController::class, 'edit'])->name('admin.address.edit');
-        Route::put('address/update/{id}', [AddressController::class, 'update'])->name('admin.address.update');
-        Route::delete('address/{id}', [AddressController::class, 'destroy'])->name('admin.address.destroy');
-
-
-    Route::get('address', [AddressController::class, 'index'])->name('admin.address.index');
-    Route::get('address/create', [AddressController::class, 'create'])->name('admin.address.create');
-    Route::post('address/store', [AddressController::class, 'store'])->name('admin.address.store');
-    Route::get('address/{id}/edit', [AddressController::class, 'edit'])->name('admin.address.edit');
-    Route::put('address/update/{id}', [AddressController::class, 'update'])->name('admin.address.update');
-    Route::delete('address/{id}', [AddressController::class, 'destroy'])->name('admin.address.destroy');
-
     Route::resource('anakdisabilitas', AnakDisabilitasController::class);
     Route::get('anakdisabilitas', [AnakDisabilitasController::class, 'index'])->name('admin.anakdisabilitas.index');
     Route::get('anakdisabilitas/create', [AnakDisabilitasController::class, 'create'])->name('admin.anakdisabilitas.create');
@@ -202,6 +185,8 @@ Route::resource('Announcement', AnnouncementController::class);
 Route::resource('News', NewsController::class)->only('index', 'show');
 Route::resource('About', AboutController::class)->only('index');
 Route::get('/News/{id_news}', 'NewsController@show')->name('news.show');
+Route::get('/news/search', [NewsController::class, 'search'])->name('news.search');
+
 Route::resource('Donate', DonateController::class)->only('index', 'store');
 Route::resource('Partnership', PartnershipController::class)->only('index');
 Route::resource('Contact', KontakController::class)->only('index', 'store');
