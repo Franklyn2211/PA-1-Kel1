@@ -37,16 +37,16 @@
                                                     <div class="form-group mb-3">
                                                         <label for="name">Nama Kategori</label>
                                                         <input type="text" class="form-control" id="Name" name="Name" placeholder="Nama Kategori">
-                                                        @error('Name')
-                                                            <span class="text-danger mt-2">{{ $message }}</span>
-                                                        @enderror
+                                                        {{-- @error('Name')
+                                                            <span class="text-danger mt-2">{{ $message }}</span> --}}
+                                                        {{-- @enderror --}}
                                                     </div>
                                                     <div class="form-group mb-3">
                                                         <label for="description">Deskripsi</label>
                                                         <textarea class="form-control" id="summernote" name="Description" rows="5" placeholder="Deskripsi Kategori"></textarea>
-                                                        @error('Description')
-                                                            <span class="text-danger mt-2">{{ $message }}</span>
-                                                        @enderror
+                                                        {{-- @error('Description')
+                                                            <span class="text-danger mt-2">{{ $message }}</span> --}}
+                                                        {{-- @enderror --}}
                                                     </div>
                                                     <div class="form-group text-center"> <!-- Perubahan di sini -->
                                                         <button type="submit" class="btn btn-primary">Simpan</button>

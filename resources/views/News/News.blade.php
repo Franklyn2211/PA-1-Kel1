@@ -54,7 +54,7 @@
                 <div class="clearfix"></div>
                 <div class="fh5co_tags_all">
                     @foreach ($newscategories as $category)
-                        <a href="#" class="fh5co_tagg">{{ $berita->category->name }}</a>
+                        <a href="#" class="fh5co_tagg">{{ $category->Name }}</a>
                     @endforeach
                 </div>
                 <div>
