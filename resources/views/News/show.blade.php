@@ -78,10 +78,10 @@
             </div>
             <div class="col-md-3 animate-box" data-animate-effect="fadeInRight">
                 <div class="p-3 rounded border bg-light mb-4">
-                    <form action="#">
+                    <form action="{{ route('news.search') }}" method="GET">
                         <div class="input-group">
-                            <input type="search" class="form-control" placeholder="Search..." aria-label="Search" aria-describedby="button-addon2">
-                            <button class="btn btn-outline-primary" type="button" id="button-addon2">Search</button>
+                            <input type="search" name="query" class="form-control" placeholder="Search..." aria-label="Search" aria-describedby="button-addon2">
+                            <button class="btn btn-outline-primary" type="submit" id="button-addon2">Search</button>
                         </div>
                     </form>
                 </div>

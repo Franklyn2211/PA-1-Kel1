@@ -2,10 +2,11 @@
 
 @section('content')
     <div class="container">
-        <h1>Search Results</h1>
-        <p>Showing results for query: "{{ $query }}"</p>
-
-        <div class="row pb-4">
+        <div>
+            <div class="fh5co_heading fh5co_heading_border_bottom py-2 mb-4"></div>
+        </div>
+        <h2>Search Results For "{{ $query }}"</h2>
+        <div class="row pb-6">
             <?php
                 // Mendapatkan daftar berita populer secara acak
                 $randomNews = \App\Models\News::inRandomOrder()->limit(2)->get();
@@ -23,7 +24,9 @@
                 </div>
                 <div class="col-md-7 animate-box">
                     <a href="{{ route('news.show', ['id_news' => $berita->id_news]) }}" class="fh5co_magna py-2">{{ $berita->title }}</a>
+                    <div class="fh5co_consectetur">
                     <a href="{{ route('news.show', ['id_news' => $berita->id_news]) }}" class="fh5co_mini_time py-3"> {{ $berita->created_by }} - {{ $berita->date }} </a>
+                </div>
                     <div class="fh5co_consectetur">
                         {{-- Batasi deskripsi hanya 4 baris --}}
                         <?php
