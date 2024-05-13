@@ -8,4 +8,4 @@
 <script src="/assets/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
 
 
-@include("layouts.footer")
+@include("layouts.Footer")

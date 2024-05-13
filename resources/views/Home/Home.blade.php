@@ -249,52 +249,10 @@
                                     <h5 class="card-title mb-3">{{ $berita->title }}</h5>
                                 </a>
                                 <p class="card-text mb-0">{!! $berita->description !!}</p>
-
-    <section id="mitra-kampus" class="splide container p-5" aria-label="Beautiful Images">
-        <h1 class="text-center fw-bold">SPONSOR</h1>
-        <div class="d-flex justify-content-center mb-4">
-            <div id="underline-line-mitra" class="bg-primary"></div>
-        </div>
-    <section id="testimoni" class="splide container bg-informasi-umum p-5" aria-label="Beautiful Images">
-        <h1 class="text-center fw-bold mb-5">Testimoni</h1>
-
-        <div class="splide__slider">
-            <div class="splide__track">
-                <ul class="splide__list">
-
-                    <li class="splide__slide d-flex justify-content-center" data-splide-interval="2000">
-                        <div class="card" style="">
-                            <div class="bg-primary bg-image-container card-img-top"></div>
-                            <div class="d-flex justify-content-center">
-                                <div class="image-container">
-                                    <img src="" class="cropped-image" alt="foto-profil">
-                                </div>
-                            </div>
-                            <div class="card-body">
-                                <h5 class="card-title fw-bold"></h5>
-                                <div id="tempat-pill" class="d-flex gap-1 mb-4">
-                                    <div class="pill d-inline text-muted">
-
-                                    </div>
-
-                                    <div class="pill d-inline text-muted">
-
-                                    </div>
-
-                                    <div class="pill d-inline text-muted">
-
-                                    </div>
-                                </div>
-                                <div class="d-flex justify-content-center align-items-center border border-1 rounded p-3"
-                                    style="height: 200px;">
-                                    <p class="card-text fs-7">
-
-                                    </p>
-                                </div>
                             </div>
                         </div>
                     </div>
-                @endforeach
+                    @endforeach
             </div>
         </div>
     </section>
