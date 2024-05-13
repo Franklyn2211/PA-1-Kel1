@@ -205,6 +205,8 @@ Route::resource('Announcement', AnnouncementController::class);
 Route::resource('News', NewsController::class)->only('index', 'show');
 Route::resource('About', AboutController::class)->only('index');
 Route::get('/News/{id_news}', 'NewsController@show')->name('news.show');
+Route::get('/news/search', [NewsController::class, 'search'])->name('news.search');
+
 Route::resource('Donate', DonateController::class)->only('index', 'store');
 Route::resource('Partnership', PartnershipController::class)->only('index');
 Route::resource('Contact', KontakController::class)->only('index', 'store');

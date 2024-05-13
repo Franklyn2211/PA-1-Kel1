@@ -12,7 +12,8 @@ class AdminNewsController extends Controller
     public function index()
     {
         $news = News::all(); // Assuming you're fetching news from a model named News
-        return view('Admin.News.index', ['news' => $news]);
+        $newscategories = Newscategory::all(); // Fetch all news categories
+        return view('Admin.News.index', ['news' => $news, 'newscategories' => $newscategories]);
     }
 
     public function create()
