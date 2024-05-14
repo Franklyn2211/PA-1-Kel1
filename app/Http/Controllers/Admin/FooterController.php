@@ -9,7 +9,7 @@ use Illuminate\Http\Request;
 class FooterController extends Controller
 {
     public function index(){
-        $footer = Footer::all();
+        $footer = Footer::first();
         return view('Admin.Footer.index', compact('footer'));
     }
 

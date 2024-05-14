@@ -52,6 +52,9 @@ Route::post('/logout', [AuthController::class, 'logout']);
 // Route Dashboard Admin
 Route::prefix('Admin')->middleware('auth')->group(function () {
 
+    Route::get('/admin/change-password', [AuthController::class, 'showChangePasswordForm'])->name('admin.change-password');
+    Route::post('/admin/update-password', [AuthController::class, 'changePassword'])->name('admin.update-password');
+
     Route::get('/', [DashboardController::class, 'index'])->name('Admin.dashboard');
 
     Route::get('relawan', [AdminRelawanController::class, 'index'])->name('Admin.relawan.relawan');

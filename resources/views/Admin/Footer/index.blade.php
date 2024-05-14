@@ -55,6 +55,7 @@
                                     </tr>
                                 </thead>
                                 <tbody>
+                                    @if ($footer)
                                     <tr>
                                         <td>{!! $footer->about !!}</td>
                                         <td>{{ $footer->phone_number }}</td>
@@ -72,6 +73,7 @@
                                             </form>
                                         </td>
                                     </tr>
+                                    @endif
                                 </tbody>
                             </table>
 

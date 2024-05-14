@@ -22,9 +22,9 @@ class AuthController extends Controller
             'email' => 'required',
             'password' => 'required'
         ]);
-    
+
         $user = User::where('email', $credentials['email'])->first();
-    
+
         if ($user && Hash::check($credentials['password'], $user->password)) {
             if (Auth::attempt($credentials)) {
                 $request->session()->regenerate();
@@ -36,7 +36,31 @@ class AuthController extends Controller
             ]);
         }
     }
-    
+    public function showChangePasswordForm()
+    {
+        return view('Admin.auth.change-password');
+    }
+    public function changePassword(Request $request)
+    {
+        $request->validate([
+            'current_password' => 'required',
+            'new_password' => 'required|string|min:8|confirmed',
+        ]);
+
+        $user = Auth::user();
+
+        // Check if the current password matches the password in the database
+        if (!Hash::check($request->input('current_password'), $user->password)) {
+            return redirect()->back()->withErrors(['current_password' => 'Password saat ini salah.']);
+        }
+
+        // Update the user's password
+        $user->password = Hash::make($request->input('new_password'));
+        $user->save();
+
+        return redirect()->route('Admin.dashboard')->with('success', 'Password berhasil diperbarui.');
+    }
+
 
     public function logout(Request $request)
     {
