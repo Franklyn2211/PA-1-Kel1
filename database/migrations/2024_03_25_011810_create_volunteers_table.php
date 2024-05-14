@@ -16,6 +16,7 @@ return new class extends Migration {
             $table->string('email');
             $table->string('phone_number');
             $table->date('date_of_birth');
+            $table->string('asaldaerah');
             $table->enum('location', ['Wilayah I, Desa Lumban Silintong, Kecamatan Balige, Kabupaten Toba', 'Wilayah II, Desa Sawah Lamo, Kecamatan Andam Dewi, Kabupaten Tapanuli Tengah']);
             $table->binary('cv')->nullable();
             $table->timestamps();

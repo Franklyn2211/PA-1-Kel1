@@ -38,16 +38,16 @@
                                                     <div class="form-group mb-3">
                                                         <label for="name">Nama Kategori</label>
                                                         <input type="text" class="form-control" id="Name" name="Name" value="{{ $newsCategory->Name }}" required>
-                                                        @error('Name')
-                                                            <span class="text-danger mt-2">{{ $message }}</span>
-                                                        @enderror
+                                                        {{-- @error('Name')
+                                                            <span class="text-danger mt-2">{{ $message }}</span> --}}
+                                                        {{-- @enderror --}}
                                                     </div>
                                                     <div class="form-group mb-3">
                                                         <label for="description">Deskripsi</label>
                                                         <textarea class="form-control" id="summernote" name="Description" rows="10" required>{!! $newsCategory->Description !!}</textarea>
-                                                        @error('Description')
-                                                            <span class="text-danger mt-2">{{ $message }}</span>
-                                                        @enderror
+                                                        {{-- @error('Description')
+                                                            <span class="text-danger mt-2">{{ $message }}</span> --}}
+                                                        {{-- @enderror --}}
                                                     </div>
                                                     <!-- Jika Anda ingin menyembunyikan form input "Created_by" -->
                                                     <!-- <input type="hidden" name="created_by" value="{{ auth()->user()->id }}"> -->

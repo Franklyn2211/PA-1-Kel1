@@ -11,18 +11,20 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('news', function (Blueprint $table) {
-        $table->string('id_news')->primary();
-        $table->string('title');
-        $table->string('location');
-        $table->date('date');
-        $table->string('photo')->nullable();
-        $table->string('news_category_id'); // Kolom news_category_id yang benar
-        $table->foreign('news_category_id')->references('id_news_categories')->on('news_categories')->cascadeOnUpdate()->cascadeOnDelete();
-        $table->text('description');
-        $table->string('created_by', 20)->default('adminYPA');
-        $table->string('updated_by', 20)->nullable();
-        $table->boolean('active')->default(true);
-        $table->timestamps();
+            $table->string('id_news')->primary();
+            $table->string('title');
+            $table->string('slug')->unique(); // Kolom untuk URL bersahabat
+            $table->string('location');
+            $table->date('date');
+            $table->string('photo')->nullable();
+            $table->string('news_category_id'); // Kolom news_category_id yang benar
+            $table->foreign('news_category_id')->references('id_news_categories')->on('news_categories')->cascadeOnUpdate()->cascadeOnDelete();
+            $table->text('description');
+            $table->string('created_by', 20)->default('adminYPA');
+            $table->string('updated_by', 20)->nullable();
+            $table->boolean('active')->default(true);
+            $table->unsignedBigInteger('total_visitors')->default(0); // Kolom untuk total pengunjung
+            $table->timestamps();
         });
     }
 

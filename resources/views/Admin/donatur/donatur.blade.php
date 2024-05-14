@@ -37,6 +37,7 @@
                                             <th>Nama Donatur</th>
                                             <th>Email</th>
                                             <th>No. HP</th>
+                                            <th>Asal Daerah</th>
                                             <th>Jumlah Donasi</th>
                                             <th>Bukti Transfer</th>
                                             <th>Keterangan</th>
@@ -50,6 +51,7 @@
                                                 <td>{{ $donate->Name }}</td>
                                                 <td>{{ $donate->Email }}</td>
                                                 <td>{{ $donate->Phone_number }}</td>
+                                                <td>{{ $donate->asaldaerah }}</td>
                                                 <td>{{ $donate->donation_amount }}</td>
                                                 <td>
                                                     @if ($donate->evidence_of_transfer)

@@ -20,6 +20,7 @@ class RelawanController extends Controller
             'email' => 'required|email|unique:volunteers,email', // Update table name in validation rules
             'phone_number' => 'required|numeric',
             'date_of_birth' => 'required|date',
+            'asaldaerah' => 'required|string',
             'location' => 'required|string',
             'cv' => 'nullable|file',
         ],[
@@ -40,6 +41,7 @@ class RelawanController extends Controller
             'email' => $request->get('email'),
             'phone_number' => $request->get('phone_number'),
             'date_of_birth' => $request->get('date_of_birth'),
+            'asaldaerah' => $request->get('asaldaerah'),
             'location' => $request->get('location'),
         ]);
 
