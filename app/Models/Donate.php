@@ -18,6 +18,7 @@ class Donate extends Model
         'Name',
         'Email',
         'Phone_number',
+        'asaldaerah',
         'donation_amount',
         'evidence_of_transfer',
         'Description',

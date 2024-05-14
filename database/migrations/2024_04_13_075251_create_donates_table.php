@@ -16,6 +16,7 @@ return new class extends Migration {
             $table->string('Name');
             $table->string('Email');
             $table->string('Phone_number');
+            $table->string('asaldaerah');
             $table->decimal('donation_amount', 15, 2);
             $table->binary('evidence_of_transfer')->nullable();
             $table->text('Description');

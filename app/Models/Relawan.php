@@ -20,6 +20,7 @@ class Relawan extends Model
         'email',
         'phone_number',
         'date_of_birth',
+        'asaldaerah',
         'location',
         'cv',
         'created_by',

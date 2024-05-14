@@ -38,6 +38,7 @@
                                             <th>Email</th>
                                             <th>No. HP</th>
                                             <th>Tanggal Lahir</th>
+                                            <th>Asal Daerah</th>
                                             <th>Lokasi</th>
                                             <th>CV</th>
                                             <th>Aksi</th>
@@ -51,6 +52,7 @@
                                                 <td>{{ $item->email }}</td>
                                                 <td>{{ $item->phone_number }}</td>
                                                 <td>{{ date('d-m-Y', strtotime($item->date_of_birth)) }}</td>
+                                                <td>{{ $item->asaldaerah }}</td>
                                                 <td>{{ $item->location }}</td>
                                                 <td>
                                                     @if ($item->cv)
