@@ -111,9 +111,6 @@
 
             <div class="row justify-content-center">
                 <div class="col-md-8">
-                    <div class="card-header bg-primary text-white text-center">
-                        <h5 class="mb-0 text-white">Daftar Kemitraan</h5>
-                    </div>
                     <div class="card-body px-5">
                         @if ($testimoni->count() > 0)
                             <div id="carouselExampleControls" class="carousel slide" data-ride="carousel"

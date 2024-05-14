@@ -17,7 +17,7 @@ class Sponsor extends Model
     protected $fillable = [
         'id_sponsor',
         'Name',
-        'poto',
+        'photo',
         'Description',
         'created_by',
         'updated_by',

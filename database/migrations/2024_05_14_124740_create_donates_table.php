@@ -4,19 +4,19 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-return new class extends Migration {
+return new class extends Migration
+{
     /**
      * Run the migrations.
-     *
      */
-    public function up()
+    public function up(): void
     {
         Schema::create('donates', function (Blueprint $table) {
             $table->string('id_donate')->primary();
             $table->string('Name');
             $table->string('Email');
             $table->string('Phone_number');
-            $table->string('asaldaerah');
+            $table->string('origin');
             $table->decimal('donation_amount', 15, 2);
             $table->binary('evidence_of_transfer')->nullable();
             $table->text('Description');
@@ -29,10 +29,8 @@ return new class extends Migration {
 
     /**
      * Reverse the migrations.
-     *
-     * @return void
      */
-    public function down()
+    public function down(): void
     {
         Schema::dropIfExists('donates');
     }

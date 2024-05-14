@@ -70,7 +70,7 @@
                                         <td style="text-align: center">{{ $loop->iteration }}</td>
                                         <td style="text-align: center">{{ $relawan->name }}</td>
                                         <td style="text-align: center">{{$relawan->location}}</td>
-                                        <td style="text-align: center">{{$relawan->asaldaerah}}</td>
+                                        <td style="text-align: center">{{$relawan->origin}}</td>
                                     </tr>
                                     @endforeach
                                 </tbody>
@@ -92,8 +92,8 @@
                                     <tr>
                                         <td style="text-align: center">{{ $loop->iteration }}</td>
                                         <td style="text-align: center">{{ $donate->Name }}</td>
-                                        <td style="text-align: center">{{ $donate->donation_amount }}</td>
-                                        <td style="text-align: center">{{ $donate->asaldaerah}}</td>
+                                        <td style="text-align: center">Rp. {{ number_format($donate->donation_amount, 0) }}</td>
+                                        <td style="text-align: center">{{ $donate->origin}}</td>
                                     </tr>
                                     @endforeach
                                 </tbody>

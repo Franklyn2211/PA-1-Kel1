@@ -18,7 +18,7 @@ class Donate extends Model
         'Name',
         'Email',
         'Phone_number',
-        'asaldaerah',
+        'origin',
         'donation_amount',
         'evidence_of_transfer',
         'Description',
@@ -35,18 +35,18 @@ class Donate extends Model
     {
         // Mendapatkan ID terakhir dari database
         $latestId = self::orderBy('id_donate', 'desc')->first();
-    
+
         // Mengambil nomor dari ID terakhir
         $lastNumber = $latestId ? intval(substr($latestId->id_donate, 1)) : 0;
-    
+
         // Menambahkan 1 untuk mendapatkan nomor berikutnya
         $nextNumber = $lastNumber + 1;
-    
+
         // Mengonversi nomor berikutnya ke format yang diinginkan (DXX)
         $nextId = 'D' . str_pad($nextNumber, 2, '0', STR_PAD_LEFT);
-    
+
         return $nextId;
     }
-    
+
 
 }

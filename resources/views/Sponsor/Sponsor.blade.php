@@ -9,7 +9,7 @@
             <div class="col-md-6 col-lg-4 mt-4">
                 <div class="px-3 py-4 px-lg-4 " style="background-color:rgb(16, 44, 87); border-radius: 30px;">
                     <div class="overflow-hidden">
-                        <img src="{{ asset('potosponsor/' . $sponsors->poto) }}" alt="" style="width: 150px; height: 140px;">
+                        <img src="{{ asset('potosponsor/' . $sponsors->photo) }}" alt="" style="width: 150px; height: 140px;">
                     </div>
                     <div class="overflow-hidden">
                         <h5 class="mt-3 text-white" style="border-bottom: 1px solid white;">{{ $sponsors->Name }}</h5>

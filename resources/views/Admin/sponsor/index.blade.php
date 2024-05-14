@@ -44,7 +44,7 @@
                                                 <td>{{ $loop->iteration }}</td>
                                                 <td>{{ $sponsors->Name }}</td>
                                                 <td>
-                                                    <img src="{{asset('potosponsor/' . $sponsors->poto ) }}" alt="" style="width:100px;" class="img-fluid">
+                                                    <img src="{{asset('potosponsor/' . $sponsors->photo ) }}" alt="" style="width:100px;" class="img-fluid">
                                                 </td>
                                                 <td>{!! $sponsors->Description !!}</td>
                                                 <td>

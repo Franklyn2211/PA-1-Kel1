@@ -51,8 +51,8 @@
                                                 <td>{{ $donate->Name }}</td>
                                                 <td>{{ $donate->Email }}</td>
                                                 <td>{{ $donate->Phone_number }}</td>
-                                                <td>{{ $donate->asaldaerah }}</td>
-                                                <td>{{ $donate->donation_amount }}</td>
+                                                <td>{{ $donate->origin }}</td>
+                                                <td>Rp. {{ number_format($donate->donation_amount, 0) }}</td>
                                                 <td>
                                                     @if ($donate->evidence_of_transfer)
                                                     <a href="{{ asset('storage/app/public/evidence_of_transfer/' . $donate->evidence_of_transfer) }}" class="btn btn-primary btn-sm" target="_blank">Lihat Bukti Transfer</a>
@@ -60,7 +60,7 @@
                                                         Bukti transfer tidak tersedia.
                                                     @endif
                                                 </td>
-                                                <td>{{ $donate->Description }}</td>                                                
+                                                <td>{{ $donate->Description }}</td>
                                                 <td>
                                                     <a href="mailto:{{ $donate->Email }}?subject=Balasan%20untuk%20{{ $donate->Name }}" class="btn btn-primary btn-sm">
                                                         <i class="fa-solid fa-envelope"></i> Jawab
@@ -73,7 +73,7 @@
                                                         </button>
                                                     </form>
                                                 </td>
-                                                
+
                                             </tr>
                                         @endforeach
                                     </tbody>

@@ -32,9 +32,9 @@ class SponsorController extends Controller
             'Name' => $request->get('Name'),
             'Description' => $request->get('Description'),
         ]);
-        if($request->hasFile('poto')){
-            $request->file('poto')->move('potosponsor/', $request->file('poto')->getClientOriginalName());
-            $sponsor->poto = $request->file('poto')->getClientOriginalName();
+        if($request->hasFile('photo')){
+            $request->file('photo')->move('potosponsor/', $request->file('photo')->getClientOriginalName());
+            $sponsor->photo = $request->file('photo')->getClientOriginalName();
         }
         $sponsor->save();
         return redirect()->route('admin.sponsor.index')
@@ -56,12 +56,12 @@ class SponsorController extends Controller
 
         $sponsor = Sponsor::findOrFail($id);
 
-        if($request->hasFile('poto')){
-            $request->file('poto')->move('potosponsor/', $request->file('poto')->getClientOriginalName());
-            $sponsor->poto = $request->file('poto')->getClientOriginalName();
+        if($request->hasFile('photo')){
+            $request->file('photo')->move('potosponsor/', $request->file('photo')->getClientOriginalName());
+            $sponsor->photo = $request->file('photo')->getClientOriginalName();
             $sponsor->save();
         }
-        
+
         $sponsor->Name = $request->get('Name');
         $sponsor->Description = $request->get('Description');
 

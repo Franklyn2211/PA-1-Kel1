@@ -38,8 +38,8 @@
             <input type="tel" id="phone" name="phone_number" pattern="[0-9]{9,15}" required><br>
             <label for="date_of_birth">Tanggal Lahir</label><br>
             <input type="date" id="date_of_birth" name="date_of_birth"><br>
-            <label for="asaldaerah">Asal Daerah</label><br>
-            <input type="text" id="asaldaerah" name="asaldaerah"><br>
+            <label for="origin">Asal Daerah</label><br>
+            <input type="text" id="origin" name="origin"><br>
             <label for="location">Lokasi yang dipilih*</label><br>
             <select id="location" name="location">
                 <option value="Wilayah I, Desa Lumban Silintong, Kecamatan Balige, Kabupaten Toba">Wilayah I, Desa Lumban

@@ -21,7 +21,7 @@ class DonateController extends Controller
             'Name' => 'required|string',
             'Email' => 'required|email',
             'Phone_number' => 'required|numeric',
-            'asaldaerah' => 'required|string',
+            'origin' => 'required|string',
             'donation_amount' => 'required|numeric',
             'evidence_of_transfer' => 'nullable|file',
             'Description' => 'required|string',
@@ -33,7 +33,7 @@ class DonateController extends Controller
             'Name' => $request->get('Name'),
             'Email' => $request->get('Email'),
             'Phone_number' => $request->get('Phone_number'),
-            'asaldaerah' =>$request->get('asaldaerah'),
+            'origin' =>$request->get('origin'),
             'donation_amount' => $request->get('donation_amount'),
             'Description' => $request->get('Description'),
         ]);

@@ -52,7 +52,7 @@
                                                 <td>{{ $item->email }}</td>
                                                 <td>{{ $item->phone_number }}</td>
                                                 <td>{{ date('d-m-Y', strtotime($item->date_of_birth)) }}</td>
-                                                <td>{{ $item->asaldaerah }}</td>
+                                                <td>{{ $item->origin }}</td>
                                                 <td>{{ $item->location }}</td>
                                                 <td>
                                                     @if ($item->cv)

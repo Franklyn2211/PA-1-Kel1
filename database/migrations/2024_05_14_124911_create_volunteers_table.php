@@ -1,14 +1,15 @@
- <?php
+<?php
 
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-return new class extends Migration {
+return new class extends Migration
+{
     /**
      * Run the migrations.
      */
-    public function up()
+    public function up(): void
     {
         Schema::create('volunteers', function (Blueprint $table) {
             $table->string('id_volunteers')->primary();
@@ -16,7 +17,7 @@ return new class extends Migration {
             $table->string('email');
             $table->string('phone_number');
             $table->date('date_of_birth');
-            $table->string('asaldaerah');
+            $table->string('origin');
             $table->enum('location', ['Wilayah I, Desa Lumban Silintong, Kecamatan Balige, Kabupaten Toba', 'Wilayah II, Desa Sawah Lamo, Kecamatan Andam Dewi, Kabupaten Tapanuli Tengah']);
             $table->binary('cv')->nullable();
             $table->timestamps();
@@ -28,10 +29,8 @@ return new class extends Migration {
 
     /**
      * Reverse the migrations.
-     *
-     * @return void
      */
-    public function down()
+    public function down(): void
     {
         Schema::dropIfExists('volunteers');
     }

@@ -31,8 +31,8 @@
                                         <input type="text" class="form-control" id="Name" name="Name">
                                     </div>
                                     <div class="form-group">
-                                        <label for="poto">Foto:</label>
-                                        <input type="file" class="form-control-file" name="poto">
+                                        <label for="photo">Foto:</label>
+                                        <input type="file" class="form-control-file" name="photo">
                                     </div>
                                     <div class="form-group mb-3">
                                         <label for="Description">Deskripsi</label>

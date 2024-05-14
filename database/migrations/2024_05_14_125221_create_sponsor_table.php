@@ -8,15 +8,13 @@ return new class extends Migration
 {
     /**
      * Run the migrations.
-     *
-     * @return void
      */
-    public function up()
+    public function up(): void
     {
         Schema::create('sponsor', function (Blueprint $table) {
             $table->string('id_sponsor')->primary();
             $table->string('Name', 50);
-            $table->string('poto');
+            $table->string('photo');
             $table->text('Description');
             $table->string('created_by', 20)->default('adminYPA');
             $table->string('updated_by', 20)->nullable(true);
@@ -27,10 +25,8 @@ return new class extends Migration
 
     /**
      * Reverse the migrations.
-     *
-     * @return void
      */
-    public function down()
+    public function down(): void
     {
         Schema::dropIfExists('sponsor');
     }
