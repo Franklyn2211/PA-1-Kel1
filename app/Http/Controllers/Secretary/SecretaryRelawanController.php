@@ -1,18 +1,18 @@
 <?php
 
-namespace App\Http\Controllers\Admin;
+namespace App\Http\Controllers\Secretary;
 
 use App\Http\Controllers\Controller;
 use App\Models\Relawan;
 use Illuminate\Http\Request;
 
-class AdminRelawanController extends Controller
+class SecretaryRelawanController extends Controller
 {
     // In your controller method
 public function index()
 {
     $relawan = Relawan::all(); // Assuming Volunteer is your model name
-    return view('Admin.relawan.relawan', compact('relawan'));
+    return view('Secretary.relawan.relawan', compact('relawan'));
 }
 
 
@@ -23,7 +23,7 @@ public function destroy($id)
 
     $relawan->delete();
 
-    return back()->with('success', 'Donatur berhasil dihapus.');
+    return back()->with('success', 'Relawan berhasil dihapus.');
 
 }
 }

@@ -37,7 +37,7 @@
                                     </div>
                                     <div class="form-group">
                                         <label for="Description">Description:</label>
-                                        <textarea class="form-control" id="Description" name="Description">{{ $sponsor->Description }}</textarea>
+                                        <textarea class="form-control" id="summernote" name="Description">{{ $sponsor->Description }}</textarea>
                                     </div>
                                     <button type="submit" class="btn btn-primary">Update</button>
                                 </form>

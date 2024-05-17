@@ -40,6 +40,11 @@ return [
             'driver' => 'session',
             'provider' => 'users',
         ],
+
+        'secretaries' =>[
+            'driver' => 'session',
+            'provider' => 'secretaries',
+        ],
     ],
 
     /*
@@ -69,6 +74,10 @@ return [
         //     'driver' => 'database',
         //     'table' => 'users',
         // ],
+        'secretaries' => [
+            'driver' => 'eloquent',
+            'model' => App\Models\Secretary::class, // Make sure you have a Secretary model
+        ],
     ],
 
     /*
@@ -96,6 +105,12 @@ return [
             'table' => 'password_reset_tokens',
             'expire' => 60,
             'throttle' => 60,
+        ],
+
+        'secretaries' => [
+            'provider' => 'secretaries',
+            'table' => 'password_resets',
+            'expire' => 60,
         ],
     ],
 

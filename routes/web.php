@@ -1,7 +1,9 @@
 <?php
 
+use App\Http\Controllers\Admin\AdminSekretarisController;
 use App\Http\Controllers\Admin\TestimoniesController;
 use App\Http\Controllers\FooterController;
+use App\Http\Controllers\SecretaryAuthController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\RelawanController;
 use App\Http\Controllers\AuthController;
@@ -17,11 +19,11 @@ use App\Http\Controllers\AnnouncementController;
 use App\Http\Controllers\KontakController;
 use App\Http\Controllers\Admin\AdminNewsController;
 use App\Http\Controllers\Admin\NewsCategoryController;
-use App\Http\Controllers\Admin\DonaturController;
+use App\Http\Controllers\Secretary\DonaturController;
 use App\Http\Controllers\Admin\AnakDisabilitasController;
 use App\Http\Controllers\Admin\AnakSekolahInformalController;
 use App\Http\Controllers\Admin\StafPegawaiController;
-use App\Http\Controllers\Admin\KemitraanController;
+use App\Http\Controllers\Secretary\KemitraanController;
 use App\Http\Controllers\Admin\SponsorController;
 use App\Http\Controllers\Admin\AdminAnnouncementController;
 use App\Http\Controllers\Admin\AnnouncementCategoryController;
@@ -29,7 +31,7 @@ use App\Http\Controllers\Admin\HeroSectionController;
 use App\Http\Controllers\Admin\DataYayasanController;
 use App\Http\Controllers\Admin\GalleryController;
 use App\Http\Controllers\Admin\AdminKontakController;
-use App\Http\Controllers\Admin\AdminRelawanController;
+use App\Http\Controllers\Secretary\SecretaryRelawanController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -57,17 +59,8 @@ Route::prefix('Admin')->middleware('auth')->group(function () {
 
     Route::get('/', [DashboardController::class, 'index'])->name('Admin.dashboard');
 
-    Route::get('relawan', [AdminRelawanController::class, 'index'])->name('Admin.relawan.relawan');
-    Route::delete('relawan/{relawan}', [AdminRelawanController::class, 'destroy'])->name('relawan.destroy');
-
-
     Route::get('kontak', [AdminKontakController::class, 'index'])->name('Admin.kontak.kontak');
     Route::delete('kontak/{kontak}', [AdminKontakController::class, 'destroy'])->name('kontak.destroy');
-
-
-
-    Route::get('donatur', [DonaturController::class, 'index'])->name('Admin.donate.donate');
-    Route::delete('donatur/{donate}', [DonaturController::class, 'destroy'])->name('donate.destroy');
 
 
     // Routes for news management
@@ -198,6 +191,39 @@ Route::prefix('Admin')->middleware('auth')->group(function () {
     Route::post('Footer/{footer}', [App\Http\Controllers\Admin\FooterController::class, 'update'])->name('Admin.Footer.update');
     Route::delete('Footer/{footer}', [App\Http\Controllers\Admin\FooterController::class, 'destroy'])->name('Admin.Footer.destroy');
 
+    Route::get('/sekretaris', [AdminSekretarisController::class, 'index'])->name('Admin.sekretaris.index');
+    Route::patch('/sekretaris/{id}/update-status', [AdminSekretarisController::class, 'updateStatus'])->name('updateStatus');
+
+});
+
+
+Route::prefix('sekretaris')->group(function () {
+    Route::middleware(['auth:secretaries', 'check.secretary.status'])->group(function () {
+        Route::get('/', [App\Http\Controllers\Secretary\DashboardController::class, 'index'])->name('Secretary.dashboard');
+
+    Route::get('relawan', [SecretaryRelawanController::class, 'index'])->name('Secretary.relawan');
+    Route::delete('relawan/{relawan}', [SecretaryRelawanController::class, 'destroy'])->name('relawan.destroy');
+
+    Route::get('donatur', [DonaturController::class, 'index'])->name('Secretary.donate');
+    Route::delete('donatur/{donate}', [DonaturController::class, 'destroy'])->name('donate.destroy');
+
+    Route::resource('kemitraan', KemitraanController::class);
+    Route::get('kemitraan', [KemitraanController::class, 'index'])->name('Sekretaris.kemitraan.index');
+    Route::get('kemitraan/create', [KemitraanController::class, 'create'])->name('Sekretaris.kemitraan.create');
+    Route::post('kemitraan', [KemitraanController::class, 'store'])->name('Sekretaris.kemitraan.store');
+    Route::get('kemitraan/{kemitraan}/edit', [KemitraanController::class, 'edit'])->name('Sekretaris.kemitraan.edit');
+    Route::post('kemitraan/{kemitraan}', [KemitraanController::class, 'update'])->name('Sekretaris.kemitraan.update');
+    Route::delete('kemitraan/{kemitraan}', [KemitraanController::class, 'destroy'])->name('Sekretaris.kemitraan.destroy');
+
+    Route::get('/sekretaris/change-password', [SecretaryAuthController::class, 'showChangePasswordForm'])->name('Sekretaris.change-password');
+    Route::post('/sekretaris/update-password', [SecretaryAuthController::class, 'changePassword'])->name('Sekretaris.update-password');
+    });
+
+    Route::get('/login', [SecretaryAuthController::class, 'index'])->name('Secretary.login');
+Route::post('/login', [SecretaryAuthController::class, 'authenticate']);
+Route::get('/register', [SecretaryAuthController::class, 'register']);
+Route::post('/register', [SecretaryAuthController::class, 'process'])->name('Secretary.process');
+Route::post('/logout', [SecretaryAuthController::class, 'logout']);
 });
 
 // Route Bagian Tampilan Website

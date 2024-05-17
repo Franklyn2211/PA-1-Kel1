@@ -15,7 +15,7 @@
                         <h5 class="mt-3 text-white" style="border-bottom: 1px solid white;">{{ $sponsors->Name }}</h5>
                     </div>
                     <div class="overflow-hidden">
-                        <p class="mb-0 text-white">{{ $sponsors->Description }}</p>
+                        <p class="mb-0 ">{!! $sponsors->Description !!}</p>
                     </div>
                 </div>
             </div>

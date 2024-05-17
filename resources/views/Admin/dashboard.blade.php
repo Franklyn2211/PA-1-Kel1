@@ -30,28 +30,13 @@
                         <!-- small box -->
                         <div class="small-box bg-info">
                             <div class="inner">
-                                <h3>{{ $totalVolunteer }}</h3>
-                                <p>Relawan</p>
+                                <h3>{{ $totalSecretaries }}</h3>
+                                <p>Sekretaris</p>
                             </div>
                             <div class="icon">
                                 <i class="fas fa-user-friends"></i>
                             </div>
-                            <a href="/Admin/relawan" class="small-box-footer">More info <i
-                                    class="fas fa-arrow-circle-right"></i></a>
-                        </div>
-                    </div>
-                    <!-- ./col -->
-                    <div class="col-lg-3 col-6">
-                        <!-- small box -->
-                        <div class="small-box bg-warning">
-                            <div class="inner">
-                                <h3>{{ $totalDonatur }}</h3>
-                                <p>Donatur</p>
-                            </div>
-                            <div class="icon">
-                                <i class="fas fa-donate"></i>
-                            </div>
-                            <a href="/Admin/donatur" class="small-box-footer">More info <i
+                            <a href="/Admin/sekretaris" class="small-box-footer">More info <i
                                     class="fas fa-arrow-circle-right"></i></a>
                         </div>
                     </div>
@@ -99,37 +84,6 @@
                                     class="fas fa-arrow-circle-right"></i></a>
                         </div>
                     </div>
-                    <div class="col-lg-3 col-6">
-                        <!-- small box -->
-                        <div class="small-box bg-success">
-                            <div class="inner">
-                                <h3>{{$totalSponsor}}</h3>
-
-                                <p>Sponsor</p>
-                            </div>
-                            <div class="icon">
-                                <i class="fas fa-handshake"></i>
-                            </div>
-                            <a href="{{ route('admin.sponsor.index') }}" class="small-box-footer">More info <i
-                                    class="fas fa-arrow-circle-right"></i></a>
-                        </div>
-                    </div>
-                    <!-- ./col -->
-                    <div class="col-lg-3 col-6">
-                        <!-- small box -->
-                        <div class="small-box bg-primary">
-                            <div class="inner">
-                                <h3>{{$totalKemitraan}}</h3>
-
-                                <p>Kemitraan</p>
-                            </div>
-                            <div class="icon">
-                                <i class="fas fa-handshake"></i>
-                            </div>
-                            <a href="{{ route('admin.kemitraan.index') }}" class="small-box-footer">More info <i
-                                    class="fas fa-arrow-circle-right"></i></a>
-                        </div>
-                    </div>
                     <!-- ./col -->
                     <div class="col-lg-3 col-6">
                         <!-- small box -->
@@ -149,7 +103,7 @@
                     <!-- ./col -->
                     <div class="col-lg-3 col-6">
                         <!-- small box -->
-                        <div class="small-box bg-danger">
+                        <div class="small-box bg-primary">
                             <div class="inner">
                                 <h3>{{ $totalSiswaInformal }}</h3>
 
@@ -165,7 +119,7 @@
                     <!-- ./col -->
                     <div class="col-lg-3 col-6">
                         <!-- small box -->
-                        <div class="small-box bg-secondary">
+                        <div class="small-box bg-warning">
                             <div class="inner">
                                 <h3>{{ $totalTestimoni }}</h3>
 

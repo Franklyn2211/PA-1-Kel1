@@ -1,5 +1,5 @@
-@extends('Admin.main')
-@section('title', 'Donatur')
+@extends('Secretary.main')
+@section('title', 'Relawan')
 @section('content')
 
     <div class="content-wrapper">
@@ -12,7 +12,7 @@
                     </div><!-- /.col -->
                     <div class="col-sm-6">
                         <ol class="breadcrumb float-sm-right">
-                            <li class="breadcrumb-item"><a href="/Admin">Dashboard</a></li>
+                            <li class="breadcrumb-item"><a href="/sekretaris">Dashboard</a></li>
                             <li class="breadcrumb-item active">@yield('title')</li>
                         </ol>
                     </div><!-- /.col -->
@@ -34,46 +34,45 @@
                                     <thead>
                                         <tr>
                                             <th>#</th>
-                                            <th>Nama Donatur</th>
+                                            <th>Nama Relawan</th>
                                             <th>Email</th>
                                             <th>No. HP</th>
+                                            <th>Tanggal Lahir</th>
                                             <th>Asal Daerah</th>
-                                            <th>Jumlah Donasi</th>
-                                            <th>Bukti Transfer</th>
-                                            <th>Keterangan</th>
+                                            <th>Lokasi</th>
+                                            <th>CV</th>
                                             <th>Aksi</th>
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        @foreach ($donates as $donate)
+                                        @foreach ($relawan as $item)
                                             <tr>
                                                 <td>{{ $loop->iteration }}</td>
-                                                <td>{{ $donate->Name }}</td>
-                                                <td>{{ $donate->Email }}</td>
-                                                <td>{{ $donate->Phone_number }}</td>
-                                                <td>{{ $donate->origin }}</td>
-                                                <td>Rp. {{ number_format($donate->donation_amount, 0) }}</td>
+                                                <td>{{ $item->name }}</td>
+                                                <td>{{ $item->email }}</td>
+                                                <td>{{ $item->phone_number }}</td>
+                                                <td>{{ date('d-m-Y', strtotime($item->date_of_birth)) }}</td>
+                                                <td>{{ $item->origin }}</td>
+                                                <td>{{ $item->location }}</td>
                                                 <td>
-                                                    @if ($donate->evidence_of_transfer)
-                                                    <a href="{{ asset('storage/app/public/evidence_of_transfer/' . $donate->evidence_of_transfer) }}" class="btn btn-primary btn-sm" target="_blank">Lihat Bukti Transfer</a>
+                                                    @if ($item->cv)
+                                                    <a href="{{ asset('storage/app/public/CV/' . $item->cv) }}" class="btn btn-primary btn-sm" target="_blank">Lihat CV</a>
                                                     @else
-                                                        Bukti transfer tidak tersedia.
+                                                        CV tidak tersedia.
                                                     @endif
                                                 </td>
-                                                <td>{{ $donate->Description }}</td>
                                                 <td>
-                                                    <a href="mailto:{{ $donate->Email }}?subject=Balasan%20untuk%20{{ $donate->Name }}" class="btn btn-primary btn-sm">
+                                                    <a href="mailto:{{ $item->email }}?subject=Balasan%20untuk%20{{ $item->name }}" class="btn btn-primary btn-sm">
                                                         <i class="fa-solid fa-envelope"></i> Jawab
                                                     </a>
-                                                    <form action="{{ route('donate.destroy', $donate->id_donate) }}" method="POST" class="d-inline">
+                                                    <form action="{{ route('relawan.destroy', $item->id_volunteers) }}" method="POST" class="d-inline">
                                                         @csrf
                                                         @method('DELETE')
-                                                        <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('Apakah Anda yakin ingin menghapus donasi ini?')">
+                                                        <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('Apakah Anda yakin ingin menghapus relawan ini?')">
                                                             <i class="fa-solid fa-trash-can"></i> Hapus
                                                         </button>
                                                     </form>
                                                 </td>
-
                                             </tr>
                                         @endforeach
                                     </tbody>

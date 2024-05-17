@@ -28,10 +28,10 @@ class AuthController extends Controller
         if ($user && Hash::check($credentials['password'], $user->password)) {
             if (Auth::attempt($credentials)) {
                 $request->session()->regenerate();
-                return redirect()->intended('/Admin');
+                return redirect()->intended('/Admin/dashboard');
             }
         } else {
-            return redirect('/login')->withErrors([
+            return redirect('admin/login')->withErrors([
                 'email' => 'Email atau kata sandi tidak valid.',
             ]);
         }

@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Admin;
+namespace App\Http\Controllers\Secretary;
 
 use App\Http\Controllers\Controller;
 use App\Models\Kemitraan;
@@ -12,12 +12,12 @@ class KemitraanController extends Controller
     {
         $kemitraan = Kemitraan::all();
 
-        return view('admin.kemitraan.index', compact('kemitraan'));
+        return view('Secretary.kemitraan.index', compact('kemitraan'));
     }
 
     public function create()
     {
-        return view('admin.kemitraan.create');
+        return view('Secretary.kemitraan.create');
     }
 
     public function store(Request $request)
@@ -35,17 +35,17 @@ class KemitraanController extends Controller
         if($request->hasFile('logo')){
             $request->file('logo')->move('logokemitraan/', $request->file('logo')->getClientOriginalName());
             $kemitraan->logo = $request->file('logo')->getClientOriginalName();
-            
+
         }
         $kemitraan->save();
-        return redirect()->route('admin.kemitraan.index')
+        return redirect()->route('Sekretaris.kemitraan.index')
             ->with('success', 'Kemitraan berhasil ditambahkan.');
     }
 
     public function edit($id)
     {
         $kemitraan = Kemitraan::findOrFail($id);
-        return view('admin.kemitraan.edit', compact('kemitraan'));
+        return view('Secretary.kemitraan.edit', compact('kemitraan'));
     }
 
     public function update(Request $request, $id)
@@ -69,14 +69,14 @@ class KemitraanController extends Controller
 
         $kemitraan->save();
 
-        return redirect()->route('admin.kemitraan.index')->with('success', 'Kemitraan berhasil diperbarui.');
+        return redirect()->route('Secretary.kemitraan.index')->with('success', 'Kemitraan berhasil diperbarui.');
     }
 
     public function destroy(Kemitraan $kemitraan)
     {
         $kemitraan->delete();
 
-        return redirect()->route('admin.kemitraan.index')
+        return redirect()->route('Secretary.kemitraan.index')
             ->with('success', 'Kemitraan berhasil dihapus.');
     }
 }

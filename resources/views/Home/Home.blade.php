@@ -97,7 +97,7 @@
             <div class="splide__track">
                 <ul class="splide__list">
                     @foreach ($sponsor as $item)
-                        <img src="{{ asset('potosponsor/' . $item->poto) }}" alt="" style="width:100px;"
+                        <img src="{{ asset('potosponsor/' . $item->photo) }}" alt="" style="width:100px;"
                             class="img-fluid">
                     @endforeach
                 </ul>

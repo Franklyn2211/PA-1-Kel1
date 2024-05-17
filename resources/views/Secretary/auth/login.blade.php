@@ -4,7 +4,8 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>{{ $title }} | Admin</title>
+    <title>{{ $title }} | Sekretaris</title>
+
 
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
     <link rel="stylesheet" href="/assets/plugins/fontawesome-free/css/all.min.css">
@@ -13,14 +14,18 @@
 </head>
 
 <body class="hold-transition login-page">
-
+    @if (session('success'))
+    <div class="alert alert-success">
+        {{ session('success') }}
+    </div>
+@endif
     <div class="login-box">
         <div class="card card-outline bg-dark">
             <div class="card-header text-center">
-                <h1><b>Admin YPA Rumah Damai</b></h1>
+                <h1><b>Sekretaris YPA Rumah Damai</b></h1>
             </div>
             <div class="card-body">
-                <form class="needs-validation" novalidate action="{{route('login')}}" method="POST">
+                <form class="needs-validation" novalidate action="{{route('Secretary.login')}}" method="POST">
                     @csrf
                     <div class="input-group mb-3">
                         <input type="email" name="email" class="form-control" placeholder="Email" required>
@@ -47,14 +52,12 @@
                     @endif
 
                     <div class="row">
-                        <div class="col-8">
-                            <div class="icheck-primary">
-                                <a href="/sekretaris/login">Login Sekretaris</a>
-                            </div>
-                        </div>
                         <div class="col-4">
                             <button type="submit" class="btn btn-primary btn-block">Sign In</button>
                         </div>
+                        <p class="mb-0">
+                            <a href="/sekretaris/register" class="text-center">Register Sekretaris</a>
+                        </p>
                     </div>
                 </form>
             </div>

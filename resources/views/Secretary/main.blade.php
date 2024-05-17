@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>@yield('title') | Admin</title>
+    <title>@yield('title') | Sekretaris</title>
     <link rel="icon" type="image/x-icon" href="{{ asset('assets/img/logo.png') }}" />
 
     <!-- Google Font: Source Sans Pro -->
@@ -38,7 +38,7 @@
                             class="fas fa-bars"></i></a>
                 </li>
                 <li class="nav-item d-none d-sm-inline-block">
-                    <a href="/Admin" class="nav-link">Dashboard</a>
+                    <a href="/sekretaris" class="nav-link">Dashboard</a>
                 </li>
             </ul>
         </nav>
@@ -47,10 +47,10 @@
         <!-- Main Sidebar Container -->
         <aside class="main-sidebar sidebar-dark-primary elevation-4">
             <!-- Brand Logo -->
-            <a href="/Admin" class="brand-link">
+            <a href="/sekretaris" class="brand-link">
                 <img src="{{ asset('assets/img/logo.png') }}" alt="Admin Logo"
                     class="brand-image img-circle elevation-3" style="opacity: .8">
-                <span class="brand-text font-weight-light">Admin</span>
+                <span class="brand-text font-weight-light">Sekretaris</span>
             </a>
 
             <!-- Sidebar -->
@@ -58,7 +58,13 @@
                 <!-- Sidebar user panel (optional) -->
                 <div class="user-panel mt-3 pb-3 mb-3 d-flex">
                     <div class="info">
-                        <a href="{{route('Admin.dashboard')}}" class="d-block">{{ auth()->user()->name }}</a>
+                        @if(auth()->check() && auth()->user() instanceof \App\Models\Secretary)
+                        @php
+                            $secretary = auth()->user();
+                        @endphp
+
+                        <a href="{{ route('Secretary.dashboard') }}" class="d-block">{{ $secretary->name }}</a>
+                    @endif
                     </div>
                 </div>
                 <!-- Sidebar Menu -->
@@ -68,130 +74,39 @@
                         <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
                         <li class="nav-item menu">
-                            <a href="{{route('Admin.dashboard')}}" class="nav-link">
+                            <a href="{{route('Secretary.dashboard')}}" class="nav-link">
                                 <i class="nav-icon fas fa-tachometer-alt"></i>
                                 <p>
                                     Dashboard
-                                    <i class="right fas fa-angle-left"></i>
                                 </p>
                             </a>
-                            <ul class="nav nav-treeview">
-                                <li class="nav-item">
-                                    <a href="{{ route('Admin.DataYayasan.index') }}" class="nav-link">
-                                        <i class="far fa-circle nav-icon"></i>
-                                        <p>Data Yayasan</p>
-                                    </a>
-                                </li>
-                                <li class="nav-item">
-                                    <a href="{{ route('Admin.Footer.index') }}" class="nav-link">
-                                        <i class="far fa-circle nav-icon"></i>
-                                        <p>Footer</p>
-                                    </a>
-                                </li>
-                                <li class="nav-item">
-                                    <a href="/Admin/home" class="nav-link">
-                                        <i class="far fa-circle nav-icon"></i>
-                                        <p>Home</p>
-                                    </a>
-                                </li>
-                                <li class="nav-item">
-                                    <a href="/Admin/gallery" class="nav-link">
-                                        <i class="far fa-circle nav-icon"></i>
-                                        <p>Galeri</p>
-                                    </a>
-                                </li>
-                                <li class="nav-item">
-                                    <a href="/Admin/anakdisabilitas" class="nav-link">
-                                        <i class="far fa-circle nav-icon"></i>
-                                        <p>Anak Spesial</p>
-                                    </a>
-                                </li>
-                                <li class="nav-item">
-                                    <a href="/Admin/anaksekolahinformal" class="nav-link">
-                                        <i class="far fa-circle nav-icon"></i>
-                                        <p>Siswa Informal</p>
-                                    </a>
-                                </li>
-                                <li class="nav-item">
-                                    <a href="/Admin/stafpegawai" class="nav-link">
-                                        <i class="far fa-circle nav-icon"></i>
-                                        <p>Staf dan Pegawai</p>
-                                    </a>
-                                </li>
-                            </ul>
                         </li>
                         <li class="nav-item">
-                            <a href="{{route('Admin.sekretaris.index')}}" class="nav-link">
+                            <a href="{{route('Secretary.relawan')}}" class="nav-link">
                                 <i class="nav-icon fas fa-user-friends"></i>
                                 <p>
-                                    Sekretaris
+                                    Relawan
                                 </p>
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="#" class="nav-link">
-                                <i class="nav-icon fas fa-newspaper"></i>
+                            <a href="{{route('Secretary.donate')}}" class="nav-link">
+                                <i class="nav-icon fas fa-donate"></i>
                                 <p>
-                                    Berita
-                                    <i class="fas fa-angle-left right"></i>
+                                    Donatur
                                 </p>
                             </a>
-                            <ul class="nav nav-treeview">
-                                <li class="nav-item">
-                                    <a href="{{ route('Admin.News.index') }}" class="nav-link">
-                                        <i class="far fa-circle nav-icon"></i>
-                                        <p>Berita</p>
-                                    </a>
-                                </li>
-                                <li class="nav-item">
-                                    <a href="{{ route('Admin.NewsCategory.index') }}" class="nav-link">
-                                        <i class="far fa-circle nav-icon"></i>
-                                        <p>Kategori Berita</p>
-                                    </a>
-                                </li>
-                            </ul>
                         </li>
                         <li class="nav-item">
-                            <a href="#" class="nav-link">
-                                <i class="nav-icon fas fa-bullhorn"></i>
+                            <a href="{{ route('Sekretaris.kemitraan.index') }}" class="nav-link">
+                                <i class="nav-icon fas fa-handshake"></i>
                                 <p>
-                                    Pengumuman
-                                    <i class="fas fa-angle-left right"></i>
-                                </p>
-                            </a>
-                            <ul class="nav nav-treeview">
-                                <li class="nav-item">
-                                    <a href="{{ route('Admin.Announcement.index') }}" class="nav-link">
-                                        <i class="far fa-circle nav-icon"></i>
-                                        <p>Pengumuman</p>
-                                    </a>
-                                </li>
-                                <li class="nav-item">
-                                    <a href="{{ route('Admin.AnnouncementCategory.index') }}" class="nav-link">
-                                        <i class="far fa-circle nav-icon"></i>
-                                        <p>Kategori Pengumuman</p>
-                                    </a>
-                                </li>
-                            </ul>
-                        </li>
-                        <li class="nav-item">
-                            <a href="/Admin/kontak" class="nav-link">
-                                <i class="nav-icon fas fa-message"></i>
-                                <p>
-                                    Pesan
+                                    Kemitraan
                                 </p>
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="/Admin/testimoni" class="nav-link">
-                                <i class="nav-icon fas fa-user"></i>
-                                <p>
-                                    Testimoni
-                                </p>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="{{ route('admin.change-password') }}">
+                            <a class="nav-link" href="{{ route('Sekretaris.change-password') }}">
                                 <i class="nav-icon fas fa-key"></i>
                                 Ganti Password
                             </a>

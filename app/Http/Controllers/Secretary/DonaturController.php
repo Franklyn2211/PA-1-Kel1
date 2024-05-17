@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Admin;
+namespace App\Http\Controllers\Secretary;
 
 use App\Http\Controllers\Controller;
 use App\Models\Donate;
@@ -11,7 +11,7 @@ class DonaturController extends Controller
     public function index()
     {
         $donates = Donate::all();
-        return view('Admin.donatur.donatur', compact('donates'));
+        return view('Secretary.donatur.donatur', compact('donates'));
     }
 
     public function destroy($id)

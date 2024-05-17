@@ -14,7 +14,7 @@
                 </div><!-- /.col -->
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-right">
-                        <li class="breadcrumb-item"><a href="/Admin">Dashboard</a></li>
+                        <li class="breadcrumb-item"><a href="/sekretaris">Dashboard</a></li>
                         <li class="breadcrumb-item"><a href="{{ route('admin.kemitraan.index') }}">Kemitraan</a></li>
                         <li class="breadcrumb-item active">@yield('title')</li>
                     </ol>

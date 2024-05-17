@@ -10,6 +10,7 @@ use App\Models\Donate;
 use App\Models\Kemitraan;
 use App\Models\Relawan;
 use App\Models\News;
+use App\Models\Secretary;
 use App\Models\Sponsor;
 use App\Models\StafPegawai;
 use App\Models\Testimoni;
@@ -29,6 +30,7 @@ class DashboardController extends Controller
         $totalanakdisabilitas = AnakDisabilitas::count();
         $totalSiswaInformal = AnakSekolahInformal::count();
         $totalstafpegawai = StafPegawai::count();
+        $totalSecretaries = Secretary::count();
         return view('Admin.dashboard', compact(
             'totalKemitraan',
             'totalBerita',
@@ -39,7 +41,8 @@ class DashboardController extends Controller
             'totalstafpegawai',
             'totalPengumuman',
             'totalSponsor',
-            'totalTestimoni'
+            'totalTestimoni',
+            'totalSecretaries',
         ));
     }
 }
