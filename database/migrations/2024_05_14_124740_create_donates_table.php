@@ -17,11 +17,14 @@ return new class extends Migration
             $table->string('Email');
             $table->string('Phone_number');
             $table->string('origin');
-            $table->decimal('donation_amount', 15, 2);
-            $table->binary('evidence_of_transfer')->nullable();
+            $table->decimal('donation_amount', 15, 2)->nullable();
+            $table->string('evidence_of_transfer')->nullable();
             $table->text('Description');
+            $table->string('category'); // Field to differentiate between money and goods donations
+            $table->string('goods_name')->nullable(); // Name of the goods donated
+            $table->integer('goods_quantity')->nullable(); // Quantity of the goods donated
             $table->string('created_by', 20)->default('adminYPA');
-            $table->string('updated_by', 20)->nullable(true);
+            $table->string('updated_by', 20)->nullable();
             $table->boolean('Active')->default(true);
             $table->timestamps();
         });

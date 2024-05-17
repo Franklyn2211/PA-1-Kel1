@@ -16,14 +16,17 @@ class DonateController extends Controller
 
     public function store(Request $request)
     {
-        // Validasi input
+        // Validasi input berdasarkan tipe donasi
         $request->validate([
             'Name' => 'required|string',
             'Email' => 'required|email',
             'Phone_number' => 'required|numeric',
             'origin' => 'required|string',
-            'donation_amount' => 'required|numeric',
-            'evidence_of_transfer' => 'nullable|file',
+            'category' => 'required|string|in:money,goods',
+            'donation_amount' => 'nullable|numeric|required_if:category,money',
+            'evidence_of_transfer' => 'nullable|file|required_if:category,money',
+            'goods_name' => 'nullable|string|required_if:category,goods',
+            'goods_quantity' => 'nullable|integer|required_if:category,goods',
             'Description' => 'required|string',
         ]);
 
@@ -33,8 +36,11 @@ class DonateController extends Controller
             'Name' => $request->get('Name'),
             'Email' => $request->get('Email'),
             'Phone_number' => $request->get('Phone_number'),
-            'origin' =>$request->get('origin'),
+            'origin' => $request->get('origin'),
+            'category' => $request->get('category'),
             'donation_amount' => $request->get('donation_amount'),
+            'goods_name' => $request->get('goods_name'),
+            'goods_quantity' => $request->get('goods_quantity'),
             'Description' => $request->get('Description'),
         ]);
 
@@ -47,7 +53,7 @@ class DonateController extends Controller
             $donates->evidence_of_transfer = $fileName;
         }
 
-        // Simpan data donasi
+        // Buat dan simpan data donasi
         $donates->save();
 
         // Redirect dengan pesan sukses

@@ -14,7 +14,7 @@ class Donate extends Model
     public $incrementing = false;
 
     protected $fillable = [
-        'id_donate', // tambahkan 'id_donate' ke dalam $fillable
+        'id_donate',
         'Name',
         'Email',
         'Phone_number',
@@ -22,6 +22,9 @@ class Donate extends Model
         'donation_amount',
         'evidence_of_transfer',
         'Description',
+        'category',
+        'goods_name',
+        'goods_quantity',
         'created_by',
         'updated_by',
         'Active',
