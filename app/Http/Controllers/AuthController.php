@@ -31,7 +31,7 @@ class AuthController extends Controller
                 return redirect()->intended('/Admin');
             }
         } else {
-            return redirect('admin/login')->withErrors([
+            return redirect('/login')->withErrors([
                 'email' => 'Email atau kata sandi tidak valid.',
             ]);
         }
