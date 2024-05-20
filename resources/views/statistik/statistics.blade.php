@@ -55,26 +55,29 @@
                             </table>
                         </div>
                         <div class="tab-pane fade" id="detail-relawan-tab-pane" role="tabpanel" aria-labelledby="detail-relawan-tab" tabindex="0">
-                            <table class="table table-striped table-bordered mt-3">
-                                <thead class="thead-light">
-                                    <tr>
-                                        <th scope="col" style="text-align: center">No</th>
-                                        <th scope="col" style="text-align: center">Nama</th>
-                                        <th scope="col" style="text-align: center">Tempat Mengajar</th>
-                                        <th scope="col" style="text-align: center">Asal Daerah</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    @foreach ($relawans as $relawan)
-                                    <tr>
-                                        <td style="text-align: center">{{ $loop->iteration }}</td>
-                                        <td style="text-align: center">{{ $relawan->name }}</td>
-                                        <td style="text-align: center">{{ $relawan->location }}</td>
-                                        <td style="text-align: center">{{ $relawan->origin }}</td>
-                                    </tr>
-                                    @endforeach
-                                </tbody>
-                            </table>
+                            <div id="relawanScrollable" data-bs-spy="scroll" data-bs-target="#detail-relawan-tab" data-bs-offset="0" tabindex="0" style="max-height: 400px; overflow-y: auto;">
+                                <table class="table table-striped table-bordered mt-3">
+                                    <thead class="thead-light">
+                                        <tr>
+                                            <th scope="col" style="text-align: center">No</th>
+                                            <th scope="col" style="text-align: center">Nama</th>
+                                            <th scope="col" style="text-align: center">Tempat Mengajar</th>
+                                            <th scope="col" style="text-align: center">Asal Daerah</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        @php $relawanIndex = 1; @endphp
+                                        @foreach ($relawans as $relawan)
+                                        <tr>
+                                            <td style="text-align: center">{{ $relawanIndex++ }}</td>
+                                            <td style="text-align: center">{{ $relawan->name }}</td>
+                                            <td style="text-align: center">{{ $relawan->location }}</td>
+                                            <td style="text-align: center">{{ $relawan->origin }}</td>
+                                        </tr>
+                                        @endforeach
+                                    </tbody>
+                                </table>
+                            </div>
                         </div>
                         <div class="tab-pane fade" id="detail-donatur-tab-pane" role="tabpanel" aria-labelledby="detail-donatur-tab" tabindex="0">
                             <ul class="nav nav-pills nav-fill mb-3" id="donaturTab" role="tablist">
@@ -87,62 +90,61 @@
                             </ul>
                             <div class="tab-content" id="donaturTabContent">
                                 <div class="tab-pane fade show active" id="donasi-uang-tab-pane" role="tabpanel" aria-labelledby="donasi-uang-tab">
-                                    <table class="table table-striped table-bordered mt-3">
-                                        <thead class="thead-light">
-                                            <tr>
-                                                <th scope="col" style="text-align: center">No</th>
-                                                <th scope="col" style="text-align: center">Nama</th>
-                                                <th scope="col" style="text-align: center">Jumlah Donasi</th>
-                                                <th scope="col" style="text-align: center">Asal Daerah</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            @php $moneyIndex = ($donasiUang->currentPage() - 1) * $donasiUang->perPage() + 1; @endphp
-                                            @foreach ($donasiUang as $donate)
-                                            <tr>
-                                                <td style="text-align: center">{{ $moneyIndex++ }}</td>
-                                                <td style="text-align: center">{{ $donate->Name }}</td>
-                                                <td style="text-align: center">Rp. {{ number_format($donate->donation_amount, 0) }}</td>
-                                                <td style="text-align: center">{{ $donate->origin }}</td>
-                                            </tr>
-                                            @endforeach
-                                        </tbody>
-                                    </table>
-                                    <div class="d-flex justify-content-end mt-3">
-                                        {{ $donasiUang->links('pagination::simple-bootstrap-5') }}
+                                    <div id="donasiUangScrollable" data-bs-spy="scroll" data-bs-target="#donasi-uang-tab" data-bs-offset="0" tabindex="0" style="max-height: 400px; overflow-y: auto;">
+                                        <table class="table table-striped table-bordered mt-3">
+                                            <thead class="thead-light">
+                                                <tr>
+                                                    <th scope="col" style="text-align: center">No</th>
+                                                    <th scope="col" style="text-align: center">Nama</th>
+                                                    <th scope="col" style="text-align: center">Jumlah Donasi</th>
+                                                    <th scope="col" style="text-align: center">Asal Daerah</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                @php $moneyIndex = 1; @endphp
+                                                @foreach ($donasiUang as $donate)
+                                                <tr>
+                                                    <td style="text-align: center">{{ $moneyIndex++ }}</td>
+                                                    <td style="text-align: center">{{ $donate->Name }}</td>
+                                                    <td style="text-align: center">Rp. {{ number_format($donate->donation_amount, 0) }}</td>
+                                                    <td style="text-align: center">{{ $donate->origin }}</td>
+                                                </tr>
+                                                @endforeach
+                                            </tbody>
+                                        </table>
                                     </div>
                                 </div>
                             
                                 <div class="tab-pane fade" id="donasi-barang-tab-pane" role="tabpanel" aria-labelledby="donasi-barang-tab">
-                                    <table class="table table-striped table-bordered mt-3">
-                                        <thead class="thead-light">
-                                            <tr>
-                                                <th scope="col" style="text-align: center">No</th>
-                                                <th scope="col" style="text-align: center">Nama</th>
-                                                <th scope="col" style="text-align: center">Nama Barang</th>
-                                                <th scope="col" style="text-align: center">Asal Daerah</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            @php $goodsIndex = ($donasiBarang->currentPage() - 1) * $donasiBarang->perPage() + 1; @endphp
-                                            @foreach ($donasiBarang as $donate)
-                                            <tr>
-                                                <td style="text-align: center">{{ $goodsIndex++ }}</td>
-                                                <td style="text-align: center">{{ $donate->Name }}</td>
-                                                <td style="text-align: center">{{ $donate->goods_name }}</td>
-                                                <td style="text-align: center">{{ $donate->origin }}</td>
-                                            </tr>
-                                            @endforeach
-                                        </tbody>
-                                    </table>
-                                    <div class="d-flex justify-content-end mt-3">
-                                        {{ $donasiBarang->links('pagination::simple-bootstrap-5') }}
+                                    <div id="donasiBarangScrollable" data-bs-spy="scroll" data-bs-target="#donasi-barang-tab" data-bs-offset="0" tabindex="0" style="max-height: 400px; overflow-y: auto;">
+                                        <table class="table table-striped table-bordered mt-3">
+                                            <thead class="thead-light">
+                                                <tr>
+                                                    <th scope="col" style="text-align: center">No</th>
+                                                    <th scope="col" style="text-align: center">Nama</th>
+                                                    <th scope="col" style="text-align: center">Nama Barang</th>
+                                                    <th scope="col" style="text-align: center">Asal Daerah</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                @php $goodsIndex = 1; @endphp
+                                                @foreach ($donasiBarang as $donate)
+                                                <tr>
+                                                    <td style="text-align: center">{{ $goodsIndex++ }}</td>
+                                                    <td style="text-align: center">{{ $donate->Name }}</td>
+                                                    <td style="text-align: center">{{ $donate->goods_name }}</td>
+                                                    <td style="text-align: center">{{ $donate->origin }}</td>
+                                                </tr>
+                                                @endforeach
+                                            </tbody>
+                                        </table>
                                     </div>
                                 </div>
                             </div>
-                            
-                            
-                        </div>                        
+                        </div>
+                        
+                        
+                                                
                     </div>
                 </div>
             </div>
