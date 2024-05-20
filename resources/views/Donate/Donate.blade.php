@@ -4,7 +4,7 @@
 
 <div class="container-fluid bg-breadcrumb" style="background-image: url('{{ asset('assets/img/hcarausel5.png') }}'); background-size: cover; background-position: center;">
     <div class="container text-center py-5" style="max-width: 900px;">
-        <h3 class="text-white display-3 mb-4 wow fadeInDown" data-wow-delay="0.1s">Ayo Donasi</h3>
+        <h3 class="text-white display-3 mb-4 wow fadeInDown fw-bolder" data-wow-delay="0.1s">Ayo Donasi</h3>
         <ol class="breadcrumb justify-content-center mb-0 wow fadeInDown" data-wow-delay="0.3s">
             <li class="breadcrumb-item"><a href="/">Home</a></li>
             <li class="breadcrumb-item active text-primary">Donasi</li>
@@ -18,6 +18,11 @@
             {{ session('success') }}
         </div>
     @endif
+    @if ($errors->any())
+    <div class="alert alert-danger">
+        {{ $errors->first() }}
+    </div>
+@endif
     <p>Kami mengundang Anda untuk berpartisipasi dalam upaya amal kami dengan memberikan dukungan melalui formulir donasi berikut ini:</p>
     <form method="POST" action="{{ route('donate.store') }}" enctype="multipart/form-data">
         @csrf
@@ -28,14 +33,14 @@
         <label for="Phone_number">No. Hp</label><br>
         <input type="tel" id="Phone_number" name="Phone_number" pattern="[0-9]{9,15}" required><br>
         <label for="origin">Asal Daerah</label><br>
-        <input type="text" id="origin" name="origin" required><br>
+        <input type="text" id="origin" name="origin" pattern="^[\pL\s\-]+$"required><br>
         <label for="category">Kategori Donasi</label><br>
         <select id="category" name="category" onchange="toggleDonationFields()" required>
             <option value="">Pilih Kategori</option>
             <option value="money">Donasi Uang</option>
             <option value="goods">Donasi Barang</option>
         </select><br>
-        
+
         <div id="money" style="display: none; width: 100%;">
             <label for="no-rekening">No. Rekening</label><br>
             <span><strong>1687210113<br>BNI a.n Pendidikan Anak Rumah Damai</strong></span><br><br>

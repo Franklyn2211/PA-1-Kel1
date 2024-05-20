@@ -62,6 +62,20 @@
                                                     @endif
                                                 </td>
                                                 <td>
+                                                    <form action="{{ route('Secretary.relawan.updateStatus', $item->id_volunteers) }}" method="POST">
+                                                        @csrf
+                                                        @method('PATCH')
+                                                        <button type="submit" class="btn btn-sm @if ($item->status == 1) btn-success @else btn-danger @endif">
+                                                            @if ($item->status == 1)
+                                                                Diterima
+                                                            @else
+                                                                Ditolak
+                                                            @endif
+                                                        </button>
+                                                        @error('status')
+                                                            <span class="text-danger mt-2">{{ $message }}</span>
+                                                        @enderror
+                                                    </form>
                                                     <a href="mailto:{{ $item->email }}?subject=Balasan%20untuk%20{{ $item->name }}" class="btn btn-primary btn-sm">
                                                         <i class="fa-solid fa-envelope"></i> Jawab
                                                     </a>

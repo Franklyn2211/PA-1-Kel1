@@ -57,7 +57,7 @@
             </div>
         </div>
     </header>
-    <section class="py-5" id="features">
+    {{-- <section class="py-5" id="features">
         <div class="container px-5 my-5">
             <div class="row gx-5">
                 <div class="col-lg-4 mb-5 mb-lg-0">
@@ -85,9 +85,9 @@
                 </div>
             </div>
         </div>
-    </section>
+    </section> --}}
     <section id="mitra-kampus" class="splide container p-5" aria-label="Beautiful Images">
-        <h1 class="text-center fw-bold">SPONSOR</h1>
+        <h1 class="text-center fw-bold">Kemitraan</h1>
         <div class="d-flex justify-content-center mb-4">
             <div id="underline-line-mitra" class="bg-primary"></div>
         </div>

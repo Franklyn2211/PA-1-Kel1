@@ -25,7 +25,7 @@ return new class extends Migration
             $table->integer('goods_quantity')->nullable(); // Quantity of the goods donated
             $table->string('created_by', 20)->default('adminYPA');
             $table->string('updated_by', 20)->nullable();
-            $table->boolean('Active')->default(true);
+            $table->tinyInteger('status')->default(0);
             $table->timestamps();
         });
     }

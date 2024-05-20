@@ -75,7 +75,7 @@
         </div>
         <!-- Contact cards-->
         <div style="width: 100%; height: 400px;">
-            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3167.4246115458776!2dYOUR_LONGITUDE!3dYOUR_LATITUDE!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3AYOUR_LOCATION!2sYOUR_LOCATION_NAME!5e0!3m2!1sen!2sus!4v1626734624991!5m2!1sen!2sus" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3986.467207240221!2d99.04191739999999!3d2.3484754000000003!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x302e05005ab9247d%3A0x6be48b888815ad1f!2sYayasan%20Pendidikan%20Anak%20Rumah%20Damai!5e0!3m2!1sid!2sid!4v1716043703539!5m2!1sid!2sid" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
         </div>
     </div>
 </section>

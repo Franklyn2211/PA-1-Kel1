@@ -28,7 +28,7 @@ class AuthController extends Controller
         if ($user && Hash::check($credentials['password'], $user->password)) {
             if (Auth::attempt($credentials)) {
                 $request->session()->regenerate();
-                return redirect()->intended('/Admin/dashboard');
+                return redirect()->intended('/Admin');
             }
         } else {
             return redirect('admin/login')->withErrors([

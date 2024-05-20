@@ -23,7 +23,7 @@ return new class extends Migration
             $table->timestamps();
             $table->string('created_by', 20)->default('adminYPA');
             $table->string('updated_by', 20)->nullable(true);
-            $table->boolean('active')->default(true);
+            $table->tinyInteger('status')->default(0);
         });
     }
 

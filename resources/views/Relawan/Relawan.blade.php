@@ -6,7 +6,7 @@
     <div class="container-fluid bg-breadcrumb"
         style="background-image: url('{{ asset('assets/img/hcarausel4.png') }}'); background-size: cover; background-position: center;">
         <div class="container text-center py-5" style="max-width: 900px;">
-            <h3 class="text-white display-3 mb-4 wow fadeInDown" data-wow-delay="0.1s">Relawan</h1>
+            <h3 class="text-white display-3 mb-4 wow fadeInDown fw-bolder" data-wow-delay="0.1s">Relawan</h1>
                 <ol class="breadcrumb justify-content-center mb-0 wow fadeInDown" data-wow-delay="0.3s">
                     <li class="breadcrumb-item"><a href="/">Home</a></li>
                     <li class="breadcrumb-item active text-primary">Relawan</li>
@@ -39,7 +39,7 @@
             <label for="date_of_birth">Tanggal Lahir</label><br>
             <input type="date" id="date_of_birth" name="date_of_birth"><br>
             <label for="origin">Asal Daerah</label><br>
-            <input type="text" id="origin" name="origin"><br>
+            <input type="text" id="origin" name="origin" pattern="^[\pL\s\-]+$"><br>
             <label for="location">Lokasi yang dipilih*</label><br>
             <select id="location" name="location">
                 <option value="Wilayah I, Desa Lumban Silintong, Kecamatan Balige, Kabupaten Toba">Wilayah I, Desa Lumban
@@ -49,7 +49,7 @@
             </select><br>
 
             <label for="cv">Unggah CV</label><br>
-            <input type="file" id="cv" name="cv" required><br>
+            <input type="file" id="cv" name="cv" accept=".pdf,.doc,.docx" required><br>
             <input type="submit" value="Submit">
         </form>
     </div>

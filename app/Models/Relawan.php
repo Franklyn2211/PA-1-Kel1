@@ -25,7 +25,7 @@ class Relawan extends Model
         'cv',
         'created_by',
         'updated_by',
-        'active',
+        'status',
     ];
 
     protected $casts = [

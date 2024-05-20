@@ -13,14 +13,14 @@ class StatistikController extends Controller
     {
         $totalAnakDisabilitas = AnakDisabilitas::count();
         $totalAnakSekolahInformal = AnakSekolahInformal::count();
-        $totalDonatur = Donate::count();
-        $totalrelawans = Relawan::count();
+        $totalDonatur = Donate::where('status', 1)->count();
+        $totalrelawans = Relawan::where('status', 1)->count();
 
         // Mengambil data donasi uang dan donasi barang secara terpisah
-        $donasiUang = Donate::where('category', 'money')->paginate(5, ['*'], 'money_page');
-        $donasiBarang = Donate::where('category', 'goods')->paginate(5, ['*'], 'goods_page');
+        $donasiUang = Donate::where('category', 'money')->where('status', 1)->paginate(5, ['*'], 'money_page');
+        $donasiBarang = Donate::where('category', 'goods')->where('status', 1)->paginate(5, ['*'], 'goods_page');
 
-        $relawans = Relawan::all();
+        $relawans = Relawan::where('status', 1)->get();
 
         return view('statistik.statistics', compact('totalAnakDisabilitas', 'totalAnakSekolahInformal', 'totalDonatur', 'totalrelawans', 'relawans', 'donasiUang', 'donasiBarang'));
     }

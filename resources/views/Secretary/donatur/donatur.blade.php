@@ -12,8 +12,8 @@
                 </div><!-- /.col -->
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-right">
-                        <li class="breadcrumb-item"><a href="/Sekretaris">Dashboard</a></li>
-                        <li class="breadcrumb-item active">@yield('title')</li>
+                        <li class="breadcrumb-donate"><a href="/sekretaris">Dashboard</a></li>
+                        <li class="breadcrumb-donate active">@yield('title')</li>
                     </ol>
                 </div><!-- /.col -->
             </div><!-- /.row -->
@@ -31,10 +31,10 @@
                     <div class="card">
                         <div class="card-header">
                             <ul class="nav nav-tabs card-header-tabs" id="donationCategory" role="tablist">
-                                <li class="nav-item">
+                                <li class="nav-donate">
                                     <a class="nav-link active" id="donation-money-tab" data-toggle="tab" href="#donation-money" role="tab" aria-controls="donation-money" aria-selected="true">Donasi Uang</a>
                                 </li>
-                                <li class="nav-item">
+                                <li class="nav-donate">
                                     <a class="nav-link" id="donation-goods-tab" data-toggle="tab" href="#donation-goods" role="tab" aria-controls="donation-goods" aria-selected="false">Donasi Barang</a>
                                 </li>
                             </ul>
@@ -77,6 +77,20 @@
                                                         </td>
                                                         <td>{{ $donate->Description }}</td>
                                                         <td>
+                                                            <form action="{{ route('Secretary.donate.updateStatus', $donate->id_donate) }}" method="POST">
+                                                                @csrf
+                                                                @method('PATCH')
+                                                                <button type="submit" class="btn btn-sm @if ($donate->status == 1) btn-success @else btn-danger @endif">
+                                                                    @if ($donate->status == 1)
+                                                                        Diterima
+                                                                    @else
+                                                                        Ditolak
+                                                                    @endif
+                                                                </button>
+                                                                @error('status')
+                                                                    <span class="text-danger mt-2">{{ $message }}</span>
+                                                                @enderror
+                                                            </form>
                                                             <a href="mailto:{{ $donate->Email }}?subject=Balasan%20untuk%20{{ $donate->Name }}" class="btn btn-primary btn-sm">
                                                                 <i class="fa-solid fa-envelope"></i> Jawab
                                                             </a>
@@ -124,6 +138,20 @@
                                                         <td>{{ $donate->goods_quantity }}</td>
                                                         <td>{{ $donate->Description }}</td>
                                                         <td>
+                                                            <form action="{{ route('Secretary.donate.updateStatus', $donate->id_donate) }}" method="POST">
+                                                                @csrf
+                                                                @method('PATCH')
+                                                                <button type="submit" class="btn btn-sm @if ($donate->status == 1) btn-success @else btn-danger @endif">
+                                                                    @if ($donate->status == 1)
+                                                                        Diterima
+                                                                    @else
+                                                                        Ditolak
+                                                                    @endif
+                                                                </button>
+                                                                @error('status')
+                                                                    <span class="text-danger mt-2">{{ $message }}</span>
+                                                                @enderror
+                                                            </form>
                                                             <a href="mailto:{{ $donate->Email }}?subject=Balasan%20untuk%20{{ $donate->Name }}" class="btn btn-primary btn-sm">
                                                                 <i class="fa-solid fa-envelope"></i> Jawab
                                                             </a>

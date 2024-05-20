@@ -20,11 +20,13 @@ class RelawanController extends Controller
             'email' => 'required|email|unique:volunteers,email', // Update table name in validation rules
             'phone_number' => 'required|numeric',
             'date_of_birth' => 'required|date',
-            'origin' => 'required|string',
+            'origin' => 'required|string|regex:/^[\pL\s\-]+$/u',
             'location' => 'required|string',
-            'cv' => 'nullable|file',
+            'cv' => 'nullable|file|mimes:pdf,doc,docx',
         ],[
             'email.unique' => 'Anda sudah pernah mengisi form berikut. Tolong gunakan email yang lain.',
+            'origin.regex' => 'Kolom asal daerah hanya boleh berisi huruf dan spasi.',
+            'cv.mimes' => 'CV harus berupa file dengan format: pdf, doc, atau docx.',
         ]);
 
         $existingRelawan = Relawan::where('email', $request->get('email'))->first();
@@ -43,6 +45,7 @@ class RelawanController extends Controller
             'date_of_birth' => $request->get('date_of_birth'),
             'origin' => $request->get('origin'),
             'location' => $request->get('location'),
+            'status' => 0,
         ]);
 
 

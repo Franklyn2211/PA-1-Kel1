@@ -202,9 +202,11 @@ Route::prefix('sekretaris')->group(function () {
         Route::get('/', [App\Http\Controllers\Secretary\DashboardController::class, 'index'])->name('Secretary.dashboard');
 
     Route::get('relawan', [SecretaryRelawanController::class, 'index'])->name('Secretary.relawan');
+    Route::patch('/relawan/{id}/update-status', [SecretaryRelawanController::class, 'updateStatus'])->name('Secretary.relawan.updateStatus');
     Route::delete('relawan/{relawan}', [SecretaryRelawanController::class, 'destroy'])->name('relawan.destroy');
 
     Route::get('donatur', [DonaturController::class, 'index'])->name('Secretary.donate');
+    Route::patch('/donatur/{id}/update-status', [DonaturController::class, 'updateStatus'])->name('Secretary.donate.updateStatus');
     Route::delete('donatur/{donate}', [DonaturController::class, 'destroy'])->name('donate.destroy');
 
     Route::resource('kemitraan', KemitraanController::class);
@@ -239,7 +241,7 @@ Route::get('/news/search', [NewsController::class, 'search'])->name('news.search
 Route::resource('Donate', DonateController::class)->only('index', 'store');
 Route::resource('Partnership', PartnershipController::class)->only('index');
 Route::resource('Contact', KontakController::class)->only('index', 'store');
-Route::resource('Statistics', StatistikController::class)->only('index');
+Route::resource('Statistics', StatistikController::class)->only('index', 'donasiDetail');
 Route::resource('Sponsor', SponsorsController::class)->only('index');
 Route::resource('Relawan', RelawanController::class)->only('index', 'store');
 

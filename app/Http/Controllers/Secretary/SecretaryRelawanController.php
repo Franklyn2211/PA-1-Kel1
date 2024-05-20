@@ -16,6 +16,16 @@ public function index()
 }
 
 
+public function updateStatus($id)
+    {
+        $relawan = Relawan::findOrFail($id);
+
+        // Toggle status: if 1, set to 0, and if 0, set to 1
+        $relawan->status = $relawan->status == 1 ? 0 : 1;
+        $relawan->save();
+
+        return back()->with('success', 'Status relawan berhasil diperbarui.');
+    }
 
 public function destroy($id)
 {

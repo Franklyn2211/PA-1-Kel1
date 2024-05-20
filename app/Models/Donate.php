@@ -27,7 +27,7 @@ class Donate extends Model
         'goods_quantity',
         'created_by',
         'updated_by',
-        'Active',
+        'status',
     ];
 
     protected $casts = [

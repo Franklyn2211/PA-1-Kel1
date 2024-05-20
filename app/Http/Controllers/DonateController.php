@@ -9,9 +9,7 @@ class DonateController extends Controller
 {
     public function index()
     {
-        $donates = Donate::all();
-
-        return view('Donate.Donate', compact('donates'));
+        return view('Donate.Donate');
     }
 
     public function store(Request $request)
@@ -21,13 +19,15 @@ class DonateController extends Controller
             'Name' => 'required|string',
             'Email' => 'required|email',
             'Phone_number' => 'required|numeric',
-            'origin' => 'required|string',
+            'origin' => 'required|string|regex:/^[\pL\s\-]+$/u',
             'category' => 'required|string|in:money,goods',
             'donation_amount' => 'nullable|numeric|required_if:category,money',
             'evidence_of_transfer' => 'nullable|file|required_if:category,money',
             'goods_name' => 'nullable|string|required_if:category,goods',
             'goods_quantity' => 'nullable|integer|required_if:category,goods',
             'Description' => 'required|string',
+        ],[
+            'origin.regex' => 'Kolom asal daerah hanya boleh berisi huruf dan spasi.',
         ]);
 
         // Simpan data donasi
@@ -42,6 +42,7 @@ class DonateController extends Controller
             'goods_name' => $request->get('goods_name'),
             'goods_quantity' => $request->get('goods_quantity'),
             'Description' => $request->get('Description'),
+            'status' => 0,
         ]);
 
         // Upload bukti transfer jika ada
@@ -57,6 +58,6 @@ class DonateController extends Controller
         $donates->save();
 
         // Redirect dengan pesan sukses
-        return redirect()->back()->with('success', 'Donasi berhasil dikirim.');
+        return redirect()->back()->with('success', 'Terimakasih sudah memberikan donasi😁. Tuhan memberkati.');
     }
 }

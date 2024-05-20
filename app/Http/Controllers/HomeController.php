@@ -28,7 +28,7 @@ class HomeController extends Controller
         $sponsors = Sponsor::all();
 
         //statistik
-        $totalDonatur = Donate::count();
+        $totalDonatur = Donate::where('status', 1)->count();
         $totalSponsor = Sponsor::count();
         $totalAnakDisabilitas = AnakDisabilitas::count();
         $totalSiswaInformal = AnakSekolahInformal::count();
