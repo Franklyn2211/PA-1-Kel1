@@ -17,8 +17,8 @@ class StatistikController extends Controller
         $totalrelawans = Relawan::count();
 
         // Mengambil data donasi uang dan donasi barang secara terpisah
-        $donasiUang = Donate::where('category', 'money')->paginate(5, ['*'], 'money_page');
-        $donasiBarang = Donate::where('category', 'goods')->paginate(5, ['*'], 'goods_page');
+        $donasiUang = Donate::where('category', 'money')->get();
+        $donasiBarang = Donate::where('category', 'goods')->get();
 
         $relawans = Relawan::all();
 
