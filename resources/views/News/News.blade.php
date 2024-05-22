@@ -22,7 +22,7 @@
                         </div>
                         <div class="col-md-7 animate-box">
                             <a href="{{ route('news.show', ['id_news' => $berita->id_news]) }}" class="fh5co_magna py-2">{{ $berita->title }}</a>
-                            <a href="{{ route('news.show', ['id_news' => $berita->id_news]) }}" class="fh5co_mini_time py-3"> {{ $berita->created_by }} - {{ $berita->date }} </a>
+                        <div><a href="{{ route('news.show', ['id_news' => $berita->id_news]) }}" class="fh5co_mini_time py-3"> {{ $berita->created_by }} - {{ $berita->date }} </a></div>
                             <div class="fh5co_consectetur">
                                 {{-- Batasi deskripsi hanya 4 baris --}}
                                 <?php
