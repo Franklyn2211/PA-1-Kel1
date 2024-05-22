@@ -83,6 +83,7 @@
                                                     </div>
                                                     <div class="form-group text-center">
                                                         <button type="submit" class="btn btn-primary">Simpan</button>
+                                                        <a href="{{ route('Admin.News.index') }}" class="btn btn-warning" id="btn-batal">Batal</a>
                                                     </div>
                                                 </div>
                                             </div>
