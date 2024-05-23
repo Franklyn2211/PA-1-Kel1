@@ -11,8 +11,9 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('program', function (Blueprint $table) {
-            $table->string('id_program')->primary();
+        Schema::create('programs', function (Blueprint $table) {
+            $table->string('id_programs')->primary();
+            $table->string('program_title');
             $table->text('Description');
             $table->string('created_by', 20)->default('adminYPA');
             $table->string('updated_by', 20)->nullable(true);
@@ -26,6 +27,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('program');
+        Schema::dropIfExists('programs');
     }
 };
