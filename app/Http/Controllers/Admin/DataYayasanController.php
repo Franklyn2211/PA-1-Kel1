@@ -12,7 +12,8 @@ class DataYayasanController extends Controller
     public function index()
     {
         $dataYayasan = Data_yayasan::all();
-        return view('Admin.DataYayasan.index', compact('dataYayasan'));
+        $dataYayasanExists = $dataYayasan->isNotEmpty();
+        return view('Admin.DataYayasan.index', compact('dataYayasan', 'dataYayasanExists'));
     }
 
     public function create()

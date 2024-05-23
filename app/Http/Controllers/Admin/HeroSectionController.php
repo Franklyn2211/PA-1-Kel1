@@ -11,9 +11,8 @@ class HeroSectionController extends Controller
     {
         // Retrieve a single hero section
         $heroSection = Hero_Section::all();
-
-        // Return the view with hero section data
-        return view('Admin.HeroSection.index', compact('heroSection'));
+        $heroSectionExists = $heroSection->isNotEmpty();
+        return view('Admin.HeroSection.index', compact('heroSection', 'heroSectionExists'));
     }
 
     public function create(){

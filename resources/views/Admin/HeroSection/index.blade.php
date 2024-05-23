@@ -34,9 +34,11 @@
                 <div class="col-12">
                     <div class="card">
                         <div class="card-header">
+                            @if(!$heroSectionExists)
                             <div class="text-right">
                                 <a href="{{ route('Admin.HeroSection.create') }}" class="btn btn-primary"><i class="fa-solid fa-plus"></i> Tambah Berita</a>
                             </div>
+                            @endif
                         </div>
                         <!-- /.card-header -->
                         <div class="card-body">
