@@ -34,7 +34,7 @@
                                 </div>
                                 <div class="form-group">
                                     <label for="description">Deskripsi</label>
-                                    <textarea class="form-control" id="description" name="description" rows="10" required>{!! $galleries->description ?? '' !!}</textarea>
+                                    <textarea class="form-control" id="summernote" name="description" rows="10" required>{!! $galleries->description ?? '' !!}</textarea>
                                 </div>
                                 <div class="form-group">
                                     <label for="photo">Foto</label>

@@ -17,6 +17,11 @@
                         </ol>
                     </div><!-- /.col -->
                 </div><!-- /.row -->
+                @if (session('success'))
+                    <div class="alert alert-success">
+                        {{ session('success') }}
+                    </div>
+                @endif
             </div><!-- /.container-fluid -->
         </div>
         <!-- /.content-header -->
@@ -36,7 +41,7 @@
                             <div class="icon">
                                 <i class="fas fa-user-friends"></i>
                             </div>
-                            <a href="{{route('Secretary.relawan')}}" class="small-box-footer">More info <i
+                            <a href="{{ route('Secretary.relawan') }}" class="small-box-footer">More info <i
                                     class="fas fa-arrow-circle-right"></i></a>
                         </div>
                     </div>
@@ -45,13 +50,28 @@
                         <!-- small box -->
                         <div class="small-box bg-warning">
                             <div class="inner">
-                                <h3>{{ $totalDonatur }}</h3>
-                                <p>Donatur</p>
+                                <h3>{{ $totalDonasiUang }}</h3>
+                                <p>Donasi Uang</p>
                             </div>
                             <div class="icon">
                                 <i class="fas fa-donate"></i>
                             </div>
-                            <a href="{{route('Secretary.donate')}}" class="small-box-footer">More info <i
+                            <a href="{{ route('Secretary.donate') }}" class="small-box-footer">More info <i
+                                    class="fas fa-arrow-circle-right"></i></a>
+                        </div>
+                    </div>
+                    <!-- ./col -->
+                    <div class="col-lg-3 col-6">
+                        <!-- small box -->
+                        <div class="small-box bg-warning">
+                            <div class="inner">
+                                <h3>{{ $totalDonasiBarang }}</h3>
+                                <p>Donasi Barang</p>
+                            </div>
+                            <div class="icon">
+                                <i class="fas fa-donate"></i>
+                            </div>
+                            <a href="{{ route('Secretary.donate') }}" class="small-box-footer">More info <i
                                     class="fas fa-arrow-circle-right"></i></a>
                         </div>
                     </div>
@@ -60,7 +80,7 @@
                         <!-- small box -->
                         <div class="small-box bg-primary">
                             <div class="inner">
-                                <h3>{{$totalKemitraan}}</h3>
+                                <h3>{{ $totalKemitraan }}</h3>
 
                                 <p>Kemitraan</p>
                             </div>

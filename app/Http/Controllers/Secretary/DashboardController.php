@@ -15,11 +15,13 @@ class DashboardController extends Controller
 
         $secretaries = Auth::guard('secretaries')->id();
         $totalVolunteer = Relawan::count(); // Mengambil jumlah total relawan dari database
-        $totalDonatur = Donate::count();
+        $totalDonasiUang = Donate::where('category', 'money')->count();
+        $totalDonasiBarang = Donate::where('category', 'goods')->count();
         $totalKemitraan = Kemitraan::count();
         return view('Secretary.dashboard', compact(
             'totalVolunteer',
-            'totalDonatur',
+            'totalDonasiUang',
+            'totalDonasiBarang',
             'totalKemitraan',
         ));
     }

@@ -17,6 +17,11 @@
                         </ol>
                     </div><!-- /.col -->
                 </div><!-- /.row -->
+                @if (session('success'))
+                <div class="alert alert-success">
+                    {{ session('success') }}
+                </div>
+            @endif
             </div><!-- /.container-fluid -->
         </div>
         <!-- /.content-header -->

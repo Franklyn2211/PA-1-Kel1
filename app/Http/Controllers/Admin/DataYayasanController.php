@@ -29,6 +29,11 @@ class DataYayasanController extends Controller
             'misi' => 'required',
         ]);
 
+        $existingData = Data_yayasan::where('foundation_name', $request->get('foundation_name'))->first();
+    if ($existingData) {
+        return redirect()->route('Admin.DataYayasan.index')->with('error', 'Data Yayasan sudah ada!');
+    }
+
         $dataYayasan = new Data_yayasan([
             'id_foundation_data' => Data_yayasan::generateNextId(),
             'foundation_name' => $request->get('foundation_name'),

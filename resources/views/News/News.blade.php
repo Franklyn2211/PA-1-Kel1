@@ -12,7 +12,7 @@
                 </div>
                 <div class="row pb-4">
                     @foreach ($news as $berita)
-                        <div class="col-md-5">
+                        <div class="col-md-5 mb-2">
                             <div class="fh5co_hover_news_img">
                                 <div class="fh5co_news_img">
                                     <img src="{{ asset('storage/app/public/photo/' . $berita->photo) }}" alt="{{ $berita->title }}"/>
@@ -62,7 +62,7 @@
                 </div>
                 <div class="row pb-3">
                     @foreach ($popularNews as $berita)
-                        <div class="col-5 align-self-center">
+                        <div class="col-5 mb-2 align-self-center">
                             <a href="{{ route('news.show', ['id_news' => $berita->id_news]) }}"> <!-- Tautan di sekitar gambar -->
                                 <img src="{{ asset('storage/app/public/photo/' . $berita->photo) }}" alt="{{ $berita->title }}" class="fh5co_most_trading"/>
                             </a>

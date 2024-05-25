@@ -1,4 +1,4 @@
-@extends('admin.main')
+@extends('Secretary.main')
 
 @section('title', 'Tambah Kemitraan')
 
@@ -15,7 +15,7 @@
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-right">
                         <li class="breadcrumb-item"><a href="/sekretaris">Dashboard</a></li>
-                        <li class="breadcrumb-item"><a href="{{ route('admin.kemitraan.index') }}">Kemitraan</a></li>
+                        <li class="breadcrumb-item"><a href="{{ route('Sekretaris.kemitraan.index') }}">Kemitraan</a></li>
                         <li class="breadcrumb-item active">@yield('title')</li>
                     </ol>
                 </div><!-- /.col -->
@@ -35,7 +35,7 @@
                         </div>
                         <!-- /.card-header -->
                         <div class="card-body">
-                            <form action="{{ route('admin.kemitraan.store') }}" method="POST" enctype="multipart/form-data">
+                            <form action="{{ route('Sekretaris.kemitraan.store') }}" method="POST" enctype="multipart/form-data">
                                 @csrf
                                 <div class="form-group">
                                     <label for="name">Nama Kemitraan:</label>

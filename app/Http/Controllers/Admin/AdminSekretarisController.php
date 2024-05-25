@@ -21,4 +21,10 @@ class AdminSekretarisController extends Controller
         $statusMessage = $secretary->status ? 'approved' : 'rejected';
         return redirect()->back()->with('message', $secretary->name . ' status has been ' . $statusMessage . ' successfully.');
     }
+
+    public function destroy($id){
+        $secretary = Secretary::findOrFail($id);
+        $secretary->delete();
+        return redirect()->route('Admin.sekretaris.index')->with('success', 'Sekretaris berhasil dihapus');
+    }
 }

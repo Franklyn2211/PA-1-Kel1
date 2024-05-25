@@ -83,7 +83,7 @@ class SecretaryAuthController extends Controller
         $secretary->password = Hash::make($request->input('new_password'));
         $secretary->save();
 
-        return redirect()->route('Secretary.dashboard')->with('success', 'Password updated successfully.');
+        return redirect()->route('Secretary.dashboard')->with('success', 'Password berhasil di ganti.');
     }
 
 

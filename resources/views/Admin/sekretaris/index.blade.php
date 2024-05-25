@@ -53,6 +53,11 @@
                                                             <span class="text-danger mt-2">{{ $message }}</span>
                                                         @enderror
                                                     </form>
+                                                    <form action="{{route('Admin.sekretaris.destroy', $sekretaris->id)}}" method="POST" class="d-inline">
+                                                        @csrf
+                                                        @method('DELETE')
+                                                        <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('Apakah Anda yakin ingin menghapus Sekretaris ini?')"><i class="fa-solid fa-trash-can"></i> Hapus</button>
+                                                    </form>
                                                 </td>
                                             </tr>
                                         @endforeach

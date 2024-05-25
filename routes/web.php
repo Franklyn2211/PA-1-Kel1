@@ -146,7 +146,7 @@ Route::prefix('Admin')->middleware('auth')->group(function () {
     Route::get('anaksekolahinformal', [AnakSekolahInformalController::class, 'index'])->name('admin.anaksekolahinformal.index');
     Route::get('anaksekolahinformal/create', [AnakSekolahInformalController::class, 'create'])->name('admin.anaksekolahinformal.create');
     Route::post('anaksekolahinformal/store', [AnakSekolahInformalController::class, 'store'])->name('admin.anaksekolahinformal.store');
-    Route::post('anaksekolahinformal/{anaksekolahinformal}', [AnakSekolahInformalController::class, 'show'])->name('admin.anaksekolahinformal.show');
+    Route::get('anaksekolahinformal/{anaksekolahinformal}', [AnakSekolahInformalController::class, 'show'])->name('admin.anaksekolahinformal.show');
     Route::get('anaksekolahinformal/{anaksekolahinformal}/edit', [AnakSekolahInformalController::class, 'edit'])->name('admin.anaksekolahinformal.edit');
     Route::post('anaksekolahinformal/{anaksekolahinformal}', [AnakSekolahInformalController::class, 'update'])->name('admin.anaksekolahinformal.update');
     Route::delete('anaksekolahinformal/{anaksekolahinformal}', [AnakSekolahInformalController::class, 'destroy'])->name('admin.anaksekolahinformal.destroy');
@@ -160,21 +160,6 @@ Route::prefix('Admin')->middleware('auth')->group(function () {
     Route::post('stafpegawai/{stafpegawai}', [StafPegawaiController::class, 'update'])->name('admin.stafpegawai.update');
     Route::delete('stafpegawai/{stafpegawai}', [StafPegawaiController::class, 'destroy'])->name('admin.stafpegawai.destroy');
 
-    Route::resource('sponsor', SponsorController::class);
-    Route::get('sponsor', [SponsorController::class, 'index'])->name('admin.sponsor.index');
-    Route::get('sponsor/create', [SponsorController::class, 'create'])->name('admin.sponsor.create');
-    Route::post('sponsor', [SponsorController::class, 'store'])->name('admin.sponsor.store');
-    Route::get('sponsor/{sponsor}/edit', [SponsorController::class, 'edit'])->name('admin.sponsor.edit');
-    Route::post('sponsor/{sponsor}', [SponsorController::class, 'update'])->name('admin.sponsor.update');
-    Route::delete('sponsor/{sponsor}', [SponsorController::class, 'destroy'])->name('admin.sponsor.destroy');
-
-    Route::resource('kemitraan', KemitraanController::class);
-    Route::get('kemitraan', [KemitraanController::class, 'index'])->name('admin.kemitraan.index');
-    Route::get('kemitraan/create', [KemitraanController::class, 'create'])->name('admin.kemitraan.create');
-    Route::post('kemitraan', [KemitraanController::class, 'store'])->name('admin.kemitraan.store');
-    Route::get('kemitraan/{kemitraan}/edit', [KemitraanController::class, 'edit'])->name('admin.kemitraan.edit');
-    Route::post('kemitraan/{kemitraan}', [KemitraanController::class, 'update'])->name('admin.kemitraan.update');
-    Route::delete('kemitraan/{kemitraan}', [KemitraanController::class, 'destroy'])->name('admin.kemitraan.destroy');
 
     Route::resource('testimoni', TestimoniesController::class);
     Route::get('testimoni', [TestimoniesController::class, 'index'])->name('admin.testimoni.index');
@@ -193,6 +178,7 @@ Route::prefix('Admin')->middleware('auth')->group(function () {
 
     Route::get('/sekretaris', [AdminSekretarisController::class, 'index'])->name('Admin.sekretaris.index');
     Route::patch('/sekretaris/{id}/update-status', [AdminSekretarisController::class, 'updateStatus'])->name('updateStatus');
+    Route::delete('/sekretaris/{id}', [AdminSekretarisController::class, 'destroy'])->name('Admin.sekretaris.destroy');
 
 });
 

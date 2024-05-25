@@ -30,7 +30,7 @@
                     <div class="card">
                         <div class="card-header">
                             <div class="text-right">
-                                <a href="{{ route('Admin.Announcement.create') }}" class="btn btn-primary"><i class="fa-solid fa-plus"></i> Tambah Berita</a>
+                                <a href="{{ route('Admin.Announcement.create') }}" class="btn btn-primary"><i class="fa-solid fa-plus"></i> Tambah Pengumuman</a>
                             </div>
                         </div>
                         <!-- /.card-header -->

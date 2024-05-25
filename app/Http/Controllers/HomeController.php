@@ -5,6 +5,7 @@ use App\Models\AnakDisabilitas;
 use App\Models\AnakSekolahInformal;
 use App\Models\Announcement;
 use App\Models\Donate;
+use App\Models\Kemitraan;
 use App\Models\News;
 use App\Models\Testimoni;
 use Illuminate\Http\Request;
@@ -24,15 +25,14 @@ class HomeController extends Controller
         $galleries = Gallery::all();
         $news = News::all();
         $announcement = Announcement::all();
-        $sponsor = Sponsor::all();
+        $kemitraan = Kemitraan::all();
         $sponsors = Sponsor::all();
 
         //statistik
         $totalDonatur = Donate::where('status', 1)->count();
-        $totalSponsor = Sponsor::count();
+        $totalKemitraan = Kemitraan::count();
         $totalAnakDisabilitas = AnakDisabilitas::count();
         $totalSiswaInformal = AnakSekolahInformal::count();
-        $totalStaf = StafPegawai::count();
         $testimoni = Testimoni::all();
 
         return view('Home.Home', compact(
@@ -40,12 +40,11 @@ class HomeController extends Controller
             'galleries',
             'news',
             'announcement',
-            'sponsor',
+            'kemitraan',
             'totalDonatur',
-            'totalSponsor',
+            'totalKemitraan',
             'totalAnakDisabilitas',
             'totalSiswaInformal',
-            'totalStaf',
             'testimoni',
             'sponsors'
         ));
