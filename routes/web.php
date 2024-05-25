@@ -9,6 +9,7 @@ use App\Http\Controllers\RelawanController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\DonateController;
+use App\Http\Controllers\ProgramsController;
 use App\Http\Controllers\SponsorsController;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\NewsController;
@@ -251,7 +252,7 @@ Route::resource('Partnership', PartnershipController::class)->only('index');
 Route::resource('Contact', KontakController::class)->only('index', 'store');
 Route::resource('Statistics', StatistikController::class)->only('index', 'donasiDetail');
 Route::resource('Sponsor', SponsorsController::class)->only('index');
-Route::resource('Program', ProgramController::class)->only('index');
+Route::resource('Program', ProgramsController::class)->only('index');
 Route::resource('Relawan', RelawanController::class)->only('index', 'store');
 
 Route::get('/donate', [DonateController::class, 'donate'])->name('donate.donate');

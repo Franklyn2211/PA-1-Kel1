@@ -36,10 +36,9 @@
                                                         <label for="program_title">Judul</label>
                                                         <input type="text" class="form-control" id="program_title" name="program_title" placeholder="Judul Berita">
                                                     </div>
-                                                    <div class="form-group mb-3">
-                                                        <label for="Description">Deskripsi</label>
-                                                        <textarea name="Description" id="summernote" ></textarea>
-                                                    </div>
+                                                    <<div class="mb-3">
+                                                        <label for="Description" class="form-label">Deskripsi</label>
+                                                        <textarea class="form-control" id="summernote" name="Description"></textarea>
                                                     <div class="form-group text-center">
                                                         <button type="submit" class="btn btn-primary">Save</button>
                                                     </div>

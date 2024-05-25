@@ -24,7 +24,7 @@ class DashboardController extends Controller
         $totalTestimoni = Testimoni::count();
         $totalSponsor = Sponsor::count();
         $totalPengumuman = Announcement::count();
-        $totalProgram = Announcement::count();
+        $totalProgram = Program::count();
         $totalKemitraan = Kemitraan::count();
         $totalBerita = News::count();
         $totalVolunteer = Relawan::count(); // Mengambil jumlah total relawan dari database

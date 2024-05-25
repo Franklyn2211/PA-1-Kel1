@@ -119,6 +119,7 @@
                         <li class="nav-item"><a class="nav-link" href="/Partnership">Kemitraan</a></li>
                         <li class="nav-item"><a class="nav-link" href="/Sponsor">Sponsor</a></li>
                         <li class="nav-item"><a class="nav-link" href="/Statistics">Statistik</a></li>
+                        <li class="nav-item"><a class="nav-link" href="/Program">Program</a></li>
                         <li class="nav-item"><a class="nav-link" href="/Contact">Kontak</a></li>
                         <li class="nav-item"><a class="nav-link" href="/login">Login</a></li>
                     </ul>
