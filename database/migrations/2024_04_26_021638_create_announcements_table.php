@@ -16,7 +16,6 @@ return new class extends Migration
         Schema::create('announcements', function (Blueprint $table) {
             $table->string('id_announcements')->primary();
             $table->string('title');
-            $table->string('slug')->unique();
             $table->string('photo')->nullable();
             $table->string('location');
             $table->string('announcement_category_id');

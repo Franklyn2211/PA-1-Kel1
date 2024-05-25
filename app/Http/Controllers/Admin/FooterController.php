@@ -8,9 +8,11 @@ use Illuminate\Http\Request;
 
 class FooterController extends Controller
 {
-    public function index(){
-        $footer = Footer::first();
-        return view('Admin.Footer.index', compact('footer'));
+    public function index()
+    {
+        $footer = Footer::all();
+        $footerExists = $footer->isNotEmpty();
+        return view('Admin.Footer.index', compact('footer', 'footerExists'));
     }
 
     public function create(){

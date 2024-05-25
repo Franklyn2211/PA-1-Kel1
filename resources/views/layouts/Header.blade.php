@@ -117,6 +117,7 @@
                         <li class="nav-item"><a class="nav-link" href="/Announcement">Pengumuman</a></li>
                         <li class="nav-item"><a class="nav-link" href="/Partnership">Kemitraan</a></li>
                         <li class="nav-item"><a class="nav-link" href="/Statistics">Statistik</a></li>
+                        <li class="nav-item"><a class="nav-link" href="/Program">Program</a></li>
                         <li class="nav-item"><a class="nav-link" href="/Contact">Kontak</a></li>
                     </ul>
                     <ul class="navbar-nav ms-auto">

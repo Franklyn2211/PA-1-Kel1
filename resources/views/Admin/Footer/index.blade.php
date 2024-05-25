@@ -34,9 +34,11 @@
                 <div class="col-12">
                     <div class="card">
                         <div class="card-header">
+                            @if(!$footerExists)
                             <div class="text-right">
                                 <a href="{{ route('Admin.Footer.create') }}" class="btn btn-primary"><i class="fa-solid fa-plus"></i> Tambah Footer</a>
                             </div>
+                            @endif
                         </div>
                         <!-- /.card-header -->
                         <div class="card-body">

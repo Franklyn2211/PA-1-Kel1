@@ -9,6 +9,7 @@ use App\Http\Controllers\RelawanController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\DonateController;
+use App\Http\Controllers\ProgramsController;
 use App\Http\Controllers\SponsorsController;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\NewsController;
@@ -30,6 +31,7 @@ use App\Http\Controllers\Admin\AnnouncementCategoryController;
 use App\Http\Controllers\Admin\HeroSectionController;
 use App\Http\Controllers\Admin\DataYayasanController;
 use App\Http\Controllers\Admin\GalleryController;
+use App\Http\Controllers\Admin\ProgramController;
 use App\Http\Controllers\Admin\AdminKontakController;
 use App\Http\Controllers\Secretary\SecretaryRelawanController;
 /*
@@ -176,6 +178,13 @@ Route::prefix('Admin')->middleware('auth')->group(function () {
     Route::post('Footer/{footer}', [App\Http\Controllers\Admin\FooterController::class, 'update'])->name('Admin.Footer.update');
     Route::delete('Footer/{footer}', [App\Http\Controllers\Admin\FooterController::class, 'destroy'])->name('Admin.Footer.destroy');
 
+    Route::get('Program', [ProgramController::class, 'index'])->name('Admin.Program.index');
+    Route::get('Program/create', [ProgramController::class, 'create'])->name('Admin.Program.create');
+    Route::post('Program', [ProgramController::class, 'store'])->name('Admin.Program.store');
+    Route::get('Program/{program}/edit', [ProgramController::class, 'edit'])->name('Admin.Program.edit');
+    Route::post('Program/{program}', [ProgramController::class, 'update'])->name('Admin.Program.update');
+    Route::delete('Program/{program}/delete', [ProgramController::class, 'destroy'])->name('Admin.Program.destroy');
+
     Route::get('/sekretaris', [AdminSekretarisController::class, 'index'])->name('Admin.sekretaris.index');
     Route::patch('/sekretaris/{id}/update-status', [AdminSekretarisController::class, 'updateStatus'])->name('updateStatus');
     Route::delete('/sekretaris/{id}', [AdminSekretarisController::class, 'destroy'])->name('Admin.sekretaris.destroy');
@@ -229,6 +238,7 @@ Route::resource('Partnership', PartnershipController::class)->only('index');
 Route::resource('Contact', KontakController::class)->only('index', 'store');
 Route::resource('Statistics', StatistikController::class)->only('index', 'donasiDetail');
 Route::resource('Sponsor', SponsorsController::class)->only('index');
+Route::resource('Program', ProgramsController::class)->only('index');
 Route::resource('Relawan', RelawanController::class)->only('index', 'store');
 
 Route::get('/donate', [DonateController::class, 'donate'])->name('donate.donate');

@@ -14,6 +14,7 @@ use App\Models\Secretary;
 use App\Models\Sponsor;
 use App\Models\StafPegawai;
 use App\Models\Testimoni;
+use App\Models\Program;
 use Illuminate\Http\Request;
 
 class DashboardController extends Controller
@@ -23,6 +24,7 @@ class DashboardController extends Controller
         $totalTestimoni = Testimoni::count();
         $totalSponsor = Sponsor::count();
         $totalPengumuman = Announcement::count();
+        $totalProgram = Program::count();
         $totalKemitraan = Kemitraan::count();
         $totalBerita = News::count();
         $totalVolunteer = Relawan::count(); // Mengambil jumlah total relawan dari database
@@ -40,6 +42,7 @@ class DashboardController extends Controller
             'totalSiswaInformal',
             'totalstafpegawai',
             'totalPengumuman',
+            'totalProgram',
             'totalSponsor',
             'totalTestimoni',
             'totalSecretaries',
