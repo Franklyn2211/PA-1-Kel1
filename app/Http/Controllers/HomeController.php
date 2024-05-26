@@ -7,6 +7,7 @@ use App\Models\Announcement;
 use App\Models\Donate;
 use App\Models\Kemitraan;
 use App\Models\News;
+use App\Models\Program;
 use App\Models\Testimoni;
 use Illuminate\Http\Request;
 use App\Models\Hero_Section;
@@ -23,10 +24,11 @@ class HomeController extends Controller
 
         // Retrieve gallery data (assuming you want to use it as well)
         $galleries = Gallery::all();
-        $news = News::all();
-        $announcement = Announcement::all();
+        $news = News::orderBy('created_at', 'desc')->get();
+        $announcement = Announcement::orderBy('created_at', 'desc')->get();
         $kemitraan = Kemitraan::all();
         $sponsors = Sponsor::all();
+        $program = Program::all();
 
         //statistik
         $totalDonatur = Donate::where('status', 1)->count();
@@ -46,7 +48,8 @@ class HomeController extends Controller
             'totalAnakDisabilitas',
             'totalSiswaInformal',
             'testimoni',
-            'sponsors'
+            'sponsors',
+            'program',
         ));
     }
 }

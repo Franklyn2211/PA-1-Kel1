@@ -201,13 +201,17 @@
                                                 @endforeach
                                             </div>
                                             <button class="carousel-control-prev" type="button"
-                                                data-bs-target="#carouselTestimoniControls" data-bs-slide="prev" style="margin-top: calc((130px - 3rem) / 2);">
-                                                <span class="carousel-control-prev-icon" aria-hidden="true" style="background-color: #333; border-radius: 50%; padding: 1rem;"></span>
+                                                data-bs-target="#carouselTestimoniControls" data-bs-slide="prev"
+                                                style="margin-top: calc((130px - 3rem) / 2);">
+                                                <span class="carousel-control-prev-icon" aria-hidden="true"
+                                                    style="background-color: #333; border-radius: 50%; padding: 1rem;"></span>
                                                 <span class="visually-hidden">Previous</span>
                                             </button>
                                             <button class="carousel-control-next" type="button"
-                                                data-bs-target="#carouselTestimoniControls" data-bs-slide="next" style="margin-top: calc((130px - 3rem) / 2);">
-                                                <span class="carousel-control-next-icon" aria-hidden="true" style="background-color: #333; border-radius: 50%; padding: 1rem;"></span>
+                                                data-bs-target="#carouselTestimoniControls" data-bs-slide="next"
+                                                style="margin-top: calc((130px - 3rem) / 2);">
+                                                <span class="carousel-control-next-icon" aria-hidden="true"
+                                                    style="background-color: #333; border-radius: 50%; padding: 1rem;"></span>
                                                 <span class="visually-hidden">Next</span>
                                             </button>
                                         </div>
@@ -220,24 +224,41 @@
                     </div>
 
                 </section>
-                <section id="mitra-kampus" class="splide container p-5" aria-label="Beautiful Images">
+                <section id="mitra-kampus" class="container p-5">
                     <h1 class="text-center fw-bold">Kemitraan</h1>
                     <div class="d-flex justify-content-center mb-4">
                         <div id="underline-line-mitra" class="bg-primary"></div>
                     </div>
 
-
-                    <div class="splide__slider">
-                        <div class="splide__track">
-                            <ul class="splide__list">
-                                @foreach ($kemitraan as $item)
-                                    <img src="{{ asset('logokemitraan/' . $item->logo) }}" alt=""
-                                        style="width:100px;" class="img-fluid">
-                                @endforeach
-                            </ul>
+                    <div id="carouselKemitraanControls" class="carousel slide" data-bs-ride="carousel">
+                        <div class="carousel-inner">
+                            @foreach ($kemitraan->chunk(5) as $key => $chunk)
+                                <div class="carousel-item {{ $key === 0 ? 'active' : '' }}">
+                                    <div class="d-flex justify-content-center">
+                                        @foreach ($chunk as $item)
+                                            <div class="mx-2">
+                                                <img src="{{ asset('logokemitraan/' . $item->logo) }}"
+                                                    alt="{{ $item->name }}" class="img-fluid"
+                                                    style="width: 100px; height: 100px; object-fit: cover;">
+                                            </div>
+                                        @endforeach
+                                    </div>
+                                </div>
+                            @endforeach
                         </div>
+                        <button class="carousel-control-prev" type="button" data-bs-target="#carouselKemitraanControls"
+                            data-bs-slide="prev">
+                            <span class="carousel-control-prev-icon" aria-hidden="true"
+                                style="background-color: black; border-radius: 50%; padding: 1rem;"></span>
+                            <span class="visually-hidden">Previous</span>
+                        </button>
+                        <button class="carousel-control-next" type="button" data-bs-target="#carouselKemitraanControls"
+                            data-bs-slide="next">
+                            <span class="carousel-control-next-icon" aria-hidden="true"
+                                style="background-color: black; border-radius: 50%; padding: 1rem;"></span>
+                            <span class="visually-hidden">Next</span>
+                        </button>
                     </div>
-
                 </section>
             </div>
             <div class="col-lg-3" style="position:sticky; top:0; right:0; height:100vh; overflow-y:auto;">
@@ -255,17 +276,44 @@
                                 <div class="col-md-12">
                                     <div class="row pb-3">
                                         @foreach ($announcement as $item)
-                                        <div class="row mb-4">
-                                            <div class="col-5 col-sm-4 col-md-3 align-self-center">
-                                                <img src="{{ asset('storage/app/public/photo/' . $item->photo) }}" alt="{{ $item->title }}" class="img-fluid"/>
+                                            <div class="row mb-4">
+                                                <div class="col-5 col-sm-4 col-md-3 align-self-center">
+                                                    <img src="{{ asset('storage/app/public/photo/' . $item->photo) }}"
+                                                        alt="{{ $item->title }}" class="img-fluid" />
+                                                </div>
+                                                <div class="col-7 col-sm-8 col-md-9 paddding">
+                                                    <div class="card-title mb-2">{{ $item->title }}</div>
+                                                    <div class="most_fh5co_treding_font_123">
+                                                        {{ $item->created_at->format('F d, Y') }}</div>
+                                                </div>
                                             </div>
-                                            <div class="col-7 col-sm-8 col-md-9 paddding">
-                                                <div class="card-title mb-2">{{ $item->title }}</div>
-                                                <div class="most_fh5co_treding_font_123">{{ $item->created_at->format('F d, Y') }}</div>
-                                            </div>
-                                        </div>
-                                    @endforeach
-                                            <a class="btn btn-primary btn-lg" href="{{ route('Announcement.index') }}">See More</a>
+                                        @endforeach
+                                        <a class="btn btn-primary btn-lg" href="{{ route('Announcement.index') }}">Lihat
+                                            Detail</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                    <section class="py-2" style="margin-top: -3rem">
+                        <div class="container my-5">
+                            <div class="row gx-5 justify-content-center">
+                                <div class="col-lg-8 col-xl-6">
+                                    <div class="text-center">
+                                        <h3 class="fw-bolder">Program</h3>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row gx-5">
+                                <div class="col-md-12">
+                                    <div class="row pb-3">
+                                            @foreach ($program as $index => $item)
+                                                <div class="card-title mb-2">
+                                                   {{ $index + 1}}. {{ $item->program_title }}
+                                                </div>
+                                            @endforeach
+                                        <a class="btn btn-primary btn-lg" href="{{ route('Program.index') }}">Lihat
+                                            Detail</a>
                                     </div>
                                 </div>
                             </div>
@@ -275,5 +323,37 @@
             </div>
         </div>
     </div>
+
+@endsection
+@section('script')
+    <script src="https://cdn.jsdelivr.net/npm/@splidejs/splide@latest/dist/js/splide.min.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            var totalImages = {{ $kemitraan->count() }};
+            if (totalImages >= 5) {
+                new Splide('.splide', {
+                    type: 'loop',
+                    perPage: 5,
+                    perMove: 1,
+                    autoplay: true,
+                    interval: 3000,
+                    breakpoints: {
+                        1200: {
+                            perPage: 4,
+                        },
+                        992: {
+                            perPage: 3,
+                        },
+                        768: {
+                            perPage: 2,
+                        },
+                        576: {
+                            perPage: 1,
+                        },
+                    },
+                }).mount();
+            }
+        });
+    </script>
 
 @endsection

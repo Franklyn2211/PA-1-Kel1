@@ -47,6 +47,7 @@
                                         <th>#</th>
                                         <th>Judul Program</th>
                                         <th>Deskripsi</th>
+                                        <th>Aksi</th>
                                     </tr>
                                 </thead>
                                 <tbody>

@@ -140,14 +140,14 @@
                     <!-- ./col -->
                     <div class="col-lg-3 col-6">
                         <!-- small box -->
-                        <div class="small-box bg-warning">
+                        <div class="small-box bg-purple">
                             <div class="inner">
                                 <h3>{{ $totalProgram }}</h3>
 
                                 <p>Program</p>
                             </div>
                             <div class="icon">
-                                <i class="fas fa-user"></i>
+                                <i class="fas fa-heart"></i>
                             </div>
                             <a href="{{ route('Admin.Program.index') }}" class="small-box-footer">More info <i
                                     class="fas fa-arrow-circle-right"></i></a>

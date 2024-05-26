@@ -7,9 +7,9 @@
             <h2 style="border-bottom: 1px solid #000; display: inline-block; padding-bottom: 0.3rem;">Program YPA Rumah Damai</h2>
         </div>
 
-    @foreach($program as $item)
+    @foreach($program as $index => $item)
         <div class="modal-body">
-            <h3>{{ $item->program_title }}</h3>
+            <h3 class="fw-bold">{{ $index + 1 }}. {{ $item->program_title }}</h3>
             <p>{!! $item->Description !!}</p>
         </div>
     @endforeach

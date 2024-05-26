@@ -36,7 +36,7 @@
                                                         <label for="program_title">Judul</label>
                                                         <input type="text" class="form-control" id="program_title" name="program_title" placeholder="Judul Berita">
                                                     </div>
-                                                    <<div class="mb-3">
+                                                    <div class="mb-3">
                                                         <label for="Description" class="form-label">Deskripsi</label>
                                                         <textarea class="form-control" id="summernote" name="Description"></textarea>
                                                     <div class="form-group text-center">

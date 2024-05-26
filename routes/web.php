@@ -228,10 +228,12 @@ Route::post('/logout', [SecretaryAuthController::class, 'logout']);
 
 Route::get('/', [HomeController::class, 'index'])->name('home');
 Route::resource('Announcement', AnnouncementController::class);
+Route::get('/announcements/category/{category}', [AnnouncementController::class, 'showByCategory'])->name('announcements.category');
 Route::resource('News', NewsController::class)->only('index', 'show');
 Route::resource('About', AboutController::class)->only('index');
 Route::get('/News/{id_news}', 'NewsController@show')->name('news.show');
 Route::get('/news/search', [NewsController::class, 'search'])->name('news.search');
+Route::get('/news/category/{id_news_categories}', [NewsController::class, 'filterByCategory'])->name('news.category');
 
 Route::resource('Donate', DonateController::class)->only('index', 'store');
 Route::resource('Partnership', PartnershipController::class)->only('index');

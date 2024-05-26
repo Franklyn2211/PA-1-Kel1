@@ -32,7 +32,7 @@
         <ol class="breadcrumb justify-content-start mb-4">
             <li class="breadcrumb-item"><a href="/">Home</a></li>
             <li class="breadcrumb-item"><a href="/News">News</a></li>
-            <li class="breadcrumb-item active text-dark">{{ $news->date}}</li>
+            <li class="breadcrumb-item active text-dark">{{ $news->date }}</li>
         </ol>
         <div class="row g-4">
             <div class="col-lg-8">
@@ -59,17 +59,10 @@
                         <div class="d-flex align-items-center">
                             <h5 class="mb-0 me-3">Share:</h5>
                             <!-- Facebook -->
-                            <a href="https://www.facebook.com/sharer/sharer.php?u={{ urlencode(Request::url()) }}" target="_blank" class="fab fa-facebook-f link-hover  text-dark me-2"></a>
-                            <!-- Twitter -->
-                            <a href="https://twitter.com/intent/tweet?url={{ urlencode(Request::url()) }}" target="_blank" class="fab fa-twitter link-hover  text-dark me-2"></a>
-                            <!-- Instagram (Tidak mendukung sharing langsung, link ke profil saja) -->
-                            <a href="https://www.instagram.com/" target="_blank" class="fab fa-instagram link-hover  text-dark me-2"></a>
-                            <!-- LinkedIn -->
-                            <a href="https://www.linkedin.com/sharing/share-offsite/?url={{ urlencode(Request::url()) }}" target="_blank" class="fab fa-linkedin-in link-hover  text-dark me-2"></a>
-                            <!-- WhatsApp -->
-                            <a href="https://api.whatsapp.com/send?text={{ urlencode(Request::url()) }}" target="_blank" class="fab fa-whatsapp link-hover  text-dark"></a>
+                            <a href="#" class="fab fa-facebook-f link-hover text-dark me-2" onclick="copyToClipboard('{{ request()->fullUrl() }}', 'Facebook')"></a>
+                            <!-- Instagram -->
+                            <a href="#" class="fab fa-instagram link-hover text-dark me-2" onclick="copyToClipboard('{{ request()->fullUrl() }}', 'Instagram')"></a>
                         </div>
-
                     </div>
                 </div>
             </div>
@@ -94,28 +87,36 @@
                 </div>
                 <div class="row pb-3">
                     <?php
-                        // Mendapatkan daftar berita populer secara acak
                         $randomNews = \App\Models\News::inRandomOrder()->limit(2)->get();
                     ?>
                     @foreach ($randomNews as $berita)
-                        <div class="col-5 align-self-center">
-                            <a href="{{ route('news.show', ['id_news' => $berita->id_news]) }}"> <!-- Tautan di sekitar gambar -->
+                        <div class="col-5 mb-2 align-self-center">
+                            <a href="{{ route('news.show', ['id_news' => $berita->id_news]) }}">
                                 <img src="{{ asset('storage/app/public/photo/' . $berita->photo) }}" alt="{{ $berita->title }}" class="fh5co_most_trading"/>
                             </a>
                         </div>
                         <div class="col-7 paddding">
-                            <a href="{{ route('news.show', ['id_news' => $berita->id_news]) }}"> <!-- Tautan di sekitar judul -->
+                            <a href="{{ route('news.show', ['id_news' => $berita->id_news]) }}">
                                 <div class="most_fh5co_treding_font">{{ $berita->title }}</div>
                             </a>
                             <div class="most_fh5co_treding_font_123">{{ $berita->created_at->format('F d, Y') }}</div>
                         </div>
                     @endforeach
                 </div>
-
             </div>
         </div>
     </div>
 </div>
 <!-- Single Product End -->
+
+<script>
+    function copyToClipboard(url, platform) {
+        navigator.clipboard.writeText(url).then(() => {
+            alert('URL copied to clipboard. Anda dapat mempaste link ke ' + platform + '.');
+        }).catch(err => {
+            console.error('Failed to copy: ', err);
+        });
+    }
+</script>
 
 @endsection

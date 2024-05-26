@@ -1,13 +1,11 @@
 @extends('layouts.layout')
 
-@section('title', 'Pengumuman')
+@section('title', 'Pengumuman Kategori: ' . $category->name)
 
 @section('content')
 <div class="container-fluid blog py-5">
     <div class="container py-5">
-        <div class="text-center mb-5">
-            <h2 style="border-bottom: 1px solid #000; display: inline-block; padding-bottom: 0.3rem;">Pengumuman</h2>
-        </div>
+        <h2 class="text-center mb-5">Pengumuman Kategori: {{ $category->name }}</h2>
         <div class="row g-4 justify-content-center">
             @foreach ($announcements as $announcement)
             <div class="col-md-6 col-lg-6 col-xl-4 wow fadeInUp" data-wow-delay="0.1s">

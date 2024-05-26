@@ -118,6 +118,12 @@
                                         <p>Staf dan Pegawai</p>
                                     </a>
                                 </li>
+                                <li class="nav-item">
+                                    <a href="{{ route('Admin.Program.index') }}" class="nav-link">
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p>Program</p>
+                                    </a>
+                                </li>
                             </ul>
                         </li>
                         <li class="nav-item">
@@ -187,14 +193,6 @@
                                 <i class="nav-icon fas fa-user"></i>
                                 <p>
                                     Testimoni
-                                </p>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="{{ route('Admin.Program.index') }}" class="nav-link">
-                                <i class="nav-icon fas fa-user"></i>
-                                <p>
-                                    Program
                                 </p>
                             </a>
                         </li>

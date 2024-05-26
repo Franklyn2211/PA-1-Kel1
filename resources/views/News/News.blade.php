@@ -22,7 +22,7 @@
                         </div>
                         <div class="col-md-7 animate-box">
                             <a href="{{ route('news.show', ['id_news' => $berita->id_news]) }}" class="fh5co_magna py-2">{{ $berita->title }}</a>
-                        <div><a href="{{ route('news.show', ['id_news' => $berita->id_news]) }}" class="fh5co_mini_time py-3"> {{ $berita->created_by }} - {{ $berita->date }} </a></div>
+                            <div><a href="{{ route('news.show', ['id_news' => $berita->id_news]) }}" class="fh5co_mini_time py-3">{{ $berita->created_by }} - {{ $berita->date }}</a></div>
                             <div class="fh5co_consectetur">
                                 {{-- Batasi deskripsi hanya 4 baris --}}
                                 <?php
@@ -32,7 +32,7 @@
                                     echo nl2br(e($cleanDescription));
                                 ?>
                                 @if (strlen($description) > 200)
-                                    <span class="fh5co_more"><a href="#">...</a></span> {{-- Tambahkan link untuk melihat lebih banyak jika deskripsi dipotong --}}
+                                    <span class="fh5co_more"><a href="{{ route('news.show', ['id_news' => $berita->id_news]) }}">...</a></span> {{-- Tambahkan link untuk melihat lebih banyak jika deskripsi dipotong --}}
                                 @endif
                             </div>
                         </div>
@@ -54,7 +54,7 @@
                 <div class="clearfix"></div>
                 <div class="fh5co_tags_all">
                     @foreach ($newscategories as $category)
-                        <a href="#" class="fh5co_tagg">{{ $category->Name }}</a>
+                        <a href="{{ route('news.category', ['id_news_categories' => $category->id_news_categories]) }}" class="fh5co_tagg">{{ $category->Name }}</a>
                     @endforeach
                 </div>
                 <div>
