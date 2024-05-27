@@ -29,7 +29,7 @@
                                     enctype='multipart/form-data'>
                                     @csrf
                                     <div class="mb-3">
-                                        <label for="header" class="form-label">Header Hero</label>
+                                        <label for="header" class="form-label">Header Home</label>
                                         <input type="text" class="form-control" id="header" name="header" value ="{{$heroSection->header}}" required>
                                         @error('header')
                                             <span class="text-danger">{{ $message }}</span>
@@ -50,4 +50,5 @@
                 </div>
             </div>
         </div>
+    </div>
     @endsection
