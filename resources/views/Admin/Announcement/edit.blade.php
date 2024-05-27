@@ -30,6 +30,7 @@
                             <div class="card-body">
                                 <form action="{{ route('Admin.Announcement.update', $announcements->id_announcements) }}" method="post" enctype="multipart/form-data">
                                     @csrf
+                                    @method('PUT')
                                     <div class="row">
                                         <div class="col-12">
                                             <div class="card">
@@ -61,7 +62,7 @@
                                                         <label for="category_id">Kategori</label>
                                                         <select class="form-control" id="category_id" name="announcement_category_id">
                                                             @foreach($categories as $category)
-                                                                <option value="{{ $category->id_annoucement_categories }}" {{ $announcements->announcement_category_id == $category->id_announcement_categories ? 'selected' : '' }}>{{ $category->name }}</option>
+                                                                <option value="{{ $category->id_announcement_categories }}" {{ $announcements->announcement_category_id == $category->id_announcement_categories ? 'selected' : '' }}>{{ $category->name }}</option>
                                                             @endforeach
                                                         </select>
                                                     </div>

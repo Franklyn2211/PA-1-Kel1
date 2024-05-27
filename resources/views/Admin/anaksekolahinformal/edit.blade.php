@@ -29,7 +29,7 @@
                     <div class="col-md-12">
                         <div class="card">
                             <div class="card-body">
-                                <form action="{{ route('admin.anaksekolahinformal.update', $anaksekolahinformal->id_informal_school_child) }}" method="POST" enctype="multipart/form-data">>
+                                <form action="{{ route('admin.anaksekolahinformal.update', $anaksekolahinformal->id_informal_school_child) }}" method="POST" enctype="multipart/form-data">
                                     @csrf
                                     @method('PUT')
                                     <div class="form-group">

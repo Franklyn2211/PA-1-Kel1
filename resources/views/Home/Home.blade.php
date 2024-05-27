@@ -275,7 +275,7 @@
                             <div class="row gx-5">
                                 <div class="col-md-12">
                                     <div class="row pb-3">
-                                        @foreach ($announcement as $item)
+                                        @foreach ($announcement->take(5) as $item)
                                             <div class="row mb-4">
                                                 <div class="col-5 col-sm-4 col-md-3 align-self-center">
                                                     <img src="{{ asset('storage/app/public/photo/' . $item->photo) }}"

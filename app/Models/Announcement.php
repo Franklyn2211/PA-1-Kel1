@@ -18,6 +18,7 @@ class Announcement extends Model
         'photo',
         'location',
         'description',
+        'announcement_category_id',
         'created_by',
         'updated_by',
         'active',

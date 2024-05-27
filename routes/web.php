@@ -25,7 +25,6 @@ use App\Http\Controllers\Admin\AnakDisabilitasController;
 use App\Http\Controllers\Admin\AnakSekolahInformalController;
 use App\Http\Controllers\Admin\StafPegawaiController;
 use App\Http\Controllers\Secretary\KemitraanController;
-use App\Http\Controllers\Admin\SponsorController;
 use App\Http\Controllers\Admin\AdminAnnouncementController;
 use App\Http\Controllers\Admin\AnnouncementCategoryController;
 use App\Http\Controllers\Admin\HeroSectionController;
@@ -88,7 +87,7 @@ Route::prefix('Admin')->middleware('auth')->group(function () {
     Route::get('Announcements/create', [AdminAnnouncementController::class, 'create'])->name('Admin.Announcement.create');
     Route::post('Announcements', [AdminAnnouncementController::class, 'store'])->name('Admin.Announcement.store');
     Route::get('Announcements/{announcements}/edit', [AdminAnnouncementController::class, 'edit'])->name('Admin.Announcement.edit');
-    Route::post('Announcements/{announcements}', [AdminAnnouncementController::class, 'update'])->name('Admin.Announcement.update');
+    Route::put('Announcements/{announcements}', [AdminAnnouncementController::class, 'update'])->name('Admin.Announcement.update');
     Route::delete('Announcements/{announcements}', [AdminAnnouncementController::class, 'destroy'])->name('Admin.Announcement.destroy');
     // Routes for announcement category management
     Route::get('AnnouncementCategory', [AnnouncementCategoryController::class, 'index'])->name('Admin.AnnouncementCategory.index');
@@ -120,23 +119,6 @@ Route::prefix('Admin')->middleware('auth')->group(function () {
     Route::post('Admin/gallery/{galleries}', [GalleryController::class, 'update'])->name('admin.gallery.update');
     Route::delete('gallery/{galleries}', [GalleryController::class, 'destroy'])->name('admin.gallery.destroy');
 
-
-
-        Route::get('address', [AddressController::class, 'index'])->name('admin.address.index');
-        Route::get('address/create', [AddressController::class, 'create'])->name('admin.address.create');
-        Route::post('address/store', [AddressController::class, 'store'])->name('admin.address.store');
-        Route::get('address/{id}/edit', [AddressController::class, 'edit'])->name('admin.address.edit');
-        Route::post('address/update/{id}', [AddressController::class, 'update'])->name('admin.address.update');
-        Route::delete('address/{id}', [AddressController::class, 'destroy'])->name('admin.address.destroy');
-
-
-    Route::get('address', [AddressController::class, 'index'])->name('admin.address.index');
-    Route::get('address/create', [AddressController::class, 'create'])->name('admin.address.create');
-    Route::post('address/store', [AddressController::class, 'store'])->name('admin.address.store');
-    Route::get('address/{id}/edit', [AddressController::class, 'edit'])->name('admin.address.edit');
-    Route::post('address/update/{id}', [AddressController::class, 'update'])->name('admin.address.update');
-    Route::delete('address/{id}', [AddressController::class, 'destroy'])->name('admin.address.destroy');
-
     Route::get('anakdisabilitas', [AnakDisabilitasController::class, 'index'])->name('admin.anakdisabilitas.index');
     Route::get('anakdisabilitas/create', [AnakDisabilitasController::class, 'create'])->name('admin.anakdisabilitas.create');
     Route::post('anakdisabilitas', [AnakDisabilitasController::class, 'store'])->name('admin.anakdisabilitas.store');
@@ -150,7 +132,7 @@ Route::prefix('Admin')->middleware('auth')->group(function () {
     Route::post('anaksekolahinformal/store', [AnakSekolahInformalController::class, 'store'])->name('admin.anaksekolahinformal.store');
     Route::get('anaksekolahinformal/{anaksekolahinformal}', [AnakSekolahInformalController::class, 'show'])->name('admin.anaksekolahinformal.show');
     Route::get('anaksekolahinformal/{anaksekolahinformal}/edit', [AnakSekolahInformalController::class, 'edit'])->name('admin.anaksekolahinformal.edit');
-    Route::post('anaksekolahinformal/{anaksekolahinformal}', [AnakSekolahInformalController::class, 'update'])->name('admin.anaksekolahinformal.update');
+    Route::put('anaksekolahinformal/{anaksekolahinformal}', [AnakSekolahInformalController::class, 'update'])->name('admin.anaksekolahinformal.update');
     Route::delete('anaksekolahinformal/{anaksekolahinformal}', [AnakSekolahInformalController::class, 'destroy'])->name('admin.anaksekolahinformal.destroy');
 
     Route::resource('stafpegawai', StafPegawaiController::class);
@@ -205,12 +187,12 @@ Route::prefix('sekretaris')->group(function () {
     Route::delete('donatur/{donate}', [DonaturController::class, 'destroy'])->name('donate.destroy');
 
     Route::resource('kemitraan', KemitraanController::class);
-    Route::get('kemitraan', [KemitraanController::class, 'index'])->name('Sekretaris.kemitraan.index');
-    Route::get('kemitraan/create', [KemitraanController::class, 'create'])->name('Sekretaris.kemitraan.create');
-    Route::post('kemitraan', [KemitraanController::class, 'store'])->name('Sekretaris.kemitraan.store');
-    Route::get('kemitraan/{kemitraan}/edit', [KemitraanController::class, 'edit'])->name('Sekretaris.kemitraan.edit');
-    Route::post('kemitraan/{kemitraan}', [KemitraanController::class, 'update'])->name('Sekretaris.kemitraan.update');
-    Route::delete('kemitraan/{kemitraan}', [KemitraanController::class, 'destroy'])->name('Sekretaris.kemitraan.destroy');
+    Route::get('kemitraan', [KemitraanController::class, 'index'])->name('Secretary.kemitraan.index');
+    Route::get('kemitraan/create', [KemitraanController::class, 'create'])->name('Secretary.kemitraan.create');
+    Route::post('kemitraan', [KemitraanController::class, 'store'])->name('Secretary.kemitraan.store');
+    Route::get('kemitraan/{kemitraan}/edit', [KemitraanController::class, 'edit'])->name('Secretary.kemitraan.edit');
+    Route::post('kemitraan/{kemitraan}', [KemitraanController::class, 'update'])->name('Secretary.kemitraan.update');
+    Route::delete('kemitraan/{kemitraan}', [KemitraanController::class, 'destroy'])->name('Secretary.kemitraan.destroy');
 
     Route::get('/sekretaris/change-password', [SecretaryAuthController::class, 'showChangePasswordForm'])->name('Sekretaris.change-password');
     Route::post('/sekretaris/update-password', [SecretaryAuthController::class, 'changePassword'])->name('Sekretaris.update-password');

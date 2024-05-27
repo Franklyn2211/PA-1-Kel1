@@ -61,6 +61,7 @@ class AdminAnnouncementController extends Controller
             'description' => 'required|string',
             'photo' => 'image|mimes:jpeg,png,jpg,gif|max:5000',
             'location'=> 'required|string',
+            'announcement_category_id' => 'required|exists:announcement_categories,id_announcement_categories',
         ]);
 
         $data = [
@@ -68,6 +69,7 @@ class AdminAnnouncementController extends Controller
             'description' => $request->description,
             'location' => $request->location,
             'tanggal' => $request->tanggal,
+            'announcement_category_id' => $request->announcement_category_id,
         ];
 
         // Menghandle foto

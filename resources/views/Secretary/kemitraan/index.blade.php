@@ -32,7 +32,7 @@
                     <div class="card">
                         <div class="card-header">
                             <div class="text-right">
-                                <a href="{{ route('Sekretaris.kemitraan.create') }}" class="btn btn-primary"><i class="fa-solid fa-plus"></i> Tambah Kemitraan</a>
+                                <a href="{{ route('Secretary.kemitraan.create') }}" class="btn btn-primary"><i class="fa-solid fa-plus"></i> Tambah Kemitraan</a>
                             </div>
                         </div>
                         <!-- /.card-header -->
@@ -57,8 +57,8 @@
                                         <td>{{ $mitra->name }}</td>
                                         <td>{{ $mitra->program }}</td>
                                         <td>
-                                            <a href="{{ route('Sekretaris.kemitraan.edit', $mitra) }}" class="btn btn-primary btn-sm">Edit</a>
-                                            <form action="{{ route('Sekretaris.kemitraan.destroy', $mitra) }}" method="POST" style="display: inline;">
+                                            <a href="{{ route('Secretary.kemitraan.edit', $mitra) }}" class="btn btn-primary btn-sm">Edit</a>
+                                            <form action="{{ route('Secretary.kemitraan.destroy', $mitra) }}" method="POST" style="display: inline;">
                                                 @csrf
                                                 @method('DELETE')
                                                 <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('Apakah Anda yakin ingin menghapus kemitraan ini?')">Hapus</button>
