@@ -168,7 +168,10 @@ Route::prefix('Admin')->middleware('auth')->group(function () {
     Route::delete('Program/{program}/delete', [ProgramController::class, 'destroy'])->name('Admin.Program.destroy');
 
     Route::get('/sekretaris', [AdminSekretarisController::class, 'index'])->name('Admin.sekretaris.index');
-    Route::patch('/sekretaris/{id}/update-status', [AdminSekretarisController::class, 'updateStatus'])->name('updateStatus');
+    Route::get('/sekretaris/create', [AdminSekretarisController::class, 'create'])->name('Admin.sekretaris.create');
+    Route::post('/sekretaris', [AdminSekretarisController::class, 'store'])->name('Admin.sekretaris.store');
+    Route::get('/sekretaris/{id}/edit', [AdminSekretarisController::class, 'edit'])->name('Admin.sekretaris.edit');
+    Route::put('/sekretaris/{id}', [AdminSekretarisController::class, 'update'])->name('Admin.sekretaris.update');
     Route::delete('/sekretaris/{id}', [AdminSekretarisController::class, 'destroy'])->name('Admin.sekretaris.destroy');
 
 });
@@ -194,8 +197,6 @@ Route::prefix('sekretaris')->group(function () {
     Route::post('kemitraan/{kemitraan}', [KemitraanController::class, 'update'])->name('Secretary.kemitraan.update');
     Route::delete('kemitraan/{kemitraan}', [KemitraanController::class, 'destroy'])->name('Secretary.kemitraan.destroy');
 
-    Route::get('/sekretaris/change-password', [SecretaryAuthController::class, 'showChangePasswordForm'])->name('Sekretaris.change-password');
-    Route::post('/sekretaris/update-password', [SecretaryAuthController::class, 'changePassword'])->name('Sekretaris.update-password');
     });
 
     Route::get('/login', [SecretaryAuthController::class, 'index'])->name('Secretary.login');

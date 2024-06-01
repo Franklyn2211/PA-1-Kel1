@@ -55,9 +55,6 @@
                         <div class="col-4">
                             <button type="submit" class="btn btn-primary btn-block">Sign In</button>
                         </div>
-                        <p class="mb-0">
-                            <a href="/sekretaris/register" class="text-center">Register Sekretaris</a>
-                        </p>
                     </div>
                 </form>
             </div>

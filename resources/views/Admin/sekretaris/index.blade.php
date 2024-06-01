@@ -19,9 +19,17 @@
         </div>
         <div class="content">
             <div class="container-fluid">
+                @if(session('success'))
+                <div class="alert alert-success">
+                    {{ session('success') }}
+                </div>
+            @endif
                 <div class="row">
                     <div class="col-12">
                         <div class="card">
+                            <div class="card-header">
+                                <a href="{{ route('Admin.sekretaris.create') }}" class="btn btn-primary"><i class="fa fa-plus"></i> Tambah Sekretaris</a>
+                            </div>
                             <div class="card-body">
                                 <table id="example1" class="table table-striped table-bordered table-hover text-center" style="width: 100%">
                                     <thead>
@@ -29,7 +37,7 @@
                                             <th>#</th>
                                             <th>Name</th>
                                             <th>Email</th>
-                                            <th>Status</th>
+                                            <th>Aksi</th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -39,20 +47,7 @@
                                                 <td>{{ $sekretaris->name }}</td>
                                                 <td>{{ $sekretaris->email }}</td>
                                                 <td>
-                                                    <form action="{{ route('updateStatus', $sekretaris->id) }}" method="POST">
-                                                        @csrf
-                                                        @method('PATCH')
-                                                        <button type="submit" class="btn btn-sm @if ($sekretaris->status == 1) btn-success @else btn-danger @endif">
-                                                            @if ($sekretaris->status == 1)
-                                                                Diterima
-                                                            @else
-                                                                Ditolak
-                                                            @endif
-                                                        </button>
-                                                        @error('status')
-                                                            <span class="text-danger mt-2">{{ $message }}</span>
-                                                        @enderror
-                                                    </form>
+                                                    <a href="{{ route('Admin.sekretaris.edit', $sekretaris->id) }}" class="btn btn-warning btn-sm"><i class="fa fa-edit"></i> Edit</a>
                                                     <form action="{{route('Admin.sekretaris.destroy', $sekretaris->id)}}" method="POST" class="d-inline">
                                                         @csrf
                                                         @method('DELETE')

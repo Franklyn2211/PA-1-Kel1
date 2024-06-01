@@ -106,12 +106,6 @@
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="{{ route('Sekretaris.change-password') }}">
-                                <i class="nav-icon fas fa-key"></i>
-                                Ganti Password
-                            </a>
-                        </li>
-                        <li class="nav-item">
                             <a href="" class="nav-link log-out">
                                 <i class="nav-icon fa-solid fa-power-off" style="color: red;"></i>
                                 <p>Logout</p>
