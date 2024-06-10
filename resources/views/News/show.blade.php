@@ -25,6 +25,24 @@
 </div>
 <!-- Modal Search End -->
 
+<!-- Modal Alert Start -->
+<div class="modal fade" id="instagramAlertModal" tabindex="-1" aria-labelledby="instagramAlertLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="instagramAlertLabel">Instagram Share</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                Open Instagram app on your mobile device to share this URL.
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary" data-bs-dismiss="modal">OK</button>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Modal Alert End -->
 
 <!-- Single Product Start -->
 <div class="container-fluid py-12">
@@ -59,9 +77,9 @@
                         <div class="d-flex align-items-center">
                             <h5 class="mb-0 me-3">Share:</h5>
                             <!-- Facebook -->
-                            <a href="#" class="fab fa-facebook-f link-hover text-dark me-2" onclick="copyToClipboard('{{ request()->fullUrl() }}', 'Facebook')"></a>
+                            <a href="#" class="fab fa-facebook-f link-hover text-dark me-2" onclick="shareToFacebook('{{ request()->fullUrl() }}')"></a>
                             <!-- Instagram -->
-                            <a href="#" class="fab fa-instagram link-hover text-dark me-2" onclick="copyToClipboard('{{ request()->fullUrl() }}', 'Instagram')"></a>
+                            <a href="#" class="fab fa-instagram link-hover text-dark me-2" onclick="shareToInstagram('{{ request()->fullUrl() }}')"></a>
                         </div>
                     </div>
                 </div>
@@ -110,12 +128,16 @@
 <!-- Single Product End -->
 
 <script>
-    function copyToClipboard(url, platform) {
-        navigator.clipboard.writeText(url).then(() => {
-            alert('URL copied to clipboard. Anda dapat mempaste link ke ' + platform + '.');
-        }).catch(err => {
-            console.error('Failed to copy: ', err);
-        });
+    function shareToFacebook(url) {
+        const fbShareUrl = `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(url)}`;
+        window.open(fbShareUrl, 'facebook-share-dialog', 'width=800,height=600');
+        return false;
+    }
+
+    function shareToInstagram(url) {
+        const modal = new bootstrap.Modal(document.getElementById('instagramAlertModal'));
+        modal.show();
+        return false;
     }
 </script>
 

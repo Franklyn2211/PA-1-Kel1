@@ -162,7 +162,7 @@
                 </section>
                 <section class="py-5">
                     <div class="container my-5">
-                        <h1 class="text-center fw-bold mb-5">Testimoni</h1>
+                        <h1 class="text-center fw-bold mb-5">Apa Kata Mereka  </h1>
 
                         <div class="row justify-content-center">
                             <div class="col-md-8">

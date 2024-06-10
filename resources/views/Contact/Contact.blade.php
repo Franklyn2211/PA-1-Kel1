@@ -32,28 +32,35 @@
                         @csrf
                         <!-- Name input-->
                         <div class="form-floating mb-3">
-                            <input class="form-control" name="name" id="name" type="text" placeholder="Enter your name..." required>
+                            <input class="form-control @error('name') is-invalid @enderror" name="name" id="name" type="text" placeholder="Enter your name..." value="{{ old('name') }}" required>
                             <label for="name">Full name</label>
-                            <div class="invalid-feedback">A name is required.</div>
+                            @error('name')
+                                <div class="invalid-feedback">{{ $message }}</div>
+                            @enderror
                         </div>
                         <!-- Email address input-->
                         <div class="form-floating mb-3">
-                            <input class="form-control" name="email" id="email" type="email" placeholder="Enter your email..." required>
+                            <input class="form-control @error('email') is-invalid @enderror" name="email" id="email" type="email" placeholder="Enter your email..." value="{{ old('email') }}" required>
                             <label for="email">Email address</label>
-                            <div class="invalid-feedback">An email is required.</div>
-                            <div class="invalid-feedback">Email is not valid.</div>
+                            @error('email')
+                                <div class="invalid-feedback">{{ $message }}</div>
+                            @enderror
                         </div>
                         <!-- Phone number input-->
                         <div class="form-floating mb-3">
-                            <input class="form-control" name="phone_number" id="phone_number" type="tel" placeholder="Enter your phone..." required>
+                            <input class="form-control @error('phone_number') is-invalid @enderror" name="phone_number" id="phone_number" type="tel" placeholder="Enter your phone..." value="{{ old('phone_number') }}" required>
                             <label for="phone_number">Phone number</label>
-                            <div class="invalid-feedback">A phone number is required.</div>
+                            @error('phone_number')
+                                <div class="invalid-feedback">{{ $message }}</div>
+                            @enderror
                         </div>
                         <!-- Message input-->
                         <div class="form-floating mb-3">
-                            <textarea class="form-control" name="message" id="message" placeholder="Enter your message here..." style="height: 10rem" required></textarea>
+                            <textarea class="form-control @error('message') is-invalid @enderror" name="message" id="message" placeholder="Enter your message here..." style="height: 10rem" required>{{ old('message') }}</textarea>
                             <label for="message">Message</label>
-                            <div class="invalid-feedback">A message is required.</div>
+                            @error('message')
+                                <div class="invalid-feedback">{{ $message }}</div>
+                            @enderror
                         </div>
                         <div class="d-none" id="submitSuccessMessage">
                             <div class="text-center mb-3">
