@@ -90,7 +90,7 @@ resource "docker_container" "app" {
   command = [
   "sh",
   "-c",
-  "php artisan migrate --force && php artisan serve --host=0.0.0.0 --port=8000",
+  "until php artisan migrate --force 2>/dev/null; do echo 'Waiting for DB...'; sleep 3; done && php artisan serve --host=0.0.0.0 --port=8000",
 ]
 
   depends_on = [docker_container.db]
