@@ -9,7 +9,7 @@ use Illuminate\Support\Facades\Auth;
 use Carbon\Carbon;
 
 
-class anakdisabilitasController extends Controller
+class AnakDisabilitasController extends Controller
 {
     public function index()
     {

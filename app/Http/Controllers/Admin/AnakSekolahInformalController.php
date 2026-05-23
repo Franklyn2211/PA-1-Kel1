@@ -9,7 +9,7 @@ use Illuminate\Support\Facades\Auth;
 use Carbon\Carbon;
 
 
-class anaksekolahinformalController extends Controller
+class AnakSekolahInformalController extends Controller
 {
     public function index()
     {
