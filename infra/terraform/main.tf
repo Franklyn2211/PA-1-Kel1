@@ -82,11 +82,6 @@ resource "docker_container" "app" {
     external = var.app_port
   }
 
-  volumes {
-    host_path      = local.app_dir
-    container_path = "/var/www/html"
-  }
-
   command = [
   "sh",
   "-c",
