@@ -88,10 +88,10 @@ resource "docker_container" "app" {
   }
 
   command = [
-    "sh",
-    "-c",
-    "composer install --no-interaction --prefer-dist && php artisan serve --host=0.0.0.0 --port=8000",
-  ]
+  "sh",
+  "-c",
+  "php artisan migrate --force && php artisan serve --host=0.0.0.0 --port=8000",
+]
 
   depends_on = [docker_container.db]
 }
