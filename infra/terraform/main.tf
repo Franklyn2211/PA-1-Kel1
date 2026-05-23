@@ -85,7 +85,14 @@ resource "docker_container" "app" {
   command = [
   "sh",
   "-c",
-  "until php artisan migrate --force 2>/dev/null; do echo 'Waiting for DB...'; sleep 3; done && php artisan serve --host=0.0.0.0 --port=8000",
+  <<-EOT
+    sed -i 's/DB_HOST=.*/DB_HOST=laravel_db/' /var/www/html/.env
+    sed -i 's/DB_DATABASE=.*/DB_DATABASE=laravel/' /var/www/html/.env
+    sed -i 's/DB_USERNAME=.*/DB_USERNAME=laravel/' /var/www/html/.env
+    sed -i 's/DB_PASSWORD=.*/DB_PASSWORD=secret/' /var/www/html/.env
+    until php artisan migrate --force 2>/dev/null; do echo 'Waiting for DB...'; sleep 3; done
+    php artisan serve --host=0.0.0.0 --port=8000
+  EOT
 ]
 
   depends_on = [docker_container.db]
