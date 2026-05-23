@@ -60,7 +60,7 @@
         <div class="row">
             <div class="col-lg-9">
                 <section class="py-5">
-                    <div class="container px-5 my-5">
+                    <div class="container px-5 my-2">
                         <div class="row gx-5 justify-content-center">
                             <div class="col-lg-8 col-xl-6">
                                 <div class="text-center">
@@ -80,7 +80,7 @@
                                                 href="{{ route('news.show', ['id_news' => $berita->id_news]) }}">
                                                 <h5 class="card-title mb-3">{{ $berita->title }}</h5>
                                             </a>
-                                            <p class="card-text mb-0">{!! $berita->description !!}</p>
+                                            <p class="card-text mb-0">{!! Str::limit(strip_tags($berita->description), 1000) !!}</p>
                                         </div>
                                     </div>
                                 </div>
@@ -112,7 +112,7 @@
                     </div>
                 </section>
                 <section id="informasi-umum" class="bg-informasi-umum container text-center">
-                    <div class="py-5">
+                    <div class="py-1">
                         <a href="{{ route('Statistics.index') }}">
                             <h1><strong>Statistik</strong></h1>
                         </a>
@@ -264,7 +264,7 @@
             <div class="col-lg-3" style="position:sticky; top:0; right:0; height:100vh; overflow-y:auto;">
                 <div class="sidebar">
                     <section class="py-5">
-                        <div class="container my-5">
+                        <div class="container my-3">
                             <div class="row gx-5 justify-content-center">
                                 <div class="col-lg-8 col-xl-6">
                                     <div class="text-center">
@@ -296,7 +296,7 @@
                         </div>
                     </section>
                     <section class="py-2" style="margin-top: -3rem">
-                        <div class="container my-5">
+                        <div class="container my-3">
                             <div class="row gx-5 justify-content-center">
                                 <div class="col-lg-8 col-xl-6">
                                     <div class="text-center">
@@ -307,11 +307,11 @@
                             <div class="row gx-5">
                                 <div class="col-md-12">
                                     <div class="row pb-3">
-                                            @foreach ($program as $index => $item)
-                                                <div class="card-title mb-2">
-                                                   {{ $index + 1}}. {{ $item->program_title }}
-                                                </div>
-                                            @endforeach
+                                        @foreach ($program as $index => $item)
+                                            <div class="card-title mb-2">
+                                                {{ $index + 1 }}. {{ $item->program_title }}
+                                            </div>
+                                        @endforeach
                                         <a class="btn btn-primary btn-lg" href="{{ route('Program.index') }}">Lihat
                                             Detail</a>
                                     </div>

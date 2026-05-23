@@ -22,7 +22,7 @@
     </section>
     <!-- About section two-->
     <section class="py-3">
-        <div class="container px-5 my-5">
+        <div class="container px-5 my-2">
             <div class="row gx-5 align-items-center">
                 <div class="text-center">
                     <h2 class="fw-bolder text-center">VISI</h2>
@@ -38,7 +38,7 @@
         </div>
     </section>
     <section class="py-5">
-        <div class="container px-5 my-5 bg-blue" style="border-radius: 10px; padding: 30px">
+        <div class="container px-5 my-2 bg-blue" style="border-radius: 10px; padding: 30px">
             <div class="row gx-5 align-items-center">
                 <h2 class="fw-bolder text-center mb-4" style="color: white;">Kepengurusan YPA Rumah Damai</h2>
                 @if ($stafpegawai->count() > 0)
