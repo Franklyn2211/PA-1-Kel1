@@ -199,7 +199,7 @@ Route::prefix('sekretaris')->group(function () {
 
     });
 
-    Route::get('/login', [SecretaryAuthController::class, 'index'])->name('Secretary.login');
+Route::get('/login', [SecretaryAuthController::class, 'index'])->name('Secretary.login');
 Route::post('/login', [SecretaryAuthController::class, 'authenticate']);
 Route::get('/register', [SecretaryAuthController::class, 'register']);
 Route::post('/register', [SecretaryAuthController::class, 'process'])->name('Secretary.process');

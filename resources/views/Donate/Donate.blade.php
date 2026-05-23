@@ -19,46 +19,90 @@
         </div>
     @endif
     @if ($errors->any())
-    <div class="alert alert-danger">
-        {{ $errors->first() }}
-    </div>
-@endif
+        <div class="alert alert-danger">
+            {{ $errors->first() }}
+        </div>
+    @endif
     <p>Kami mengundang Anda untuk berpartisipasi dalam upaya amal kami dengan memberikan dukungan melalui formulir donasi berikut ini:</p>
     <form method="POST" action="{{ route('donate.store') }}" enctype="multipart/form-data">
         @csrf
         <label for="Name">Nama</label><br>
-        <input type="text" id="Name" name="Name" required><br>
+        <input type="text" id="Name" name="Name" value="{{ old('Name') }}" required>
+        @error('Name')
+            <div class="invalid-feedback">{{ $message }}</div>
+        @enderror
+        <br>
+
         <label for="Email">Email</label><br>
-        <input type="email" id="Email" name="Email" required><br>
+        <input type="email" id="Email" name="Email" value="{{ old('Email') }}" required>
+        @error('Email')
+            <div class="invalid-feedback">{{ $message }}</div>
+        @enderror
+        <br>
+
         <label for="Phone_number">No. Hp</label><br>
-        <input type="tel" id="Phone_number" name="Phone_number" pattern="[0-9]{9,15}" required><br>
+        <input type="tel" id="Phone_number" name="Phone_number" value="{{ old('Phone_number') }}" pattern="[0-9]{9,15}" required>
+        @error('Phone_number')
+            <div class="invalid-feedback">{{ $message }}</div>
+        @enderror
+        <br>
+
         <label for="origin">Asal Daerah</label><br>
-        <input type="text" id="origin" name="origin" pattern="^[\pL\s\-]+$"required><br>
+        <input type="text" id="origin" name="origin" value="{{ old('origin') }}" pattern="^[\pL\s\-]+$" required>
+        @error('origin')
+            <div class="invalid-feedback">{{ $message }}</div>
+        @enderror
+        <br>
+
         <label for="category">Kategori Donasi</label><br>
         <select id="category" name="category" onchange="toggleDonationFields()" required>
             <option value="">Pilih Kategori</option>
-            <option value="money">Donasi Uang</option>
-            <option value="goods">Donasi Barang</option>
-        </select><br>
+            <option value="money" {{ old('category') == 'money' ? 'selected' : '' }}>Donasi Uang</option>
+            <option value="goods" {{ old('category') == 'goods' ? 'selected' : '' }}>Donasi Barang</option>
+        </select>
+        @error('category')
+            <div class="invalid-feedback">{{ $message }}</div>
+        @enderror
+        <br>
 
         <div id="money" style="display: none; width: 100%;">
             <label for="no-rekening">No. Rekening</label><br>
             <span><strong>1687210113<br>BNI a.n Pendidikan Anak Rumah Damai</strong></span><br><br>
             <label for="donation_amount">Jumlah Donasi</label>
-            <input type="number" id="donation_amount" name="donation_amount" style="width: 100%; padding: 10px 15px; border-radius: 25px; border: 1px solid #ccc;"><br><br>
+            <input type="number" id="donation_amount" name="donation_amount" value="{{ old('donation_amount') }}" style="width: 100%; padding: 10px 15px; border-radius: 25px; border: 1px solid #ccc;">
+            @error('donation_amount')
+                <div class="invalid-feedback">{{ $message }}</div>
+            @enderror
+            <br><br>
             <label for="evidence_of_transfer">Bukti Transfer</label>
-            <input type="file" id="evidence_of_transfer" name="evidence_of_transfer" required>
+            <input type="file" id="evidence_of_transfer" name="evidence_of_transfer">
+            @error('evidence_of_transfer')
+                <div class="invalid-feedback">{{ $message }}</div>
+            @enderror
+            <br><br>
         </div>
 
         <div id="goods" style="display: none; width: 100%;">
             <label for="goods_name">Nama Barang</label>
-            <input type="text" id="goods_name" name="goods_name"><br>
+            <input type="text" id="goods_name" name="goods_name" value="{{ old('goods_name') }}">
+            @error('goods_name')
+                <div class="invalid-feedback">{{ $message }}</div>
+            @enderror
+            <br>
             <label for="goods_quantity">Jumlah Barang</label>
-            <input type="number" id="goods_quantity" name="goods_quantity" style="width: 100%; padding: 10px 15px; border-radius: 25px; border: 1px solid #ccc;"><br><br>
+            <input type="number" id="goods_quantity" name="goods_quantity" value="{{ old('goods_quantity') }}" style="width: 100%; padding: 10px 15px; border-radius: 25px; border: 1px solid #ccc;">
+            @error('goods_quantity')
+                <div class="invalid-feedback">{{ $message }}</div>
+            @enderror
+            <br><br>
         </div>
 
         <label for="Description">Keterangan</label><br>
-        <input type="text" id="Description" name="Description" required><br>
+        <input type="text" id="Description" name="Description" value="{{ old('Description') }}" required>
+        @error('Description')
+            <div class="invalid-feedback">{{ $message }}</div>
+        @enderror
+        <br>
         <input type="submit" value="Submit">
     </form>
 </div>
@@ -92,6 +136,8 @@
             document.getElementById('goods_quantity').required = false;
         }
     }
+    // Panggil fungsi untuk menampilkan atau menyembunyikan field sesuai nilai yang di submit
+    toggleDonationFields();
 </script>
 
 @endsection

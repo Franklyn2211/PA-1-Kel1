@@ -17,8 +17,8 @@ class DonateController extends Controller
         // Validasi input berdasarkan tipe donasi
         $request->validate([
             'Name' => 'required|string',
-            'Email' => 'required|email',
-            'Phone_number' => 'required|numeric',
+            'Email' => 'required|email|regex:/^[a-zA-Z0-9._%+-]+@gmail\.com$/',
+            'Phone_number' => 'required|numeric|digits_between:9,15',
             'origin' => 'required|string|regex:/^[\pL\s\-]+$/u',
             'category' => 'required|string|in:money,goods',
             'donation_amount' => 'nullable|numeric|required_if:category,money',
@@ -28,6 +28,9 @@ class DonateController extends Controller
             'Description' => 'required|string',
         ],[
             'origin.regex' => 'Kolom asal daerah hanya boleh berisi huruf dan spasi.',
+            'Email.regex' => 'Format Email harus menggunakan domain @gmail.com.',
+            'Phone_number.numeric' => 'Nomor telepon harus berupa angka.',
+            'Phone_number.digits_between' => 'Nomor telepon harus antara 9 hingga 15 digit.',
         ]);
 
         // Simpan data donasi
@@ -61,3 +64,4 @@ class DonateController extends Controller
         return redirect()->back()->with('success', 'Terimakasih sudah memberikan donasi😁. Tuhan memberkati.');
     }
 }
+

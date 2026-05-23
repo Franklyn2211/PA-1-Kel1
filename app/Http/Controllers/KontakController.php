@@ -18,9 +18,12 @@ class KontakController extends Controller
         // Validasi input
         $request->validate([
             'name' => 'required|string',
-            'email' => 'required|email',
-            'phone_number' => 'required|numeric',
+            'email' => 'required|email|regex:/^[a-zA-Z0-9._%+-]+@gmail\.com$/',
+            'phone_number' => 'required|numeric|digits_between:9,15',
             'message' => 'required|string',
+        ],[
+            'email.regex' => 'Email harus menggunakan domain @gmail.com.',
+            'phone_number.digits_between' => 'Nomor telepon harus antara 9 hingga 15 digit.'
         ]);
 
         // Generate ID untuk kontak
